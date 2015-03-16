@@ -87,8 +87,6 @@ main.views.MainNavContainerView = Backbone.View.extend({
     },
     // ----------------- checkPos
     checkPos: function() {
-        console.log("MainNavContainerView ---- checkPos");
-
 	    var self = this;
 	    var scroll_top = $(window).scrollTop();
 	    //if the top of this has reached
@@ -99,7 +97,7 @@ main.views.MainNavContainerView = Backbone.View.extend({
 	    if(scroll_top >=  this.default_top) {
 		   this.animateToFixed();
 		}
-		if(scroll_top <  this.default_top){
+		if(scroll_top <  this.default_top) {
 			this.animateToMovable();
 		}
     },

@@ -128,7 +128,7 @@ i {
   border-color: #a1b3ff; }
 
 .content {
-  width: 1200px;
+  width: 1050px;
   margin: 0 auto;
   padding: 0 24px; }
 
@@ -190,7 +190,7 @@ i {
   left: 0;
   height: 30px;
   width: 100%;
-  min-width: 1200px;
+  min-width: 1050px;
   background-color: #ffc627;
   border-bottom: 1px solid #333e48;
   z-index: 200; }
@@ -251,23 +251,6 @@ i {
   position: absolute;
   min-width: 100%;
   z-index: 300; }
-  #main-nav-container .nav button.btn-style {
-    margin-top: -10px;
-    padding: 1em;
-    font-size: 1em;
-    font-weight: bold;
-    -webkit-box-shadow: 0px 5px 0px #a1b3ff;
-    -moz-box-shadow: 0px 5px 0px #a1b3ff;
-    box-shadow: 0px 5px 0px #a1b3ff; }
-  #main-nav-container.top-sticky .nav button.btn-style {
-    margin-top: -7px;
-    height: auto;
-    padding: 9px 15px;
-    border-top: none;
-    border-bottom: 1px solid #000;
-    -webkit-box-shadow: 0px 0px 0px #a1b3ff;
-    -moz-box-shadow: 0px 0px 0px #a1b3ff;
-    box-shadow: 0px 0px 0px #a1b3ff; }
 
 .top-sticky {
   height: 40px;
@@ -583,7 +566,7 @@ input {
   width: 570px; }
 
 .sm-col {
-  width: 548px; }
+  width: 398px; }
 
 .btn-move img {
   float: left; }

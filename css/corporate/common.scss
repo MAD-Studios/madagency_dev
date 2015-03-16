@@ -21,7 +21,8 @@ $inputFontSize: 12px;
 $inputFontColor: #586069;
 $navFontColor: #555252;
 /*----------------- DIMS  */
-$contentWidth: 960px;
+// $contentWidth: 960px;
+$contentWidth: 1200px;
 $headerHeight: 40px;
 $xxSmMargin: 4px;
 $xSmMargin: 8px;
@@ -292,6 +293,31 @@ z-index:0;
 	position: absolute;
 	min-width: 100%;
 	z-index: 300;
+	.nav {
+		button.btn-style {
+			// float: right;
+			margin-top: -10px;
+			padding: 1em;
+			font-size: 1em;
+			font-weight: bold;
+			-webkit-box-shadow: 0px 5px 0px $dropShadowBlueColor;
+			   -moz-box-shadow: 0px 5px 0px $dropShadowBlueColor;
+					box-shadow: 0px 5px 0px $dropShadowBlueColor;
+			// border-bottom: 10px solid $dropShadowBlueColor;
+		}
+	}
+	&.top-sticky .nav {
+		button.btn-style {
+			margin-top: -7px;
+			height: auto;
+			padding: 9px 15px;
+			border-top: none;
+			border-bottom: 1px solid #000;
+			-webkit-box-shadow: 0px 0px 0px $dropShadowBlueColor;
+			   -moz-box-shadow: 0px 0px 0px $dropShadowBlueColor;
+					box-shadow: 0px 0px 0px $dropShadowBlueColor;
+		}
+	}
 }
 .top-sticky{
 	height: $headerHeight;
