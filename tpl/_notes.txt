@@ -1,0 +1,5 @@
+Question:
+Will you import skrollr library and my 'custom.js' file? Please let me know if you need that from me or if you're going to duplicated it in your dev environment.
+Resolved!
+
+Styles?

@@ -1,0 +1,425 @@
+/*-------------------------------- Sass  */
+/*----------------- COLORS  */
+$ltGold: #fceec9;
+$gold: #ffc627;
+$darkGold: #ffa227;
+$navy: #333e48;
+$lightBlue: #bdd0ff;
+$blue: #a1b3ff;
+$xLightBlue: #e7ebf3;
+/*----------------- FONTS  */
+$loaderFontColor: $navy;
+$loaderFontSize: 15px;
+$defaultFontSize: 15px;
+/*----------------- DIMS  */
+$contentWidth: 960px;
+$headerHeight: 40px;
+$xxSmMargin: 4px;
+$xSmMargin: 8px;
+$smMargin: 12px;
+$medMargin: 16px;
+$lgMargin: 24px;
+$xLgMargin: 48px;
+$xxLgMargin: 60px;
+/*----------------- Mixins */
+/* Turn numbers with units into unitless numbers: https://github.com/nex3/sass/issues/533 */
+@function clear-units($value){
+    @if type-of($value) == "number" {
+        @if (unitless($value)) {
+            @return $value;
+        } @else if unit($value) == "em"{
+            @return $value / 1em;
+        } @else if unit($value) == "px" {
+            @return $value / 1px;
+        } @else if unit($value) == "pt" {
+            @return $value / 1pt;
+        }
+    } @else {
+        @warn "Not a number value: #{$value}";
+        @return $value;
+    }
+}
+$browser-context: $defaultFontSize; // Default
+@function em($pixels, $context: $browser-context) {
+  @return #{clear-units($pixels)/clear-units($context)}em
+}
+
+
+/*html, body {
+	min-width:100%;
+	height:100%;
+	padding:0;
+	margin:0;
+	overflow-x:hidden;
+}*/
+.skrollable {
+	/*
+	 * First-level skrollables are positioned relative to window
+	 */
+	position:fixed;
+	/*
+	 * Skrollables by default have a z-index of 100 in order to make it easy to position elements in front/back without changing each skrollable
+	 */
+	z-index:600;
+}
+.skrollr-mobile .skrollable {
+	/*
+		May cause issues on Android default browser (see #331 on GitHub).
+	*/
+	position:absolute;
+}
+.skrollable .skrollable {
+	/*
+	 * Second-level skrollables are positioned relative their parent skrollable
+	 */
+	position:absolute;
+}
+.skrollable .skrollable .skrollable {
+	/*
+	 * Third-level (and below) skrollables are positioned static
+	 */
+	position:static;
+}
+
+.story{
+	position: fixed;
+	top:0;
+	left:0;
+	visibility: hidden;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	z-index: 500;
+}
+.gold-bg{
+	position: absolute;
+	min-width: 100%;
+	background-color: $darkGold;
+	-webkit-transform: translate3d(0,0,0);
+	-moz-transform: translate3d(0,0,0);
+    -o-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+    -webkit-backface-visibility: hidden;
+    z-index: 500;
+}
+.scene-container{
+	position: fixed;
+	min-width: 100%;
+    z-index: 600;
+    background-color: #000;
+    -moz-transform: translate3d(0,0,0);
+    -o-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+.scene{
+	position: absolute;
+	display: block;
+	min-width: 100%;
+	height: 100%;
+	z-index: 600;
+}
+.transition{
+	position: absolute;
+	display: block;
+	min-width: 100%;
+	height: 100%;
+}
+.fade-slow{
+	-webkit-transition: opacity 1.2s; 
+	   -moz-transition: opacity 1.2s; 
+	     -o-transition: opacity 1.2s; 
+	        transition: opacity 1.2s; 
+}
+.fade-fast{
+	-webkit-transition: opacity 0.5s; 
+	   -moz-transition: opacity 0.5s; 
+	     -o-transition: opacity 0.5s; 
+	        transition: opacity 0.5s; 
+}
+.stage-transition{
+	-webkit-transition: all 1.6s cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	   -moz-transition: all 1.6s cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	     -o-transition: all 1.6s cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	        transition: all 1.6s cubic-bezier(0.190, 1.000, 0.220, 1.000); /* easeOutExpo*/
+
+	-webkit-transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	   -moz-transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	     -o-transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	        transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); /* easeOutExpo */
+}
+
+.scene-transition{
+	-webkit-transition: all 2.0s cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	   -moz-transition: all 2.0s cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	     -o-transition: all 2.0s cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	        transition: all 2.0s cubic-bezier(0.190, 1.000, 0.220, 1.000); /* easeOutExpo*/
+
+	-webkit-transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	   -moz-transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	     -o-transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	        transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); /* easeOutExpo */
+}
+
+/*.stage-left{
+	-webkit-transform: translate3d(-100%,0,0);
+	-moz-transform: translate3d(-100%,0,0);
+    -o-transform: translate3d(-100%,0,0);
+    -ms-transform: translate3d(-100%,0,0);
+    transform: translate3d(-100%,0,0);
+}
+.stage-center{
+	-webkit-transform: translate3d(0,0,0);
+	-moz-transform: translate3d(0,0,0);
+    -o-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+.stage-right{
+	-webkit-transform: translate3d(100%,0,0);
+	-moz-transform: translate3d(100%,0,0);
+    -o-transform: translate3d(100%,0,0);
+    -ms-transform: translate3d(100%,0,0);
+    transform: translate3d(100%,0,0);
+}*/
+/*.stage-left{
+	-webkit-transform: translate(-100%,0);
+	-moz-transform: translate(-100%,0);
+    -o-transform: translate(-100%,0);
+    -ms-transform: translate(-100%,0);
+    transform: translate(-100%,0);
+}
+.stage-center{
+	-webkit-transform: translate(0,0);
+	-moz-transform: translate(0,0);
+    -o-transform: translate(0,0);
+    -ms-transform: translate(0,0);
+    transform: translate(0,0);
+}
+.stage-right{
+	-webkit-transform: translateX(100%);
+	-moz-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    transform: translateX(100%);
+}*/
+.stage-left{
+	left: -100%;
+}
+.stage-center{
+	left: 0
+}
+.stage-right{
+	left: 100%;
+}
+
+.scene-castle{
+	z-index: 900;
+}
+.scene-lab{
+	z-index: 800;
+}
+.scene-boy{
+	z-index: 900;
+}
+/* -------------- LoaderView */
+.loader{
+	position: absolute;
+	top: 0;
+	left: 0;
+	min-width: 100%;
+	-webkit-transform: translate3d(0,0,0);
+	-moz-transform: translate3d(0,0,0);
+    -o-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+    -webkit-backface-visibility: hidden;
+    z-index: 900;
+    color: $loaderFontColor;
+	font-size: $loaderFontSize;
+	h1{
+		font-size: em(45px);
+		font-weight: 900;
+	}
+	h2{
+		font-size: em(33px) ;
+		font-weight: 900;
+	}
+	h3{
+		font-size: em(20px);
+		font-weight: 500;
+		font-family: "franklin-gothic-urw",sans-serif !important;
+	}
+	h4{
+		font-size: em(12px);
+		font-weight: 900;
+		font-family: "franklin-gothic-urw",sans-serif !important;
+	}
+	p{  font-weight: 400;}
+}
+.loader .gold-grad{
+	position: absolute;
+	min-width: 100%; 
+	-webkit-transform: translate3d(0,0,0);
+	-moz-transform: translate3d(0,0,0);
+    -o-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+.loader .gold-grad .top{
+  float:left; width: 100%;
+  background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(255,198,39,0)), to(rgba(255,198,39,1) 40%));
+  background-image: -webkit-linear-gradient(top, rgba(255,198,39,0) , rgba(255,198,39,1) 40%);
+  background-image: -moz-linear-gradient(top, rgba(255,198,39,0), rgba(255,198,39,1) 40%);
+  background-image: -o-linear-gradient(top, rgba(255,198,39,0), rgba(255,198,39,1) 40%);
+  background-image: linear-gradient(to bottom, rgba(255,198,39,0), rgba(255,198,39,1) 40%);
+}
+.loader .gold-grad .bottom{
+	float:left; width: 100%;
+	background-color: $gold;
+}
+.gold-grad-transition{
+	-webkit-transition: all 1.6s cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	   -moz-transition: all 1.6s cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	     -o-transition: all 1.6s cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	        transition: all 1.6s cubic-bezier(0.190, 1.000, 0.220, 1.000); /* easeOutExpo*/
+
+	-webkit-transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	   -moz-transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	     -o-transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	        transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); /* easeOutExpo */
+}
+.gold-grad-transition-out{
+	-webkit-transition: all 1.6s cubic-bezier(0.770, 0.000, 0.175, 1.000); 
+	   -moz-transition: all 1.6s cubic-bezier(0.770, 0.000, 0.175, 1.000); 
+	     -o-transition: all 1.6s cubic-bezier(0.770, 0.000, 0.175, 1.000); 
+	        transition: all 1.6s cubic-bezier(0.770, 0.000, 0.175, 1.000); /* easeOutExpo*/
+
+	-webkit-transition-timing-function: cubic-bezier(0.770, 0.000, 0.175, 1.000); 
+	   -moz-transition-timing-function: cubic-bezier(0.770, 0.000, 0.175, 1.000); 
+	     -o-transition-timing-function: cubic-bezier(0.770, 0.000, 0.175, 1.000); 
+	        transition-timing-function: cubic-bezier(0.770, 0.000, 0.175, 1.000); /* easeOutExpo */
+}
+.loader .info-container{
+	width: $contentWidth;
+	position: absolute;
+	height: 150px;
+	text-align: center;
+}
+.loader .info{
+	width: 100%;
+	position: absolute;
+	-webkit-transform: translate3d(0,0,0);
+	-moz-transform: translate3d(0,0,0);
+    -o-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+.loader .info-container h2{
+    margin-bottom: $lgMargin;
+}
+.loader .info-container p{
+	margin-bottom: $xxSmMargin;
+}
+.info-transition{
+	-webkit-transition: all 1.4s cubic-bezier(0.190, 1.000, 0.220, 1.000), opacity 0.7s; 
+	   -moz-transition: all 1.4s cubic-bezier(0.190, 1.000, 0.220, 1.000), opacity 0.7s; 
+	     -o-transition: all 1.4s cubic-bezier(0.190, 1.000, 0.220, 1.000), opacity 0.7s; 
+	        transition: all 1.4s cubic-bezier(0.190, 1.000, 0.220, 1.000), opacity 0.7s; 
+
+	-webkit-transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	   -moz-transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	     -o-transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	        transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000);
+}
+.rainbow-container{
+	position: absolute;
+	top: 0;
+	left: 0;
+	min-width: 100%;
+	overflow: hidden;
+}
+.rainbow{
+	position: absolute;
+}
+.rainbow-all{
+	float: left;
+	margin-top: 52px;
+}
+.unicorn{
+	float:left;
+	margin-left: -72px;
+	width: 236px; height: 174px;
+	background: transparent url(../../images/loader/png/loader-unicorn.png) no-repeat;
+	-webkit-background-size: 236px 174px;
+	-moz-background-size: 236px 174px;
+	-o-background-size: 236px 174px;
+	background-size: 236px 174px;
+}
+.rainbow-end{
+	float:left;
+	width: 412px; height: 65px;
+	background: transparent url(../../images/loader/png/loader-rainbow.png) no-repeat;
+	-webkit-background-size: 412px 65px;
+	-moz-background-size: 412px 65px;
+	-o-background-size: 412px 65px;
+	background-size: 412px 65px;
+}
+.rainbow-solid{
+	float:left;
+	width: 412px; height: 65px;
+	background: transparent url(../../images/loader/png/loader-snippet.png) repeat-x;
+	-webkit-background-size: 1px 65px;
+	-moz-background-size: 1px 65px;
+	-o-background-size: 1px 65px;
+	background-size: 1px 65px;
+}
+.rainbow-ease-out-transition{
+	-webkit-transition: all 11s cubic-bezier(0.230, 1.000, 0.320, 1.000); 
+	   -moz-transition: all 11s cubic-bezier(0.230, 1.000, 0.320, 1.000); 
+	     -o-transition: all 11s cubic-bezier(0.230, 1.000, 0.320, 1.000); 
+	        transition: all 11s cubic-bezier(0.230, 1.000, 0.320, 1.000); 
+
+	-webkit-transition-timing-function: cubic-bezier(0.230, 1.000, 0.320, 1.000); 
+	   -moz-transition-timing-function: cubic-bezier(0.230, 1.000, 0.320, 1.000); 
+	     -o-transition-timing-function: cubic-bezier(0.230, 1.000, 0.320, 1.000); 
+	        transition-timing-function: cubic-bezier(0.230, 1.000, 0.320, 1.000);
+}
+.rainbow-ease-in-transition{
+	-webkit-transition: all 6s cubic-bezier(0.445, 0.050, 0.550, 0.950); 
+	   -moz-transition: all 6s cubic-bezier(0.445, 0.050, 0.550, 0.950); 
+	     -o-transition: all 6s cubic-bezier(0.445, 0.050, 0.550, 0.950); 
+	        transition: all 6s cubic-bezier(0.445, 0.050, 0.550, 0.950); 
+
+	-webkit-transition-timing-function: cubic-bezier(0.445, 0.050, 0.550, 0.950); 
+	   -moz-transition-timing-function: cubic-bezier(0.445, 0.050, 0.550, 0.950); 
+	     -o-transition-timing-function: cubic-bezier(0.445, 0.050, 0.550, 0.950); 
+	        transition-timing-function: cubic-bezier(0.445, 0.050, 0.550, 0.950);
+}
+.loader .ready-msg-cnt{
+	position: absolute;
+	width: 300px; height: 60px;
+	text-align: center;
+}
+.loader .ready-msg{
+	position: absolute;
+	width: 100%; height: 100%;
+	text-align: center;
+	-webkit-transform: translate3d(0,0,0);
+	-moz-transform: translate3d(0,0,0);
+    -o-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+.loader .ready-msg h1{
+	font-family: 'The Skinny', 'Helvetica', Arial, sans-serif;
+}
+
+/* -------------- Scenes */
+.scene-audio-cnt{
+	position: absolute; 
+	top: 0; left: 100%;
+	visibility: hidden;
+}
+

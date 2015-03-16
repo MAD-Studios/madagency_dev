@@ -1,0 +1,64 @@
+# turn on rewrite engine
+RewriteEngine on
+
+# permanently redirect from non-www domain to www domain
+Options +FollowSymLinks
+RewriteCond %{HTTP_HOST} ^madstudios.net [NC]
+RewriteRule ^(.*)$ http://www.madstudios.net/$1 [L,R=301]
+
+# server custom error pages
+ErrorDocument 404 http://www.madstudios.net/404/
+
+# require SSL
+#RewriteCond %{HTTPS} !=on [NC]
+#RewriteRule ^.*$ https://%{SERVER_NAME}%{REQUEST_URI} [R,L]
+
+# prevent folder listing
+#IndexIgnore *
+
+# disable directory browsing
+Options All -Indexes
+
+# prevent viewing of specific files
+<FilesMatch "(.htaccess)">
+Order Allow,Deny
+Deny from all
+</FilesMatch>
+
+# rewrite rules
+RewriteRule ^(404)/$ 404.html [NC,QSA,L]
+
+# html5 pushstate (history) support:
+<ifModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} !index
+    RewriteRule (.*) index.html [L]
+</ifModule>
+
+# only detect smart phone devices if we are not on mobile site
+# to prevent redirect looping
+RewriteCond %{HTTP_HOST} !^m.madstudios.net$
+
+# a bunch of smart phone devices
+RewriteCond %{HTTP_USER_AGENT} "sony|symbian|nokia|samsung|mobile" [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "windows ce|epoc|opera|mini|nitro" [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "j2me|midp-|cldc-|netfront|mot" [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "up\.browser|up\.link|audiovox" [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "mini|nitro|j2me|midp-|cldc"[NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "netfront|mot|up\.browser|up\.link"[NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "audiovox|blackberry|ericsson,"[NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "panasonic|philips|sanyo|sharp|sie-"[NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "portalmmm|blazer|avantgo|dange"[NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "palm|series60|palmsource|pocketpc"[NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "smartphone|rover|ipaq|au-mic,"[NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "alcatel|ericy|vodafone\/|wap1\."[NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "wap2\.|iPhone|android"[NC,OR]
+
+# redirect google mobile bot
+RewriteCond %{HTTP_USER_AGENT} "googlebot-mobile"[NC]
+
+# if the request is from any one of the above devices
+# redirect to mobile site
+RewriteRule .? http://m.madstudios.net%{REQUEST_URI}  [L,R=302]

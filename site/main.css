@@ -1,0 +1,49 @@
+body{background-color: #FCB827;	margin:5% 0px 0px 0px;	font-family: Tahoma, Arial, Verdana, Geneva, sans-serif;	font-size: 10px;}
+#logo {float:left; height:50px; margin:0px 0px 0px 15px;}
+#menu {float:right; font-size:11px; margin:18px 15px 18px 0px;}
+#bg { background:url(images/dotted_lines_white.png); background-repeat:repeat-x; background-position:0px 55px; width:100%;}
+#container {margin:auto auto auto auto; width: 1014px; background-repeat:no-repeat;}
+
+img {border:0px;}
+p{margin:0px 0px 0px 0px;}
+
+a:link {color:#000000; text-decoration:none;}      /* unvisited link */
+a:visited {color:#000000; text-decoration:none;}   /* visited link */
+a:hover {color:#000000; text-decoration:none;}     /* mouse over link */
+a:active {color:#000000; text-decoration:none;}    /* selected link */
+
+#bg #container #header #menu a:link {  height:13px; padding:0px 0px 0px 18px; margin:0px 0px 0px 15px; background:url(images/spacer.gif); background-repeat:no-repeat; background-position:left; vertical-align:middle; }
+#bg #container #header #menu a:visited {  height:13px; padding:0px 0px 0px 18px; margin:0px 0px 0px 15px; background:url(images/spacer.png); background-repeat:no-repeat; background-position:left; vertical-align:middle; }
+#bg #container #header #menu a:hover {  height:13px; padding:0px 0px 0px 18px; margin:0px 0px 0px 15px; background:url(images/menu_arrows.png); background-repeat:no-repeat; background-position:left; vertical-align:middle; }
+#bg #container #header #menu a:active { height:13px;  padding:0px 0px 0px 18px; margin:0px 0px 0px 15px; background:url(images/menu_arrows.png); background-repeat:no-repeat; background-position:left; vertical-align:middle; }
+
+.input_email    {height: 16px; margin:0px 0px 0px 10px; width:150px; padding:0px 0px 0px 5px;font-size: 9px;	border: 0px;}
+.input_email_btn {font-size: 9px;	background:url(images/btn_bg.png);	background-position:right;	color: #FFF; border: 0px;	font-weight: bold;}
+.input_email_btn:hover {font-size: 9px;	background:url(images/btn_bg_light.png); background-position:right;	color: #FFF; border: 0px;	font-weight: bold;}
+
+#header {height: 50px;}
+#stage_contact { height:270px; padding:35px 42px 35px 42px; background:url(images/stage_water_black_contact.png);  background-repeat:no-repeat;  background-position:0px 0px; background-repeat:no-repeat;}
+
+#stage{ height:338px; background-repeat:no-repeat; background:url(images/stage_water_black.png); background-position:0px 0px; background-repeat:no-repeat;}
+#footer {font-size: 9px; height:20px; float:none; margin:10px 15px 0px 15px; text-align:left; clear:both;}
+#contact_field {
+	background: none repeat scroll 0% 0% rgb(0, 0, 0); border-width: 1px; border-style: solid; border-color:#666666; color:#FFF; font: 11px; height: 19px; margin: 5px 5px 0px 0px; padding: 0px 0px 0px 5px; filter:alpha(opacity=70);	-moz-opacity:0.7;	-khtml-opacity: 0.7;	opacity: 0.7; vertical-align:text-top;
+}
+#content {width:517px; line-height:17px; float:right; padding:0px 20px 0px 0px; margin:34px 40px 0px 0px; height:270px; vertical-align:top; overflow:auto; color:#FFF; filter:alpha(opacity=80);	-moz-opacity:0.8;	-khtml-opacity: 0.8;	opacity: 0.8; font-size:12px;}
+ul {
+	font-size:10px;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	
+}
+
+.text_l {font-size:24px;}
+.text_m {font-size:16px;}
+
+
+h1{ font-size:23px; margin:0px 0px 0px 0px; color:#FFF; filter:alpha(opacity=60);	-moz-opacity:0.6;	-khtml-opacity: 0.6;	opacity: 0.6; font-weight:bold; }
+text_white {color:#FFF;}
+#contact_send a { color:#FFF; font-size: 12px; padding:0px 0px 0px 18px; margin:0px 0px 0px 0px; background:url(images/menu_arrows_yellow.png); background-repeat:no-repeat; background-position:left; vertical-align:middle;}
+#contact_send a:hover { color:#FFF;  font-size: 12px; padding:0px 0px 0px 18px; margin:0px 0px 0px 0px; background:url(images/menu_arrows.png); background-repeat:no-repeat; background-position:left; vertical-align:middle;}
+
+td {vertical-align:text-top;}
