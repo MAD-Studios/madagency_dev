@@ -1604,6 +1604,28 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/images\/intro\/png\/down-arrow.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 220,
+		"inputAbbreviatedPath": "\/images\/intro\/png\/down-arrow.png",
+		"outputAbbreviatedPath": "\/images\/intro\/png\/down-arrow.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/intro\/png\/down-arrow@2x.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 306,
+		"inputAbbreviatedPath": "\/images\/intro\/png\/down-arrow@2x.png",
+		"outputAbbreviatedPath": "\/images\/intro\/png\/down-arrow@2x.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/images\/intro\/png\/mad-agency-brackets.png": {
 		"fileType": 32768,
 		"ignore": 0,

@@ -26,6 +26,22 @@ html, body {
   max-width: 950px;
   margin: 0 auto;
   outline: 1px solid white; }
+  #intro #down-arrow {
+    width: 25px;
+    height: 25px;
+    display: block;
+    margin: 1em auto;
+    background-color: #8DB3FC;
+    background-image: url(../../images/intro/png/down-arrow.png);
+    background-size: 25px 25px;
+    background-position: center top;
+    background-repeat: no-repeat;
+    border: 1px solid #333F48;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    box-shadow: 0em 0.3em #5b92fb; }
 
 #intro section {
   /* May be an optional declaration */
@@ -52,7 +68,7 @@ TYPOGRAPHY
 #intro p {
   /*font-size: 3em;*/
   font-size: 2.5em;
-  font-size: 3vw;
+  font-size: 2.5vw;
   color: #333F48;
   padding: 0.05em 0em;
   margin: 0em; }
@@ -172,5 +188,5 @@ MEDIA QUERIES
     font-size: 1em;
     white-space: normal; } }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
-  #intro #mad-agency-logo {
-    background-image: url(images/intro/png/mad-agency-brackets@2x.png); } }
+  #intro #down-arrow {
+    background-image: url(../../images/intro/png/down-arrow@2x.png); } }
