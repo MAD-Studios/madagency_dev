@@ -24,8 +24,7 @@ html, body {
 #intro {
   padding: 1em;
   max-width: 950px;
-  margin: 0 auto;
-  outline: 1px solid white; }
+  margin: 0 auto; }
   #intro #down-arrow {
     width: 25px;
     height: 25px;
@@ -37,11 +36,31 @@ html, body {
     background-position: center top;
     background-repeat: no-repeat;
     border: 1px solid #333F48;
+    cursor: pointer;
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
     border-bottom-left-radius: 40px;
     border-bottom-right-radius: 40px;
+    -webkit-transition: all 0.1s;
+    -moz-transition: all 0.1s;
+    transition: all 0.1s;
+    -webkit-transform: translateY(0em);
+    -moz-transform: translateY(0em);
+    -ms-transform: translateY(0em);
+    -o-transform: translateY(0em);
+    transform: translateY(0em);
+    -moz-box-shadow: 0em 0.3em #5b92fb;
+    -webkit-box-shadow: 0em 0.3em #5b92fb;
     box-shadow: 0em 0.3em #5b92fb; }
+    #intro #down-arrow:active {
+      -webkit-transform: translateY(0.4em);
+      -moz-transform: translateY(0.4em);
+      -ms-transform: translateY(0.4em);
+      -o-transform: translateY(0.4em);
+      transform: translateY(0.4em);
+      -moz-box-shadow: 0em 0em #5b92fb;
+      -webkit-box-shadow: 0em 0em #5b92fb;
+      box-shadow: 0em 0em #5b92fb; }
 
 #intro section {
   /* May be an optional declaration */
@@ -60,8 +79,8 @@ TYPOGRAPHY
   padding: 0.1em 0;
   width: auto;
   font-size: 4.5em;
-  font-size: 5vw;
   color: #FFF;
+  font-size: 5vw;
   white-space: nowrap;
   text-shadow: 0 0.066em #FDA139; }
 
@@ -99,12 +118,11 @@ TYPOGRAPHY
   width: 136px;
   height: 110px;
   margin: auto;
-  background: url(images/intro/png/mad-agency-brackets-big.png) center center no-repeat;
   background-size: contain; }
-
-.svg #intro #mad-agency-logo {
-  background: url(images/intro/svg/mad-agency-brackets.svg) center center no-repeat;
-  background-size: 136px 110px; }
+  .svg #intro #mad-agency-logo {
+    background: url(../../images/intro/svg/mad-agency-brackets.svg) center center no-repeat; }
+  .no-svg #intro #mad-agency-logo {
+    background: url(../../images/intro/png/mad-agency-brackets-big.png) center center no-repeat; }
 
 #intro #mad-agency-welcome {
   text-align: center; }
@@ -118,8 +136,8 @@ button.md-style {
   margin: 0;
   border: 2px solid #333E48;
   font-size: 0.9em;
-  -webkit-box-shadow: 0em 0.4em #FDA139;
   -moz-box-shadow: 0em 0.4em #FDA139;
+  -webkit-box-shadow: 0em 0.4em #FDA139;
   box-shadow: 0em 0.4em #FDA139;
   padding: 0.7em 0.8em;
   outline: none;
@@ -133,19 +151,17 @@ button.md-style {
   width: 10%;
   font-weight: bold;
   background-color: #BED1FD;
-  -webkit-box-shadow: 0em 0.4em #8DB3FC;
   -moz-box-shadow: 0em 0.4em #8DB3FC;
+  -webkit-box-shadow: 0em 0.4em #8DB3FC;
   box-shadow: 0em 0.4em #8DB3FC;
   -webkit-transform: translateY(0em);
   -moz-transform: translateY(0em);
   -ms-transform: translateY(0em);
   -o-transform: translateY(0em);
   transform: translateY(0em);
-  -webkit-transition: all .1s;
-  -moz-transition: all .1s;
-  -ms-transition: all .1s;
-  -o-transition: all .1s;
-  transition: all .1s; }
+  -webkit-transition: all 0.1s;
+  -moz-transition: all 0.1s;
+  transition: all 0.1s; }
 
 button.md-style:active {
   -webkit-transform: translateY(0.4em);
@@ -153,8 +169,8 @@ button.md-style:active {
   -ms-transform: translateY(0.4em);
   -o-transform: translateY(0.4em);
   transform: translateY(0.4em);
-  -webkit-box-shadow: 0em 0em #8DB3FC;
   -moz-box-shadow: 0em 0em #8DB3FC;
+  -webkit-box-shadow: 0em 0em #8DB3FC;
   box-shadow: 0em 0em #8DB3FC; }
 
 ::-webkit-input-placeholder {
@@ -184,9 +200,13 @@ MEDIA QUERIES
     max-width: 90%; }
 
   /* Mobile, p tags break */
+  #intro h1 {
+    font-size: 7vw; }
   #intro p {
-    font-size: 1em;
+    font-size: 4vw;
     white-space: normal; } }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+  #intro #mad-agency-logo {
+    background-image: url(../../images/intro/png/mad-agency-brackets@2x.png); }
   #intro #down-arrow {
     background-image: url(../../images/intro/png/down-arrow@2x.png); } }
