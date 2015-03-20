@@ -24,7 +24,49 @@ html, body {
 #intro {
   padding: 1em;
   max-width: 950px;
-  margin: 0 auto; }
+  margin: 0 auto;
+  /* 	TYPOGRAPHY */
+  /* To achieve the underline effect as in th PDF Proof */
+  /*
+  BUTTON ANIMATIONS
+  */ }
+  #intro section {
+    /* May be an optional declaration */
+    width: 100%;
+    padding: 4em 0; }
+  #intro h1, #intro p {
+    line-height: 1em;
+    margin: 0 auto 0.3em; }
+  #intro h1 {
+    padding: 0.1em 0;
+    width: auto;
+    font-size: 4.5em;
+    color: #FFF;
+    font-size: 5vw;
+    white-space: nowrap;
+    text-shadow: 0 0.066em #FDA139; }
+  #intro p {
+    /*font-size: 3em;*/
+    font-size: 2.5em;
+    font-size: 2.5vw;
+    color: #333F48;
+    padding: 0.05em 0em;
+    margin: 0em; }
+    #intro p.nowrap {
+      white-space: nowrap; }
+    #intro p a {
+      color: #FFF;
+      font-weight: bold;
+      text-decoration: none;
+      position: relative; }
+      #intro p a:after {
+        content: '';
+        position: absolute;
+        bottom: 6%;
+        left: 0%;
+        width: 100%;
+        height: 4px;
+        background-color: #FDA139; }
   #intro #down-arrow {
     width: 25px;
     height: 25px;
@@ -61,140 +103,81 @@ html, body {
       -moz-box-shadow: 0em 0em #5b92fb;
       -webkit-box-shadow: 0em 0em #5b92fb;
       box-shadow: 0em 0em #5b92fb; }
+  #intro #part-2 p {
+    margin-bottom: 0.4em; }
+  #intro #mad-agency-logo {
+    width: 136px;
+    height: 110px;
+    margin: auto;
+    background-size: contain; }
+    .svg #intro #mad-agency-logo {
+      background: url(../../images/intro/svg/mad-agency-brackets.svg) center center no-repeat; }
+    .no-svg #intro #mad-agency-logo {
+      background: url(../../images/intro/png/mad-agency-brackets-big.png) center center no-repeat; }
+  #intro #mad-agency-welcome {
+    text-align: center; }
+  #intro #submit-frame {
+    margin: auto;
+    text-align: center; }
+  #intro input.md-style,
+  #intro button.md-style {
+    margin: 0;
+    border: 2px solid #333F48;
+    font-size: 0.9em;
+    -moz-box-shadow: 0em 0.4em #FDA139;
+    -webkit-box-shadow: 0em 0.4em #FDA139;
+    box-shadow: 0em 0.4em #FDA139;
+    padding: 0.7em 0.8em;
+    outline: none;
+    cursor: pointer; }
+  #intro input.md-style {
+    width: 38%;
+    margin-right: 0.5em; }
+    #intro input.md-style::-webkit-input-placeholder {
+      color: #586069;
+      font-style: italic; }
+    #intro input.md-style::-moz-placeholder {
+      color: #586069;
+      font-style: italic; }
+    #intro input.md-style:-moz-placeholder {
+      color: #586069;
+      font-style: italic; }
+    #intro input.md-style:-ms-input-placeholder {
+      color: #586069;
+      font-style: italic; }
+  #intro button.md-style {
+    width: 10%;
+    font-weight: bold;
+    background-color: #BED1FD;
+    -moz-box-shadow: 0em 0.4em #8DB3FC;
+    -webkit-box-shadow: 0em 0.4em #8DB3FC;
+    box-shadow: 0em 0.4em #8DB3FC;
+    -webkit-transform: translateY(0em);
+    -moz-transform: translateY(0em);
+    -ms-transform: translateY(0em);
+    -o-transform: translateY(0em);
+    transform: translateY(0em);
+    -webkit-transition: all 0.1s;
+    -moz-transition: all 0.1s;
+    transition: all 0.1s; }
+    #intro button.md-style:active {
+      -webkit-transform: translateY(0.4em);
+      -moz-transform: translateY(0.4em);
+      -ms-transform: translateY(0.4em);
+      -o-transform: translateY(0.4em);
+      transform: translateY(0.4em);
+      -moz-box-shadow: 0em 0em #8DB3FC;
+      -webkit-box-shadow: 0em 0em #8DB3FC;
+      box-shadow: 0em 0em #8DB3FC; }
 
-#intro section {
-  /* May be an optional declaration */
-  width: 100%;
-  padding: 4em 0; }
-
-/*
-TYPOGRAPHY
-*/
-#intro h1,
-#intro p {
-  line-height: 1em;
-  margin: 0 auto 0.3em; }
-
-#intro h1 {
-  padding: 0.1em 0;
-  width: auto;
-  font-size: 4.5em;
-  color: #FFF;
-  font-size: 5vw;
-  white-space: nowrap;
-  text-shadow: 0 0.066em #FDA139; }
-
-#intro p {
-  /*font-size: 3em;*/
-  font-size: 2.5em;
-  font-size: 2.5vw;
-  color: #333F48;
-  padding: 0.05em 0em;
-  margin: 0em; }
-
-#intro p a {
-  color: #FFF;
-  font-weight: bold;
-  text-decoration: none;
-  position: relative; }
-
-/* To achieve the underline effect as in th PDF Proof */
-#intro p a:after {
-  content: '';
-  position: absolute;
-  bottom: 6%;
-  left: 0%;
-  width: 100%;
-  height: 4px;
-  background-color: #FDA139; }
-
-#intro p.nowrap {
-  white-space: nowrap; }
-
-#intro #part-2 p {
-  margin-bottom: 0.4em; }
-
-#intro #mad-agency-logo {
-  width: 136px;
-  height: 110px;
-  margin: auto;
-  background-size: contain; }
-  .svg #intro #mad-agency-logo {
-    background: url(../../images/intro/svg/mad-agency-brackets.svg) center center no-repeat; }
-  .no-svg #intro #mad-agency-logo {
-    background: url(../../images/intro/png/mad-agency-brackets-big.png) center center no-repeat; }
-
-#intro #mad-agency-welcome {
-  text-align: center; }
-
-#intro #part-3 #submit-frame {
-  margin: auto;
-  text-align: center; }
-
-input.md-style,
-button.md-style {
-  margin: 0;
-  border: 2px solid #333E48;
-  font-size: 0.9em;
-  -moz-box-shadow: 0em 0.4em #FDA139;
-  -webkit-box-shadow: 0em 0.4em #FDA139;
-  box-shadow: 0em 0.4em #FDA139;
-  padding: 0.7em 0.8em;
-  outline: none;
-  cursor: pointer; }
-
-input.md-style {
-  width: 38%;
-  margin-right: 0.5em; }
-
-button.md-style {
-  width: 10%;
-  font-weight: bold;
-  background-color: #BED1FD;
-  -moz-box-shadow: 0em 0.4em #8DB3FC;
-  -webkit-box-shadow: 0em 0.4em #8DB3FC;
-  box-shadow: 0em 0.4em #8DB3FC;
-  -webkit-transform: translateY(0em);
-  -moz-transform: translateY(0em);
-  -ms-transform: translateY(0em);
-  -o-transform: translateY(0em);
-  transform: translateY(0em);
-  -webkit-transition: all 0.1s;
-  -moz-transition: all 0.1s;
-  transition: all 0.1s; }
-
-button.md-style:active {
-  -webkit-transform: translateY(0.4em);
-  -moz-transform: translateY(0.4em);
-  -ms-transform: translateY(0.4em);
-  -o-transform: translateY(0.4em);
-  transform: translateY(0.4em);
-  -moz-box-shadow: 0em 0em #8DB3FC;
-  -webkit-box-shadow: 0em 0em #8DB3FC;
-  box-shadow: 0em 0em #8DB3FC; }
-
-::-webkit-input-placeholder {
-  font-style: italic;
-  color: #586069; }
-
-::-moz-placeholder {
-  font-style: italic;
-  color: #586069; }
-
-::-ms-input-placeholder {
-  font-style: italic;
-  color: #586069; }
-
-:-moz-placeholder {
-  font-style: italic;
-  color: #586069; }
-
-/*
-BUTTON ANIMATIONS
-*/
 /*
 MEDIA QUERIES
 */
+@media (min-width: 767px) and (max-width: 1000px) {
+  #intro h1 {
+    font-size: 7vw; }
+  #intro p {
+    font-size: 4vw; } }
 @media (max-width: 767px) {
   #intro {
     max-width: 90%; }
@@ -204,9 +187,31 @@ MEDIA QUERIES
     font-size: 7vw; }
   #intro p {
     font-size: 4vw;
-    white-space: normal; } }
-@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
-  #intro #mad-agency-logo {
-    background-image: url(../../images/intro/png/mad-agency-brackets@2x.png); }
-  #intro #down-arrow {
-    background-image: url(../../images/intro/png/down-arrow@2x.png); } }
+    white-space: normal; }
+  #intro #submit-frame:after {
+    content: '';
+    clear: both; }
+  #intro #submit-frame > input, #intro #submit-frame > button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto; }
+  #intro #submit-frame > input {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding: 0.25em 0.75em;
+    height: 2em;
+    text-align: left;
+    vertical-align: top;
+    word-wrap: normal;
+    word-break: normal;
+    width: 90%; }
+  #intro #submit-frame > button {
+    width: 50%; } }
+@media only screen and (max-width: 480px) and (min-width: 320px) {
+  #intro {
+    max-width: 90%; }
+    #intro h1 {
+      font-size: 6vw; }
+    #intro p {
+      font-size: 4vw; } }
+/* style */
