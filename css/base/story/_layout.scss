@@ -1,0 +1,153 @@
+/*-------------------------------- Sass  */
+/*----------------- COLORS  */
+/*$ltGold: #fceec9;
+$gold: #ffc627;
+$darkGold: #ffa227;
+$navy: #333e48;
+$lightBlue: #bdd0ff;
+$blue: #a1b3ff;
+$xLightBlue: #e7ebf3;*/
+/*----------------- DIMS  */
+$contentWidth: 960px;
+/*$headerHeight: 40px;
+$xxSmMargin: 4px;
+$xSmMargin: 8px;
+$smMargin: 12px;
+$medMargin: 16px;
+$lgMargin: 24px;
+$xLgMargin: 48px;
+$xxLgMargin: 60px;*/
+
+.skrollable {
+	/*
+	 * First-level skrollables are positioned relative to window
+	 */
+	position:fixed;
+	/*
+	 * Skrollables by default have a z-index of 100 in order to make it easy to position elements in front/back without changing each skrollable
+	 */
+	z-index:600;
+}
+.skrollr-mobile .skrollable {
+	/*
+		May cause issues on Android default browser (see #331 on GitHub).
+	*/
+	position:absolute;
+}
+.skrollable .skrollable {
+	/*
+	 * Second-level skrollables are positioned relative their parent skrollable
+	 */
+	position:absolute;
+}
+.skrollable .skrollable .skrollable {
+	/*
+	 * Third-level (and below) skrollables are positioned static
+	 */
+	position:static;
+}
+
+.story{
+	position: fixed;
+	top:0;
+	left:0;
+	visibility: hidden;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	z-index: 500;
+}
+.gold-bg{
+	position: absolute;
+	min-width: 100%;
+	background-color: $darkGold;
+	-webkit-transform: translate3d(0,0,0);
+	-moz-transform: translate3d(0,0,0);
+    -o-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+    -webkit-backface-visibility: hidden;
+    z-index: 500;
+}
+.transition{
+	position: absolute;
+	display: block;
+	min-width: 100%;
+	height: 100%;
+}
+.fade-slow{
+	-webkit-transition: opacity 1.2s; 
+	   -moz-transition: opacity 1.2s; 
+	     -o-transition: opacity 1.2s; 
+	        transition: opacity 1.2s; 
+}
+.fade-fast{
+	-webkit-transition: opacity 0.5s; 
+	   -moz-transition: opacity 0.5s; 
+	     -o-transition: opacity 0.5s; 
+	        transition: opacity 0.5s; 
+}
+.stage-transition{
+	-webkit-transition: all 1.6s cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	   -moz-transition: all 1.6s cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	     -o-transition: all 1.6s cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	        transition: all 1.6s cubic-bezier(0.190, 1.000, 0.220, 1.000); /* easeOutExpo*/
+
+	-webkit-transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	   -moz-transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	     -o-transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	        transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); /* easeOutExpo */
+}
+
+
+/*.stage-left{
+	-webkit-transform: translate3d(-100%,0,0);
+	-moz-transform: translate3d(-100%,0,0);
+    -o-transform: translate3d(-100%,0,0);
+    -ms-transform: translate3d(-100%,0,0);
+    transform: translate3d(-100%,0,0);
+}
+.stage-center{
+	-webkit-transform: translate3d(0,0,0);
+	-moz-transform: translate3d(0,0,0);
+    -o-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+.stage-right{
+	-webkit-transform: translate3d(100%,0,0);
+	-moz-transform: translate3d(100%,0,0);
+    -o-transform: translate3d(100%,0,0);
+    -ms-transform: translate3d(100%,0,0);
+    transform: translate3d(100%,0,0);
+}*/
+/*.stage-left{
+	-webkit-transform: translate(-100%,0);
+	-moz-transform: translate(-100%,0);
+    -o-transform: translate(-100%,0);
+    -ms-transform: translate(-100%,0);
+    transform: translate(-100%,0);
+}
+.stage-center{
+	-webkit-transform: translate(0,0);
+	-moz-transform: translate(0,0);
+    -o-transform: translate(0,0);
+    -ms-transform: translate(0,0);
+    transform: translate(0,0);
+}
+.stage-right{
+	-webkit-transform: translateX(100%);
+	-moz-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    transform: translateX(100%);
+}*/
+.stage-left{
+	left: -100%;
+}
+.stage-center{
+	left: 0
+}
+.stage-right{
+	left: 100%;
+}

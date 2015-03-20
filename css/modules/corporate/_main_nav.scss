@@ -1,0 +1,82 @@
+/*-------------------------------- NAV  */
+#main-nav-container{
+	position: absolute;
+	min-width: 100%;
+	z-index: 300;
+	.nav {
+		button.btn-style {
+			// float: right;
+			margin-top: -10px;
+			padding: 1em;
+			font-size: 1em;
+			font-weight: bold;
+			-webkit-box-shadow: 0px 5px 0px $dropShadowBlueColor;
+			   -moz-box-shadow: 0px 5px 0px $dropShadowBlueColor;
+					box-shadow: 0px 5px 0px $dropShadowBlueColor;
+			// border-bottom: 10px solid $dropShadowBlueColor;
+		}
+	}
+	&.top-sticky .nav {
+		button.btn-style {
+			margin-top: -7px;
+			height: auto;
+			padding: 9px 15px;
+			border-top: none;
+			border-bottom: 1px solid #000;
+			-webkit-box-shadow: 0px 0px 0px $dropShadowBlueColor;
+			   -moz-box-shadow: 0px 0px 0px $dropShadowBlueColor;
+					box-shadow: 0px 0px 0px $dropShadowBlueColor;
+		}
+	}
+}
+.top-sticky{
+	height: $headerHeight;
+	position: fixed;
+	overflow: hidden;
+}
+.spacer{
+	float:left;
+	width: 100%;
+	height: 1px;
+	border-top: 1px solid $navy;
+}
+.spacer.shadow-bordered{
+	float:left;
+	width: 100%;
+	height: 6px;
+	border-top: 1px solid $navy;
+}
+#main-nav-container .nav{
+	float: left;
+	margin: 27px 0;
+	font-style: normal; font-weight: 300;
+	font-size: em(11px);
+}
+#main-nav-container li{
+	float:left; margin: 0 0 0 $xSmMargin;
+}
+#main-nav-container .nav .btn{ 
+	display: block;
+	height: 16px;
+	padding: 2px $lgMargin 1px $lgMargin;
+	color: $navFontColor;
+}
+#main-nav-container .nav .btn.active{ 
+	background-color: $darkGold;
+}
+#main-nav-container .nav .btn:hover{ 
+	background-color: $darkGold;
+}
+.main-nav-trans{
+	-webkit-transition: top 1.0s 0.25s cubic-bezier(0.755, 0.050, 0.855, 0.060), opacity 0.24s 0.6s; 
+	   -moz-transition: top 1.0s 0.25s cubic-bezier(0.755, 0.050, 0.855, 0.060), opacity 0.24s 0.6s; 
+	     -o-transition: top 1.0s 0.25s cubic-bezier(0.755, 0.050, 0.855, 0.060), opacity 0.24s 0.6s; 
+	        transition: top 1.0s 0.25s cubic-bezier(0.755, 0.050, 0.855, 0.060), opacity 0.24s 0.6s; /* easeOutExpo*/
+
+	-webkit-transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060); 
+	   -moz-transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060); 
+	     -o-transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060); 
+	        transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060); /* easeOutExpo */
+}
+
+

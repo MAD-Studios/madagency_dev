@@ -1,0 +1,43 @@
+.mad-agency-logo {
+	width: 136px;
+	height: 110px;
+	margin: auto;
+	.svg & {background: url(../images/intro/svg/mad-agency-brackets.svg) center center no-repeat;}
+	.no-svg & {background: url(../images/intro/png/mad-agency-brackets-big.png) center center no-repeat;}
+	background-size: contain;
+	// background-size: 136px 110px;
+}
+.full-logo{
+	float: left;
+	margin: $medMargin $xLgMargin $medMargin $smMargin;
+	width: em(126); height: em(40);
+	background: transparent url(../images/corporate/png/header-logo-mad.png) no-repeat;
+	-moz-background-size: contain;
+	-o-background-size: contain;
+	-webkit-background-size: contain;
+	background-size: contain;
+}
+.hires .full-logo{ 
+	background-image: url(../images/corporate/png/header-logo-mad@2x.png); 
+	-moz-background-size: contain;
+	-o-background-size: contain;
+	-webkit-background-size: contain;
+	background-size: contain;
+}
+.h-logo{
+	float: left;
+	margin: $medMargin $xLgMargin $medMargin $smMargin;
+	width: em(126); height: em(17);
+	background: transparent url(../images/corporate/png/header-logo-condensed.png) no-repeat;
+	-moz-background-size: contain;
+	-o-background-size: contain;
+	-webkit-background-size: contain;
+	background-size: contain;
+}
+.hires .h-logo{ 
+	background-image: url(../images/corporate/png/header-logo-condensed@2x.png);
+	-moz-background-size: contain;
+	-o-background-size: contain;
+	-webkit-background-size: contain;
+	background-size: contain; 
+}

@@ -133,7 +133,7 @@ main.views.MethodPaneView = main.views.PaneView.extend({
     },
 	// ----------------- beforeActivate
     beforeActivate: function() {
-	    this.setIdleTimer();
+	    //this.setIdleTimer();
 	    this.setInputAlertTimer();
 	},
 	// ----------------- beforeActivate

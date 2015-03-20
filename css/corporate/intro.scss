@@ -101,15 +101,7 @@ TYPOGRAPHY
 #intro #part-2 p {
 	margin-bottom: 0.4em;
 }
-#intro #mad-agency-logo {
-	width: 136px;
-	height: 110px;
-	margin: auto;
-	.svg & {background: url(../../images/intro/svg/mad-agency-brackets.svg) center center no-repeat;}
-	.no-svg & {background: url(../../images/intro/png/mad-agency-brackets-big.png) center center no-repeat;}
-	background-size: contain;
-	// background-size: 136px 110px;
-}
+
 #intro #mad-agency-welcome {
 	text-align: center;
 }

@@ -1,0 +1,58 @@
+/*-------------------------------- FOOTER  */
+#footer{
+	float:left;
+	width: 100%;
+	background-color: $navy;
+	border-top: 5px solid $dropShadowColor;
+}
+#footer .nav{ margin-left: 38px; }
+#footer .social-nav{ margin-top: 149px; }
+#footer li{ margin-bottom: $xSmMargin; }
+#footer .nav a{
+	color: #FFF;
+	font-size: em(11px); font-weight: lighter;
+	padding: 1px $medMargin 0 $medMargin;
+}
+#footer .main-nav a:hover{
+	background-color: $xLightBlue;
+	color: $defaultFontColor;
+}
+#footer .logo{
+	width: 125px; height:40px;
+	margin-bottom: $medMargin;
+	overflow: hidden;
+	background: transparent url(../../images/corporate/png/footer-logo-mad.png) no-repeat;
+	-moz-background-size: contain;
+	-o-background-size: contain;
+	-webkit-background-size: contain;
+	background-size: contain;
+}
+.hires  #footer .logo{ 
+	background-image: url(../../images/corporate/png/footer-logo-mad@2x.png); 
+	-moz-background-size: contain;
+	-o-background-size: contain;
+	-webkit-background-size: contain;
+	background-size: contain;
+}
+#footer .col{
+	margin-top: $xLgMargin;
+	margin-bottom: 40px;
+}
+#footer .btn-twitter{
+	width: 18px; height: 15px;
+	background: transparent url(../../images/corporate/svg/footer-twitter.svg) no-repeat;
+}
+.no-svg #footer .btn-twitter { background-image: url(../../images/corporate/png/footer-twitter.png); }
+#footer .btn-facebook{
+	width: 15px; height: 15px;
+	background: transparent url(../../images/corporate/svg/footer-facebook.svg) no-repeat;
+}
+.no-svg #footer .btn-facebook { background-image: url(../../images/corporate/png/footer-facebook.png); }
+#footer .btn-instagram{
+	width: 15px; height: 15px;
+	background: transparent url(../../images/corporate/svg/footer-instagram.svg) no-repeat;
+}
+.no-svg #footer .btn-instagram { background-image: url(../../images/corporate/png/footer-instagram.png); }
+#footer .social-nav{
+	margin-right: 0;
+}

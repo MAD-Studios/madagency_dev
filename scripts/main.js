@@ -9,25 +9,20 @@ var main = {
 
 // ----------------- Backbone.View.prototype.close
 Backbone.View.prototype.close = function () {
-    console.log("VIEW CLOSE ---");
     //extend the close method of of all views
     //apply beforeClose
     if (this.beforeClose) {
-        console.log("VIEW CLOSE --- beforeClose");
         this.beforeClose();
     }
 }
 // ----------------- Backbone.View.prototype.dispose
 Backbone.View.prototype.dispose = function () {
     if (this.beforeDispose) {
-        console.log("VIEW DISPOSE --- beforeDispose");
         this.beforeDispose();
     }
     this.unbind();
-    console.log('View undelegateEvents');
     this.undelegateEvents();
     this.remove();
-    console.log('View removed');
 };
 
 // _________________________________________________________________________ main Router
@@ -301,14 +296,14 @@ function onDocReady() {
             console.log("templates loaded");
             onReady();
     });
-    //onReady();
 }
+
 // ----------------- onReady
 function onReady() {
     main.router = new main.Router();
     if (Modernizr.history){
-	    //Backbone.history.start({ pushState: true, root: "kelsey/projects/madstudios/web/" });
-	    Backbone.history.start({ pushState: true });
+	    Backbone.history.start({ pushState: true, root: "dev/" });
+	    //Backbone.history.start({ pushState: true });
     }
     else{
 	    Backbone.history.start({ pushState: false });
