@@ -28,6 +28,16 @@ section {
   min-width: 100%; }
 
 /*----------------- FONTS  */
+h1.white,
+h2.white,
+h3.white,
+h4.white,
+p.white {
+  color: #FFF; }
+
+.text-shadow.white {
+  text-shadow: 0 0.066em #FDA139; }
+
 /*-------------------------------- Sass  */
 /*----------------- COLORS  */
 /*$ltGold: #fceec9;
@@ -213,6 +223,10 @@ $xxLgMargin: 60px;*/
   width: 100%;
   float: left; }
 
+.row-absolute {
+  width: 100%;
+  position: absolute; }
+
 .col {
   float: left; }
 
@@ -284,51 +298,41 @@ b {
 i {
   font-style: italic; }
 
-.mad-agency-logo {
-  width: 136px;
-  height: 110px;
-  margin: auto;
+.logo {
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  -webkit-background-size: contain;
   background-size: contain; }
-  .svg .mad-agency-logo {
-    background: url(../images/intro/svg/mad-agency-brackets.svg) center center no-repeat; }
-  .no-svg .mad-agency-logo {
-    background: url(../images/intro/png/mad-agency-brackets-big.png) center center no-repeat; }
 
 .full-logo {
-  float: left;
-  margin: 16px 48px 16px 12px;
-  width: 8.4em;
-  height: 2.66667em;
-  background: transparent url(../images/corporate/png/header-logo-mad.png) no-repeat;
-  -moz-background-size: contain;
-  -o-background-size: contain;
-  -webkit-background-size: contain;
-  background-size: contain; }
+  width: 140px;
+  height: 110px;
+  margin: auto; }
+  .svg .full-logo {
+    background: url(../images/intro/svg/mad-agency-brackets.svg) center center no-repeat; }
+  .no-svg .full-logo {
+    background: url(../images/intro/png/mad-agency-brackets-big.png) center center no-repeat; }
+  .no-svg.hires .full-logo {
+    background: url(../images/intro/png/mad-agency-brackets-big@2x.png) center center no-repeat; }
 
-.hires .full-logo {
-  background-image: url(../images/corporate/png/header-logo-mad@2x.png);
-  -moz-background-size: contain;
-  -o-background-size: contain;
-  -webkit-background-size: contain;
-  background-size: contain; }
+.full-logo-sm {
+  float: left;
+  margin: 2px 48px 2px 12px;
+  width: 7.06667em;
+  height: 5.53333em; }
+
+.hires .full-logo-sm {
+  background-image: url(../images/corporate/png/header-logo-mad@2x.png); }
 
 .h-logo {
   float: left;
   margin: 16px 48px 16px 12px;
   width: 8.4em;
   height: 1.13333em;
-  background: transparent url(../images/corporate/png/header-logo-condensed.png) no-repeat;
-  -moz-background-size: contain;
-  -o-background-size: contain;
-  -webkit-background-size: contain;
-  background-size: contain; }
+  background: transparent url(../images/corporate/png/header-logo-condensed.png) no-repeat; }
 
 .hires .h-logo {
-  background-image: url(../images/corporate/png/header-logo-condensed@2x.png);
-  -moz-background-size: contain;
-  -o-background-size: contain;
-  -webkit-background-size: contain;
-  background-size: contain; }
+  background-image: url(../images/corporate/png/header-logo-condensed@2x.png); }
 
 /* 
 	Header
@@ -4165,16 +4169,14 @@ width:36%;
   background-color: #ffc627;
   min-height: 600px; }
   #method-pane h1 {
-    position: absolute;
-    top: 0;
-    left: 0;
+    /*position: absolute;
+    top: 0; left: 0;*/
     width: 100%;
     text-align: center;
     /*margin-bottom: 6px;*/ }
   #method-pane p {
-    top: 88px;
-    left: 0;
-    position: absolute;
+    /*top: 88px; left: 0;
+    position: absolute;*/
     width: 100%;
     text-align: center; }
   #method-pane .unsupported-browser p {
@@ -4183,12 +4185,17 @@ width:36%;
     height: 180px;
     position: relative; }
   #method-pane .input-w-btn-container {
-    position: absolute;
-    top: 135px;
-    left: 255px;
-    width: 385px;
+    /*position: absolute;
+    top: 135px; left: 255px;*/
+    margin: 0 auto;
+    width: 397px;
     height: 37px; }
+    #method-pane .input-w-btn-container > div {
+      float: left; }
+    #method-pane .input-w-btn-container .shadow-bordered:nth-child(1) {
+      margin-right: 12px; }
   #method-pane input {
+    display: block;
     float: left;
     font-family: "franklin-gothic-urw-n4","franklin-gothic-urw",sans-serif;
     font-style: italic;
@@ -4198,8 +4205,8 @@ width:36%;
   #method-pane input {
     width: 285px; }
   #method-pane .btn-ask {
-    width: 100px;
-    border-left: none; }
+    display: block;
+    width: 100px; }
   #method-pane .unsupported-browser a {
     font-wieght: bold; }
   #method-pane .method-h1-trans {

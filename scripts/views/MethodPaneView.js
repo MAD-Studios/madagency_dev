@@ -18,7 +18,8 @@ main.views.MethodPaneView = main.views.PaneView.extend({
 	//going into the story view
 	INPUT_ALERT_START_TIME: 4000,
 	IDLE_START_TIME: 60000,
-	PREPEND_PLACEHOLDER_STR: "Example: ",
+	//PREPEND_PLACEHOLDER_STR: "Example: ",
+	PREPEND_PLACEHOLDER_STR: "",
 	id: "method",
 	_route: "",
 	offset: 0,

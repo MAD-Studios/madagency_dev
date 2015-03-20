@@ -34,30 +34,38 @@
 	min-height: 600px;
 
 	 h1{
-		position: absolute;
-		top: 0; left: 0;
+		/*position: absolute;
+		top: 0; left: 0;*/
 		width: 100%;
 		text-align: center;
 		/*margin-bottom: 6px;*/
 	}
-	 p{
-		top: 88px; left: 0;
-		position: absolute;
+	p{
+		/*top: 88px; left: 0;
+		position: absolute;*/
 		width: 100%;
 		text-align: center;
 	}
 	.unsupported-browser p{ top: 128px; }
-	 .row-content{
+	.row-content{
 		height: 180px;
 		position: relative;
 	}
-	 .input-w-btn-container{
-		position: absolute;
-		top: 135px; left: 255px;
-		width: 385px; height: 37px;
+	.input-w-btn-container{
+		/*position: absolute;
+		top: 135px; left: 255px;*/
+		margin: 0 auto;
+		width: 397px; height: 37px;
+		> div{
+			float:left;
+		}
+		.shadow-bordered:nth-child(1){
+			margin-right: 12px;
+		}
 	}
 	input{
-		float:left;
+		display: block;
+		float: left;
 		font-family: "franklin-gothic-urw-n4","franklin-gothic-urw",sans-serif;
 		font-style: italic; letter-spacing: em(2px);
 		height: $inputHeight;
@@ -66,9 +74,10 @@
 	 input{
 		width: 285px;
 	}
-	 .btn-ask{
+	.btn-ask{
+		display: block;
 		width: 100px;
-		border-left: none;
+		//border-left: none;
 	}
 	.unsupported-browser a{
 		font-wieght: bold;

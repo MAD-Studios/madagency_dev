@@ -51,6 +51,9 @@ $col3Width:  ($innerFullColWidth - ($col3Margin*2))/3;
 .row{
 	width: 100%; float:left;
 }
+.row-absolute{
+	width: 100%; position:absolute;
+}
 .col{
 	float: left;
 }

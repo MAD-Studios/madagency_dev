@@ -7,7 +7,8 @@ main.models.ResponseGeneratorModel = Backbone.Model.extend({
 			"What's more effective, advertising online or on television?",
 			"Are Facebook ads effective at targeting consumers?",
 			"What are some simple web marketing techniques?",
-			"How do I use web analytics to my advantage?"
+			"How do I use web analytics to my advantage?",
+			"Tell us one of your company’s biggest challenges?"
 		 ],
          "answers": [
 			"Increase your social media presence by deleting all of your social media. Less is more these days.",
