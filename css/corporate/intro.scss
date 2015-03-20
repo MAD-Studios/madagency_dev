@@ -33,8 +33,9 @@ html, body {
 }
 #intro {
 	padding: 1em;
-	max-width: 950px;
+	width: 768px;
 	margin: 0 auto;
+	// outline: 1px solid white;
 	/* 	TYPOGRAPHY */
 	section {
 		/* May be an optional declaration */
@@ -48,16 +49,16 @@ html, body {
 	h1 {
 		padding: 0.1em 0;
 		width: auto;
-		font-size: 4.5em;
+		font-size: 4.3em;
+		font-size: 4.2vw;
 		color: #FFF;
-		font-size: 5vw;
 		white-space: nowrap;
 		text-shadow: 0 0.066em $bc-orange;
 	}
 	p {
 		/*font-size: 3em;*/
 		font-size: 2.5em;
-		font-size: 2.5vw;
+		font-size: 2.25vw;
 		color: $bc-text-black;
 		padding: 0.05em 0em;
 		margin: 0em;
@@ -74,11 +75,11 @@ html, body {
 			}
 		}
 	}
-	// outline: 1px solid white;
 	#down-arrow {
 		width: 25px; height: 25px;
 		display: block;
 		margin: 1em auto;
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 		background-color: $bc-blue;
 		background-image: url(../../images/intro/png/down-arrow.png);
 		background-size: 25px 25px;
@@ -111,11 +112,15 @@ html, body {
 	/* To achieve the underline effect as in th PDF Proof */
 	#mad-agency-welcome {text-align: center;}
 	#submit-frame {margin: auto; text-align: center;}
+	textarea.md-style {display: none;}
 	input.md-style,
-	button.md-style {
+	button.md-style,
+	textarea.md-style {
 		margin: 0;
 		border: 2px solid $bc-text-black;
 		font-size: 0.9em;
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+		@include appearance(none);
 		@include box-shadow(0em 0.4em $bc-orange);
 		padding: 0.7em 0.8em;
 		outline: none;
@@ -126,9 +131,11 @@ html, body {
 		margin-right: 0.5em;
 		@include placeholder {color: $bc-text-placeholder; font-style: italic;}
 	}
-	/*
-	BUTTON ANIMATIONS
-	*/
+	textarea.md-style {
+		@include placeholder {color: $bc-text-placeholder; font-style: italic;}
+		resize: none;
+	}
+	/* BUTTON ANIMATIONS */
 	button.md-style {
 		width: 10%;
 		font-weight: bold;
@@ -147,10 +154,19 @@ html, body {
 /*
 MEDIA QUERIES
 */
+@media (min-width: 1000px) {
+	#intro {
+		#mad-agency-logo {
+			width: 200px;
+			height: 200px;
+			background-size: contain;
+		}
+	}
+}
 @media (min-width: 767px) and (max-width: 1000px) {
 	#intro {
-		h1 {font-size: 7vw;}
-		p {font-size: 4vw;}
+		h1 {font-size: 6.5vw;}
+		p {font-size: 3.5vw;}
 	}
 }
 @media (max-width: 767px) {
@@ -169,21 +185,31 @@ MEDIA QUERIES
 				content: '';
 				clear: both;
 			}
-			> input, > button {
+			> input, > button, > textarea {
 				display: block;
 				margin-left: auto;
 				margin-right: auto;
 			}
-			> input {
-				margin-top: 1em;
-				margin-bottom: 1em;
-				padding: 0.25em 0.75em;
-				height: 2em;
-				text-align: left;
-				vertical-align: top;
-				word-wrap: normal;
-				word-break: normal;
+			// > input {
+			// 	margin-top: 1em;
+			// 	margin-bottom: 1em;
+			// 	padding: 0.25em 0.75em;
+			// 	height: 2em;
+			// 	text-align: left;
+			// 	vertical-align: top;
+			// 	word-wrap: normal;
+			// 	word-break: normal;
+			// 	width: 90%;
+			// }
+			> input {display: none;}
+			> textarea {
 				width: 90%;
+				padding: 0.75em;
+				height: 90px;
+				margin-bottom: 1em;
+				@include appearance(none);
+				@include border-top-radius(0);
+				@include border-bottom-radius(0);
 			}
 			> button {
 				width: 50%;
@@ -193,13 +219,43 @@ MEDIA QUERIES
 }
 @media only screen and (max-width : 480px) and (min-width : 320px) {
 	#intro {
-		max-width: 90%;
-		h1 {font-size: 6vw;}
-		p {font-size: 4vw;}
+		max-width: 85%;
+		h1, p {
+			word-wrap: normal !important;
+			white-space: normal !important;
+			br {display: none;}
+		}
+		h1 {
+			font-size: 2.56em;
+			&#mad-agency-welcome{
+				font-size: 2.4em;
+			}
+		}
+		p {
+			font-size: 1.25em; padding: 0.25em 0em;
+			a:after {
+				height: 2px;
+				bottom: -1%;
+			}
+		}
+		input.md-style {
+			display: block;
+			margin-bottom: 2em;
+			@include border-top-radius( 0em );
+			@include border-bottom-radius( 0em );
+			@include box-shadow(0em 0.4em $bc-orange);
+		}
+		textarea.md-style {
+			@include appearance(none);
+			display: block;
+		}
+		button:hover {
+			// @include transform( translateY(0.4em) );
+			// @include box-shadow(0em 0em $bc-blue);
+		}
 	}
 }		
 
-/* style */
 // Vince:
 // Not sure if this is needed since most 
 // advanced mobile devices will support SVG
@@ -210,6 +266,6 @@ only screen and (-o-min-device-pixel-ratio: 1.5),
 only screen and (min-device-pixel-ratio: 1.5) {
 	#intro {
 		// #mad-agency-logo {background-image: url(../../images/intro/png/mad-agency-brackets@2x.png);}
-		// #down-arrow {background-image: url(../../images/intro/png/down-arrow@2x.png);}
+		#down-arrow {background-image: url(../../images/intro/png/down-arrow@2x.png);}
 	}
 }
