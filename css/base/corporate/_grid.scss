@@ -1,0 +1,41 @@
+/* override & extend foundation's grid*/
+$rowMaxWidth: $contentWidth;
+$colPadding: 1.5em;
+$smColPadding: 2.35em;
+$rowPadding: 35px;
+$xSmRowPadding: $smMargin;
+
+.row {
+  max-width: $rowMaxWidth;
+  padding-left: $rowPadding;
+  padding-right: $rowPadding;
+}
+.row-absolute{
+	max-width: $rowMaxWidth;
+}
+.col,
+.cols {
+  padding-left: $colPadding;
+  padding-right: $colPadding;
+}
+
+@media only screen {
+  .col,
+  .cols {
+	padding-left: $colPadding;
+	padding-right: $colPadding;
+  }
+  .small .col, .small .cols{
+	padding-left: $smColPadding;
+	padding-right: $smColPadding;
+   }
+}
+
+/*x-small display*/
+@media only screen and (max-width: 580px) {
+	.row{
+	  padding-left: $xSmRowPadding;
+	  padding-right: $xSmRowPadding;
+	}
+}
+

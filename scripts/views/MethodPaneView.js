@@ -18,7 +18,7 @@ main.views.MethodPaneView = main.views.PaneView.extend({
 	IDLE: "idle",
 	UNSUPPORTED_H1_COPY: "We noticed you aren’t running at full optimization",
 	UNSUPPORTED_P_COPY: 'We recommend you upgrade your browser to the latest version of Safari or <a href="https://www.google.com/intl/en_US/chrome/browser/">Chrome</a>.',
-	MAX_INPUT_PLACEHOLDER_CHARS: 38,
+	MAX_INPUT_PLACEHOLDER_CHARS: 55,
 	//time to wait before auto 
 	//going into the story view
 	INPUT_ALERT_START_TIME: 4000,
@@ -32,8 +32,9 @@ main.views.MethodPaneView = main.views.PaneView.extend({
 	//default_h1_top: 0,
 	//default_p_top: 0,
 	//default_input_cta_top: 0,
-    default_tops_elements: [],
+    default_elements_y: [],
 	blink_i: 0,
+	to_y: 0,
 	events:{
 		'click .btn-ask': 'onBtnAskClick'
 	},
@@ -51,11 +52,12 @@ main.views.MethodPaneView = main.views.PaneView.extend({
 	    this.input_cnt_el = $('.input-w-btn-container', this.el);
 	    this.input_cnt_el.addClass(this.INPUT_BLINK_TRANS_CLASS);
 	    this.input_el = $('#input-method', this.el);
-	    this.content_el =  $('.content', this.el);
+	    this.content_el =  $('.row-content', this.el);
 	    this.content_el.css('opacity', '0');
+	    //this.to_y = 0;
         this.initElements();
         setTimeout(function(){ 
-            self.saveElementsPos();
+            self.posElements();
 	        //self.default_h1_top = parseInt(self.h1_el.css('top'));
 	        //self.default_p_top = parseInt(self.p_el.css('top')); 
 	        //self.default_input_cta_top = parseInt(self.input_cnt_el.css('top'));   
@@ -85,12 +87,22 @@ main.views.MethodPaneView = main.views.PaneView.extend({
     // ----------------- saveElementsPos
     posElements: function() {
         var self = this;
+        var padding;
+        this.to_y = 0;
         $('.row-absolute', this.el).each(function(){
             //grab all row absolutes
             //and sset their positions by height of 
             //content above
-            //!!!!!!!!!!!!!!!!!
-            //$(this).children().eq(0).outerHeighteight();
+            $(this).css({ transform: 'translate3d(0,' + self.to_y + 'px, 0)',
+						 MozTransform: 'translate3d(0,' + self.to_y + 'px, 0)',
+						 WebkitTransform: 'translate3d(0,' + self.to_y + 'px, 0)',
+						 OTransform: 'translate3d(0,' + self.to_y + 'px, 0)',
+						 msTransform: 'translate3d(0,' + self.to_y + 'px, 0)'});
+						 
+			$(this).css('opacity', '1');
+			self.default_elements_y.push(self.to_y);
+			padding = parseInt($(this).css('paddingBottom'));
+			self.to_y += $(this).children().eq(0).outerHeight() + padding;
         });
     },
 	// ----------------- setIdleTimer
@@ -169,10 +181,16 @@ main.views.MethodPaneView = main.views.PaneView.extend({
     // ----------------- beforePosize
     beforePosize: function() {
     	this.content_el.css('opacity', '1');
+    	
+    	//also set the height of the 
+    	//content Element
+    	var to_margin_top = ($(this.el).outerHeight() - this.to_y)/2;
+    	
 	    //position content to be nearly centered
-	    var to_margin_top = ($(this.el).outerHeight() - $('.row-content', this.el).outerHeight())/2;
+	    //var to_margin_top = ($(this.el).outerHeight() - $('.row-content', this.el).outerHeight())/2;
 	    //b/c content is abs positioned we need to set the height
 	    this.content_el.css('margin-top', to_margin_top + 'px');
+	    this.posElements();
     },
 	// ----------------- setQuestionPlaceholder
 	setQuestionPlaceholder:function(){

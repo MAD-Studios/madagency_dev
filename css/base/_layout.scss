@@ -26,6 +26,6 @@ textarea:focus,
 button:focus {
     outline: none;
     &.custom-focus{
-            outline: $darkGold solid 2px;
+        outline: $darkGold solid 2px;
     }
 }

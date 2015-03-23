@@ -57,9 +57,8 @@ main.views.MainView = Backbone.View.extend({
 		    }, 1200);
 	    }, 100);
 	},
-	// ----------------- closeStory
+	// ----------------- closeStorys
     closeStory: function() {
-	    console.log("closeStory");
 	    var self = this;
 	    //first hide the story
 	    this.storyView.hide();	    

@@ -54,11 +54,13 @@ $col3Width:  ($innerFullColWidth - ($col3Margin*2))/3;
     }
 }
 .content{
+	/*width: 100%;
+	max-width: $contentWidth;*/
 	width: $contentWidth;
 	margin: 0 auto;
 	padding: 0 $lgMargin;
 }
-.row{
+.row-float{
 	width: 100%; float:left;
 }
 .row-absolute{
@@ -71,8 +73,10 @@ $col3Width:  ($innerFullColWidth - ($col3Margin*2))/3;
 	float: right; margin-right: 0;
 }
 input{
+	display: block;
     height: $inputHeight;
     border: 1px solid $navy;
+    font-family: "franklin-gothic-urw-n4","franklin-gothic-urw",sans-serif;
 }
 
 
