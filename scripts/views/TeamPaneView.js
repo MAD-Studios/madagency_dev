@@ -15,7 +15,7 @@ main.views.TeamPaneView = main.views.PaneView.extend({
 	    var self = this;
         console.log("TeamPaneView ---- beforeRender");
         setTimeout(function(){
-	        self.offset = -($('.pane-title', self.el).outerHeight() + $('.spacer', self.el).outerHeight()) - 1;
+	        self.offset = -($('.pane-title', self.el).outerHeight() + $('.spacer', self.el).outerHeight());
         }, 100);
 	},
     // ----------------- onBtnMoveClick

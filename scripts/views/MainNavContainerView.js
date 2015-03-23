@@ -127,7 +127,7 @@ main.views.MainNavContainerView = Backbone.View.extend({
 		    TweenLite.killTweensOf(this.logo_el, false, {marginTop:true} );
 		    TweenLite.killTweensOf(this.nav_el, false, {marginTop:true});
 
-		    TweenLite.to(self.logo_el, 0.3, {marginTop:"-1px", ease: Sine.easeOut});
+		    TweenLite.to(self.logo_el, 0.3, {marginTop:"-4px", ease: Sine.easeOut});
 		    TweenLite.to(self.nav_el, 0.45, {marginTop:"1px", ease: Sine.easeOut});
 		    //trigger event to fade the header bg
 		    $(this.el).trigger(self.ANIMATE_TO_FIXED);

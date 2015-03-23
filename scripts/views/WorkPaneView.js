@@ -19,7 +19,7 @@ main.views.WorkPaneView = main.views.PaneView.extend({
         this.has_been_prepared = false;
         this.video_shown = false;
         setTimeout(function(){
-	        self.offset = -($('.pane-title', self.el).outerHeight() + $('.spacer', self.el).outerHeight()) - 1;
+	        self.offset = -($('.pane-title', self.el).outerHeight() + $('.spacer', self.el).outerHeight());
         }, 100);
         //setTimeout to add the video
         setTimeout(function(){

@@ -1,13 +1,18 @@
 // _________________________________________________________________________ MethodPaneView
 main.views.MethodPaneView = main.views.PaneView.extend({
-	H1_TRANS_CLASS: "method-h1-trans",
-	P_TRANS_CLASS: "method-p-trans",
-	INPUT_CNT_TRANS_CLASS: "method-input-cnt-trans",
+	//H1_TRANS_CLASS: "method-h1-trans",
+	//P_TRANS_CLASS: "method-p-trans",
+	//INPUT_CNT_TRANS_CLASS: "method-input-cnt-trans",
+    //!!!!!!!!!!!!!!!!!!!!!!!!
+    ELEMENT_TRANS_CLASS: ".method-element-trans",
+    LAST_ELEMENT_TRANS_CLASS: ".method-last-element-trans",
 	INPUT_BLINK_TRANS_CLASS: "method-input-blink-trans",
 	INPUT_DULL_CLASS: "method-input-dull",
-	H1_ANIM_OFFSET: -300,
+	/*H1_ANIM_OFFSET: -300,
 	P_ANIM_OFFSET: -300,
-	INPUT_CNT_ANIM_OFFSET: 300,
+	INPUT_CNT_ANIM_OFFSET: 300,*/
+    ELEMENT_ANIM_OFFSET: 300,
+    LAST_ELEMENT_ANIM_OFFSET: 900,
 	UNSUPPOSRTED_CLASS: "unsupported-browser",
 	SUBMIT: "submit",
 	IDLE: "idle",
@@ -24,9 +29,10 @@ main.views.MethodPaneView = main.views.PaneView.extend({
 	_route: "",
 	offset: 0,
 	questions: [],
-	default_h1_top: 0,
-	default_p_top: 0,
-	default_input_cta_top: 0,
+	//default_h1_top: 0,
+	//default_p_top: 0,
+	//default_input_cta_top: 0,
+    default_tops_elements: [],
 	blink_i: 0,
 	events:{
 		'click .btn-ask': 'onBtnAskClick'
@@ -40,17 +46,19 @@ main.views.MethodPaneView = main.views.PaneView.extend({
     beforeRender: function() {
         console.log("MethodPaneView ---- beforeRender");
         var self = this;
-        this.h1_el = $('h1', this.el);
-	    this.p_el = $('p', this.el);
+        //this.h1_el = $('h1', this.el);
+	    //this.p_el = $('p', this.el);
 	    this.input_cnt_el = $('.input-w-btn-container', this.el);
 	    this.input_cnt_el.addClass(this.INPUT_BLINK_TRANS_CLASS);
 	    this.input_el = $('#input-method', this.el);
 	    this.content_el =  $('.content', this.el);
 	    this.content_el.css('opacity', '0');
+        this.initElements();
         setTimeout(function(){ 
-	        self.default_h1_top = parseInt(self.h1_el.css('top'));
-	        self.default_p_top = parseInt(self.p_el.css('top')); 
-	        self.default_input_cta_top = parseInt(self.input_cnt_el.css('top'));   
+            self.saveElementsPos();
+	        //self.default_h1_top = parseInt(self.h1_el.css('top'));
+	        //self.default_p_top = parseInt(self.p_el.css('top')); 
+	        //self.default_input_cta_top = parseInt(self.input_cnt_el.css('top'));   
 	        self.model = main.router.responseGeneratorModel;
 	        self.questions = self.model.get("questions");
 	        self.setQuestionPlaceholder();
@@ -67,8 +75,24 @@ main.views.MethodPaneView = main.views.PaneView.extend({
 		this.input_el.blur(function(event){
 			self.setInputAlertTimer();
 		});
-
 	},
+    // ----------------- initElements
+    initElements: function() {
+        $('.row-absolute', this.el).each(function(){
+            $(this).css('opacity', '0');
+        });
+    },
+    // ----------------- saveElementsPos
+    posElements: function() {
+        var self = this;
+        $('.row-absolute', this.el).each(function(){
+            //grab all row absolutes
+            //and sset their positions by height of 
+            //content above
+            //!!!!!!!!!!!!!!!!!
+            //$(this).children().eq(0).outerHeighteight();
+        });
+    },
 	// ----------------- setIdleTimer
     setIdleTimer: function() {
 	    var self = this;
@@ -196,19 +220,20 @@ main.views.MethodPaneView = main.views.PaneView.extend({
 	// ----------------- beginHide
     beginHide: function() {
 	    ////movethe h1 up
-	    this.h1_el.addClass(this.H1_TRANS_CLASS);
-	    this.p_el.addClass(this.P_TRANS_CLASS);
+	    /*this.h1_el.addClass(this.H1_TRANS_CLASS);
+	    this.p_el.addClass(this.P_TRANS_CLASS);*/
 	    this.input_cnt_el.removeClass(this.INPUT_BLINK_TRANS_CLASS);
 	    this.input_cnt_el.removeClass(this.INPUT_DULL_CLASS);
-	    this.input_cnt_el.addClass(this.INPUT_CNT_TRANS_CLASS);
+        //!!!!!!!!!!!!!!!!!!!!!
+	    //this.input_cnt_el.addClass(this.INPUT_CNT_TRANS_CLASS);
 	    //them move the h1 & p up
-	    this.h1_el.css('top', (this.default_h1_top + this.H1_ANIM_OFFSET) + 'px');
+	    /*this.h1_el.css('top', (this.default_h1_top + this.H1_ANIM_OFFSET) + 'px');
 	    this.h1_el.css('opacity', '0');
 	    this.p_el.css('top', (this.default_p_top + this.P_ANIM_OFFSET) + 'px');
 	    this.p_el.css('opacity', '0');
 	    //move the input container down
 	    this.input_cnt_el.css('top', (this.default_input_cta_top + (this.INPUT_CNT_ANIM_OFFSET*3)) + 'px');
-	    this.input_cnt_el.css('opacity', '0');
+	    this.input_cnt_el.css('opacity', '0');*/
     },
 	// ----------------- updateForUnsupportedBrowsers
 	updateForUnsupportedBrowsers:function(){

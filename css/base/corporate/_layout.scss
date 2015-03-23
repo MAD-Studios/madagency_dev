@@ -1,5 +1,5 @@
 /*----------------- DIMS  */
-$contentWidth: 1200px;
+$contentWidth: 960px;
 $inputHeight: 32px;
 $minHeaderWidth: $contentWidth;
 $lgColWidth: 580px;
@@ -33,7 +33,6 @@ $col3Width:  ($innerFullColWidth - ($col3Margin*2))/3;
 	float:left;
 	min-width: 100%;
 }
-
 .shadow-bordered{
 	border-bottom: 5px solid $dropShadowColor;
 }
@@ -42,6 +41,17 @@ $col3Width:  ($innerFullColWidth - ($col3Margin*2))/3;
 }
 .shadow-bordered-blue{
 	border-color: $dropShadowBlueColor;
+}
+.spacer{
+    float:left;
+    width: 100%;
+    height: 1px;
+    border-top: 1px solid $navy;
+    &.shadow-bordered{
+        width: 100%;
+        height: 6px;
+        border-top: 1px solid $navy;
+    }
 }
 .content{
 	width: $contentWidth;
@@ -59,6 +69,10 @@ $col3Width:  ($innerFullColWidth - ($col3Margin*2))/3;
 }
 .col.col-right{
 	float: right; margin-right: 0;
+}
+input{
+    height: $inputHeight;
+    border: 1px solid $navy;
 }
 
 

@@ -1,0 +1,78 @@
+/*-------------------------------- NAVS  */
+/*------------------ MAIN-NAV-CONTAINER  */
+#main-nav-container{
+	position: absolute;
+	min-width: 100%;
+	z-index: 300;
+    .full-logo-sm{
+        margin: 2px $xLgMargin 2px -16px;
+    }
+    .h-logo{
+        margin: -6px 0 0 -12px;
+    }
+    .nav{
+        float: left;
+        margin: 34px 0;
+        font-style: normal; font-weight: 300;
+        font-size: em(11px);
+        display: block;
+        li{
+            float:left; margin: 0 0 0 $xSmMargin;
+        }
+        .btn{
+            display: block;
+        }
+        .nav-btn{ 
+            height: 16px;
+            padding: 2px $lgMargin 1px $lgMargin;
+            color: $navFontColor;
+            &.active{ 
+                background-color: $darkGold;
+            }
+            &:hover{ 
+                background-color: $darkGold;
+            }
+        }
+	}
+    #enter-story-btn-container{
+        float: right;
+        margin: $lgMargin 0; 
+    }
+    &.top-sticky{
+        height: $headerHeight;
+        position: fixed;
+        overflow: hidden;
+        #enter-story-btn-container{
+            opacity: 0;
+        }
+    }
+}
+.main-nav-trans{
+	-webkit-transition: top 1.0s 0.25s cubic-bezier(0.755, 0.050, 0.855, 0.060), opacity 0.24s 0.6s; 
+	   -moz-transition: top 1.0s 0.25s cubic-bezier(0.755, 0.050, 0.855, 0.060), opacity 0.24s 0.6s; 
+	     -o-transition: top 1.0s 0.25s cubic-bezier(0.755, 0.050, 0.855, 0.060), opacity 0.24s 0.6s; 
+	        transition: top 1.0s 0.25s cubic-bezier(0.755, 0.050, 0.855, 0.060), opacity 0.24s 0.6s; /* easeOutExpo*/
+
+	-webkit-transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060); 
+	   -moz-transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060); 
+	     -o-transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060); 
+	        transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060); /* easeOutExpo */
+}
+
+
+/*------------------ SOCIAL-NAV  */
+.social-nav{
+	float: right;
+    li{
+        float: right;
+        margin: em($xSmMargin) 0 em($xSmMargin) em($smMargin);
+    }
+    .btn{
+        display: block;
+        -moz-background-size: contain;
+        -o-background-size: contain;
+        -webkit-background-size: contain;
+        background-size: contain;
+    }
+}
+
