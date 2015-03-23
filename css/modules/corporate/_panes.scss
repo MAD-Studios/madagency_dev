@@ -166,16 +166,22 @@
     h2{ margin-bottom: $medMargin; }
     h3{ margin-bottom: $lgMargin; }
     p{ margin-bottom: $medMargin; }
-    .sm-col{
+    /*.sm-col{
         margin: $xLgMargin 0 $lgMargin 0;
     }
-    .sm-col #img-how{
+    .col{
+    }*/
+    .col{
+	    padding-top: $xLgMargin;
+	    padding-bottom: $lgMargin;
+    }
+    #img-how{
         width:210px; height:225px;
         display: block;
         margin: 30px 0 $lgMargin 0;
         float: right;
     }
-    .sm-col .btn-move-container{
+    .btn-move-container{
         width: 134px;
         margin: 0 30px 0 0; float: right;
     }
@@ -205,28 +211,17 @@
 }
 
 /*------------------------- TeamPane  */
-.inner-full-col-lg{
-	width: $innerFullColLgWidth;
-}
 .bg-gold{
 	background-color: $ltGold;
 }
-.col-2{
-	width: $col2Width;
-	margin-right: $col2Margin;
-}
-.col.end{
-	margin-right: 0 !important;
-}
 #team-pane{
-    .inner-full-col-lg{
-        font-size: em(12px); font-weight: lighter;
-        margin: 30px auto 0 auto;
+    .bg-gold{
+	    padding-top: $xLgMargin;
     }
-    .inner-full-col-lg .row.padded{
-      margin-bottom: $xLgMargin;
+    .bg-gold .large-6{
+	    padding-bottom: $xLgMargin;
     }
-    .col-2 p{
+    .large-6 p{
         float: left;
         width: $iconPWidth;
     }
