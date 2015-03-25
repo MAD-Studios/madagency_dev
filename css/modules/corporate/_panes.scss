@@ -1,4 +1,6 @@
 /*-------------------------------- PANES  */
+$contactPaneInputMaxWidth: 400px;
+    
 .pane{
 	float:left;
 	min-width: 100%;
@@ -20,7 +22,7 @@
 
 /*------------------------- MethodPane  */
 .btn-blue{
-	float:left; height: $inputHeight;
+	float: left; height: $inputHeight;
 	display: block;
 	padding: $xSmMargin $medMargin;
 	border: 1px solid $navy;
@@ -221,9 +223,15 @@
     .bg-gold .large-6{
 	    padding-bottom: $xLgMargin;
     }
-    .large-6 p{
-        float: left;
-        width: $iconPWidth;
+    .large-6{
+        p{
+            float: left;
+            font-size: em(12px);
+            font-weight: lighter;
+        }
+        > .row {
+            padding: 0;
+        }
     }
     .btn-move-container{
         margin: 0 $smMargin $smMargin 0; float: right;
@@ -269,15 +277,15 @@
 }
 #disciplines-pane{
     .pane-title{
-        margin-top: -20px;
+        margin-top: -24px;
     }
-    p{
-        margin-bottom: $lgMargin;
+    .row-content{
+        padding-top: $lgMargin;
+        padding-bottom: $lgMargin;
+        &:last-child{
+            padding-bottom: $xLgMargin;
+        }
     }
-    .inner-full-col{
-        margin: $xLgMargin auto 0 auto;
-    }
-    
     li{
         margin-bottom: $xSmMargin;
         &:before {
@@ -292,19 +300,12 @@
 }
 
 /*------------------------- ContactPane  */
-.inner-full-col-sm{
-	width: $innerFullColSmWidth;
-}
 #contact-pane{
     background-color: $xLightBlue;
     border-top: 1px solid $navy;
     border-bottom: 1px solid $navy;
-    .sm-col{
-        width: 150px;
-        margin: $smMargin $xLgMargin $smMargin 0;
-    }
     .pane-title{
-        margin-top: -20px;
+        margin-top: -24px;
     }
     .map-cnt{
         width: 100%;
@@ -316,14 +317,13 @@
     .map{
         width: 100%; height: 100%;
     }
-    .inner-full-col-lg{
-        margin: $xLgMargin auto;
-    }
-    .inner-full-col{
-        margin: 0 auto;
-    }
-    .inner-full-col-sm{
-        margin: 0 auto $xLgMargin auto;
+    .row-content{
+        &:nth-child(2){
+            padding-top: $xLgMargin;
+        }
+        &:last-child{
+            padding-bottom: $xLgMargin;
+        }
     }
     .btn-addr{
         float: left;
@@ -331,40 +331,42 @@
         padding: 2px $xSmMargin;
         color: $navy;
         border: 1px solid transparent;
+        &.active{
+            background-color: #FFF;
+            border: 1px solid $navy;
+        }
     }
-    .btn-addr.active{
-        background-color: #FFF;
-        border: 1px solid $navy;
-    }
-    .sm-col#mad-south-addr{
-        margin-left: 200px;
+    #contact-form {
+        .large-6:nth-child(1) div{
+            float: right;
+        }
     }
     .msg{
         text-align: center;
         margin-bottom: $xLgMargin;
     }
-    .col-2{
-        width: $col2SmWidth;
-        margin-bottom: $medMargin;
-    }
     .input-container{
-        height: 55px;
+        max-width: $contactPaneInputMaxWidth;
+        height: 59px;
         color: $lightNavy;
         margin-bottom: $smMargin;
-        &.input-container-ta{
-            height: 123px;
-        }
         p{
             font-size: em(12px);
             margin-bottom: $xxSmMargin;
         }
     }
-     textarea{
-        height: 100px;
+    .input-container-ta{
+        height: 131px;
+    }
+    textarea{
+        height: 104px;
         border: 1px solid $navy;
     }
-     .btn-submit{
-        margin-top: 16px;
+    .btn-submit{
+        margin-top: 20px;
+    }
+    .btn-submit-container{
+        max-width: $contactPaneInputMaxWidth;
     }
     .notice-col{
         height: 0;

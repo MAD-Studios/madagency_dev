@@ -4,28 +4,35 @@
 	width: 100%;
 	background-color: $navy;
 	border-top: 5px solid $dropShadowColor;
-    .nav{ 
+    .main-nav-container{
+        width: 200px;
+        float: left;
+    }
+    .main-nav{ 
+        float:left;
+        display: block;
         margin-left: 38px; 
+        a{
+            color: #FFF;
+            font-size: em(11px); font-weight: lighter;
+            padding: 1px $medMargin 0 $medMargin;
+            &:hover{
+                background-color: $xLightBlue;
+                color: $defaultFontColor;
+            }
+        }
     }
     .social-nav{ 
         margin-top: 149px; 
+        float: right;
     }
     li{ 
         margin-bottom: $xSmMargin; 
     }
-    .nav a{
-        color: #FFF;
-        font-size: em(11px); font-weight: lighter;
-        padding: 1px $medMargin 0 $medMargin;
-    }
-    .nav a:hover{
-        background-color: $xLightBlue;
-        color: $defaultFontColor;
-    }
-    .col{
+    /*.col{
         margin-top: $xLgMargin;
         margin-bottom: 40px;
-    }
+    }*/
      .btn-twitter{
         width: 18px; height: 15px;
         background: transparent url(../images/corporate/svg/footer-twitter.svg) no-repeat;

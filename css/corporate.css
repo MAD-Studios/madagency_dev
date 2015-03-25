@@ -2478,7 +2478,7 @@ i {
   left: 0;
   height: 30px;
   width: 100%;
-  min-width: 1040px;
+  /*min-width: $contentWidth;*/
   background-color: #ffc627;
   background-color: rgba(255, 198, 39, 0.6);
   border-bottom: 1px solid #333e48;
@@ -2525,24 +2525,31 @@ i {
   float: left;
   width: 100%;
   background-color: #333e48;
-  border-top: 5px solid #ffa227; }
-  #footer .nav {
+  border-top: 5px solid #ffa227;
+  /*.col{
+      margin-top: $xLgMargin;
+      margin-bottom: 40px;
+  }*/ }
+  #footer .main-nav-container {
+    width: 200px;
+    float: left; }
+  #footer .main-nav {
+    float: left;
+    display: block;
     margin-left: 38px; }
+    #footer .main-nav a {
+      color: #FFF;
+      font-size: 0.73333em;
+      font-weight: lighter;
+      padding: 1px 16px 0 16px; }
+      #footer .main-nav a:hover {
+        background-color: #e7ebf3;
+        color: #333e48; }
   #footer .social-nav {
-    margin-top: 149px; }
+    margin-top: 149px;
+    float: right; }
   #footer li {
     margin-bottom: 8px; }
-  #footer .nav a {
-    color: #FFF;
-    font-size: 0.73333em;
-    font-weight: lighter;
-    padding: 1px 16px 0 16px; }
-  #footer .nav a:hover {
-    background-color: #e7ebf3;
-    color: #333e48; }
-  #footer .col {
-    margin-top: 48px;
-    margin-bottom: 40px; }
   #footer .btn-twitter {
     width: 18px;
     height: 15px;
@@ -2853,7 +2860,10 @@ i {
   padding-bottom: 48px; }
 #team-pane .large-6 p {
   float: left;
-  width: 324px; }
+  font-size: 0.8em;
+  font-weight: lighter; }
+#team-pane .large-6 > .row {
+  padding: 0; }
 #team-pane .btn-move-container {
   margin: 0 12px 12px 0;
   float: right; }
@@ -2904,11 +2914,12 @@ i {
   margin-right: 48px; }
 
 #disciplines-pane .pane-title {
-  margin-top: -20px; }
-#disciplines-pane p {
-  margin-bottom: 24px; }
-#disciplines-pane .inner-full-col {
-  margin: 48px auto 0 auto; }
+  margin-top: -24px; }
+#disciplines-pane .row-content {
+  padding-top: 24px;
+  padding-bottom: 24px; }
+  #disciplines-pane .row-content:last-child {
+    padding-bottom: 48px; }
 #disciplines-pane li {
   margin-bottom: 8px; }
   #disciplines-pane li:before {
@@ -2919,18 +2930,12 @@ i {
   margin-bottom: 66px; }
 
 /*------------------------- ContactPane  */
-.inner-full-col-sm {
-  width: 640px; }
-
 #contact-pane {
   background-color: #e7ebf3;
   border-top: 1px solid #333e48;
   border-bottom: 1px solid #333e48; }
-  #contact-pane .sm-col {
-    width: 150px;
-    margin: 12px 48px 12px 0; }
   #contact-pane .pane-title {
-    margin-top: -20px; }
+    margin-top: -24px; }
   #contact-pane .map-cnt {
     width: 100%;
     height: 250px;
@@ -2940,43 +2945,41 @@ i {
   #contact-pane .map {
     width: 100%;
     height: 100%; }
-  #contact-pane .inner-full-col-lg {
-    margin: 48px auto; }
-  #contact-pane .inner-full-col {
-    margin: 0 auto; }
-  #contact-pane .inner-full-col-sm {
-    margin: 0 auto 48px auto; }
+  #contact-pane .row-content:nth-child(2) {
+    padding-top: 48px; }
+  #contact-pane .row-content:last-child {
+    padding-bottom: 48px; }
   #contact-pane .btn-addr {
     float: left;
     margin: 0 -12px 4px;
     padding: 2px 8px;
     color: #333e48;
     border: 1px solid transparent; }
-  #contact-pane .btn-addr.active {
-    background-color: #FFF;
-    border: 1px solid #333e48; }
-  #contact-pane .sm-col#mad-south-addr {
-    margin-left: 200px; }
+    #contact-pane .btn-addr.active {
+      background-color: #FFF;
+      border: 1px solid #333e48; }
+  #contact-pane #contact-form .large-6:nth-child(1) div {
+    float: right; }
   #contact-pane .msg {
     text-align: center;
     margin-bottom: 48px; }
-  #contact-pane .col-2 {
-    width: 290px;
-    margin-bottom: 16px; }
   #contact-pane .input-container {
-    height: 55px;
+    max-width: 400px;
+    height: 59px;
     color: #586069;
     margin-bottom: 12px; }
-    #contact-pane .input-container.input-container-ta {
-      height: 123px; }
     #contact-pane .input-container p {
       font-size: 0.8em;
       margin-bottom: 4px; }
+  #contact-pane .input-container-ta {
+    height: 131px; }
   #contact-pane textarea {
-    height: 100px;
+    height: 104px;
     border: 1px solid #333e48; }
   #contact-pane .btn-submit {
-    margin-top: 16px; }
+    margin-top: 20px; }
+  #contact-pane .btn-submit-container {
+    max-width: 400px; }
   #contact-pane .notice-col {
     height: 0; }
   #contact-pane .notice {
