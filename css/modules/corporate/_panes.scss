@@ -4,6 +4,10 @@ $contactPaneInputMaxWidth: 400px;
 .pane{
 	float:left;
 	min-width: 100%;
+	.row-content{
+		padding-top: $xLgMargin;
+	    padding-bottom: $lgMargin;
+	}
 }
 .pane-title{
 	width: 140px; margin: 0 auto;	
@@ -46,6 +50,8 @@ $contactPaneInputMaxWidth: 400px;
 	.unsupported-browser p{ top: 128px; }
 	.row-content{
 		position: relative;
+		padding-top: 0;
+	    padding-bottom: 0;
 	}
 	.row-absolute{
 		padding-bottom: $xLgMargin;
@@ -53,7 +59,7 @@ $contactPaneInputMaxWidth: 400px;
 	.input-w-btn-container{
 		position: absolute;
         top: 0;
-        left: 222px;
+        /*left: 222px;*/
 		width: 473px; height: 37px;
 		> div{
 			float:left;
@@ -146,12 +152,6 @@ $contactPaneInputMaxWidth: 400px;
 }
 
 /*------------------------- HowPane  */
-.lg-col{
-	width: 570px;
-}
-.sm-col{
-	width: $smColWidth;
-}
 .btn-move img{
 	float: left;
 }
@@ -162,52 +162,51 @@ $contactPaneInputMaxWidth: 400px;
 	font-size: em(12px); font-weight: 900;
 }
 #how-pane{ 
-    .lg-col{
-	   margin: $xLgMargin 0 $lgMargin 0;
-    }
     h2{ margin-bottom: $medMargin; }
     h3{ margin-bottom: $lgMargin; }
     p{ margin-bottom: $medMargin; }
-    /*.sm-col{
-        margin: $xLgMargin 0 $lgMargin 0;
-    }
-    .col{
-    }*/
-    .col{
+    /*.column{
 	    padding-top: $xLgMargin;
 	    padding-bottom: $lgMargin;
-    }
+    }*/
     #img-how{
         width:210px; height:225px;
         display: block;
         margin: 30px 0 $lgMargin 0;
         float: right;
+        @media #{$small-only} {
+        	float: none;
+        	margin-left: auto;
+        	margin-right: auto;
+        }
     }
     .btn-move-container{
         width: 134px;
-        margin: 0 30px 0 0; float: right;
+        margin: 0 30px 0 0; 
+        float: right;
+         @media #{$small-only} {
+        	float: none;
+        	margin-left: auto;
+        	margin-right: auto;
+        }
+
     }
 }
 
 /*------------------------- WorkPane  */
-.inner-full-col{
-	width: $innerFullColWidth;
-}
 #work-pane{
-    .inner-full-col{
-        margin: $xLgMargin auto $smMargin auto;
-    }
-    .inner-full-col p{ 
+    p{ 
         text-align:  center;
     }
-    .inner-full-col.video-container{
-        width: 612px;
-        background-color: $gray;
+    .video-container{
+        /*init size of video container*/
+        max-width: 612px;
+        width: 100%;
         height: 710px;
+        background-color: $gray;
         margin: 0 auto $xLgMargin auto;
-        /*border: 1px solid $navy;*/
     }
-    .inner-full-col iframe{
+    iframe{
         z-index: 100;
     }
 }
@@ -220,10 +219,12 @@ $contactPaneInputMaxWidth: 400px;
     .bg-gold{
 	    padding-top: $xLgMargin;
     }
-    .bg-gold .large-6{
-	    padding-bottom: $xLgMargin;
-    }
+    .row-content{
+		padding-top: 0;
+	    padding-bottom: 0;
+	}
     .large-6{
+    	padding-bottom: $xLgMargin;
         p{
             float: left;
             font-size: em(12px);
@@ -272,16 +273,12 @@ $contactPaneInputMaxWidth: 400px;
 }
 
 /*------------------------- DisciplinesPane  */
-.col-3{
-	width: $col3Width; margin-right: $col3Margin;
-}
 #disciplines-pane{
     .pane-title{
         margin-top: -24px;
     }
     .row-content{
         padding-top: $lgMargin;
-        padding-bottom: $lgMargin;
         &:last-child{
             padding-bottom: $xLgMargin;
         }
@@ -293,9 +290,6 @@ $contactPaneInputMaxWidth: 400px;
             margin-right: $medMargin;
             color: $gold;
         }
-    }
-    .col-3{
-        margin-bottom: 66px;
     }
 }
 
@@ -318,6 +312,8 @@ $contactPaneInputMaxWidth: 400px;
         width: 100%; height: 100%;
     }
     .row-content{
+        padding-top: 0;
+        padding-bottom: 0;
         &:nth-child(2){
             padding-top: $xLgMargin;
         }
@@ -337,9 +333,20 @@ $contactPaneInputMaxWidth: 400px;
         }
     }
     #contact-form {
-        .large-6:nth-child(1) div{
+	    .large-6:nth-child(1) div{
             float: right;
         }
+        .large-6 div,
+        .large-6:nth-child(1) div{
+	    	@media #{$medium-only}{
+             	float: none;
+			 	margin: 0 auto;
+	    	}
+	    	@media #{$small-only}{
+             	float: none;
+             	margin: 0 auto;
+			}
+	    }
     }
     .msg{
         text-align: center;

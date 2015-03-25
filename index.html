@@ -33,6 +33,7 @@
     <script src="lib/skrollr.min.js"></script>
     <script src="scripts/main.js" type="text/javascript"></script>
     <script src="scripts/utils/TemplateLoader.js" type="text/javascript"></script>
+    <script src="scripts/utils/ElementManipulator.js" type="text/javascript"></script>
     <script src="scripts/models/PaneModel.js" type="text/javascript"></script>
     <script src="scripts/models/SceneModel.js" type="text/javascript"></script>
     <script src="scripts/models/ResponseGeneratorModel.js" type="text/javascript"></script>
@@ -84,7 +85,7 @@
 	<section class="header-sect">
         <div id="header">
 	        <div class="row">
-				<div class="col large-12 small-12">
+				<div class="column large-12 medium-12 small-12">
 					<ul class="social-nav hide-for-small show-for-large-up">
 	                    <li><a class="btn-google btn" href="https://plus.google.com/106462510460087062650" target=_blank></a></li>
 	                    <li><a class="btn-instagram btn" href="http://instagram.com/madstudiosco" target=_blank></a></li>
@@ -103,7 +104,7 @@
 		<section class="method">
 			<div id="method-pane" class="pane full-screen">
 		        <div class="row row-content">
-					<div class="col large-12 small-12">
+					<div class="column large-12 medium-12 small-12">
 						<div class="row-absolute"><div class="logo full-logo"></div></div>
 	                    <div class="row-absolute"><h1 class="text-shadow white">Welcome to our<br>idea-generator.</h1></div>
 	                    <div class="row-absolute">
@@ -120,18 +121,22 @@
 		<!------------ HOW ------------->
 		<section class="how">
 			<div id="how-pane" class="pane">
-				<div class="row">
-					<div class="col large-7 hide-for-small show-for-large-up">
+				<div class="row row-content">
+					<div class="column large-7 medium-7 hide-for-small show-for-medium-up">
 						<h2>MAD Agency works tirelessly to understand what makes your business unique.</h2>
 						<h3>We then explore creative ways to communicate to the customers you have, and help find the ones that are looking for you.</h3>
 						<p>In the summer of 2000 a team of experts from various backgrounds and fields got together with one common goal - produce great work.</p>
 						<p>And, while “great work” meant one thing then, it means a whole lot more today. Many agencies can produce great work, we strive to produce the type of work that gets results. That must be why the clients we have don’t just stay for a campaign or two, they stay for the long haul.</p>
 					</div>
-					<div class="col large-5 small-10">
+					
+					<div class="column large-5 large-uncentered medium-5 medium-uncentered small-10 small-centered">
 						<div class="row-float"><img id="img-how" src="images/corporate/png/how-logo-method.png"  /></div>
-						<div class="row-float hide-for-small show-for-large-up"><div class="btn-move-container"><a class="btn btn-move" href="#"><p>SEE IT IN ACTION</p><img style="width:16px;height:16px;"src="images/corporate/svg/how-btn-arrow.svg"/></a></div></div>
+						<div class="row-float"><div class="btn-move-container"><a class="btn btn-move" href="#"><p>SEE IT IN ACTION</p><img style="width:16px;height:16px;"src="images/corporate/svg/how-btn-arrow.svg"/></a></div>
 					</div>
-					<div class="col hide-for-large-up small-12">
+					
+				</div>
+				<div class="row row-content hide-for-medium-up">
+					<div class="column small-12">
 						<h3>MAD Studios Co. works tirelessly to understand what makes your business unique. We then explore creative ways to communicate to the customers you have, and help find the ones that are looking for you.</h3>
 					</div>
 				</div>
@@ -142,10 +147,14 @@
 		<section class="work">
 			<div id="work-pane" class="pane">
 				<div class="row">
-					<div class="col large-12">
+					<div class="column large-12">
 						<div class="row-float"><div class="pane-title">THE WORK</div><div class="spacer"></div></div>
-						<div class="row-float"><div class="inner-full-col"><p>Have a quick gander at some of the more <b>recent projects</b> we’ve had the privilege to work on.<br />We will add to this archive quarterly, so be sure to check back.</p></div></div>
-						<div class="row-float"><div class="inner-full-col video-container"></div></div>
+						<div class="row row-content"><div class="column large-12">
+							<p>Have a quick gander at some of the more <b>recent projects</b> we’ve had the privilege to work on.<br />We will add to this archive quarterly, so be sure to check back.</p>
+						</div></div>
+						<div class="row row-content"><div class="column large-12">	
+							<div class="video-container"></div>
+						</div></div>
 					</div>
 				</div>
 			</div>
@@ -155,69 +164,69 @@
 		<section class="team">
 			<div id="team-pane" class="pane">
 				<div class="row">
-					<div class="col large-12">
+					<div class="column large-12">
 						<div class="row-float"><div class="pane-title">OUR TEAM</div><div class="spacer"></div></div>
 						<div class="row-float bg-gold">
 						
-							<div class="row">
-								<div class="col large-6 small-12"><div class="row">
-                                    <div class="col large-2 small-2">
+							<div class="row row-content">
+								<div class="column large-6 small-12"><div class="row">
+                                    <div class="column large-2 small-2">
                                         <div class="icon-role icon-creative-director"></div>
                                     </div>
-                                    <div class="col large-10 small-10">
+                                    <div class="column large-10 small-10">
                                         <p>The <b>Creative Director</b> is there to push the creative team to go where no one from the client-side upper management would ever dare want them to go. While they oversee the “feel” of a campaign, the CD is there to make sure the campaign is not only memorable, but also delivers on the intended strategic goals.</p>
                                     </div>
                                 </div></div>
-								<div class="col large-6 small-12"><div class="row">
-                                    <div class="col large-2 small-2">
+								<div class="column large-6 small-12"><div class="row">
+                                    <div class="column large-2 small-2">
                                        <div class="icon-role icon-front-end"></div>
                                     </div> 
-                                    <div class="col large-10 small-10">
+                                    <div class="column large-10 small-10">
                                        <p>The <b>Front-End Developer</b> gives life to both websites and applications, think evil scientist and Frankenstein. They take the static design and content provided by the creative team <br />and bring it to life on the screen. They usually have some <br />sort of Star Wars memorabilia on their desk.</p>
                                     </div>
                                 </div></div>
 							</div>
 						
-							<div class="row">
-								<div class="col large-6 small-12"><div class="row">
-                                    <div class="col large-2 small-2">
+							<div class="row row-content">
+								<div class="column large-6 small-12"><div class="row">
+                                    <div class="column large-2 small-2">
                                        <div class="icon-role icon-art-director"></div>
                                     </div> 
-                                    <div class="col large-10 small-10">
+                                    <div class="column large-10 small-10">
                                        <p>The <b>Art Director</b> is tasked with making sure the visual aspects of any communication are on point. These people usually have a good sense of style and tend to be artsy. Their artsy-ness can range from Etsy Store owner to "I design my band's gig flyers."</p>
                                     </div>
                                 </div></div>
-								<div class="col large-6 small-12"><div class="row">
-                                    <div class="col large-2 small-2">
+								<div class="column large-6 small-12"><div class="row">
+                                    <div class="column large-2 small-2">
                                         <div class="icon-role icon-programmer"></div>
                                     </div>
-                                    <div class="col large-10 small-10">
+                                    <div class="column large-10 small-10">
                                         <p><b>Programmers</b> write computer programs.</p>
                                     </div>
                                 </div></div>
 							</div>
 							
-							<div class="row">
-								<div class="col large-6 small-12"><div class="row">
-                                    <div class="col large-2 small-2">
+							<div class="row row-content">
+								<div class="column large-6 small-12"><div class="row">
+                                    <div class="column large-2 small-2">
                                         <div class="icon-role icon-copy-writer"></div>
                                     </div> 
-                                    <div class="col large-10 small-10">
+                                    <div class="column large-10 small-10">
                                         <p><b>Copywriters</b> tend to ask a lot of questions, seriously - a lot of questions. But, they don’t mean to be annoying; they are just inquisitive creatures attempting to learn about exactly what they’re writing. Known for correcting your grammar and having pets named after Shakespearean characters.</p>
                                     </div>
                                 </div></div>
-								<div class="col large-6 small-12"><div class="row">
-                                    <div class="col large-2 small-2">
+								<div class="column large-6 small-12"><div class="row">
+                                    <div class="column large-2 small-2">
                                        <div class="icon-role icon-proj-manager"></div>
                                     </div>
-                                    <div class="col large-10 small-10">
+                                    <div class="column large-10 small-10">
                                         <p>At MAD we take a lot of pride knowing that when we set a deadline it’s going to be met. The <b>Project Manager</b> works with both our team and yours to make sure not only is the deadline met, but quality isn’t sacrificed.</p>
                                     </div>
                                 </div></div>
 							</div>
                             
-                            <div class="row">
-                                <div class="col large-12 small-12"><div class="btn-move-container"><a class="btn btn-move" href="#"><p>WATCH THEM GET’R DONE</p><img style="width:16px;height:16px;"src="images/corporate/svg/how-btn-arrow.svg"/></a></div>
+                            <div class="row row-content">
+                                <div class="column large-12 small-12"><div class="btn-move-container"><a class="btn btn-move" href="#"><p>WATCH THEM GET’R DONE</p><img style="width:16px;height:16px;"src="images/corporate/svg/how-btn-arrow.svg"/></a></div>
                             </div>
 							
 						</div>
@@ -230,18 +239,18 @@
 		<section class="disciplines">
 			<div id="disciplines-pane" class="pane">
                 <div class="row">
-                    <div class="col large-12 small-12">
+                    <div class="column large-12 small-12">
                         
                         <div class="row-float"><div class="pane-title">DISCIPLINES</div></div><div class="row-float"><div style="margin-top:-1px;" class="spacer"></div></div>
                         
                         <div class="row row-content">
-                            <div class="col large-12 small-12">
+                            <div class="column large-12 small-12">
                                 <p><b>MAD Agency</b> is a full service Advertising/Marketing/Production agency. We have the people needed to build your project here, onsite. This allows for tighter timelines and a more cohesive end result.</p>
                             </div>
                         </div>
                         
                         <div class="row row-content">
-                            <div class="col large-4 small-12">
+                            <div class="column large-4 small-12">
                                 <ul>
                                     <li>Interactive Design</li>
                                     <li>Brand Design</li>
@@ -249,7 +258,7 @@
                                     <li>User Interface Design</li>
                                 </ul>
                             </div>
-                            <div class="col large-4 small-12">
+                            <div class="column large-4 small-12">
                                 <ul>
                                     <li>User Experience Design</li>
                                     <li>Front End Development</li>
@@ -257,7 +266,7 @@
                                     <li>Quality Assurance</li>
                                 </ul>
                             </div>
-                            <div class="col large-4 small-12">
+                            <div class="column large-4 small-12">
                                 <ul>
                                     <li>Brand Creative Direction</li>
                                     <li>Brand Strategy</li>
@@ -277,43 +286,43 @@
                 <div class="row-float"><div class="pane-title">CONTACT US</div></div>
                 
 				<div class="row row-content">
-				    <div class="col large-5 small-12">
+				    <div class="column large-5 small-12">
                         <div class="flag-map"><a href="#" id="flag-fl" class="flag active"></a><a href="#" id="flag-mn" class="flag"></a></div>
                     </div>
-                    <div class="col large-1 hide-for-small show-for-large-up">
+                    <div class="column large-1 hide-for-small show-for-large-up">
                         &nbsp;
                     </div>
-                    <div class="col large-3 small-12" id="mad-south-addr">
+                    <div class="column large-3 small-12" id="mad-south-addr">
                         <div class="row-float" ><a id="btn-fl" class="btn-addr btn active" href="#"><h4 class="addr-title">MAD SOUTH</h4></a></div>
                         <p class="addr">101 NE 3rd Avenue<br />Suite 1920<br />Fort Lauderdale, FL 33301</p>
                     </div>
-                    <div class="col large-3 small-12" id="mad-midwest-addr">
+                    <div class="column large-3 small-12" id="mad-midwest-addr">
                         <div class="row-float" ><a id="btn-mn" class="btn-addr btn" href="#"><h4 class="addr-title">MAD MIDWEST</h4></a></div>
                         <p class="addr">333 Washington Ave N<br />Suite 321<br />Minneapolis, MN 55401</p>
                     </div>
                 </div>
             
-                <div class="row row-content"><div class="col large-12 small-12">
+                <div class="row row-content"><div class="column large-12 small-12">
                     <div class="map-cnt"><div class="map"></div></div>
                 </div></div>
             
-                <div class="row row-content"><div class="col large-12 small-12">
+                <div class="row row-content"><div class="column large-12 small-12">
                     <div class="row-float msg"><h1>Come on over for a visit.</h1><p>We’re always interested to learn how your business functions. Just go ahead and drop us a line<br />and we’ll get in touch. If you give us an idea of why you’re contacting us - even better.</p></div>
                 </div></div>
             
                 <div class="row row-content" id="contact-form">
-                    <div class="col large-6 small-12">
+                    <div class="column large-6 small-12">
                         <div class="input-container shadow-bordered shadow-bordered-lt-blue row-float"><p class="row-float"><i>Your Name</i></p><input class="row-float" id="input-name" /></div>
                         <div class="input-container shadow-bordered shadow-bordered-lt-blue row-float"><p class="row-float"><i>Your E-mail</i></p><input class="row-float" id="input-email" /></div>
 				        <div class="input-container shadow-bordered shadow-bordered-lt-blue row-float"><p class="row-float"><i>Your Industry</i></p><input class="row-float" id="input-industry" /></div>
                     </div>
-                    <div class="col large-6 small-12">
+                    <div class="column large-6 small-12">
                         <div class="input-container input-container-ta shadow-bordered shadow-bordered-lt-blue row-float"><p class="row-float"><i>Your Business’ Challenge</i></p><textarea class="row-float" id="input-challenge"></textarea></div>
 				        <div class="row-float loader-row"><div class="row-float shadow-bordered shadow-bordered-blue btn-submit-container"><a href="#" class="btn btn-blue btn-submit row-float">SUBMIT</a></div></div>
                     </div>
                 </div>
             
-                <div class="row row-content"><div class="col large-12 small-12 notice-col">
+                <div class="row row-content"><div class="column large-12 small-12 notice-col">
                 </div></div> 
 			</div>
 		</section>
@@ -325,7 +334,7 @@
 	<section class="footer-sect">
 		<div id="footer">
             <div class="row">
-                <div class="col large-12 small-12">
+                <div class="column large-12 small-12">
                     <div class="main-nav-container">
                         <div class="full-logo-sm full-logo logo"></div>
                         <ul class="main-nav">
@@ -346,29 +355,6 @@
 					</ul>
                 </div>
             </div>
-		<!-- <div class="content">
-			<div class="row-float">
-				<div class="col-sm col">
-					<div class="full-logo-sm full-logo logo"></div>
-					<ul class="nav">
-						<li><a class="btn method-btn" href="/">ABOVE THE FOLD</a></li>
-						<li><a class="btn how-btn" href="/how">HOW WE ROLL</a></li>
-						<li><a class="btn work-btn" href="/work">THE WORK</a></li>
-						<li><a class="btn team-btn" href="/team">OUR TEAM</a></li>
-						<li><a class="btn disciplines-btn" href="/disciplines">DISCIPLINES</a></li>
-						<li><a class="btn contact-btn" href="/contact">CONTACT US</a></li>
-					</ul>
-				</div>
-				<div class="col-sm col col-right">
-					<ul class="social-nav">
-						<li><a class="btn-google btn" href="https://plus.google.com/106462510460087062650" target=_blank></a></li>
-						<li><a class="btn-instagram btn" href="http://instagram.com/madstudiosco" target=_blank></a></li>
-						<li><a class="btn-facebook btn" href="https://www.facebook.com/madstudiosco" target=_blank></a></li>
-						<li><a class="btn-twitter btn" href="https://twitter.com/madstudiosco" target=_blank></a></li>
-					</ul>
-				</div>
-			</div>
-		</div> -->
 		</div>
 	</section>
 	
@@ -376,7 +362,7 @@
 	<div id="main-nav-container">
 	    <div class="spacer shadow-bordered"></div>
         <div class="row">
-        	<div class="col large-12 small-12">
+        	<div class="column large-12 small-12">
 	            <a href="#" class="full-logo full-logo-sm logo btn"></a>
 	            <ul class="nav hide-for-small show-for-large-up">
 	                <li><a class="btn nav-btn how-btn" href="/how">HOW WE ROLL</a></li>

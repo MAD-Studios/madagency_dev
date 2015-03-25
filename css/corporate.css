@@ -2011,6 +2011,14 @@ th.hide-for-touch {
 /* Turn numbers with units into unitless numbers: https://github.com/nex3/sass/issues/533 */
 /*----------------- COLORS  */
 /*--------------------------------  */
+/* 0, 640px */
+/* 641px, 1024px */
+/* 1025px, 1440px */
+/* 1441px, 1920px */
+/* 1921px */
+/*$small: "only screen and (max-width : 40em)";
+$medium: "only screen and (max-width : 64em)";
+$large: "only screen and (max-width : 96em)";*/
 html, body {
   min-width: 100%;
   height: 100%;
@@ -2644,6 +2652,9 @@ i {
 .pane {
   float: left;
   min-width: 100%; }
+  .pane .row-content {
+    padding-top: 48px;
+    padding-bottom: 24px; }
 
 .pane-title {
   width: 140px;
@@ -2689,13 +2700,15 @@ i {
   #method-pane .unsupported-browser p {
     top: 128px; }
   #method-pane .row-content {
-    position: relative; }
+    position: relative;
+    padding-top: 0;
+    padding-bottom: 0; }
   #method-pane .row-absolute {
     padding-bottom: 48px; }
   #method-pane .input-w-btn-container {
     position: absolute;
     top: 0;
-    left: 222px;
+    /*left: 222px;*/
     width: 473px;
     height: 37px; }
     #method-pane .input-w-btn-container > div {
@@ -2788,12 +2801,6 @@ i {
   opacity: 0.7; }
 
 /*------------------------- HowPane  */
-.lg-col {
-  width: 570px; }
-
-.sm-col {
-  width: 388px; }
-
 .btn-move img {
   float: left; }
 
@@ -2806,48 +2813,48 @@ i {
   font-weight: 900; }
 
 #how-pane {
-  /*.sm-col{
-      margin: $xLgMargin 0 $lgMargin 0;
-  }
-  .col{
-  }*/ }
-  #how-pane .lg-col {
-    margin: 48px 0 24px 0; }
+    /*.column{
+	    padding-top: $xLgMargin;
+	    padding-bottom: $lgMargin;
+    }*/ }
   #how-pane h2 {
     margin-bottom: 16px; }
   #how-pane h3 {
     margin-bottom: 24px; }
   #how-pane p {
     margin-bottom: 16px; }
-  #how-pane .col {
-    padding-top: 48px;
-    padding-bottom: 24px; }
   #how-pane #img-how {
     width: 210px;
     height: 225px;
     display: block;
     margin: 30px 0 24px 0;
     float: right; }
+    @media only screen and (max-width: 40em) {
+      #how-pane #img-how {
+        float: none;
+        margin-left: auto;
+        margin-right: auto; } }
   #how-pane .btn-move-container {
     width: 134px;
     margin: 0 30px 0 0;
     float: right; }
+    @media only screen and (max-width: 40em) {
+      #how-pane .btn-move-container {
+        float: none;
+        margin-left: auto;
+        margin-right: auto; } }
 
 /*------------------------- WorkPane  */
-.inner-full-col {
-  width: 790px; }
-
-#work-pane .inner-full-col {
-  margin: 48px auto 12px auto; }
-#work-pane .inner-full-col p {
+#work-pane p {
   text-align: center; }
-#work-pane .inner-full-col.video-container {
-  width: 612px;
-  background-color: #929292;
+#work-pane .video-container {
+  /*init size of video container*/
+  max-width: 612px;
+  width: 100%;
   height: 710px;
-  margin: 0 auto 48px auto;
-  /*border: 1px solid $navy;*/ }
-#work-pane .inner-full-col iframe {
+  background-color: #929292;
+  margin: 0 auto 48px auto; }
+#work-pane iframe {
   z-index: 100; }
 
 /*------------------------- TeamPane  */
@@ -2856,14 +2863,17 @@ i {
 
 #team-pane .bg-gold {
   padding-top: 48px; }
-#team-pane .bg-gold .large-6 {
+#team-pane .row-content {
+  padding-top: 0;
+  padding-bottom: 0; }
+#team-pane .large-6 {
   padding-bottom: 48px; }
-#team-pane .large-6 p {
-  float: left;
-  font-size: 0.8em;
-  font-weight: lighter; }
-#team-pane .large-6 > .row {
-  padding: 0; }
+  #team-pane .large-6 p {
+    float: left;
+    font-size: 0.8em;
+    font-weight: lighter; }
+  #team-pane .large-6 > .row {
+    padding: 0; }
 #team-pane .btn-move-container {
   margin: 0 12px 12px 0;
   float: right; }
@@ -2909,15 +2919,10 @@ i {
     background-image: url(../images/corporate/png/team-icon-projmanger.png); }
 
 /*------------------------- DisciplinesPane  */
-.col-3 {
-  width: 231.33333px;
-  margin-right: 48px; }
-
 #disciplines-pane .pane-title {
   margin-top: -24px; }
 #disciplines-pane .row-content {
-  padding-top: 24px;
-  padding-bottom: 24px; }
+  padding-top: 24px; }
   #disciplines-pane .row-content:last-child {
     padding-bottom: 48px; }
 #disciplines-pane li {
@@ -2926,8 +2931,6 @@ i {
     content: "+";
     margin-right: 16px;
     color: #ffc627; }
-#disciplines-pane .col-3 {
-  margin-bottom: 66px; }
 
 /*------------------------- ContactPane  */
 #contact-pane {
@@ -2945,10 +2948,13 @@ i {
   #contact-pane .map {
     width: 100%;
     height: 100%; }
-  #contact-pane .row-content:nth-child(2) {
-    padding-top: 48px; }
-  #contact-pane .row-content:last-child {
-    padding-bottom: 48px; }
+  #contact-pane .row-content {
+    padding-top: 0;
+    padding-bottom: 0; }
+    #contact-pane .row-content:nth-child(2) {
+      padding-top: 48px; }
+    #contact-pane .row-content:last-child {
+      padding-bottom: 48px; }
   #contact-pane .btn-addr {
     float: left;
     margin: 0 -12px 4px;
@@ -2960,6 +2966,16 @@ i {
       border: 1px solid #333e48; }
   #contact-pane #contact-form .large-6:nth-child(1) div {
     float: right; }
+  @media only screen and (min-width: 40.063em) and (max-width: 64em) {
+    #contact-pane #contact-form .large-6 div,
+    #contact-pane #contact-form .large-6:nth-child(1) div {
+      float: none;
+      margin: 0 auto; } }
+  @media only screen and (max-width: 40em) {
+    #contact-pane #contact-form .large-6 div,
+    #contact-pane #contact-form .large-6:nth-child(1) div {
+      float: none;
+      margin: 0 auto; } }
   #contact-pane .msg {
     text-align: center;
     margin-bottom: 48px; }

@@ -22,3 +22,18 @@ $browser-context: $defaultFontSize; // Default
 @function em($pixels, $context: $browser-context) {
   @return #{clear-units($pixels)/clear-units($context)}em
 }
+
+// We use these functions to get the ranges for the media queries variables. 
+@function lower-bound($range){
+    @if length($range) <= 0 {
+        @return 0;
+    }
+    @return nth($range,1);
+}
+ 
+@function upper-bound($range) {
+    @if length($range) < 2 {
+        @return 999999999999;
+    }
+    @return nth($range, 2);
+}

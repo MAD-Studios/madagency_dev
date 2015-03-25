@@ -18,7 +18,7 @@ main.views.MethodPaneView = main.views.PaneView.extend({
 	IDLE: "idle",
 	UNSUPPORTED_H1_COPY: "We noticed you aren’t running at full optimization",
 	UNSUPPORTED_P_COPY: 'We recommend you upgrade your browser to the latest version of Safari or <a href="https://www.google.com/intl/en_US/chrome/browser/">Chrome</a>.',
-	MAX_INPUT_PLACEHOLDER_CHARS: 55,
+	MAX_INPUT_PLACEHOLDER_CHARS: 45,
 	//time to wait before auto 
 	//going into the story view
 	INPUT_ALERT_START_TIME: 4000,
@@ -89,6 +89,7 @@ main.views.MethodPaneView = main.views.PaneView.extend({
         var self = this;
         var padding;
         this.to_y = 0;
+        var input_to_left = 0;
         $('.row-absolute', this.el).each(function(){
             //grab all row absolutes
             //and sset their positions by height of 
@@ -104,6 +105,9 @@ main.views.MethodPaneView = main.views.PaneView.extend({
 			padding = parseInt($(this).css('paddingBottom'));
 			self.to_y += $(this).children().eq(0).outerHeight() + padding;
         });
+        //center the input container within its row
+         input_to_left = (this.input_cnt_el.parent().outerWidth() - this.input_cnt_el.outerWidth())/2; 
+         this.input_cnt_el.css('left', input_to_left + 'px');
     },
 	// ----------------- setIdleTimer
     setIdleTimer: function() {

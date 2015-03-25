@@ -2,7 +2,7 @@
 // asynchronously loads templates
 // located in separate .html files
 
-main.utils.templateLoader = {
+main.utils.TemplateLoader = {
     templates: {},
     
     // __________________________________ functions
