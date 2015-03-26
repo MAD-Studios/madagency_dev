@@ -1,6 +1,7 @@
 // _________________________________________________________________________ WorkPaneView
 main.views.WorkPaneView = main.views.PaneView.extend({
-	VIDEO_EMBED_STR: '<iframe src="//instagram.com/p/m5N1iwEWuP/embed/" width="_width_" height="_height_" frameborder="0" scrolling="no" wmode="Opaque" allowtransparency="true"></iframe>',
+	//VIDEO_EMBED_STR: '<iframe src="//instagram.com/p/m5N1iwEWuP/embed/" width="_width_" height="_height_" frameborder="0" scrolling="no" wmode="Opaque" allowtransparency="true"></iframe>',
+	VIDEO_EMBED_STR: '<iframe src="//instagram.com/p/m5N1iwEWuP/embed/" frameborder="0" scrolling="no" wmode="Opaque" allowtransparency="true"></iframe>',
 	//	VIDEO_EMBED_STR: '<iframe src="//instagram.com/p/m5N1iwEWuP/embed/" width="612" height="710" frameborder="0" scrolling="no" allowtransparency="true"></iframe>',
 	id: "work",
 	_route: "work",
@@ -33,16 +34,17 @@ main.views.WorkPaneView = main.views.PaneView.extend({
     addVideo: function() {
 	    //make the vide the size of its parent
 	    this.video_container_el = $('.video-container', this.el);
-	    this.video_def_width = this.video_container_el.width();
-	    this.video_def_height = this.video_container_el.height();
+	    this.video_def_width = parseInt(this.video_container_el.css('maxWidth'));
+	    this.video_def_height = parseInt(this.video_container_el.css('maxHeight'));
 	    var embed_str = this.VIDEO_EMBED_STR.replace("_width_", this.video_def_width);
 	    embed_str = embed_str.replace("_height_", this.video_def_height);
 	    this.video_el = $(embed_str);
-	    //this.video_el.css('visibility', 'hidden');
+	    
 	    this.video_el.css('opacity', '0');
 	    this.video_container_el.append(this.video_el);
 	    if(this.has_been_prepared) this.showVideo();
 	    this.video_added = true;
+	    this.posize();
     },
 	// ----------------- showVideo
     showVideo: function() {
@@ -74,6 +76,21 @@ main.views.WorkPaneView = main.views.PaneView.extend({
     beforePosize: function() {
     	//maintain the original aspect ratio of the 
     	//video
-    	this.elementManipulator.resizeElement(this.video_container_el, this.video_def_width, this.video_def_height, this.elementManipulator.SCALE_TYPE.FIT );
+    	if(this.video_container_el){
+    		var self = this;
+    		var parent_w = this.video_container_el.parent().outerWidth();
+    		this.video_def_width = parseInt(this.video_container_el.css('maxWidth'));
+			this.video_def_height = parseInt(this.video_container_el.css('maxHeight'));
+	    
+	    	this.elementManipulator.resizeElement(this.video_container_el, this.video_def_width, this.video_def_height, parent_w, null, this.elementManipulator.SCALE_TYPE.FIT );
+	    	
+			setTimeout(function(){
+				var to_left = (parent_w - self.video_container_el.outerWidth())/2;
+		    	self.video_container_el.css('left', to_left + 'px');
+		    	var video_container_w = self.video_container_el.width();
+		    	var video_container_h = self.video_container_el.height();
+				self.video_container_el.parent().css('height', video_container_h + 'px');
+	    	}, 100);
+    	}
     }
 });

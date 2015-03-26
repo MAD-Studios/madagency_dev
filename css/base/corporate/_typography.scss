@@ -4,7 +4,6 @@
 	color: $defaultFontColor;
 	font-size: $defaultFontSize;
 	font-family: "franklin-gothic-urw",sans-serif !important;
-
 	h1{
 		font-size: em(62px);
 		line-height: em(14px);
@@ -13,18 +12,23 @@
 	h2{
 		font-size: em(33px);
 		font-weight: 900;
+		line-height: em(15px);
 	}
 	h3{
 		font-size: em(20px);
 		font-weight: 500;
-		//font-family: "franklin-gothic-urw",sans-serif !important;
+		line-height: em(16px);
 	}
 	h4{
 		font-size: em(12px);
 		font-weight: 900;
+		line-height: em(16px);
 		//font-family: "franklin-gothic-urw",sans-serif !important;
 	}
-	p{  font-weight: 400;  }
+	p{  
+		font-weight: 400;
+		line-height: em(18px);
+	}
 	a{  text-decoration: none; outline:none; }
 	ul{ list-style: none; }
 	input{

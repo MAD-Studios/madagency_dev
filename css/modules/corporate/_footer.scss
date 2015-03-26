@@ -4,6 +4,7 @@
 	width: 100%;
 	background-color: $navy;
 	border-top: 5px solid $dropShadowColor;
+	padding: $xLgMargin 0;
     .main-nav-container{
         width: 200px;
         float: left;
@@ -14,7 +15,7 @@
         margin-left: 38px; 
         a{
             color: #FFF;
-            font-size: em(11px); font-weight: lighter;
+            font-size: em(10px); font-weight: lighter;
             padding: 1px $medMargin 0 $medMargin;
             &:hover{
                 background-color: $xLightBlue;
@@ -22,17 +23,16 @@
             }
         }
     }
+    .logo{
+	    margin-bottom: $smMargin;
+    }
     .social-nav{ 
-        margin-top: 149px; 
+        margin-top: 189px; 
         float: right;
     }
     li{ 
-        margin-bottom: $xSmMargin; 
+        margin-bottom: $xxSmMargin; 
     }
-    /*.col{
-        margin-top: $xLgMargin;
-        margin-bottom: 40px;
-    }*/
      .btn-twitter{
         width: 18px; height: 15px;
         background: transparent url(../images/corporate/svg/footer-twitter.svg) no-repeat;

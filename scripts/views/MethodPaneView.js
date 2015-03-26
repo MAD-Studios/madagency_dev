@@ -51,8 +51,9 @@ main.views.MethodPaneView = main.views.PaneView.extend({
 	    //this.p_el = $('p', this.el);
 	    this.input_cnt_el = $('.input-w-btn-container', this.el);
 	    this.input_cnt_el.addClass(this.INPUT_BLINK_TRANS_CLASS);
-	    this.input_el = $('#input-method', this.el);
-	    this.content_el =  $('.row-content', this.el);
+	    this.input_el = $('.input-method', this.el);
+	    this.ta_el = $('.ta-method', this.el);
+	    this.content_el = $('.row-content', this.el);
 	    this.content_el.css('opacity', '0');
 	    //this.to_y = 0;
         this.initElements();
@@ -77,6 +78,20 @@ main.views.MethodPaneView = main.views.PaneView.extend({
 		this.input_el.blur(function(event){
 			self.setInputAlertTimer();
 		});
+		//!!!!!!!!!!!!!!!!!!!!!!!!
+		//instead do this for each input
+		//!!!!!!!!!!!!!!!!!!!!!!!
+		this.ta_el.keyup(function(event){
+		    if(event.keyCode == 13){
+		        self.submit();
+		    }
+		});
+		this.ta_el.focus(function(event){
+			self.unsetInputAlertTimer();
+		});
+		this.ta_el.blur(function(event){
+			self.setInputAlertTimer();
+		});
 	},
     // ----------------- initElements
     initElements: function() {
@@ -89,7 +104,7 @@ main.views.MethodPaneView = main.views.PaneView.extend({
         var self = this;
         var padding;
         this.to_y = 0;
-        var input_to_left = 0;
+        var input_to_left, ta_to_left = 0;
         $('.row-absolute', this.el).each(function(){
             //grab all row absolutes
             //and sset their positions by height of 
@@ -108,6 +123,9 @@ main.views.MethodPaneView = main.views.PaneView.extend({
         //center the input container within its row
          input_to_left = (this.input_cnt_el.parent().outerWidth() - this.input_cnt_el.outerWidth())/2; 
          this.input_cnt_el.css('left', input_to_left + 'px');
+         
+         /*ta_to_left = (this.ta_cnt_el.parent().outerWidth() - this.input_cnt_el.outerWidth())/2; 
+         this.input_cnt_el.css('left', ta_to_left + 'px');*/
     },
 	// ----------------- setIdleTimer
     setIdleTimer: function() {
@@ -203,7 +221,10 @@ main.views.MethodPaneView = main.views.PaneView.extend({
 		quest = this.shortenPlaceholder(quest);
 		//set the input placeholder to the 
 		//generated question
-		$('#input-method', this.el).attr('placeholder', quest);
+		this.input_el.attr('placeholder', quest);
+		this.ta_el.attr('placeholder', quest);
+		
+		console.log("quest = " + quest);
 	},
 	// ----------------- generateQuestion
 	generateQuestion:function(){

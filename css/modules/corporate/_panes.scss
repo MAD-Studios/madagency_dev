@@ -28,7 +28,7 @@ $contactPaneInputMaxWidth: 400px;
 .btn-blue{
 	float: left; height: $inputHeight;
 	display: block;
-	padding: $xSmMargin $medMargin;
+	padding: 6px $medMargin;
 	border: 1px solid $navy;
 	background-color: $lightBlue; color: $defaultFontColor;
 	font-family: "franklin-gothic-urw-n7","franklin-gothic-urw",sans-serif;
@@ -47,6 +47,9 @@ $contactPaneInputMaxWidth: 400px;
 		width: 100%;
 		text-align: center;
 	}
+	.full-logo{
+		margin: auto;
+	}
 	.unsupported-browser p{ top: 128px; }
 	.row-content{
 		position: relative;
@@ -59,7 +62,6 @@ $contactPaneInputMaxWidth: 400px;
 	.input-w-btn-container{
 		position: absolute;
         top: 0;
-        /*left: 222px;*/
 		width: 473px; height: 37px;
 		> div{
 			float:left;
@@ -68,14 +70,27 @@ $contactPaneInputMaxWidth: 400px;
 			margin-right: 8px;
 		}
 	}
+	.ta-w-btn-container{
+		height: 121px;
+	}
 	input{
 		width: 365px;
 		float: left;
 		font-style: italic; letter-spacing: em(2px);
 	}
+	textarea{
+		float: left;
+		width: 100%;
+		height: 76px;
+	}
 	.btn-ask{
 		display: block;
 		width: 100px;
+		@media #{$small-only} {
+			margin-top: $smMargin;
+			float: left;
+			width: 100%;
+		}
 	}
 	.unsupported-browser a{
 		font-wieght: bold;
@@ -165,10 +180,6 @@ $contactPaneInputMaxWidth: 400px;
     h2{ margin-bottom: $medMargin; }
     h3{ margin-bottom: $lgMargin; }
     p{ margin-bottom: $medMargin; }
-    /*.column{
-	    padding-top: $xLgMargin;
-	    padding-bottom: $lgMargin;
-    }*/
     #img-how{
         width:210px; height:225px;
         display: block;
@@ -189,7 +200,6 @@ $contactPaneInputMaxWidth: 400px;
         	margin-left: auto;
         	margin-right: auto;
         }
-
     }
 }
 
@@ -197,16 +207,27 @@ $contactPaneInputMaxWidth: 400px;
 #work-pane{
     p{ 
         text-align:  center;
+         @media #{$small-only} {
+	    	text-align: left;
+	    }
     }
+    .row-content:last-child{
+		padding-top: 0;
+	}
     .video-container{
         /*init size of video container*/
-        max-width: 612px;
+        position: absolute;
         width: 100%;
-        height: 710px;
-        background-color: $gray;
-        margin: 0 auto $xLgMargin auto;
+        max-width: 612px;
+        max-height: 710px;
+        @media #{$small-only} {
+            max-width: 612px;
+			max-height: 770px;
+        }
     }
     iframe{
+    	width: 100%;
+    	height: 100%;
         z-index: 100;
     }
 }
@@ -314,7 +335,7 @@ $contactPaneInputMaxWidth: 400px;
     .row-content{
         padding-top: 0;
         padding-bottom: 0;
-        &:nth-child(2){
+        &.row-header{
             padding-top: $xLgMargin;
         }
         &:last-child{
@@ -340,11 +361,13 @@ $contactPaneInputMaxWidth: 400px;
         .large-6:nth-child(1) div{
 	    	@media #{$medium-only}{
              	float: none;
-			 	margin: 0 auto;
+			 	margin-left: auto;
+			 	margin-right: auto;
 	    	}
 	    	@media #{$small-only}{
              	float: none;
-             	margin: 0 auto;
+             	margin-left: auto;
+			 	margin-right: auto;
 			}
 	    }
     }
@@ -354,7 +377,7 @@ $contactPaneInputMaxWidth: 400px;
     }
     .input-container{
         max-width: $contactPaneInputMaxWidth;
-        height: 59px;
+        height: 55px;
         color: $lightNavy;
         margin-bottom: $smMargin;
         p{
@@ -363,17 +386,18 @@ $contactPaneInputMaxWidth: 400px;
         }
     }
     .input-container-ta{
-        height: 131px;
+        height: 123px;
     }
     textarea{
-        height: 104px;
+        height: 100px;
         border: 1px solid $navy;
     }
     .btn-submit{
-        margin-top: 20px;
+        margin-top: 16px;
     }
     .btn-submit-container{
         max-width: $contactPaneInputMaxWidth;
+        height: 53px;
     }
     .notice-col{
         height: 0;
