@@ -3,6 +3,7 @@ main.views.WorkPaneView = main.views.PaneView.extend({
 	//VIDEO_EMBED_STR: '<iframe src="//instagram.com/p/m5N1iwEWuP/embed/" width="_width_" height="_height_" frameborder="0" scrolling="no" wmode="Opaque" allowtransparency="true"></iframe>',
 	VIDEO_EMBED_STR: '<iframe src="//instagram.com/p/m5N1iwEWuP/embed/" frameborder="0" scrolling="no" wmode="Opaque" allowtransparency="true"></iframe>',
 	//	VIDEO_EMBED_STR: '<iframe src="//instagram.com/p/m5N1iwEWuP/embed/" width="612" height="710" frameborder="0" scrolling="no" allowtransparency="true"></iframe>',
+	VIDEO_ADDED: 'video_added',
 	id: "work",
 	_route: "work",
 	has_been_prepared: false,
@@ -45,6 +46,9 @@ main.views.WorkPaneView = main.views.PaneView.extend({
 	    if(this.has_been_prepared) this.showVideo();
 	    this.video_added = true;
 	    this.posize();
+	    //!!!!!!!!!!!!!!!!!!
+	    //trigger an event here
+	    $(this.el).trigger(this.VIDEO_ADDED);
     },
 	// ----------------- showVideo
     showVideo: function() {

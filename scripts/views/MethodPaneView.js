@@ -67,7 +67,7 @@ main.views.MethodPaneView = main.views.PaneView.extend({
 	        self.setQuestionPlaceholder();
         }, 100);
         
-        $('.input').each(function(){
+        $('.input', this.el).each(function(){
            $(this).keyup(function(event){
                 if(event.keyCode == 13){
                     self.submit();
@@ -80,34 +80,7 @@ main.views.MethodPaneView = main.views.PaneView.extend({
                 self.setInputAlertTimer();
             });
         });
-        
-        //choose a question
-		/*this.input_el.keyup(function(event){
-		    if(event.keyCode == 13){
-		        self.submit();
-		    }
-		});
-		this.input_el.focus(function(event){
-			self.unsetInputAlertTimer();
-		});
-		this.input_el.blur(function(event){
-			self.setInputAlertTimer();
-		});
-		//!!!!!!!!!!!!!!!!!!!!!!!!
-		//instead do this for each input
-		//!!!!!!!!!!!!!!!!!!!!!!!
-		this.input_ta_el.keyup(function(event){
-		    if(event.keyCode == 13){
-		        self.submit();
-		    }
-		});
-		this.input_ta_el.focus(function(event){
-			self.unsetInputAlertTimer();
-		});
-		this.input_ta_el.blur(function(event){
-			self.setInputAlertTimer();
-		});*/
-	},
+  	},
     // ----------------- initElements
     initElements: function() {
         $('.row-absolute', this.el).each(function(){
@@ -117,7 +90,7 @@ main.views.MethodPaneView = main.views.PaneView.extend({
     // ----------------- saveElementsPos
     posElements: function() {
         var self = this;
-        var padding;
+        var last_h = 0, padding = 0;
         this.to_y = 0;
         var input_to_left, ta_to_left = 0;
         $('.row-absolute', this.el).each(function(){
@@ -132,18 +105,20 @@ main.views.MethodPaneView = main.views.PaneView.extend({
 						 
 			$(this).css('opacity', '1');
 			self.default_elements_y.push(self.to_y);
-			padding = parseInt($(this).css('paddingBottom'));
-			self.to_y += $(this).children().eq(0).outerHeight() + padding;
+
+			if($(this).css('display') != 'none') last_h = $(this).children().eq(0).outerHeight();
+			else last_h = 0;
+
+			if(last_h > 0) padding = parseInt($(this).css('paddingBottom'));
+			else padding = 0;
+			self.to_y += (last_h + padding);
         });
-        //center the input container within its row
-        //!!!!!!!!!!!!!!!!!!!!!!!!
-        //generic input container
         
-         input_to_left = (this.input_cnt_el.parent().outerWidth() - this.input_cnt_el.outerWidth())/2; 
-         this.input_cnt_el.css('left', input_to_left + 'px');
-         
-         /*ta_to_left = (this.ta_cnt_el.parent().outerWidth() - this.input_cnt_el.outerWidth())/2; 
-         this.input_cnt_el.css('left', ta_to_left + 'px');*/
+        //center the input container within its row
+        $('.input-w-btn-container',  this.el).each(function(){
+	        input_to_left = ($(this).parent().outerWidth() - $(this).outerWidth())/2; 
+			$(this).css('left', input_to_left + 'px');
+        });
     },
 	// ----------------- setIdleTimer
     setIdleTimer: function() {
@@ -220,17 +195,18 @@ main.views.MethodPaneView = main.views.PaneView.extend({
     },
     // ----------------- beforePosize
     beforePosize: function() {
-    	this.content_el.css('opacity', '1');
+	    this.posElements();
+	    this.content_el.css('opacity', '1');
     	
     	//also set the height of the 
     	//content Element
-    	var to_margin_top = ($(this.el).outerHeight() - this.to_y)/2;
+    	var to_margin_top = ($(this.el).outerHeight() - this.to_y)/3;
     	
 	    //position content to be nearly centered
 	    //var to_margin_top = ($(this.el).outerHeight() - $('.row-content', this.el).outerHeight())/2;
 	    //b/c content is abs positioned we need to set the height
 	    this.content_el.css('margin-top', to_margin_top + 'px');
-	    this.posElements();
+
     },
 	// ----------------- setQuestionPlaceholder
 	setQuestionPlaceholder:function(){
@@ -241,7 +217,7 @@ main.views.MethodPaneView = main.views.PaneView.extend({
 		//generated question
 		/*this.input_el.attr('placeholder', quest);
 		this.input_ta_el.attr('placeholder', quest);*/
-        $('.input').each(function(){
+        $('.input', this.el).each(function(){
             $(this).attr('placeholder', quest);
         });
     },
@@ -287,6 +263,7 @@ main.views.MethodPaneView = main.views.PaneView.extend({
 	    this.input_cnt_el.removeClass(this.INPUT_BLINK_TRANS_CLASS);
 	    this.input_cnt_el.removeClass(this.INPUT_DULL_CLASS);
         //!!!!!!!!!!!!!!!!!!!!!
+        
 	    //this.input_cnt_el.addClass(this.INPUT_CNT_TRANS_CLASS);
 	    //them move the h1 & p up
 	    /*this.h1_el.css('top', (this.default_h1_top + this.H1_ANIM_OFFSET) + 'px');
@@ -319,7 +296,7 @@ main.views.MethodPaneView = main.views.PaneView.extend({
 		//this.input_el.off();
         //!!!!!!!!!!!!!!!!!!!
         //input_el
-        $('.input').each(function(){
+        $('.input', this.el).each(function(){
             $(this).off();
         });
 	}

@@ -1,7 +1,7 @@
 /* override & extend foundation's grid*/
 $rowMaxWidth: $contentWidth;
 $colPadding: 1.5em;
-$smColPadding: 2.35em;
+$smColPadding: 1,75em;
 $rowPadding: 35px;
 $xSmRowPadding: $smMargin;
 
@@ -13,23 +13,27 @@ $xSmRowPadding: $smMargin;
 .row-absolute{
 	max-width: $rowMaxWidth;
 }
-.col,
-.cols {
+.columns,
+.column {
   padding-left: $colPadding;
   padding-right: $colPadding;
+  @media #{$small-only} {
+    padding-left: $smColPadding;
+	padding-right: $smColPadding;
+  }
+
 }
 
-@media only screen {
-  .col,
+/*@media only screen {
   .cols {
-	padding-left: $colPadding;
-	padding-right: $colPadding;
-  }
-  .small .col, .small .cols{
-	padding-left: $smColPadding;
-	padding-right: $smColPadding;
-   }
-}
+	  padding-left: $colPadding;
+	  padding-right: $colPadding;
+	  /*@media #{$small-only} {
+	    padding-left: $smColPadding;
+		padding-right: $smColPadding;
+	  }*/
+ /* }
+}*/
 
 /*x-small display*/
 @media only screen and (max-width: 580px) {

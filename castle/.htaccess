@@ -1,0 +1,25 @@
+# only detect smart phone devices if we are not on mobile site
+# to prevent redirect looping
+RewriteCond %{HTTP_HOST} !^m.yeswearemad.com$
+
+# a bunch of smart phone devices
+RewriteCond %{HTTP_USER_AGENT} "sony|symbian|nokia|samsung|mobile" [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "windows ce|epoc|opera|mini|nitro" [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "j2me|midp-|cldc-|netfront|mot" [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "up\.browser|up\.link|audiovox" [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "mini|nitro|j2me|midp-|cldc"[NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "netfront|mot|up\.browser|up\.link"[NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "audiovox|blackberry|ericsson,"[NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "panasonic|philips|sanyo|sharp|sie-"[NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "portalmmm|blazer|avantgo|dange"[NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "palm|series60|palmsource|pocketpc"[NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "smartphone|rover|ipaq|au-mic,"[NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "alcatel|ericy|vodafone\/|wap1\."[NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "wap2\.|iPhone|android"[NC,OR]
+
+# redirect google mobile bot
+RewriteCond %{HTTP_USER_AGENT} "googlebot-mobile"[NC]
+
+# if the request is from any one of the above devices
+# redirect to mobile site
+#RewriteRule .? http://m.yeswearemad.com%{REQUEST_URI}  [L,R=302]

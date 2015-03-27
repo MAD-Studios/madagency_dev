@@ -10,19 +10,11 @@
 	height: 110px;
 	background: url(../images/corporate/svg/mad-agency-brackets.svg) center center no-repeat; 
 	.no-svg & { background: url(../images/corporate/png/mad-agency-brackets-big.png) center center no-repeat; }
-    /*-moz-background-size: 140px 110px;
-	-o-background-size: 140px 110px;
-	-webkit-background-size: 140px 110px;
-	background-size: 140px 110px;*/
 }
 .full-logo-sm{
 	float: left;
 	width: 106px; 
 	height: 83px;
-    /*-moz-background-size: 106px 83px;
-	-o-background-size: 106px 83px;
-	-webkit-background-size: 106px 83px;
-	background-size: 106px 83px;*/
 }
 .full-logo-white{
 	width: 84px; 
@@ -35,8 +27,4 @@
     width: 155px; height: 25px;
 	background: transparent url(../images/corporate/svg/mad-agency-horizontal.svg) no-repeat;
     .no-svg &{ background-image: url(../images/corporate/png/mad-agency-horizontal.png); }
-    /*-moz-background-size: 155px 25px;
-	-o-background-size: 155px 25px;
-	-webkit-background-size: 155px 25px;
-	background-size: 155px 25px;*/
 }

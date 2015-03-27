@@ -2,19 +2,19 @@
 $contentWidth: 1040px;
 $inputHeight: 32px;
 $minHeaderWidth: $contentWidth;
-$lgColWidth: 580px;
+/*$lgColWidth: 580px;
 $smColWidth: $contentWidth - $lgColWidth - ($lgMargin*3);
 $innerFullColLgWidth: 840px;
 $innerFullColWidth: 790px;
 $innerFullColSmWidth: 640px;
 $col2Margin: $xxLgMargin;
 $col2Width:  ($innerFullColLgWidth - $col2Margin)/2;
-$col2SmWidth:  ($innerFullColSmWidth - $col2Margin)/2;
+$col2SmWidth:  ($innerFullColSmWidth - $col2Margin)/2;*/
 $iconWidth: 50px;
 $iconMargin: $medMargin;
-$iconPWidth: $col2Width - $iconWidth - $iconMargin;
+/*$iconPWidth: $col2Width - $iconWidth - $iconMargin;
 $col3Margin: $xLgMargin;
-$col3Width:  ($innerFullColWidth - ($col3Margin*2))/3;
+$col3Width:  ($innerFullColWidth - ($col3Margin*2))/3;*/
 
 
 /*--------------------------------  */
@@ -50,28 +50,15 @@ $col3Width:  ($innerFullColWidth - ($col3Margin*2))/3;
     border-top: 1px solid $navy;
     &.shadow-bordered{
         width: 100%;
-        height: 6px;
+        height: 5px;
         border-top: 1px solid $navy;
     }
-}
-.content{
-	/*width: 100%;
-	max-width: $contentWidth;*/
-	width: $contentWidth;
-	margin: 0 auto;
-	padding: 0 $lgMargin;
 }
 .row-float{
 	width: 100%; float:left;
 }
 .row-absolute{
 	width: 100%; position:absolute;
-}
-.col{
-	float: left;
-}
-.col.col-right{
-	float: right; margin-right: 0;
 }
 input{
 	display: block;

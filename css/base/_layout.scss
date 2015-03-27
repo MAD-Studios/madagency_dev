@@ -14,9 +14,6 @@ $large-range: (64.063em, 90em); /* 1025px, 1440px */
 $xlarge-range: (90.063em, 120em); /* 1441px, 1920px */
 $xxlarge-range: (120.063em); /* 1921px */
 
-/*$small: "only screen and (max-width : 40em)";
-$medium: "only screen and (max-width : 64em)";
-$large: "only screen and (max-width : 96em)";*/
 $screen: "only screen" !default;
 
 $landscape: "#{$screen} and (orientation: landscape)" !default;
@@ -48,6 +45,8 @@ section{
 	display: block;
 	float: left;
 	min-width: 100%;
+	margin: 0;
+	padding: 0;
 }
 input:focus,
 select:focus,

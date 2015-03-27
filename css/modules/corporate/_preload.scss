@@ -6,35 +6,20 @@
 }
 /* preload stry loader assets */
 .preload-unicorn {
-  /*left: 100%*/
-  width: 236px;
-  height: 174px;
+  width: 0;
+  height: 0;
   background: transparent url(../../images/loader/png/loader-unicorn.png) no-repeat;
-  -webkit-background-size: 236px 174px;
-  -moz-background-size: 236px 174px;
-  -o-background-size: 236px 174px;
-  background-size: 236px 174px; 
   visibility:hidden; 
 }
 .preload-rainbow-end {
-  /*left: 100%;*/
-  width: 412px;
-  height: 65px;
+  width: 0;
+  height: 0;
   background: transparent url(../../images/loader/png/loader-rainbow.png) no-repeat;
-  -webkit-background-size: 412px 65px;
-  -moz-background-size: 412px 65px;
-  -o-background-size: 412px 65px;
-  background-size: 412px 65px;
   visibility:hidden; 
 }
 .preload-rainbow-solid {
-  /*left: 100%;*/
-  width: 412px;
-  height: 65px;
+  width: 0;
+  height: 0;
   background: transparent url(../../images/loader/png/loader-snippet.png) repeat-x;
-  -webkit-background-size: 1px 65px;
-  -moz-background-size: 1px 65px;
-  -o-background-size: 1px 65px;
-  background-size: 1px 65px;
   visibility:hidden; 
 }

@@ -9,7 +9,7 @@ main.views.MainNavContainerView = Backbone.View.extend({
 	HIDE_ANIMATE_OFFSET: 200,
 	H_LOGO_CLASS: "h-logo",
 	MENU_OFFSET: 10,
-	MIN_TOP: 522,
+	MIN_TOP: 422,
 	OFF_NAV_HEIGHT: '7px',
 	default_top: 0, 
 	is_fixed: false,

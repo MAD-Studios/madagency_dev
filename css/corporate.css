@@ -2016,9 +2016,6 @@ th.hide-for-touch {
 /* 1025px, 1440px */
 /* 1441px, 1920px */
 /* 1921px */
-/*$small: "only screen and (max-width : 40em)";
-$medium: "only screen and (max-width : 64em)";
-$large: "only screen and (max-width : 96em)";*/
 html, body {
   min-width: 100%;
   height: 100%;
@@ -2029,7 +2026,9 @@ html, body {
 section {
   display: block;
   float: left;
-  min-width: 100%; }
+  min-width: 100%;
+  margin: 0;
+  padding: 0; }
 
 input:focus,
 select:focus,
@@ -2053,23 +2052,23 @@ p.white {
 .text-shadow.white {
   text-shadow: 0 0.066em #FDA139; }
 
-.overlay-row {
-  z-index: 200;
-  position: absolute;
-  width: 100%; }
+.row {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box; }
 
-.col,
-.cols {
+.row-absolute {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box; }
+
+.columns,
+.column {
   position: relative;
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  /* Safari/Chrome, other WebKit */
   -moz-box-sizing: border-box; }
 
-@media only screen {
-  .col,
-  .cols {
-    position: relative; } }
 /* The Grid to override foundations styles for ie8---------------------- */
 .lt-ie9 .row {
   width: 940px;
@@ -2281,6 +2280,17 @@ p.white {
   display: none !important; }
 
 /*----------------- DIMS  */
+/*$lgColWidth: 580px;
+$smColWidth: $contentWidth - $lgColWidth - ($lgMargin*3);
+$innerFullColLgWidth: 840px;
+$innerFullColWidth: 790px;
+$innerFullColSmWidth: 640px;
+$col2Margin: $xxLgMargin;
+$col2Width:  ($innerFullColLgWidth - $col2Margin)/2;
+$col2SmWidth:  ($innerFullColSmWidth - $col2Margin)/2;*/
+/*$iconPWidth: $col2Width - $iconWidth - $iconMargin;
+$col3Margin: $xLgMargin;
+$col3Width:  ($innerFullColWidth - ($col3Margin*2))/3;*/
 /*--------------------------------  */
 #main {
   position: absolute;
@@ -2314,15 +2324,8 @@ p.white {
   border-top: 1px solid #333e48; }
   .spacer.shadow-bordered {
     width: 100%;
-    height: 6px;
+    height: 5px;
     border-top: 1px solid #333e48; }
-
-.content {
-  /*width: 100%;
-  max-width: $contentWidth;*/
-  width: 1040px;
-  margin: 0 auto;
-  padding: 0 24px; }
 
 .row-float {
   width: 100%;
@@ -2331,13 +2334,6 @@ p.white {
 .row-absolute {
   width: 100%;
   position: absolute; }
-
-.col {
-  float: left; }
-
-.col.col-right {
-  float: right;
-  margin-right: 0; }
 
 input {
   display: block;
@@ -2354,20 +2350,26 @@ input {
 .row-absolute {
   max-width: 1040px; }
 
-.col,
-.cols {
+.columns,
+.column {
   padding-left: 1.5em;
   padding-right: 1.5em; }
+  @media only screen and (max-width: 40em) {
+    .columns,
+    .column {
+      padding-left: 1, 75em;
+      padding-right: 1, 75em; } }
 
-@media only screen {
-  .col,
+	  /*@media only screen {
   .cols {
-    padding-left: 1.5em;
-    padding-right: 1.5em; }
-
-  .small .col, .small .cols {
-    padding-left: 2.35em;
-    padding-right: 2.35em; } }
+	  padding-left: $colPadding;
+	  padding-right: $colPadding;
+	  /*@media only screen and (max-width: 40em) {
+	    padding-left: $smColPadding;
+		padding-right: $smColPadding;
+	  }*/
+ /* }
+}*/
 /*x-small display*/
 @media only screen and (max-width: 580px) {
   .row {
@@ -2378,11 +2380,17 @@ input {
   position: absolute;
   color: #333e48;
   font-size: 14px;
-  font-family: "franklin-gothic-urw",sans-serif !important; }
+  font-family: "franklin-gothic-urw",sans-serif !important;
+  	/*@media only screen and (max-width: 40em){
+         font-size: $defaultSmallFontSize;
+  	}*/ }
   .corporate h1 {
     font-size: 4.42857em;
     line-height: 1em;
     font-weight: 900; }
+    @media only screen and (max-width: 40em) {
+      .corporate h1 {
+        font-size: 2.57143em; } }
   .corporate h2 {
     font-size: 2.35714em;
     font-weight: 900;
@@ -2442,6 +2450,49 @@ b {
 i {
   font-style: italic; }
 
+.btn-blue {
+  float: left;
+  height: 32px;
+  display: block;
+  padding: 6px 16px;
+  border: 1px solid #333e48;
+  background-color: #bdd0ff;
+  color: #333e48;
+  font-family: "franklin-gothic-urw-n7","franklin-gothic-urw",sans-serif;
+  font-size: 0.85714em;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center; }
+
+/*------------------------- social buttons  */
+.btn-twitter {
+  width: 18px;
+  height: 15px;
+  background: transparent url(../images/corporate/svg/footer-twitter.svg) no-repeat; }
+  .no-svg .btn-twitter {
+    background-image: url(../images/corporate/png/footer-twitter.png); }
+
+.btn-facebook {
+  width: 15px;
+  height: 15px;
+  background: transparent url(../images/corporate/svg/footer-facebook.svg) no-repeat; }
+  .no-svg .btn-facebook {
+    background-image: url(../images/corporate/png/footer-facebook.png); }
+
+.btn-instagram {
+  width: 15px;
+  height: 15px;
+  background: transparent url(../images/corporate/svg/footer-instagram.svg) no-repeat; }
+  .no-svg .btn-instagram {
+    background-image: url(../images/corporate/png/footer-instagram.png); }
+
+.btn-google {
+  width: 15px;
+  height: 15px;
+  background: transparent url(../images/corporate/svg/footer-google.svg) no-repeat; }
+  .no-svg .btn-google {
+    background-image: url(../images/corporate/png/footer-google.png); }
+
 .logo {
   box-sizing: border-box;
   -moz-background-size: contain;
@@ -2452,22 +2503,14 @@ i {
 .full-logo {
   width: 140px;
   height: 110px;
-  background: url(../images/corporate/svg/mad-agency-brackets.svg) center center no-repeat;
-    /*-moz-background-size: 140px 110px;
-	-o-background-size: 140px 110px;
-	-webkit-background-size: 140px 110px;
-	background-size: 140px 110px;*/ }
+  background: url(../images/corporate/svg/mad-agency-brackets.svg) center center no-repeat; }
   .no-svg .full-logo {
     background: url(../images/corporate/png/mad-agency-brackets-big.png) center center no-repeat; }
 
 .full-logo-sm {
   float: left;
   width: 106px;
-  height: 83px;
-    /*-moz-background-size: 106px 83px;
-	-o-background-size: 106px 83px;
-	-webkit-background-size: 106px 83px;
-	background-size: 106px 83px;*/ }
+  height: 83px; }
 
 .full-logo-white {
   width: 84px;
@@ -2480,11 +2523,7 @@ i {
   float: left;
   width: 155px;
   height: 25px;
-  background: transparent url(../images/corporate/svg/mad-agency-horizontal.svg) no-repeat;
-    /*-moz-background-size: 155px 25px;
-	-o-background-size: 155px 25px;
-	-webkit-background-size: 155px 25px;
-	background-size: 155px 25px;*/ }
+  background: transparent url(../images/corporate/svg/mad-agency-horizontal.svg) no-repeat; }
   .no-svg .h-logo {
     background-image: url(../images/corporate/png/mad-agency-horizontal.png); }
 
@@ -2499,6 +2538,7 @@ i {
   background-color: #ffc627;
   background-color: rgba(255, 198, 39, 0.8);
   border-bottom: 1px solid #333e48;
+  box-sizing: border-box;
   z-index: 200; }
   #header .btn-twitter {
     width: 1.28571em;
@@ -2566,30 +2606,6 @@ i {
     float: right; }
   #footer li {
     margin-bottom: 4px; }
-  #footer .btn-twitter {
-    width: 18px;
-    height: 15px;
-    background: transparent url(../images/corporate/svg/footer-twitter.svg) no-repeat; }
-    .no-svg #footer .btn-twitter {
-      background-image: url(../images/corporate/png/footer-twitter.png); }
-  #footer .btn-facebook {
-    width: 15px;
-    height: 15px;
-    background: transparent url(../images/corporate/svg/footer-facebook.svg) no-repeat; }
-    .no-svg #footer .btn-facebook {
-      background-image: url(../images/corporate/png/footer-facebook.png); }
-  #footer .btn-instagram {
-    width: 15px;
-    height: 15px;
-    background: transparent url(../images/corporate/svg/footer-instagram.svg) no-repeat; }
-    .no-svg #footer .btn-instagram {
-      background-image: url(../images/corporate/png/footer-instagram.png); }
-  #footer .btn-google {
-    width: 1em;
-    height: 1em;
-    background: transparent url(../images/corporate/svg/footer-google.svg) no-repeat; }
-    .no-svg #footer .btn-google {
-      background-image: url(../images/corporate/png/footer-google.png); }
 
 /*-------------------------------- NAVS  */
 /*------------------ MAIN-NAV-CONTAINER  */
@@ -2599,6 +2615,11 @@ i {
   z-index: 300; }
   #main-nav-container .full-logo-sm {
     margin: 2px 48px 2px -16px; }
+    @media only screen and (max-width: 40em) {
+      #main-nav-container .full-logo-sm {
+        margin-right: 12px;
+        width: 71px;
+        height: 56px; } }
   #main-nav-container .h-logo {
     margin: -6px 0 0 -12px; }
   #main-nav-container .nav {
@@ -2615,7 +2636,7 @@ i {
       display: block; }
     #main-nav-container .nav .nav-btn {
       height: 16px;
-      padding: 2px 24px 1px 24px;
+      padding: 1px 24px 1px 24px;
       color: #555252; }
       #main-nav-container .nav .nav-btn.active {
         background-color: #ffa227; }
@@ -2624,6 +2645,9 @@ i {
   #main-nav-container #enter-story-btn-container {
     float: right;
     margin: 24px 0; }
+    @media only screen and (max-width: 40em) {
+      #main-nav-container #enter-story-btn-container {
+        margin: 16px 0; } }
   #main-nav-container.top-sticky {
     height: 40px;
     position: fixed;
@@ -2678,43 +2702,44 @@ i {
 #pane-container {
   float: left;
   min-width: 100%;
+  overflow-x: hidden;
   -webkit-tap-highlight-color: transparent; }
 
 /*------------------------- MethodPane  */
-.btn-blue {
-  float: left;
-  height: 32px;
-  display: block;
-  padding: 6px 16px;
-  border: 1px solid #333e48;
-  background-color: #bdd0ff;
-  color: #333e48;
-  font-family: "franklin-gothic-urw-n7","franklin-gothic-urw",sans-serif;
-  font-size: 0.85714em;
-  font-weight: bold;
-  text-decoration: none;
-  text-align: center; }
-
 #method-pane {
   background-color: #ffc627;
-  min-height: 600px; }
-  #method-pane h1 {
-    width: 100%;
-    text-align: center;
-    margin-top: -24px; }
+  min-height: 520px; }
+  #method-pane h1,
   #method-pane p {
     width: 100%;
-    text-align: center; }
+    text-align: center;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box; }
+  #method-pane .large-12 {
+    padding-left: 0;
+    padding-right: 0; }
+  #method-pane h1 {
+    margin-top: -24px; }
   #method-pane .full-logo {
     margin: auto; }
+    @media only screen and (max-width: 40em) {
+      #method-pane .full-logo {
+        margin-top: -24px; } }
   #method-pane .unsupported-browser p {
     top: 128px; }
-  #method-pane .row-content {
+  #method-pane .row.row-content {
     position: relative;
     padding-top: 0;
     padding-bottom: 0; }
   #method-pane .row-absolute {
     padding-bottom: 48px; }
+    @media only screen and (min-width: 40.063em) and (max-width: 64em) {
+      #method-pane .row-absolute {
+        padding-bottom: 24px; } }
+    @media only screen and (max-width: 40em) {
+      #method-pane .row-absolute {
+        padding-bottom: 16px; } }
   #method-pane .input-w-btn-container {
     position: absolute;
     top: 0;
@@ -2725,6 +2750,8 @@ i {
     #method-pane .input-w-btn-container .shadow-bordered:nth-child(1) {
       margin-right: 8px; }
   #method-pane .ta-w-btn-container {
+    width: 240px;
+    /*width: 100%;*/
     height: 121px; }
   #method-pane input {
     width: 365px;
@@ -3115,34 +3142,19 @@ p.addr {
 
 /* preload stry loader assets */
 .preload-unicorn {
-  /*left: 100%*/
-  width: 236px;
-  height: 174px;
+  width: 0;
+  height: 0;
   background: transparent url(../../images/loader/png/loader-unicorn.png) no-repeat;
-  -webkit-background-size: 236px 174px;
-  -moz-background-size: 236px 174px;
-  -o-background-size: 236px 174px;
-  background-size: 236px 174px;
   visibility: hidden; }
 
 .preload-rainbow-end {
-  /*left: 100%;*/
-  width: 412px;
-  height: 65px;
+  width: 0;
+  height: 0;
   background: transparent url(../../images/loader/png/loader-rainbow.png) no-repeat;
-  -webkit-background-size: 412px 65px;
-  -moz-background-size: 412px 65px;
-  -o-background-size: 412px 65px;
-  background-size: 412px 65px;
   visibility: hidden; }
 
 .preload-rainbow-solid {
-  /*left: 100%;*/
-  width: 412px;
-  height: 65px;
+  width: 0;
+  height: 0;
   background: transparent url(../../images/loader/png/loader-snippet.png) repeat-x;
-  -webkit-background-size: 1px 65px;
-  -moz-background-size: 1px 65px;
-  -o-background-size: 1px 65px;
-  background-size: 1px 65px;
   visibility: hidden; }

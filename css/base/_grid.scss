@@ -1,21 +1,19 @@
-.overlay-row{
-	z-index: 200;
-	position: absolute;
-	width: 100%;
+.row {
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box; 
 }
-.col,
-.cols {
-  position: relative;
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-  -moz-box-sizing: border-box; 
+.row-absolute{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box; 
+	-moz-box-sizing: border-box; 
 }
-
-@media only screen {
-  .col,
-  .cols {
+.columns,
+.column {
 	position: relative;
-  }
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box; 
 }
 
 

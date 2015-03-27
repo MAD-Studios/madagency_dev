@@ -50,6 +50,11 @@ main.views.PaneContainerView = Backbone.View.extend({
         this.methodPaneView.activate();
         this.curPaneView =  this.methodPaneView;
         
+        //work pane ----
+        $(this.workPaneView.el).on(this.workPaneView.VIDEO_ADDED, function(event){
+	        self.initPanes();
+        });
+
         //contact pane ----
         $(this.contactPaneView.el).on(this.contactPaneView.RESIZE, function(event){
 	        self.initPanes();

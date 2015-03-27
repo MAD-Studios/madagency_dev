@@ -28,8 +28,8 @@ main.views.PaneView = Backbone.View.extend({
 	// ----------------- posize
     posize: function() {
 		if( $(this.el).hasClass(this.FULL_SCREEN_CLASS)){
-			var to_h = $(window).height();
-			var min_h = parseInt( $(this.el).css('min-height') );
+			var to_h = $(window).outerHeight();
+			var min_h = $(this.el).css('min-height');
 			if(to_h < min_h) to_h = min_h;
 			$(this.el).height( to_h );
 		} 
