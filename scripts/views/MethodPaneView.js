@@ -52,7 +52,7 @@ main.views.MethodPaneView = main.views.PaneView.extend({
 	    this.input_cnt_el = $('.input-w-btn-container', this.el);
 	    this.input_cnt_el.addClass(this.INPUT_BLINK_TRANS_CLASS);
 	    this.input_el = $('.input-method', this.el);
-	    this.ta_el = $('.ta-method', this.el);
+	    this.input_ta_el = $('.input-ta-method', this.el);
 	    this.content_el = $('.row-content', this.el);
 	    this.content_el.css('opacity', '0');
 	    //this.to_y = 0;
@@ -66,8 +66,23 @@ main.views.MethodPaneView = main.views.PaneView.extend({
 	        self.questions = self.model.get("questions");
 	        self.setQuestionPlaceholder();
         }, 100);
+        
+        $('.input').each(function(){
+           $(this).keyup(function(event){
+                if(event.keyCode == 13){
+                    self.submit();
+                }
+            });
+            $(this).focus(function(event){
+                self.unsetInputAlertTimer();
+            });
+            $(this).blur(function(event){
+                self.setInputAlertTimer();
+            });
+        });
+        
         //choose a question
-		this.input_el.keyup(function(event){
+		/*this.input_el.keyup(function(event){
 		    if(event.keyCode == 13){
 		        self.submit();
 		    }
@@ -81,17 +96,17 @@ main.views.MethodPaneView = main.views.PaneView.extend({
 		//!!!!!!!!!!!!!!!!!!!!!!!!
 		//instead do this for each input
 		//!!!!!!!!!!!!!!!!!!!!!!!
-		this.ta_el.keyup(function(event){
+		this.input_ta_el.keyup(function(event){
 		    if(event.keyCode == 13){
 		        self.submit();
 		    }
 		});
-		this.ta_el.focus(function(event){
+		this.input_ta_el.focus(function(event){
 			self.unsetInputAlertTimer();
 		});
-		this.ta_el.blur(function(event){
+		this.input_ta_el.blur(function(event){
 			self.setInputAlertTimer();
-		});
+		});*/
 	},
     // ----------------- initElements
     initElements: function() {
@@ -121,6 +136,9 @@ main.views.MethodPaneView = main.views.PaneView.extend({
 			self.to_y += $(this).children().eq(0).outerHeight() + padding;
         });
         //center the input container within its row
+        //!!!!!!!!!!!!!!!!!!!!!!!!
+        //generic input container
+        
          input_to_left = (this.input_cnt_el.parent().outerWidth() - this.input_cnt_el.outerWidth())/2; 
          this.input_cnt_el.css('left', input_to_left + 'px');
          
@@ -221,11 +239,12 @@ main.views.MethodPaneView = main.views.PaneView.extend({
 		quest = this.shortenPlaceholder(quest);
 		//set the input placeholder to the 
 		//generated question
-		this.input_el.attr('placeholder', quest);
-		this.ta_el.attr('placeholder', quest);
-		
-		console.log("quest = " + quest);
-	},
+		/*this.input_el.attr('placeholder', quest);
+		this.input_ta_el.attr('placeholder', quest);*/
+        $('.input').each(function(){
+            $(this).attr('placeholder', quest);
+        });
+    },
 	// ----------------- generateQuestion
 	generateQuestion:function(){
 		//generate a random number
@@ -297,6 +316,11 @@ main.views.MethodPaneView = main.views.PaneView.extend({
 	beforeDispose: function(){
 		clearTimeout(this.inputAlertTimeout);
 	    clearTimeout(this.blinkTimeout);
-		this.input_el.off();
+		//this.input_el.off();
+        //!!!!!!!!!!!!!!!!!!!
+        //input_el
+        $('.input').each(function(){
+            $(this).off();
+        });
 	}
 });
