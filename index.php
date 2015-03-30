@@ -72,53 +72,20 @@
 <body>
 	
 <div id="main">
-	<!------- preload story loader assets -------->
-    <!-- <div class="preload-container">
-	    <div class="preload-unicorn"></div>
-	    <div class="preload-rainbow-end"></div>
-	    <div class="preload-rainbow-solid"></div>
-    </div> -->
 
 	<!------------ CORPORATE ------------->
-	<div class="corporate corporate-init">
+	<div class="corporate">
 	
-	<section class="header-sect">
-        <div id="header">
-	        <div class="row">
-				<div class="column large-12 medium-12 small-12">
-					<ul class="social-nav hide-for-small show-for-large-up">
-	                    <li><a class="btn-google btn" href="https://plus.google.com/106462510460087062650" target=_blank></a></li>
-	                    <li><a class="btn-instagram btn" href="http://instagram.com/madstudiosco" target=_blank></a></li>
-	                    <li><a class="btn-facebook btn" href="https://www.facebook.com/MadStudiosCo" target=_blank></a></li>
-	                    <li><a class="btn-twitter btn" href="https://twitter.com/madstudiosco" target=_blank></a></li>
-	                </ul>
-				</div>	        
-			</div>
-        </div>
-	</section>
+	<?php include 'inc/header.php';?>
 	
 	<section class="content-sect">
 	<div id="pane-container">
 	
 		<!------------ INTRO ------------->
-		<section class="method">
-			<div id="method-pane" class="pane full-screen">
+		<section class="intro">
+			<div id="intro-pane" class="pane full-screen">
 		        <div class="row row-content">
 					<div class="column large-12 medium-12 small-12">
-						<div class="row-absolute"><div class="logo full-logo"></div></div>
-	                    <div class="row-absolute"><h1 class="text-shadow white">Welcome to our<br>idea-generator.</h1></div>
-	                    <div class="row-absolute hide-for-small show-for-medium-up">
-	                        <div class="input-w-btn-container">
-	                            <div class="shadow-bordered"><input class="input input-method" placeholder="How do I sell more ..."/></div>
-	                            <div class="shadow-bordered shadow-bordered-blue"><a class="btn btn-blue btn-ask" href="#">ENTER</a></div>
-	                        </div>
-	                    </div>
-	                    <div class="row-absolute show-for-small hide-for-medium-up">
-                    	   <div class="input-w-btn-container ta-w-btn-container">
-	                            <div class="shadow-bordered row-float input-container-ta"><textarea class="input input-ta-method"></textarea></div>
-	                            <div class="shadow-bordered shadow-bordered-blue row-float"><a class="btn btn-blue btn-ask" href="#">ENTER</a></div>
-	                        </div>
-	                    </div>
 					</div>
 	            </div>
 			</div>
@@ -349,20 +316,20 @@
                     <div class="main-nav-container">
                         <div class="full-logo-sm full-logo-white full-logo logo"></div>
                         <ul class="main-nav">
-                            <li><a class="btn method-btn" href="/">ABOVE THE FOLD</a></li>
-                            <li><a class="btn how-btn" href="/how">HOW WE ROLL</a></li>
-                            <li><a class="btn work-btn" href="/work">THE WORK</a></li>
-                            <li><a class="btn team-btn" href="/team">OUR TEAM</a></li>
-                            <li><a class="btn disciplines-btn" href="/disciplines">DISCIPLINES</a></li>
-                            <li><a class="btn contact-btn" href="/contact">CONTACT US</a></li>
+                            <li><a class="btn btn-method" href="/">ABOVE THE FOLD</a></li>
+                            <li><a class="btn btn-how" href="/how">HOW WE ROLL</a></li>
+                            <li><a class="btn btn-work" href="/work">THE WORK</a></li>
+                            <li><a class="btn btn-team" href="/team">OUR TEAM</a></li>
+                            <li><a class="btn btn-disciplines" href="/disciplines">DISCIPLINES</a></li>
+                            <li><a class="btn btn-contact" href="/contact">CONTACT US</a></li>
                         </ul>
                     </div>
                     
                     <ul class="social-nav">
-						<li><a class="btn-google btn" href="https://plus.google.com/106462510460087062650" target=_blank></a></li>
-						<li><a class="btn-instagram btn" href="http://instagram.com/madstudiosco" target=_blank></a></li>
-						<li><a class="btn-facebook btn" href="https://www.facebook.com/madstudiosco" target=_blank></a></li>
-						<li><a class="btn-twitter btn" href="https://twitter.com/madstudiosco" target=_blank></a></li>
+						<li><a class="btn btn-google" href="https://plus.google.com/106462510460087062650" target=_blank><i class="fa fa-google-plus"></i></a></li>
+						<li><a class="btn btn-instagram" href="http://instagram.com/madstudiosco" target=_blank><i class="fa fa-instagram"></i></a></li>
+						<li><a class="btn btn-facebook" href="https://www.facebook.com/madstudiosco" target=_blank><i class="fa fa-facebook-official"></i></a></li>
+						<li><a class="btn btn-twitter" href="https://twitter.com/madstudiosco" target=_blank><i class="fa fa-twitter"></i></a></li>
 					</ul>
                 </div>
             </div>
@@ -387,25 +354,7 @@
         </div>
 	</div>
 	
-	<!------------ STORY ------------->
-	<div class="story story-init">
-		<div class="scene-container"><div id="skrollr-body"></div></div>
-		<div class="loader"></div>
-	</div>
 </div>
 
-<script src="js/vendor/modernizr.custom.80155.js"></script>
+<?php include 'inc/dom-end.php';?>
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-56325868-1', 'auto');
-  ga('send', 'pageview');
-</script>
-
-</body>
-
-</html>

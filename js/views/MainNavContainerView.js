@@ -19,11 +19,11 @@ main.views.MainNavContainerView = Backbone.View.extend({
 	default_nav_btn_height: 0,
 	events: {
 		'click .logo' : 'onLogoClick',
-		'click .how-btn' : 'onHowBtnClick',
-		'click .work-btn' : 'onWorkBtnClick',
-		'click .team-btn' : 'onTeamBtnClick',
-		'click .disciplines-btn' : 'onDisciplinesBtnClick',
-		'click .contact-btn' : 'onContactBtnClick'
+		'click .btn-how' : 'onHowBtnClick',
+		'click .btn-work' : 'onWorkBtnClick',
+		'click .btn-team' : 'onTeamBtnClick',
+		'click .btn-disciplines' : 'onDisciplinesBtnClick',
+		'click .btn-contact' : 'onContactBtnClick'
 	},
     // ----------------- initialize
     initialize: function() {

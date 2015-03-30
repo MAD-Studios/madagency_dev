@@ -71,15 +71,34 @@
 .social-nav{
 	float: right;
     li{
+        display: block;
+        height: 27px;
         float: right;
-        margin: em($xSmMargin) 0 em($xSmMargin) em($smMargin);
+        margin: 2px 0 em($xSmMargin) em($smMargin);
     }
     .btn{
         display: block;
-        -moz-background-size: contain;
+        height: 27px;
+        /*-moz-background-size: contain;
         -o-background-size: contain;
         -webkit-background-size: contain;
-        background-size: contain;
+        background-size: contain;*/
+        font-size: em(18px);
+        text-decoration: none;
+        color: $navy;
+       /* & i{
+	        vertical-align: middle;
+	    }*/
+	    &.btn-twitter{
+		    margin-top: -2px;
+            font-size: em(22px);
+
+		}
+		&.btn-google-plus{
+			margin-top: 1px;
+            font-size: em(16px);
+
+		}
     }
 }
 

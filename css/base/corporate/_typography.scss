@@ -11,9 +11,6 @@ $navFontColor: #555252;
 	color: $defaultFontColor;
 	font-size: $defaultFontSize;
 	font-family: "franklin-gothic-urw",sans-serif !important;
-	/*@media #{$small-only}{
-       font-size: $defaultSmallFontSize;
-	}*/
 	h1{
 		font-size: em(62px);
 		line-height: em(14px);
@@ -36,7 +33,6 @@ $navFontColor: #555252;
 		font-size: em(12px);
 		font-weight: 900;
 		line-height: em(16px);
-		//font-family: "franklin-gothic-urw",sans-serif !important;
 	}
 	p{  
 		font-weight: 400;
@@ -46,7 +42,6 @@ $navFontColor: #555252;
 	ul{ list-style: none; }
 	input{
 		padding: $xxSmMargin $smMargin;
-		//font-family: "franklin-gothic-urw",sans-serif !important;
 		font-size: em($inputFontSize) !important; color: $inputFontColor;
 		font-style: italic;
 		letter-spacing: em(2px);
@@ -57,7 +52,6 @@ $navFontColor: #555252;
 	}
 	textarea{
 		padding: $xSmMargin $smMargin;
-		//font-family: "franklin-gothic-urw",sans-serif !important;
 		font-size: em($inputFontSize) !important; color: $inputFontColor;
 		font-style: italic;
 		letter-spacing: em(2px);

@@ -10,11 +10,11 @@ main.views.CorporateView = Backbone.View.extend({
     initialize: function() {
         console.log("CorporateView ---- initialize");
         //if no el pull it in through template loader
-        if(!($(this.el).hasClass(this.CORPORATE_INIT))) {
+       /* if(!($(this.el).hasClass(this.CORPORATE_INIT))) {
 	         console.log("template load external");
 	         this.template = _.template(this.templateLoader.get(this.CORPORATE));
 	         this.template_load_external = true;
-        }
+        }*/
         this.render();
     },
     // ----------------- render

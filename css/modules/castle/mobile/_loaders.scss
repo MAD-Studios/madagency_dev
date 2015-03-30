@@ -1,0 +1,147 @@
+/* -------------- preload loader assets */
+.mobile{
+	/*.preload-unicorn {
+	  background: transparent url(../../assets/images/loader/mobile/png/loader-unicorn.png) no-repeat;
+	}
+	.preload-rainbow-end {
+	  background: transparent url(../../assets/images/loader/mobile/png/loader-rainbow.png) no-repeat;
+	}
+	.preload-rainbow-solid {
+	  background: transparent url(../../assets/images/loader/mobile/png/loader-snippet.png) repeat-x;
+	}*/
+	
+	.loader{
+		.info-container{
+			width: 100%;
+			position: absolute;
+			top: 55px;
+			height: 100px;
+			text-align: center;
+			p{
+				margin-bottom: $xxSmMargin;
+			}
+		}
+		.info{
+		    padding-bottom: 12px;
+		}
+		.loader-info-container{
+			position: absolute;
+			width: $contentWidth;
+			height: 150px;
+			@media #{$medium-only} {
+				/*!!!!!!!!!!!!!!!!*/
+				width: $lgContentWidth;
+			}			
+		}
+		.loaded-ratio-indicator{
+			position: absolute; min-width:1px; height: 35px; 
+			-webkit-transform: translate3d(0,0,0);
+			-moz-transform: translate3d(0,0,0);
+		    -o-transform: translate3d(0,0,0);
+		    -ms-transform: translate3d(0,0,0);
+		    transform: translate3d(0,0,0);
+		    overflow: hidden;
+		    h1{
+				float:left;
+			}
+			@media #{$medium-up} {
+				height: 45px; 
+			}
+		}
+		.loaded-ratio-indicator-text-cta{
+			float:left;
+		}
+		.activity-indicator{
+			float:left;
+			width: 35px; height: 35px;
+			padding-left: -$xxSmMargin;
+			@media #{$medium-up} {
+				width: 45px; height: 45px;
+			}
+		}
+	}
+	@media #{small-only} {
+		.unicorn{
+			margin-left: -36px;
+			width: 118px; height: 87px;
+			-webkit-background-size: 118px 87px;
+			-moz-background-size: 118px 87px;
+			-o-background-size: 118px 87px;
+			background-size: 118px 87px;
+		}
+		.rainbow-end{
+			width: 206px; height: 32px;
+			-webkit-background-size: 206px 32px;
+			-moz-background-size: 206px 32px;
+			-o-background-size: 206px 32px;
+			background-size: 206px 32px;
+		}
+		.rainbow-solid{
+			width: 206px; height: 32px;
+			-webkit-background-size: 1px 32px;
+			-moz-background-size: 1px 32px;
+			-o-background-size: 1px 32px;
+			background-size: 1px 32px;
+		}
+		.rainbow-all{
+			margin-top: 26px;
+		}
+	}
+	/*.large .unicorn{
+		margin-left: -72px;
+		width: 236px; height: 174px;
+		-webkit-background-size: 236px 174px;
+		-moz-background-size: 236px 174px;
+		-o-background-size: 236px 174px;
+		background-size: 236px 174px;
+	}
+	.large .rainbow-end{
+		width: 412px; height: 65px;
+		-webkit-background-size: 412px 65px;
+		-moz-background-size: 412px 65px;
+		-o-background-size: 412px 65px;
+		background-size: 412px 65px;
+	}
+	.large .rainbow-solid{
+		width: 412px; height: 65px;
+		-webkit-background-size: 1px 65px;
+		-moz-background-size: 1px 65px;
+		-o-background-size: 1px 65px;
+		background-size: 1px 65px;
+	}
+	.large .rainbow-all{
+		margin-top: 52px;
+	}*/
+	.gold-grad-transition{
+		-webkit-transition: all 1.0s cubic-bezier(0.895, 0.030, 0.685, 0.220); 
+		   -moz-transition: all 1.0s cubic-bezier(0.895, 0.030, 0.685, 0.220); 
+		     -o-transition: all 1.0s cubic-bezier(0.895, 0.030, 0.685, 0.220); 
+		        transition: all 1.0s cubic-bezier(0.895, 0.030, 0.685, 0.220);
+		-webkit-transition-timing-function: cubic-bezier(0.895, 0.030, 0.685, 0.220); 
+		   -moz-transition-timing-function: cubic-bezier(0.895, 0.030, 0.685, 0.220); 
+		     -o-transition-timing-function: cubic-bezier(0.895, 0.030, 0.685, 0.220); 
+		        transition-timing-function: cubic-bezier(0.895, 0.030, 0.685, 0.220); 
+	}
+	.gold-grad-transition-out{
+		-webkit-transition: all 1.8s cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+		   -moz-transition: all 1.8s cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+		     -o-transition: all 1.8s cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+		        transition: all 1.8s cubic-bezier(0.190, 1.000, 0.220, 1.000); /* easeOutExpo*/
+	
+		-webkit-transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+		   -moz-transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+		     -o-transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+		        transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); /* easeOutExpo */
+	}
+	.loaded-ratio-indicator-transition{
+		-webkit-transition: left 0.7s cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+		   -moz-transition: left 0.7s cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+		     -o-transition: left 0.7s cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+		        transition: left 0.7s cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	
+		-webkit-transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+		   -moz-transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+		     -o-transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+		        transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000);
+	}
+}

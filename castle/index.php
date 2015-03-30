@@ -15,7 +15,7 @@
     <meta property="og:url" content="http://www.madstudios.net" />
     <meta property="og:image" content="http://www.madstudios.net/assets/img/share_logo.jpg" />
     <meta property="og:description" content="MAD Agency is a full service Advertising/Marketing/Production agency. We have the people needed to build your project here, onsite. This allows for tighter timelines and a more cohesive end result." />
-    <link href="css/corporate.css" type="text/css" rel="stylesheet" />
+    <link href="css/castle.css" type="text/css" rel="stylesheet" />
     
     <script src="js/vendor/jquery.activity-indicator-1.0.0.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="//use.typekit.net/ntj1viz.js"></script>
@@ -79,8 +79,44 @@
 	    <div class="preload-rainbow-solid"></div>
     </div>
     
-</div>
+	<!------------ CORPORATE ------------->
+	<div class="corporate">
+	
+	<?php include 'inc/header.php';?>
+	
+	<section class="content-sect">
+	<div id="pane-container">
+	
+	<!------------ CASTLE GATEWAY ------------->
+	<section class="castle-gateway-sect">
+		<div id="castle-gateway-pane" class="pane full-screen">
+	        <div class="row row-content">
+				<div class="column large-12 medium-12 small-12">
+					<div class="row-absolute"><div class="logo full-logo"></div></div>
+                    <div class="row-absolute"><h1 class="text-shadow white">Welcome to our<br>idea-generator.</h1></div>
+                    <div class="row-absolute hide-for-small show-for-medium-up">
+                        <div class="input-w-btn-container">
+                            <div class="shadow-bordered"><input class="input input-method" placeholder="How do I sell more ..."/></div>
+                            <div class="shadow-bordered shadow-bordered-blue"><a class="btn btn-blue btn-ask" href="#">ENTER</a></div>
+                        </div>
+                    </div>
+                    <div class="row-absolute show-for-small hide-for-medium-up">
+                	   <div class="input-w-btn-container ta-w-btn-container">
+                            <div class="shadow-bordered row-float input-container-ta"><textarea class="input input-ta-method"></textarea></div>
+                            <div class="shadow-bordered shadow-bordered-blue row-float"><a class="btn btn-blue btn-ask" href="#">ENTER</a></div>
+                        </div>
+                    </div>
+				</div>
+            </div>
+		</div>
+	</section>
+	
+	</div>
+	
+	<!------------ STORY ------------->
+	<div class="story story">
+		<div class="scene-container"><div id="skrollr-body"></div></div>
+		<div class="loader"></div>
+	</div>
 
-</body>
-    
-</html>
+<?php include 'inc/dom-end.php';?>
