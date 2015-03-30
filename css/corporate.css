@@ -2317,12 +2317,12 @@ $col3Width:  ($innerFullColWidth - ($col3Margin*2))/3;*/
 .shadow-bordered-blue {
   border-color: #a1b3ff; }
 
-.spacer {
+.divider {
   float: left;
   width: 100%;
   height: 1px;
   border-top: 1px solid #333e48; }
-  .spacer.shadow-bordered {
+  .divider.shadow-bordered {
     width: 100%;
     height: 5px;
     border-top: 1px solid #333e48; }
@@ -2360,7 +2360,7 @@ input {
       padding-left: 1, 75em;
       padding-right: 1, 75em; } }
 
-	  /*@media only screen {
+/*@media only screen {
   .cols {
 	  padding-left: $colPadding;
 	  padding-right: $colPadding;
@@ -2468,30 +2468,30 @@ i {
 .btn-twitter {
   width: 18px;
   height: 15px;
-  background: transparent url(../images/corporate/svg/footer-twitter.svg) no-repeat; }
+  background: transparent url(../assets/images/corporate/svg/footer-twitter.svg) no-repeat; }
   .no-svg .btn-twitter {
-    background-image: url(../images/corporate/png/footer-twitter.png); }
+    background-image: url(../assets/images/corporate/png/footer-twitter.png); }
 
 .btn-facebook {
   width: 15px;
   height: 15px;
-  background: transparent url(../images/corporate/svg/footer-facebook.svg) no-repeat; }
+  background: transparent url(../assets/images/corporate/svg/footer-facebook.svg) no-repeat; }
   .no-svg .btn-facebook {
-    background-image: url(../images/corporate/png/footer-facebook.png); }
+    background-image: url(../assets/images/corporate/png/footer-facebook.png); }
 
 .btn-instagram {
   width: 15px;
   height: 15px;
-  background: transparent url(../images/corporate/svg/footer-instagram.svg) no-repeat; }
+  background: transparent url(../assets/images/corporate/svg/footer-instagram.svg) no-repeat; }
   .no-svg .btn-instagram {
-    background-image: url(../images/corporate/png/footer-instagram.png); }
+    background-image: url(../assets/images/corporate/png/footer-instagram.png); }
 
 .btn-google {
   width: 15px;
   height: 15px;
-  background: transparent url(../images/corporate/svg/footer-google.svg) no-repeat; }
+  background: transparent url(../assets/images/corporate/svg/footer-google.svg) no-repeat; }
   .no-svg .btn-google {
-    background-image: url(../images/corporate/png/footer-google.png); }
+    background-image: url(../assets/images/corporate/png/footer-google.png); }
 
 .logo {
   box-sizing: border-box;
@@ -2503,9 +2503,9 @@ i {
 .full-logo {
   width: 140px;
   height: 110px;
-  background: url(../images/corporate/svg/mad-agency-brackets.svg) center center no-repeat; }
+  background: url(../assets/images/corporate/svg/mad-agency-brackets.svg) center center no-repeat; }
   .no-svg .full-logo {
-    background: url(../images/corporate/png/mad-agency-brackets-big.png) center center no-repeat; }
+    background: url(../assets/images/corporate/png/mad-agency-brackets-big.png) center center no-repeat; }
 
 .full-logo-sm {
   float: left;
@@ -2515,17 +2515,17 @@ i {
 .full-logo-white {
   width: 84px;
   height: 65px;
-  background: url(../images/corporate/svg/mad-agency-brackets-white.svg) center center no-repeat; }
+  background: url(../assets/images/corporate/svg/mad-agency-brackets-white.svg) center center no-repeat; }
   .no-svg .full-logo-white {
-    background: url(../images/corporate/png/mad-agency-brackets-white.png) center center no-repeat; }
+    background: url(../assets/images/corporate/png/mad-agency-brackets-white.png) center center no-repeat; }
 
 .h-logo {
   float: left;
   width: 155px;
   height: 25px;
-  background: transparent url(../images/corporate/svg/mad-agency-horizontal.svg) no-repeat; }
+  background: transparent url(../assets/images/corporate/svg/mad-agency-horizontal.svg) no-repeat; }
   .no-svg .h-logo {
-    background-image: url(../images/corporate/png/mad-agency-horizontal.png); }
+    background-image: url(../assets/images/corporate/png/mad-agency-horizontal.png); }
 
 /*-------------------------------- HEADER  */
 #header {
@@ -2543,27 +2543,27 @@ i {
   #header .btn-twitter {
     width: 1.28571em;
     height: 1.07143em;
-    background: transparent url(../images/corporate/svg/header-twitter.svg) no-repeat; }
+    background: transparent url(../assets/images/corporate/svg/header-twitter.svg) no-repeat; }
     .no-svg #header .btn-twitter {
-      background-image: url(../images/corporate/png/header-twitter.png); }
+      background-image: url(../assets/images/corporate/png/header-twitter.png); }
   #header .btn-facebook {
     width: 1.07143em;
     height: 1.07143em;
-    background: transparent url(../images/corporate/svg/header-facebook.svg) no-repeat; }
+    background: transparent url(../assets/images/corporate/svg/header-facebook.svg) no-repeat; }
     .no-svg #header .btn-facebook {
-      background-image: url(../images/corporate/png/header-facebook.png); }
+      background-image: url(../assets/images/corporate/png/header-facebook.png); }
   #header .btn-instagram {
     width: 1.07143em;
     height: 1.07143em;
-    background: transparent url(../images/corporate/svg/header-instagram.svg) no-repeat; }
+    background: transparent url(../assets/images/corporate/svg/header-instagram.svg) no-repeat; }
     .no-svg #header .btn-instagram {
-      background-image: url(../images/corporate/png/header-instagram.png); }
+      background-image: url(../assets/images/corporate/png/header-instagram.png); }
   #header .btn-google {
     width: 1em;
     height: 1em;
-    background: transparent url(../images/corporate/svg/header-google.svg) no-repeat; }
+    background: transparent url(../assets/images/corporate/svg/header-google.svg) no-repeat; }
     .no-svg #header .btn-google {
-      background-image: url(../images/corporate/png/header-google.png); }
+      background-image: url(../assets/images/corporate/png/header-google.png); }
 
 .header-trans {
   -webkit-transition: top 1s 0.45s cubic-bezier(0.755, 0.05, 0.855, 0.06), opacity 0.24s 0.8s;
@@ -2910,14 +2910,24 @@ i {
   z-index: 100; }
 
 /*------------------------- TeamPane  */
-.bg-gold {
-  background-color: #fceec9; }
-
-#team-pane .bg-gold {
-  padding-top: 48px; }
+@media only screen and (max-width: 40em) {
+  #team-pane {
+    background-color: #fceec9; } }
+@media only screen and (max-width: 40em) {
+  #team-pane .pane-title {
+    margin-top: -24px; } }
 #team-pane .row-content {
-  padding-top: 0;
-  padding-bottom: 0; }
+  padding-top: 48px;
+  background-color: #fceec9; }
+  @media only screen and (min-width: 40.063em) and (max-width: 64em), only screen and (max-width: 40em) {
+    #team-pane .row-content {
+      padding-top: 12px; } }
+  @media only screen and (max-width: 40em) {
+    #team-pane .row-content {
+      background-color: transparent; } }
+  #team-pane .row-content > .row {
+    padding-top: 0;
+    padding-bottom: 0; }
 #team-pane .large-6 {
   padding-bottom: 48px; }
   #team-pane .large-6 p {
@@ -2926,8 +2936,15 @@ i {
     font-weight: lighter; }
   #team-pane .large-6 > .row {
     padding: 0; }
+  @media only screen and (min-width: 40.063em) and (max-width: 64em), only screen and (max-width: 40em) {
+    #team-pane .large-6:not(.last) {
+      border-bottom: 1px solid #ffa227; } }
+  @media only screen and (min-width: 40.063em) and (max-width: 64em), only screen and (max-width: 40em) {
+    #team-pane .large-6 {
+      padding-bottom: 24px;
+      padding-top: 24px; } }
 #team-pane .btn-move-container {
-  margin: 0 12px 12px 0;
+  width: 165px;
   float: right; }
 
 .icon-role {
@@ -2941,37 +2958,37 @@ i {
   margin-right: 16px; }
 
 .icon-creative-director {
-  background: transparent url(../images/corporate/svg/team-icon-creativedirector.svg) no-repeat; }
+  background: transparent url(../assets/images/corporate/svg/team-icon-creativedirector.svg) no-repeat; }
   .no-svg .icon-creative-director {
-    background-image: url(../images/corporate/png/team-icon-creativedirector.png); }
+    background-image: url(../assets/images/corporate/png/team-icon-creativedirector.png); }
 
 .icon-front-end {
-  background: transparent url(../images/corporate/svg/team-icon-frontend.svg) no-repeat; }
+  background: transparent url(../assets/images/corporate/svg/team-icon-frontend.svg) no-repeat; }
   .no-svg .icon-front-end {
-    background-image: url(../images/corporate/png/team-icon-frontend.png); }
+    background-image: url(../assets/images/corporate/png/team-icon-frontend.png); }
 
 .icon-art-director {
-  background: transparent url(../images/corporate/svg/team-icon-artdirector.svg) no-repeat; }
+  background: transparent url(../assets/images/corporate/svg/team-icon-artdirector.svg) no-repeat; }
   .no-svg .icon-art-director {
-    background-image: url(../images/corporate/png/team-icon-artdirector.png); }
+    background-image: url(../assets/images/corporate/png/team-icon-artdirector.png); }
 
 .icon-programmer {
-  background: transparent url(../images/corporate/svg/team-icon-programmer.svg) no-repeat; }
+  background: transparent url(../assets/images/corporate/svg/team-icon-programmer.svg) no-repeat; }
   .no-svg .icon-programmer {
-    background-image: url(../images/corporate/png/team-icon-programmer.png); }
+    background-image: url(../assets/images/corporate/png/team-icon-programmer.png); }
 
 .icon-copy-writer {
-  background: transparent url(../images/corporate/svg/team-icon-copywriter.svg) no-repeat; }
+  background: transparent url(../assets/images/corporate/svg/team-icon-copywriter.svg) no-repeat; }
   .no-svg .icon-copy-writer {
-    background-image: url(../images/corporate/png/team-icon-copywriter.png); }
+    background-image: url(../assets/images/corporate/png/team-icon-copywriter.png); }
 
 .icon-proj-manager {
-  background: transparent url(../images/corporate/svg/team-icon-projmanger.svg) no-repeat; }
+  background: transparent url(../assets/images/corporate/svg/team-icon-projmanger.svg) no-repeat; }
   .no-svg .icon-proj-manager {
-    background-image: url(../images/corporate/png/team-icon-projmanger.png); }
+    background-image: url(../assets/images/corporate/png/team-icon-projmanger.png); }
 
 /*------------------------- DisciplinesPane  */
-#disciplines-pane .pane-title {
+#disciplines-pane .row-pane-divider {
   margin-top: -24px; }
 #disciplines-pane .row-content {
   padding-top: 24px; }
@@ -2983,6 +3000,9 @@ i {
     content: "+";
     margin-right: 16px;
     color: #ffc627; }
+@media only screen and (min-width: 40.063em) and (max-width: 64em), only screen and (max-width: 40em) {
+  #disciplines-pane ul {
+    margin-left: 8%; } }
 
 /*------------------------- ContactPane  */
 #contact-pane {
@@ -3018,13 +3038,7 @@ i {
       border: 1px solid #333e48; }
   #contact-pane #contact-form .large-6:nth-child(1) div {
     float: right; }
-  @media only screen and (min-width: 40.063em) and (max-width: 64em) {
-    #contact-pane #contact-form .large-6 div,
-    #contact-pane #contact-form .large-6:nth-child(1) div {
-      float: none;
-      margin-left: auto;
-      margin-right: auto; } }
-  @media only screen and (max-width: 40em) {
+  @media only screen and (min-width: 40.063em) and (max-width: 64em), only screen and (max-width: 40em) {
     #contact-pane #contact-form .large-6 div,
     #contact-pane #contact-form .large-6:nth-child(1) div {
       float: none;
@@ -3073,9 +3087,9 @@ p.addr {
   -o-background-size: contain;
   -webkit-background-size: contain;
   background-size: contain;
-  background: transparent url(../images/corporate/png/contact-map.png) no-repeat; }
+  background: transparent url(../assets/images/corporate/png/contact-map.png) no-repeat; }
   .hires .flag-map {
-    background-image: url(../images/corporate/png/contact-map@2x.png);
+    background-image: url(../assets/images/corporate/png/contact-map@2x.png);
     -moz-background-size: contain;
     -o-background-size: contain;
     -webkit-background-size: contain;
@@ -3087,12 +3101,12 @@ p.addr {
   width: 30px;
   height: 40px;
   overflow: hidden;
-  background: transparent url(../images/corporate/png/contact-flag.png) no-repeat; }
+  background: transparent url(../assets/images/corporate/png/contact-flag.png) no-repeat; }
   .hires .flag {
     width: 30px;
     height: 40px;
     overflow: hidden;
-    background-image: url(../images/corporate/png/contact-flag@2x.png);
+    background-image: url(../assets/images/corporate/png/contact-flag@2x.png);
     -moz-background-size: 30px;
     -o-background-size: 30px;
     -webkit-background-size: 30px;

@@ -241,17 +241,29 @@ $contactPaneInputMaxWidth: 400px;
 }
 
 /*------------------------- TeamPane  */
-.bg-gold{
-	background-color: $ltGold;
-}
 #team-pane{
-    .bg-gold{
-	    padding-top: $xLgMargin;
+    @media #{$small-only} {
+        background-color: $lightGold;
+    }
+    .pane-title{
+        @media #{$small-only} {
+            margin-top: -24px;
+        }
     }
     .row-content{
-		padding-top: 0;
-	    padding-bottom: 0;
-	}
+	    padding-top: $xLgMargin;
+        background-color: $lightGold;
+        @media #{$medium-only}, #{$small-only} {
+            padding-top: $smMargin;
+        }
+        @media #{$small-only} {
+            background-color: transparent;
+        }
+        > .row{
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+    }
     .large-6{
     	padding-bottom: $xLgMargin;
         p{
@@ -262,9 +274,19 @@ $contactPaneInputMaxWidth: 400px;
         > .row {
             padding: 0;
         }
+        &:not(.last){
+            @media #{$medium-only}, #{$small-only}{
+                border-bottom: 1px solid $darkGold;
+            }
+        }
+        @media #{$medium-only}, #{$small-only}{
+            padding-bottom: $lgMargin;
+            padding-top: $lgMargin;
+        }
     }
     .btn-move-container{
-        margin: 0 $smMargin $smMargin 0; float: right;
+        width: 165px;
+        float: right;
     }
 }
 .icon-role{
@@ -277,33 +299,33 @@ $contactPaneInputMaxWidth: 400px;
 	margin-right: $iconMargin;
 }
 .icon-creative-director{
-	background: transparent url(../images/corporate/svg/team-icon-creativedirector.svg) no-repeat;
-    .no-svg  &{ background-image: url(../images/corporate/png/team-icon-creativedirector.png); }
+	background: transparent url(../assets/images/corporate/svg/team-icon-creativedirector.svg) no-repeat;
+    .no-svg  &{ background-image: url(../assets/images/corporate/png/team-icon-creativedirector.png); }
 }
 .icon-front-end{
-	background: transparent url(../images/corporate/svg/team-icon-frontend.svg) no-repeat;
-    .no-svg  &{ background-image: url(../images/corporate/png/team-icon-frontend.png); }
+	background: transparent url(../assets/images/corporate/svg/team-icon-frontend.svg) no-repeat;
+    .no-svg  &{ background-image: url(../assets/images/corporate/png/team-icon-frontend.png); }
 }
 .icon-art-director{
-	background: transparent url(../images/corporate/svg/team-icon-artdirector.svg) no-repeat;
-    .no-svg  &{ background-image: url(../images/corporate/png/team-icon-artdirector.png); }
+	background: transparent url(../assets/images/corporate/svg/team-icon-artdirector.svg) no-repeat;
+    .no-svg  &{ background-image: url(../assets/images/corporate/png/team-icon-artdirector.png); }
 }
 .icon-programmer{
-	background: transparent url(../images/corporate/svg/team-icon-programmer.svg) no-repeat;
-    .no-svg  &{ background-image: url(../images/corporate/png/team-icon-programmer.png); }
+	background: transparent url(../assets/images/corporate/svg/team-icon-programmer.svg) no-repeat;
+    .no-svg  &{ background-image: url(../assets/images/corporate/png/team-icon-programmer.png); }
 }
 .icon-copy-writer{
-	background: transparent url(../images/corporate/svg/team-icon-copywriter.svg) no-repeat;
-    .no-svg  &{ background-image: url(../images/corporate/png/team-icon-copywriter.png); }
+	background: transparent url(../assets/images/corporate/svg/team-icon-copywriter.svg) no-repeat;
+    .no-svg  &{ background-image: url(../assets/images/corporate/png/team-icon-copywriter.png); }
 }
 .icon-proj-manager{
-	background: transparent url(../images/corporate/svg/team-icon-projmanger.svg) no-repeat;
-    .no-svg  &{ background-image: url(../images/corporate/png/team-icon-projmanger.png); }
+	background: transparent url(../assets/images/corporate/svg/team-icon-projmanger.svg) no-repeat;
+    .no-svg  &{ background-image: url(../assets/images/corporate/png/team-icon-projmanger.png); }
 }
 
 /*------------------------- DisciplinesPane  */
 #disciplines-pane{
-    .pane-title{
+    .row-pane-divider{
         margin-top: -24px;
     }
     .row-content{
@@ -318,6 +340,11 @@ $contactPaneInputMaxWidth: 400px;
             content: "+";
             margin-right: $medMargin;
             color: $gold;
+        }
+    }
+    ul{
+        @media #{$medium-only}, #{$small-only}{
+            margin-left: 8%;
         }
     }
 }
@@ -367,16 +394,11 @@ $contactPaneInputMaxWidth: 400px;
         }
         .large-6 div,
         .large-6:nth-child(1) div{
-	    	@media #{$medium-only}{
+	    	@media #{$medium-only}, #{$small-only}{
              	float: none;
 			 	margin-left: auto;
 			 	margin-right: auto;
 	    	}
-	    	@media #{$small-only}{
-             	float: none;
-             	margin-left: auto;
-			 	margin-right: auto;
-			}
 	    }
     }
     .msg{
@@ -434,9 +456,9 @@ p.addr{
 	-o-background-size: contain;
 	-webkit-background-size: contain;
 	background-size: contain;
-	background: transparent url(../images/corporate/png/contact-map.png) no-repeat;
+	background: transparent url(../assets/images/corporate/png/contact-map.png) no-repeat;
     .hires &{ 
-        background-image: url(../images/corporate/png/contact-map@2x.png); 
+        background-image: url(../assets/images/corporate/png/contact-map@2x.png); 
         -moz-background-size: contain;
         -o-background-size: contain;
         -webkit-background-size: contain;
@@ -447,11 +469,11 @@ p.addr{
 	position: absolute; display: block; 
 	width: 30px; height:40px;
 	overflow: hidden;
-	background: transparent url(../images/corporate/png/contact-flag.png) no-repeat;
+	background: transparent url(../assets/images/corporate/png/contact-flag.png) no-repeat;
     .hires  &{ 
         width: 30px; height:40px;
         overflow: hidden;
-        background-image: url(../images/corporate/png/contact-flag@2x.png);
+        background-image: url(../assets/images/corporate/png/contact-flag@2x.png);
         -moz-background-size: 30px;
         -o-background-size: 30px;
         -webkit-background-size: 30px;

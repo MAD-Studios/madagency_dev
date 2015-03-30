@@ -13,24 +13,24 @@
 
     .btn-twitter{
         width: em(18); height: em(15);
-        background: transparent url(../images/corporate/svg/header-twitter.svg) no-repeat;
-        .no-svg &{ background-image: url(../images/corporate/png/header-twitter.png); }
+        background: transparent url(../assets/images/corporate/svg/header-twitter.svg) no-repeat;
+        .no-svg &{ background-image: url(../assets/images/corporate/png/header-twitter.png); }
     }
     .btn-facebook{
         width: em(15); height: em(15);
-        background: transparent url(../images/corporate/svg/header-facebook.svg) no-repeat;
-        .no-svg & { background-image: url(../images/corporate/png/header-facebook.png); }
+        background: transparent url(../assets/images/corporate/svg/header-facebook.svg) no-repeat;
+        .no-svg & { background-image: url(../assets/images/corporate/png/header-facebook.png); }
     }
     .btn-instagram{
         width: em(15); height: em(15);
-        background: transparent url(../images/corporate/svg/header-instagram.svg) no-repeat;
-        .no-svg & { background-image: url(../images/corporate/png/header-instagram.png); }
+        background: transparent url(../assets/images/corporate/svg/header-instagram.svg) no-repeat;
+        .no-svg & { background-image: url(../assets/images/corporate/png/header-instagram.png); }
     }
     .btn-google {
         width: 1em;
         height: 1em;
-        background: transparent url(../images/corporate/svg/header-google.svg) no-repeat;
-        .no-svg & {background-image: url(../images/corporate/png/header-google.png);}
+        background: transparent url(../assets/images/corporate/svg/header-google.svg) no-repeat;
+        .no-svg & {background-image: url(../assets/images/corporate/png/header-google.png);}
     }
 }
  .header-trans{
