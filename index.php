@@ -353,6 +353,8 @@
 		
 	</div>
 	</section>
+	
+	<?php include 'inc/footer.php';?>
 		
 	<!------------ MAIN NAV ------------->
 	<div id="main-nav-container">
@@ -372,7 +374,6 @@
         </div>
 	</div>
 	
-	<?php include 'inc/footer.php';?>
 	
 </div>
 
