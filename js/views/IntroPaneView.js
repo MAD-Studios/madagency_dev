@@ -1,73 +1,67 @@
-// _________________________________________________________________________ MethodPaneView
-main.views.MethodPaneView = main.views.PaneView.extend({
-	//H1_TRANS_CLASS: "method-h1-trans",
-	//P_TRANS_CLASS: "method-p-trans",
-	//INPUT_CNT_TRANS_CLASS: "method-input-cnt-trans",
-    //!!!!!!!!!!!!!!!!!!!!!!!!
-    ELEMENT_TRANS_CLASS: ".method-element-trans",
-    LAST_ELEMENT_TRANS_CLASS: ".method-last-element-trans",
-	INPUT_BLINK_TRANS_CLASS: "method-input-blink-trans",
-	INPUT_DULL_CLASS: "method-input-dull",
-	/*H1_ANIM_OFFSET: -300,
-	P_ANIM_OFFSET: -300,
-	INPUT_CNT_ANIM_OFFSET: 300,*/
+// _________________________________________________________________________ IntroPaneView
+main.views.IntroPaneView = main.views.PaneView.extend({
+ 	ELEMENT_TRANS_CLASS: ".element-trans",
+    LAST_ELEMENT_TRANS_CLASS: ".last-element-trans",
+	//INPUT_BLINK_TRANS_CLASS: "input-blink-trans",
+	//INPUT_DULL_CLASS: "input-dull",
     ELEMENT_ANIM_OFFSET: 300,
     LAST_ELEMENT_ANIM_OFFSET: 900,
 	UNSUPPOSRTED_CLASS: "unsupported-browser",
-	SUBMIT: "submit",
+	//SUBMIT: "submit",
 	IDLE: "idle",
+	//!!!!!!!!!!!!!!!!!!!
 	UNSUPPORTED_H1_COPY: "We noticed you aren’t running at full optimization",
 	UNSUPPORTED_P_COPY: 'We recommend you upgrade your browser to the latest version of Safari or <a href="https://www.google.com/intl/en_US/chrome/browser/">Chrome</a>.',
-	MAX_INPUT_PLACEHOLDER_CHARS: 45,
+	//MAX_INPUT_PLACEHOLDER_CHARS: 45,
 	//time to wait before auto 
 	//going into the story view
-	INPUT_ALERT_START_TIME: 4000,
+	//INPUT_ALERT_START_TIME: 4000,
 	IDLE_START_TIME: 60000,
 	//PREPEND_PLACEHOLDER_STR: "Example: ",
-	PREPEND_PLACEHOLDER_STR: "",
-	id: "method",
+	//PREPEND_PLACEHOLDER_STR: "",
+	id: "intro",
 	_route: "",
 	offset: 0,
-	questions: [],
+	//questions: [],
 	//default_h1_top: 0,
 	//default_p_top: 0,
 	//default_input_cta_top: 0,
-    default_elements_y: [],
-	blink_i: 0,
+    //default_elements_y: [],
+	//blink_i: 0,
 	to_y: 0,
 	events:{
-		'click .btn-ask': 'onBtnAskClick'
+		'click .btn-castle': 'onBtnCastleClick'
 	},
 	// ----------------- initialize
     initialize: function() {
-        console.log("MethodPaneView ---- initialize"); 
+        console.log("IntroPaneView ---- initialize"); 
         var self = this;
     },
     // ----------------- beforeRender
     beforeRender: function() {
-        console.log("MethodPaneView ---- beforeRender");
+        console.log("IntroPaneView ---- beforeRender");
         var self = this;
         //this.h1_el = $('h1', this.el);
 	    //this.p_el = $('p', this.el);
-	    this.input_cnt_el = $('.input-w-btn-container', this.el);
+	   /* this.input_cnt_el = $('.input-w-btn-container', this.el);
 	    this.input_cnt_el.addClass(this.INPUT_BLINK_TRANS_CLASS);
 	    this.input_el = $('.input-method', this.el);
 	    this.input_ta_el = $('.input-ta-method', this.el);
 	    this.content_el = $('.row-content', this.el);
-	    this.content_el.css('opacity', '0');
+	    this.content_el.css('opacity', '0');*/
 	    //this.to_y = 0;
-        this.initElements();
+        //this.initElements();
         setTimeout(function(){ 
-            self.posElements();
+            //self.posElements();
 	        //self.default_h1_top = parseInt(self.h1_el.css('top'));
 	        //self.default_p_top = parseInt(self.p_el.css('top')); 
 	        //self.default_input_cta_top = parseInt(self.input_cnt_el.css('top'));   
-	        self.model = main.router.responseGeneratorModel;
+	        /*self.model = main.router.responseGeneratorModel;
 	        self.questions = self.model.get("questions");
-	        self.setQuestionPlaceholder();
+	        self.setQuestionPlaceholder();*/
         }, 100);
         
-        $('.input', this.el).each(function(){
+        /*$('.input', this.el).each(function(){
            $(this).keyup(function(event){
                 if(event.keyCode == 13){
                     self.submit();
@@ -79,16 +73,16 @@ main.views.MethodPaneView = main.views.PaneView.extend({
             $(this).blur(function(event){
                 self.setInputAlertTimer();
             });
-        });
+        });*/
   	},
     // ----------------- initElements
-    initElements: function() {
+    /*initElements: function() {
         $('.row-absolute', this.el).each(function(){
             $(this).css('opacity', '0');
         });
-    },
+    },*/
     // ----------------- saveElementsPos
-    posElements: function() {
+   /* posElements: function() {
         var self = this;
         var last_h = 0, padding = 0;
         this.to_y = 0;
@@ -119,7 +113,7 @@ main.views.MethodPaneView = main.views.PaneView.extend({
 	        input_to_left = ($(this).parent().outerWidth() - $(this).outerWidth())/2; 
 			$(this).css('left', input_to_left + 'px');
         });
-    },
+    },*/
 	// ----------------- setIdleTimer
     setIdleTimer: function() {
 	    var self = this;
@@ -133,7 +127,7 @@ main.views.MethodPaneView = main.views.PaneView.extend({
 	    clearTimeout(this.idleTimeout);
     },
     // ----------------- setInputAlertTimer
-    setInputAlertTimer: function() {
+    /*setInputAlertTimer: function() {
 	    var self = this;
 	    this.inputAlertTimeout = setTimeout(function(){
 		    self.beginInputAlert();
@@ -182,20 +176,20 @@ main.views.MethodPaneView = main.views.PaneView.extend({
 		   self.blinkInput();
 	   }, delay);	    
 	    
-    },
+    },*/
 	// ----------------- beforeActivate
     beforeActivate: function() {
 	    //this.setIdleTimer();
-	    this.setInputAlertTimer();
+	    //this.setInputAlertTimer();
 	},
 	// ----------------- beforeActivate
     beforeDeactivate: function() {
-	    this.unsetIdleTimer();
-	    this.unsetInputAlertTimer();
+	    /*this.unsetIdleTimer();
+	    this.unsetInputAlertTimer();*/
     },
     // ----------------- beforePosize
     beforePosize: function() {
-	    this.posElements();
+	   /* this.posElements();
 	    this.content_el.css('opacity', '1');
     	
     	//also set the height of the 
@@ -205,18 +199,15 @@ main.views.MethodPaneView = main.views.PaneView.extend({
 	    //position content to be nearly centered
 	    //var to_margin_top = ($(this.el).outerHeight() - $('.row-content', this.el).outerHeight())/2;
 	    //b/c content is abs positioned we need to set the height
-	    this.content_el.css('margin-top', to_margin_top + 'px');
-
+	    this.content_el.css('margin-top', to_margin_top + 'px');*/
     },
 	// ----------------- setQuestionPlaceholder
-	setQuestionPlaceholder:function(){
+	/*setQuestionPlaceholder:function(){
 		var quest = this.generateQuestion();
 		quest = this.PREPEND_PLACEHOLDER_STR + quest;
 		quest = this.shortenPlaceholder(quest);
 		//set the input placeholder to the 
 		//generated question
-		/*this.input_el.attr('placeholder', quest);
-		this.input_ta_el.attr('placeholder', quest);*/
         $('.input', this.el).each(function(){
             $(this).attr('placeholder', quest);
         });
@@ -254,14 +245,14 @@ main.views.MethodPaneView = main.views.PaneView.extend({
 		//also update the model 
         //so that you can send the question for reference
         //if the user sends a contact email
-	},
+	},*/
 	// ----------------- beginHide
     beginHide: function() {
 	    ////movethe h1 up
 	    /*this.h1_el.addClass(this.H1_TRANS_CLASS);
 	    this.p_el.addClass(this.P_TRANS_CLASS);*/
-	    this.input_cnt_el.removeClass(this.INPUT_BLINK_TRANS_CLASS);
-	    this.input_cnt_el.removeClass(this.INPUT_DULL_CLASS);
+	   // this.input_cnt_el.removeClass(this.INPUT_BLINK_TRANS_CLASS);
+	    //this.input_cnt_el.removeClass(this.INPUT_DULL_CLASS);
         //!!!!!!!!!!!!!!!!!!!!!
         
 	    //this.input_cnt_el.addClass(this.INPUT_CNT_TRANS_CLASS);
@@ -285,19 +276,23 @@ main.views.MethodPaneView = main.views.PaneView.extend({
 		$('.input-w-btn-container', this.el).remove();
 	},
 	// ----------------- onBtnAskClick
-	onBtnAskClick: function(){
+	/*onBtnAskClick: function(){
 		this.submit();
 		return false;
-	},
+	},*/
+	// ----------------- onBtnCastleClick
+    onBtnCastleClick:function(){
+	    
+    },
 	// ----------------- beforeDispose
 	beforeDispose: function(){
-		clearTimeout(this.inputAlertTimeout);
-	    clearTimeout(this.blinkTimeout);
+		//clearTimeout(this.inputAlertTimeout);
+	    //clearTimeout(this.blinkTimeout);
 		//this.input_el.off();
         //!!!!!!!!!!!!!!!!!!!
         //input_el
-        $('.input', this.el).each(function(){
+        /*$('.input', this.el).each(function(){
             $(this).off();
-        });
+        });*/
 	}
 });

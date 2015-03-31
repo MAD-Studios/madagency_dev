@@ -15,7 +15,7 @@
     <meta property="og:url" content="http://www.madstudios.net" />
     <meta property="og:image" content="http://www.madstudios.net/assets/img/share_logo.jpg" />
     <meta property="og:description" content="MAD Agency is a full service Advertising/Marketing/Production agency. We have the people needed to build your project here, onsite. This allows for tighter timelines and a more cohesive end result." />
-    <link href="css/corporate.css" type="text/css" rel="stylesheet" />
+    <link href="css/mad-agency.css" type="text/css" rel="stylesheet" />
     
     <script src="http://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
@@ -84,10 +84,50 @@
 		<!------------ INTRO ------------->
 		<section class="intro">
 			<div id="intro-pane" class="pane full-screen">
-		        <div class="row row-content">
-					<div class="column large-12 medium-12 small-12">
-					</div>
-	            </div>
+				<div class="intro">
+				
+			        <div class="row row-content">
+						<div class="column large-10 large-centered medium-12 small-12">
+							<div class="scroller">
+							<div class="scroller-content">
+								<div class="text-block">
+									<h1 class="text-shadow white">Hi. We are Mad Agency.<br>We do a lot of cool things for our clients.</h1>
+						        	<h1 class="text-shadow white">Here’s a list of some things we could do for you.</h1>
+									<div class="circle-arrow down"></div>
+								</div>
+								<div class="text-block text-block-to-fade">
+						        	<h2>Yes, we can help you retain your customers.</h2>
+									<h2>Yes, we can help you acquire new customers.</h2>
+									<h2>Yes, we can design a kick-ass logo for your business.</h2>
+									<h2>Yes, we can design a super-corporate logo too.</h2>
+									<h2>Yes, reluctantly, we can make that logo bigger.</h2>
+									<h2>Yes, we can build you a new web presence.</h2>
+									<h2>Yes, reluctantly, we can make that logo bigger.</h2>
+									<h2>Yes, we can build you a new web presence.</h2>
+									<h2>Yes, we can build you a website too.</h2>
+									<h2>Yes, we can develop an easy to use interface.</h2>
+									<h2>Yes, we can design a beer label for you.</h2>
+									<h2>Yes, we can design a sustainable six-pack carrier.</h2>
+									<h2>Yes, we can accept beer donations.</h2>
+									<h2>Yes, we can create an app for that.</h2>
+									<h2>Yes, we can develop a social media strategy.</h2>
+									<h2>Yes, we can design a cool Facebook post too.</h2>
+									<h2>Yes, we speak html5.</h2>
+									<h2>Yes, we build responsive.</h2>
+								</div>
+								<div class="text-block">
+									<h1 class="text-shadow white">That&rsquo;s a lot of cool things.<br>Right?</h1>
+									<h2>If you’re ready to start hearing &lsquo;yes&rsquo; to your businesses needs go ahead and contact us.</h2>
+									<h2>We&rsquo;d love to hear from you.</h2>
+									<h2>While your here take a look around and be sure to check out our <a href="">Creative Castle.</a></h2>
+								</div>
+							</div>	
+							</div>
+						</div>
+		            </div>
+		            <div class="gradient gradient-small gold"><div class="top"></div></div>
+		            
+				</div>
 			</div>
 		</section>
 		
@@ -307,36 +347,8 @@
 		
 	</div>
 	</section>
-	
-	<!------------ FOOTER ------------->
-	<section class="footer-sect">
-		<div id="footer">
-            <div class="row">
-                <div class="column large-12 small-12">
-                    <div class="main-nav-container">
-                        <div class="full-logo-sm full-logo-white full-logo logo"></div>
-                        <ul class="main-nav">
-                            <li><a class="btn btn-method" href="/">ABOVE THE FOLD</a></li>
-                            <li><a class="btn btn-how" href="/how">HOW WE ROLL</a></li>
-                            <li><a class="btn btn-work" href="/work">THE WORK</a></li>
-                            <li><a class="btn btn-team" href="/team">OUR TEAM</a></li>
-                            <li><a class="btn btn-disciplines" href="/disciplines">DISCIPLINES</a></li>
-                            <li><a class="btn btn-contact" href="/contact">CONTACT US</a></li>
-                        </ul>
-                    </div>
-                    
-                    <ul class="social-nav">
-						<li><a class="btn btn-google" href="https://plus.google.com/106462510460087062650" target=_blank><i class="fa fa-google-plus"></i></a></li>
-						<li><a class="btn btn-instagram" href="http://instagram.com/madstudiosco" target=_blank><i class="fa fa-instagram"></i></a></li>
-						<li><a class="btn btn-facebook" href="https://www.facebook.com/madstudiosco" target=_blank><i class="fa fa-facebook-official"></i></a></li>
-						<li><a class="btn btn-twitter" href="https://twitter.com/madstudiosco" target=_blank><i class="fa fa-twitter"></i></a></li>
-					</ul>
-                </div>
-            </div>
-		</div>
-	</section>
-	
-	<!------------ NAV ------------->
+		
+	<!------------ MAIN NAV ------------->
 	<div id="main-nav-container">
 	    <div class="divider shadow-bordered"></div>
         <div class="row">
@@ -353,6 +365,8 @@
 			</div>
         </div>
 	</div>
+	
+	<?php include 'inc/footer.php';?>
 	
 </div>
 

@@ -1,7 +1,7 @@
 // _________________________________________________________________________ LoaderView
 main.views.LoaderView = Backbone.View.extend({
-	GOLD_GRAD_TRANS_CLASS: "gold-grad-transition",
-	GOLD_GRAD_TRANS_CLASS_OUT: "gold-grad-transition-out",
+	GOLD_GRAD_TRANS_CLASS: "gradient-transition",
+	GOLD_GRAD_TRANS_CLASS_OUT: "gradient-transition-out",
 	INFO_TRANS_CLASS: "info-transition",
 	FADE_CLASS: "fade-fast",
 	LOAD_RATIO_TRANS_CLASS: "loaded-ratio-indicator-transition",
@@ -66,7 +66,7 @@ main.views.LoaderView = Backbone.View.extend({
     createBG: function() {
 	    this.rainbowContainer_el = $('<div class="rainbow-container"></div>');
 	    $(this.el).append(this.rainbowContainer_el);
-	    this.goldGrad_el = $('<div class="gold-grad"></div>');
+	    this.goldGrad_el = $('<div class="gradient"></div>');
 	    this.goldGrad_el_top = $('<div class="top"></div>');
 	    this.goldGrad_el_bottom = $('<div class="bottom"></div>');
 	    this.goldGrad_el.append(this.goldGrad_el_top);

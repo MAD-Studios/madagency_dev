@@ -48,7 +48,7 @@ main.views.PaneContainerView = Backbone.View.extend({
         });
         //set the methodPaneView to active
         this.methodPaneView.activate();
-        this.curPaneView =  this.methodPaneView;
+        this.curPaneView = this.methodPaneView;
         
         //work pane ----
         $(this.workPaneView.el).on(this.workPaneView.VIDEO_ADDED, function(event){
