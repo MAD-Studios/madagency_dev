@@ -32,6 +32,7 @@ $contactPaneInputMaxWidth: 400px;
 	.intro{
 		position:relative;
 		width: 100%;
+		overflow: hidden;
 		.gradient.gold{
 			position: absolute;
 			bottom: 0;

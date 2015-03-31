@@ -2,15 +2,16 @@
 main.views.PaneContainerView = Backbone.View.extend({
 	PANE_ACTIVATE: "pane_activate",
 	PANE_ID_END_STR: "-pane",
-	METHOD_PANE_SUBMIT: "method_pane_submit",
-	METHOD_PANE_IDLE: "method_pane_idle",
+	INTRO_PANE_SUBMIT: "intro_pane_submit",
+	INTRO_PANE_IDLE: "intro_pane_idle",
 	SCROLL_TO_BOTTOM: "scroll_to_bottom",
 	DOWN: "down",
 	UP: "up",
 	offset: 0,
+	nav_offset: 0,
 	paneViews: [],
 	curPaneView: {},
-	defaultPaneId: "method",
+	defaultPaneId: "intro",
     // ----------------- initialize
     initialize: function() {
         console.log("PaneContainerView ---- initialize");
@@ -23,8 +24,8 @@ main.views.PaneContainerView = Backbone.View.extend({
         var pane_view;
         this.paneViews = [];
         
-        this.methodPaneView = new main.views.MethodPaneView( {el: $('#method-pane', this.el)} );
-        this.paneViews.push(this.methodPaneView);
+        this.introPaneView = new main.views.IntroPaneView( {el: $('#intro-pane', this.el)} );
+        this.paneViews.push(this.introPaneView);
         this.howPaneView = new main.views.HowPaneView( {el: $('#how-pane', this.el)} );
         this.paneViews.push(this.howPaneView);
         this.workPaneView = new main.views.WorkPaneView( {el: $('#work-pane', this.el)} );
@@ -38,17 +39,17 @@ main.views.PaneContainerView = Backbone.View.extend({
         
         //set unique properties
         //for each pane
-        //method pane -------
-        $(this.methodPaneView.el).on(this.methodPaneView.SUBMIT, function(event){
-	        $(self.el).trigger(self.METHOD_PANE_SUBMIT);
+        //intro pane -------
+        $(this.introPaneView.el).on(this.introPaneView.SUBMIT, function(event){
+	        $(self.el).trigger(self.INTRO_PANE_SUBMIT);
         });
-        //listen for the method apne idle event
-        $(this.methodPaneView.el).on(this.methodPaneView.IDLE, function(event){
-	        $(self.el).trigger(self.METHOD_PANE_IDLE);
+        //listen for the intro apne idle event
+        $(this.introPaneView.el).on(this.introPaneView.IDLE, function(event){
+	        $(self.el).trigger(self.INTRO_PANE_IDLE);
         });
-        //set the methodPaneView to active
-        this.methodPaneView.activate();
-        this.curPaneView = this.methodPaneView;
+        //set the introPaneView to active
+        this.introPaneView.activate();
+        this.curPaneView = this.introPaneView;
         
         //work pane ----
         $(this.workPaneView.el).on(this.workPaneView.VIDEO_ADDED, function(event){
@@ -75,7 +76,8 @@ main.views.PaneContainerView = Backbone.View.extend({
 		}        
         setTimeout(function(){
 	        self.lastScrollTop = $(window).scrollTop();
-	        self.initPanes();
+	        //self.initPanes();
+	        //self.posize();
 	        setTimeout(function(){
 		        self.checkPanes();
 	        }, 400);
@@ -84,7 +86,7 @@ main.views.PaneContainerView = Backbone.View.extend({
 	},
 	// ----------------- updateForUnsupportedBrowsers
     updateForUnsupportedBrowsers: function() {
-	    this.methodPaneView.updateForUnsupportedBrowsers();
+	    this.introPaneView.updateForUnsupportedBrowsers();
 	},
 	// ----------------- initPanes
     initPanes: function() {
@@ -106,12 +108,13 @@ main.views.PaneContainerView = Backbone.View.extend({
     },
     // ----------------- posize
     posize: function() {
-	    this.methodPaneView.posize();
-	    this.howPaneView.posize();
-	    this.workPaneView.posize();
-	    this.teamPaneView.posize();
-	    this.disciplinesPaneView.posize();
-	    this.contactPaneView.posize();
+	    var pane_view;
+	    this.introPaneView.nav_offset = this.nav_offset;
+	    console.log("--------- this.introPaneView.nav_offset = " + this.introPaneView.nav_offset);
+	    for(var i=0;i<this.paneViews.length;i++){
+	    	pane_view = this.paneViews[i];
+	    	if(pane_view.posize) pane_view.posize();
+		}
 	    this.initPanes();
     },
     // ----------------- checkPanes
@@ -184,7 +187,7 @@ main.views.PaneContainerView = Backbone.View.extend({
     // ----------------- beginHide
     beginHide: function() {
 	    this.scrollToTop();
-	    this.methodPaneView.beginHide();
+	    this.introPaneView.beginHide();
     },
     // ----------------- onAutoScrollStart
     onAutoScrollStart: function() {

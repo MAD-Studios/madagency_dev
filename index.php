@@ -43,7 +43,8 @@
     <script src="js/views/CorporateView.js" type="text/javascript"></script>
     <script src="js/views/PaneContainerView.js" type="text/javascript"></script>
     <script src="js/views/PaneView.js" type="text/javascript"></script>
-    <script src="js/views/MethodPaneView.js" type="text/javascript"></script>
+    <script src="js/views/IntroPaneView.js" type="text/javascript"></script>
+    <script src="js/views/CastleGatewayView.js" type="text/javascript"></script>
     <script src="js/views/HowPaneView.js" type="text/javascript"></script>
     <script src="js/views/WorkPaneView.js" type="text/javascript"></script>
     <script src="js/views/TeamPaneView.js" type="text/javascript"></script>
@@ -82,7 +83,7 @@
 	<div id="pane-container">
 	
 		<!------------ INTRO ------------->
-		<section class="intro">
+		<section class="intro-sect">
 			<div id="intro-pane" class="pane full-screen">
 				<div class="intro">
 				

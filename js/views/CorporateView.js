@@ -53,8 +53,8 @@ main.views.CorporateView = Backbone.View.extend({
 	    });
        this.modernCheck();
        setTimeout(function(){
-           self.paneContainerView.offset = $(self.headerView.el).outerHeight();
-	       if(self.template_load_external) self.posize();
+	       //if(self.template_load_external) self.posize();
+	       self.posize();
 	       self.show();
        }, 100);
        return this;
@@ -73,8 +73,11 @@ main.views.CorporateView = Backbone.View.extend({
     posize: function() {
 	    $(this.el).css('height', $(window).height() + 'px');
 	    $('.corporate', this.el).css('height', $(window).height() + 'px');
-	     this.paneContainerView.posize();
-	     this.mainNavContainerView.posize();
+	    this.paneContainerView.nav_offset = $(this.mainNavContainerView.el).outerHeight();
+	    console.log("-------- this.paneContainerView.nav_offset = " + this.paneContainerView.nav_offset);
+        this.paneContainerView.offset = $(this.headerView.el).outerHeight();
+	    this.paneContainerView.posize();
+	    this.mainNavContainerView.posize();
     },
     // ----------------- unfixHeader
     unfixHeader: function(){

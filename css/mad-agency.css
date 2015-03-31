@@ -4756,7 +4756,8 @@ $xxLgMargin: 60px;*/
   min-height: 520px; }
   #intro-pane .intro {
     position: relative;
-    width: 100%; }
+    width: 100%;
+    overflow: hidden; }
     #intro-pane .intro .gradient.gold {
       position: absolute;
       bottom: 0;

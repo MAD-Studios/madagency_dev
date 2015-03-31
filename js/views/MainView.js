@@ -24,47 +24,47 @@ main.views.MainView = Backbone.View.extend({
     posize: function() {
 	    $(this.el).css('height', $(window).height() + 'px');
 	    if(this.corporateView && this.corporateView.posize) this.corporateView.posize();
-	    if(this.storyView && this.storyView.posize) this.storyView.posize();
+	    if(this.castleView && this.castleView.posize) this.castleView.posize();
     },
     // ----------------- scrollToPane
     scrollToPane: function(id) {
 	   this.corporateView.scrollWindowTo(id);
 	   this.corporateView.markNav(id);
     },
-    // ----------------- openStory
-    openStory: function() {
+    // ----------------- openCastle
+    openCastle: function() {
 	    var self = this;
-	    var story_div;
-	    if(!this.storyView) this.storyView = new main.views.StoryView( { el: $('.story', this.el) } );
+	    var castle_div;
+	    if(!this.castleView) this.castleView = new main.views.CastleView( { el: $('.castle', this.el) } );
 	    else {
-			this.storyView = new main.views.StoryView();
-		    $(this.el).append($(this.storyView.el));
+			this.castleView = new main.views.CastleView();
+		    $(this.el).append($(this.castleView.el));
 		}
-	    //create Story view
-	    $(this.storyView.el).on(this.storyView.EXIT, function(event){
-		    self.closeStory();
+	    //create Castle view
+	    $(this.castleView.el).on(this.castleView.EXIT, function(event){
+		    self.closeCastle();
 	    });
-	    $(this.storyView.el).on(this.storyView.HIDE_COMPLETE, function(event){
-		    self.handleHideStoryComplete();
+	    $(this.castleView.el).on(this.castleView.HIDE_COMPLETE, function(event){
+		    self.handleHideCastleComplete();
 	    });
-	    $(this.storyView.el).addClass(this.STAGE_CENTER_CLASS);
-	    this.storyView.render();
-	    this.storyView.startLoader();
+	    $(this.castleView.el).addClass(this.STAGE_CENTER_CLASS);
+	    this.castleView.render();
+	    this.castleView.startLoader();
 	    setTimeout(function(){
-	    	self.storyView.show();
+	    	self.castleView.show();
 		    setTimeout(function(){
 			    self.removeCorporate();
 		    }, 1200);
 	    }, 100);
 	},
-	// ----------------- closeStorys
-    closeStory: function() {
+	// ----------------- closeCastles
+    closeCastle: function() {
 	    var self = this;
-	    //first hide the story
-	    this.storyView.hide();	    
+	    //first hide the castle
+	    this.castleView.hide();	    
 	},
-    // ----------------- handleHideStoryComplete
-    handleHideStoryComplete: function() {
+    // ----------------- handleHideCastleComplete
+    handleHideCastleComplete: function() {
 	    var self = this;
 	    setTimeout(function(){
 	        $(document.body).height($(window).height());
@@ -77,22 +77,22 @@ main.views.MainView = Backbone.View.extend({
 		    self.initiateCorporate();
 		    //add the left transition class
 		    $(self.corporateView.el).addClass(self.STAGE_TRANSITION);
-		    $(self.storyView.el).addClass(self.STAGE_TRANSITION);
+		    $(self.castleView.el).addClass(self.STAGE_TRANSITION);
 		    $(self.corporateView.el).removeClass(self.STAGE_CENTER_CLASS);
 		    $(self.corporateView.el).addClass(self.STAGE_LEFT_CLASS);
 		    $(self.corporateView.el).css('top', '0');
 		    //set it to the left of the stage
-		    //transition the story view 
+		    //transition the castle view 
 		    //out to the right
 		    //set it from fixed to absolute
 		    setTimeout(function(){
-			    $(self.storyView.el).css('position', 'absolute');
+			    $(self.castleView.el).css('position', 'absolute');
 			    $(self.corporateView.el).removeClass(self.STAGE_CENTER_CLASS);
-			    $(self.storyView.el).addClass(self.STAGE_RIGHT_CLASS);     
+			    $(self.castleView.el).addClass(self.STAGE_RIGHT_CLASS);     
 			    //add webkit transition end listener
-			    $(self.storyView.el).on('transitionend webkitTransitionEnd oTransitionEnd', function(){
-				    $(self.storyView.el).off('transitionend webkitTransitionEnd oTransitionEnd');
-				    self.removeStory();
+			    $(self.castleView.el).on('transitionend webkitTransitionEnd oTransitionEnd', function(){
+				    $(self.castleView.el).off('transitionend webkitTransitionEnd oTransitionEnd');
+				    self.removeCastle();
 				});
 			    //trasnition th ecorporate view
 			    //in from the left
@@ -101,18 +101,18 @@ main.views.MainView = Backbone.View.extend({
 		    }, 300);
 		 }, 100);
     },
-     // ----------------- moveIntoStory
-    moveIntoStory: function(){
+     // ----------------- moveIntoCastle
+    moveIntoCastle: function(){
 	    //first begin the hide animation 
 	    //of the corporate view
-	    //then open/add the story view 
+	    //then open/add the castle view 
 	    //so that the memory spike during the add
 	    //does not affect the performance of
 	    //the hide animation
 	    var self = this;
 	    this.beginHideCorporateView();
 	    setTimeout(function(){
-		    self.openStory();
+		    self.openCastle();
 	    }, 1400);
     },
     // ----------------- initiateCorporate
@@ -133,14 +133,14 @@ main.views.MainView = Backbone.View.extend({
 	    }
 	    //append corporate view
 	    $(this.corporateView.el).on(this.corporateView.CORPORATE_SUBMIT, function(event){
-		    self.moveIntoStory();
+		    self.moveIntoCastle();
         });
         //listen fo rthe method pane idle event
         //so that you can 
-        //automatically go into the story
+        //automatically go into the castle
         //when the method pane is idle
 	    $(this.corporateView.el).on(this.corporateView.METHOD_PANE_IDLE, function(event){
-	    	self.moveIntoStory();
+	    	self.moveIntoCastle();
 	    });
     },
     // ----------------- beginHideCorporateView
@@ -153,11 +153,11 @@ main.views.MainView = Backbone.View.extend({
 	    $(this.corporateView.el).remove();
 	    $(this.corporateView.el).off();
     },
-    // ----------------- removeStory
-    removeStory: function() {
-	    this.storyView.dispose(); 
-	    $(this.storyView.el).css('visibility', 'hidden');
-	    $(this.storyView.el).remove();
-	    $(this.storyView.el).off();
+    // ----------------- removeCastle
+    removeCastle: function() {
+	    this.castleView.dispose(); 
+	    $(this.castleView.el).css('visibility', 'hidden');
+	    $(this.castleView.el).remove();
+	    $(this.castleView.el).off();
     }
 });
