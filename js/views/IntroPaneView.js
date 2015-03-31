@@ -6,6 +6,7 @@ main.views.IntroPaneView = main.views.PaneView.extend({
     LAST_ELEMENT_ANIM_OFFSET: 900,
 	UNSUPPOSRTED_CLASS: "unsupported-browser",
 	IDLE: "idle",
+	PREVENT_BODY_SCROLL: "prevent_body_scroll",
 	//!!!!!!!!!!!!!!!!!!!
 	UNSUPPORTED_H1_COPY: "We noticed you aren’t running at full optimization",
 	UNSUPPORTED_P_COPY: 'We recommend you upgrade your browser to the latest version of Safari or <a href="https://www.google.com/intl/en_US/chrome/browser/">Chrome</a>.',
@@ -15,13 +16,15 @@ main.views.IntroPaneView = main.views.PaneView.extend({
 	offset: 0,
 	nav_offset: 0,
 	to_y: 0,
+	elementManipulator: main.utils.ElementManipulator,
 	events:{
 		'click .btn-castle': 'onBtnCastleClick'
 	},
 	// ----------------- initialize
     initialize: function() {
         console.log("IntroPaneView ---- initialize"); 
-        var self = this;
+        //prevent document scroll
+        this.elementManipulator.preventDocumentScroll();
     },
     // ----------------- beforeRender
     beforeRender: function() {
@@ -59,7 +62,6 @@ main.views.IntroPaneView = main.views.PaneView.extend({
     	// to the heigth of teh window 
     	// minus  nav_offset (height of mainConatiner) 
     	var to_h = $(window).height() - this.nav_offset;
-    	console.log("beforePosize -----  nav_offset = " + this.nav_offset);
     	this.intro_el.css('height', to_h + 'px')
     },
     // ----------------- show

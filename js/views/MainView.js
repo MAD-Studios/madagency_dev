@@ -5,6 +5,7 @@ main.views.MainView = Backbone.View.extend({
 	STAGE_RIGHT_CLASS: "stage-right",
 	STAGE_TRANSITION: "stage-transition",
 	EXIT_STORY_PANE: "contact",
+	elementManipulator: main.utils.ElementManipulator,
     // ----------------- initialize
     initialize: function() {
         console.log("MainView ---- initialize");
@@ -15,6 +16,9 @@ main.views.MainView = Backbone.View.extend({
         console.log("MainView ---- initialize");
         var self = this;
         this.initiateCorporate();
+        setTimeout(function(){
+	        self.posize();
+        }, 100);
         $(window).resize(
 	       function(){ self.posize(); }
         );
@@ -22,9 +26,16 @@ main.views.MainView = Backbone.View.extend({
 	},
 	// ----------------- posize
     posize: function() {
-	    $(this.el).css('height', $(window).height() + 'px');
+    	console.log("MainView posize");
+	   // $(this.el).css('height', $(window).height() + 'px');
 	    if(this.corporateView && this.corporateView.posize) this.corporateView.posize();
 	    if(this.castleView && this.castleView.posize) this.castleView.posize();
+	    if($(document.documentElement).hasClass(this.elementManipulator.NO_DOCUMENT_SCROLL_CLASS)){
+		    $(this.el).css('height', $(window).height() + 'px');
+	    }
+	    else{
+		    $(this.el).css('height', $(this.corporateView.el).height() + 'px');
+	    }
     },
     // ----------------- scrollToPane
     scrollToPane: function(id) {

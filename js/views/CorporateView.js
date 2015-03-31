@@ -71,13 +71,14 @@ main.views.CorporateView = Backbone.View.extend({
     },
 	// ----------------- posize
     posize: function() {
-	    $(this.el).css('height', $(window).height() + 'px');
-	    $('.corporate', this.el).css('height', $(window).height() + 'px');
+	   // $(this.el).css('height', $(window).height() + 'px');
+	    //$('.corporate', this.el).css('height', $(window).height() + 'px');
 	    this.paneContainerView.nav_offset = $(this.mainNavContainerView.el).outerHeight();
-	    console.log("-------- this.paneContainerView.nav_offset = " + this.paneContainerView.nav_offset);
         this.paneContainerView.offset = $(this.headerView.el).outerHeight();
 	    this.paneContainerView.posize();
 	    this.mainNavContainerView.posize();
+	    
+	     $(this.el).css('height', $(this.paneContainerView.el).outerHeight() + 'px');
     },
     // ----------------- unfixHeader
     unfixHeader: function(){

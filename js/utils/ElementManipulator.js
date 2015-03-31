@@ -7,6 +7,7 @@ main.utils.ElementManipulator = {
 		FIT: "scale_to_fit",
 		COVER: "scale_to_cover"
 	},
+	NO_DOCUMENT_SCROLL_CLASS: "no-document-scroll",
 	//======================================
 	// manipulate element
 	// dimmensions
@@ -98,5 +99,11 @@ main.utils.ElementManipulator = {
 
 		$(el).css('width', to_width + 'px');
 		$(el).css('height', to_height + 'px');
-	}
+	},
+	//--------------------------------------
+	// preventDocumentScroll
+	//--------------------------------------
+	preventDocumentScroll:function(){
+		$(document.documentElement).addClass(this.NO_DOCUMENT_SCROLL_CLASS);
+    }
 };

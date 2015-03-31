@@ -87,10 +87,12 @@
 			<div id="intro-pane" class="pane full-screen">
 				<div class="intro">
 				
+					<div class="scroller">
+					<div class="scroller-content">
+							
 			        <div class="row row-content">
 						<div class="column large-10 large-centered medium-12 small-12">
-							<div class="scroller">
-							<div class="scroller-content">
+
 								<div class="text-block">
 									<h1 class="text-shadow white">Hi. We are Mad Agency.<br>We do a lot of cool things for our clients.</h1>
 						        	<h1 class="text-shadow white">Here’s a list of some things we could do for you.</h1>
@@ -122,10 +124,13 @@
 									<h2>We&rsquo;d love to hear from you.</h2>
 									<h2>While your here take a look around and be sure to check out our <a href="">Creative Castle.</a></h2>
 								</div>
-							</div>	
-							</div>
+
 						</div>
 		            </div>
+		            
+		            </div>	
+					</div>
+					
 		            <div class="gradient gradient-small gold"><div class="top"></div></div>
 		            
 				</div>
