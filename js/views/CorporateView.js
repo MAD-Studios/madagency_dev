@@ -54,9 +54,9 @@ main.views.CorporateView = Backbone.View.extend({
        this.modernCheck();
        setTimeout(function(){
 	       //if(self.template_load_external) self.posize();
-	       self.posize();
+	       //self.posize();
 	       self.show();
-       }, 100);
+       }, 100); 
        return this;
 	},
 	// ----------------- modernCheck
@@ -78,7 +78,8 @@ main.views.CorporateView = Backbone.View.extend({
 	    this.paneContainerView.posize();
 	    this.mainNavContainerView.posize();
 	    
-	     $(this.el).css('height', $(this.paneContainerView.el).outerHeight() + 'px');
+	    var to_height = $(this.paneContainerView.el).outerHeight() + $('#footer', this.el).outerHeight() - 2; 
+	    $(this.el).css('height', to_height + 'px');
     },
     // ----------------- unfixHeader
     unfixHeader: function(){

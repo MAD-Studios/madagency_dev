@@ -62,7 +62,17 @@ main.views.IntroPaneView = main.views.PaneView.extend({
     	// to the heigth of teh window 
     	// minus  nav_offset (height of mainConatiner) 
     	var to_h = $(window).height() - this.nav_offset;
-    	this.intro_el.css('height', to_h + 'px')
+    	var to_margin = 0;
+    	var self = this;
+    	this.intro_el.css('height', to_h + 'px');
+    	
+    	$('.text-block.vertical-center', this.el).each(function(){
+	    	//give each a margin top and bottom
+	    	//according to window height
+	    	to_margin = (($(window).height() - self.nav_offset - $(this).outerHeight())/2) + 'px';
+			$(this).css('marginTop', to_margin);
+			$(this).css('marginBottom', to_margin);
+    	});
     },
     // ----------------- show
     show: function() {

@@ -34,6 +34,7 @@
     <script src="js/main.js" type="text/javascript"></script>
     <script src="js/utils/TemplateLoader.js" type="text/javascript"></script>
     <script src="js/utils/ElementManipulator.js" type="text/javascript"></script>
+    <script src="js/utils/DeviceDetector.js" type="text/javascript"></script>
     <script src="js/models/PaneModel.js" type="text/javascript"></script>
     <script src="js/models/SceneModel.js" type="text/javascript"></script>
     <script src="js/models/ResponseGeneratorModel.js" type="text/javascript"></script>
@@ -93,7 +94,7 @@
 			        <div class="row row-content">
 						<div class="column large-10 large-centered medium-12 small-12">
 
-								<div class="text-block">
+								<div class="text-block vertical-center">
 									<h1 class="text-shadow white">Hi. We are Mad Agency.<br>We do a lot of cool things for our clients.</h1>
 						        	<h1 class="text-shadow white">Here’s a list of some things we could do for you.</h1>
 									<div class="circle-arrow down"></div>
@@ -118,7 +119,7 @@
 									<h2>Yes, we speak html5.</h2>
 									<h2>Yes, we build responsive.</h2>
 								</div>
-								<div class="text-block">
+								<div class="text-block vertical-center">
 									<h1 class="text-shadow white">That&rsquo;s a lot of cool things.<br>Right?</h1>
 									<h2>If you’re ready to start hearing &lsquo;yes&rsquo; to your businesses needs go ahead and contact us.</h2>
 									<h2>We&rsquo;d love to hear from you.</h2>

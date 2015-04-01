@@ -31,7 +31,7 @@ main.Router = Backbone.Router.extend({
 	 autoScrolling: false,
 	 unrouted: true,
      routes:{
-        "": "method",
+        "": "intro",
         "how": "how",
         "work": "work",
         "team": "team",

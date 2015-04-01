@@ -18,7 +18,7 @@ main.views.MainView = Backbone.View.extend({
         this.initiateCorporate();
         setTimeout(function(){
 	        self.posize();
-        }, 100);
+        }, 300);
         $(window).resize(
 	       function(){ self.posize(); }
         );
@@ -34,7 +34,7 @@ main.views.MainView = Backbone.View.extend({
 		    $(this.el).css('height', $(window).height() + 'px');
 	    }
 	    else{
-		    $(this.el).css('height', $(this.corporateView.el).height() + 'px');
+		    $(this.el).css('height', $(this.corporateView.el).outerHeight() + 'px');
 	    }
     },
     // ----------------- scrollToPane
