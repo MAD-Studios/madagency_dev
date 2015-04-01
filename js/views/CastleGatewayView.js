@@ -271,6 +271,16 @@ main.views.CastleGatewayView = Backbone.View.extend({
 		this.submit();
 		return false;
 	},
+	// ----------------- updateForUnsupportedBrowsers
+	updateForUnsupportedBrowsers:function(){
+		//set the h1 text 
+		$('h1', this.el).html(this.UNSUPPORTED_H1_COPY);
+		//set the p text
+		$('p', this.el).html(this.UNSUPPORTED_P_COPY);
+		$(this.el).addClass(this.UNSUPPOSRTED_CLASS);
+		//remove the question
+		$('.input-w-btn-container', this.el).remove();
+	},
 	// ----------------- beforeDispose
 	beforeDispose: function(){
 		clearTimeout(this.inputAlertTimeout);

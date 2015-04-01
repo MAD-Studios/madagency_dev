@@ -93,46 +93,46 @@
 							
 			        <div class="row row-content">
 						<div class="column large-10 large-centered medium-12 small-12">
-
-								<div class="text-block vertical-center">
-									<h1 class="text-shadow white">Hi. We are Mad Agency.<br>We do a lot of cool things for our clients.</h1>
-						        	<h1 class="text-shadow white">Here’s a list of some things we could do for you.</h1>
-									<div class="circle-arrow down"></div>
-								</div>
-								<div class="text-block text-block-to-fade">
-						        	<h2>Yes, we can help you retain your customers.</h2>
-									<h2>Yes, we can help you acquire new customers.</h2>
-									<h2>Yes, we can design a kick-ass logo for your business.</h2>
-									<h2>Yes, we can design a super-corporate logo too.</h2>
-									<h2>Yes, reluctantly, we can make that logo bigger.</h2>
-									<h2>Yes, we can build you a new web presence.</h2>
-									<h2>Yes, reluctantly, we can make that logo bigger.</h2>
-									<h2>Yes, we can build you a new web presence.</h2>
-									<h2>Yes, we can build you a website too.</h2>
-									<h2>Yes, we can develop an easy to use interface.</h2>
-									<h2>Yes, we can design a beer label for you.</h2>
-									<h2>Yes, we can design a sustainable six-pack carrier.</h2>
-									<h2>Yes, we can accept beer donations.</h2>
-									<h2>Yes, we can create an app for that.</h2>
-									<h2>Yes, we can develop a social media strategy.</h2>
-									<h2>Yes, we can design a cool Facebook post too.</h2>
-									<h2>Yes, we speak html5.</h2>
-									<h2>Yes, we build responsive.</h2>
-								</div>
-								<div class="text-block vertical-center">
-									<h1 class="text-shadow white">That&rsquo;s a lot of cool things.<br>Right?</h1>
-									<h2>If you’re ready to start hearing &lsquo;yes&rsquo; to your businesses needs go ahead and contact us.</h2>
-									<h2>We&rsquo;d love to hear from you.</h2>
-									<h2>While your here take a look around and be sure to check out our <a href="">Creative Castle.</a></h2>
-								</div>
+							<!-- absolue rows for animation performance -->
+							<div class="row-absolute"><div class="text-block vertical-center">
+								<h1 class="text-shadow white">Hi. We are Mad Agency.<br>We do a lot of cool things for our clients.</h1>
+					        	<h1 class="text-shadow white">Here’s a list of some things we could do for you.</h1>
+								<div class="row-absolute row-arrow-container"><div class="arrow circle-arrow down"></div></div>
+							</div></div>
+							<div class="row-absolute"><div class="text-block text-block-to-fade">
+					        	<h2>Yes, we can help you retain your customers.</h2>
+								<h2>Yes, we can help you acquire new customers.</h2>
+								<h2>Yes, we can design a kick-ass logo for your business.</h2>
+								<h2>Yes, we can design a super-corporate logo too.</h2>
+								<h2>Yes, reluctantly, we can make that logo bigger.</h2>
+								<h2>Yes, we can build you a new web presence.</h2>
+								<h2>Yes, reluctantly, we can make that logo bigger.</h2>
+								<h2>Yes, we can build you a new web presence.</h2>
+								<h2>Yes, we can build you a website too.</h2>
+								<h2>Yes, we can develop an easy to use interface.</h2>
+								<h2>Yes, we can design a beer label for you.</h2>
+								<h2>Yes, we can design a sustainable six-pack carrier.</h2>
+								<h2>Yes, we can accept beer donations.</h2>
+								<h2>Yes, we can create an app for that.</h2>
+								<h2>Yes, we can develop a social media strategy.</h2>
+								<h2>Yes, we can design a cool Facebook post too.</h2>
+								<h2>Yes, we speak html5.</h2>
+								<h2>Yes, we build responsive.</h2>
+							</div></div>
+							<div class="row-absolute"><div class="text-block vertical-center">
+								<h1 class="text-shadow white">That&rsquo;s a lot of cool things.<br>Right?</h1>
+								<h2>If you’re ready to start hearing &lsquo;yes&rsquo; to your businesses needs go ahead and contact us.</h2>
+								<h2>We&rsquo;d love to hear from you.</h2>
+								<h2>While your here take a look around and be sure to check out our <a href="#">Creative Castle.</a></h2>
+							</div></div>
 
 						</div>
 		            </div>
 		            
+		            <div class="gradient gradient-small gold"><div class="top"></div></div>
+		           		            
 		            </div>	
 					</div>
-					
-		            <div class="gradient gradient-small gold"><div class="top"></div></div>
 		            
 				</div>
 			</div>

@@ -1,12 +1,14 @@
-.row {
+.row,
+.row-absolute{
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box; 
 }
+.row-float{
+	width: 100%; float:left;
+}
 .row-absolute{
-	box-sizing: border-box;
-	-webkit-box-sizing: border-box; 
-	-moz-box-sizing: border-box; 
+	width: 100%; position:absolute;
 }
 .columns,
 .column {

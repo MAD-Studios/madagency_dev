@@ -44,12 +44,6 @@ $iconMargin: $medMargin;
         border-top: 1px solid $navy;
     }
 }
-.row-float{
-	width: 100%; float:left;
-}
-.row-absolute{
-	width: 100%; position:absolute;
-}
 input{
 	display: block;
     height: $inputHeight;

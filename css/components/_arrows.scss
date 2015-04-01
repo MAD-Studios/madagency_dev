@@ -3,9 +3,10 @@
 .circle-arrow {
 	width: 20px; height: 20px;
 	display: block;
-	margin: $xLgMargin auto;
+	/*margin: $xLgMargin auto;*/
 	background-color: $lightBlue;
 	background-image: url(../assets/images/corporate/png/down-arrow.png);
+	/*!!!!!!!!!!!!!!!!!!!!!*/
 	background-size: auto 20px;
 	background-position: center top;
 	background-repeat: no-repeat;
