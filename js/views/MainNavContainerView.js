@@ -9,7 +9,7 @@ main.views.MainNavContainerView = Backbone.View.extend({
 	HIDE_ANIMATE_OFFSET: 200,
 	H_LOGO_CLASS: "h-logo",
 	MENU_OFFSET: 10,
-	MIN_TOP: 422,
+	MIN_TOP: 0,
 	OFF_NAV_HEIGHT: '7px',
 	default_top: 0, 
 	is_fixed: false,
@@ -79,6 +79,7 @@ main.views.MainNavContainerView = Backbone.View.extend({
     posize: function() {
 	   //if does not have class top-sticky
 	   //position it at the bottom of the window
+	   this.default_height = $(this.el).outerHeight();
 	   this.default_top = $(window).height() - this.default_height;
 	   if(this.default_top < this.MIN_TOP) this.default_top = this.MIN_TOP;
 	   if( !$(this.el).hasClass(this.TOP_STICKY_CLASS) ){

@@ -9,6 +9,7 @@
 	z-index: 1;
 	overflow-y: scroll;
 	overflow-x: hidden;
+	-webkit-overflow-scrolling: touch;
 }
 /*.small
 .scroller{

@@ -3843,26 +3843,22 @@ p.white {
 .text-shadow.white {
   text-shadow: 0 0.036em #FDA139; }
 
-.row,
-.row-absolute {
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box; }
-
 .row-float {
   width: 100%;
   float: left; }
 
 .row-absolute {
   width: 100%;
-  position: absolute; }
+  position: absolute;
+  left: 0; }
 
 .columns,
 .column {
-  position: relative;
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box; }
+  /*@media only screen and (max-width: 40em) {
+  	padding-left: 0;
+  	padding-right: 0;
+  }*/
+  position: relative; }
 
 /* The Grid to override foundations styles for ie8---------------------- */
 .lt-ie9 .row {
@@ -4134,24 +4130,9 @@ input {
   @media only screen and (max-width: 40em) {
     .columns,
     .column {
-      padding-left: 1, 75em;
-      padding-right: 1, 75em; } }
+      padding-left: 1em;
+      padding-right: 1em; } }
 
-/*@media only screen {
-  .cols {
-	  padding-left: $colPadding;
-	  padding-right: $colPadding;
-	  /*@media only screen and (max-width: 40em) {
-	    padding-left: $smColPadding;
-		padding-right: $smColPadding;
-	  }*/
- /* }
-}*/
-/*x-small display*/
-@media only screen and (max-width: 580px) {
-  .row {
-    padding-left: 12px;
-    padding-right: 12px; } }
 .corporate {
   width: 100%;
   position: absolute;
@@ -4489,7 +4470,8 @@ $xxLgMargin: 60px;*/
   height: 100%;
   z-index: 1;
   overflow-y: scroll;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch; }
 
 /*.small
 .scroller{
@@ -4753,18 +4735,30 @@ $xxLgMargin: 60px;*/
 /*------------------------- IntroPane  */
 #intro-pane {
   background-color: #ffc627;
-  min-height: 520px; }
+  /*min-height: 520px;*/ }
   #intro-pane .intro {
     position: relative;
     width: 100%;
     overflow: hidden;
+    /*.column{
+    	min-height: 1px;
+    	@media only screen and (max-width: 40em) {
+    		padding-left: 0;
+    		padding-right: 0;
+    	}
+    }*/
     /* To achieve the underline effect as in th PDF Proof */ }
     #intro-pane .intro .gradient.gold {
       position: absolute;
       bottom: 0;
       height: 20%;
       width: 100%;
-      z-index: 2; }
+      z-index: 2;
+      -webkit-transform: translate3d(0, 0, 0);
+      -moz-transform: translate3d(0, 0, 0);
+      -ms-transform: translate3d(0, 0, 0);
+      -o-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0); }
       #intro-pane .intro .gradient.gold .top {
         height: 100%; }
       .no-document-scroll #intro-pane .intro .gradient.gold {

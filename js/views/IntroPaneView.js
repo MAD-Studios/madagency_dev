@@ -2,13 +2,15 @@
 main.views.IntroPaneView = main.views.PaneView.extend({
  	//ELEMENT_TRANS_CLASS: ".element-trans",
     //LAST_ELEMENT_TRANS_CLASS: ".last-element-trans",
-    ELEMENT_ANIM_OFFSET: 60,
+    ELEMENT_ANIM_OFFSET: 100,
     //LAST_ELEMENT_ANIM_OFFSET: 900,
     SHOW_UNDERLAYING_TEXT_SCROLL_TOP: 5,
 	IDLE: "idle",
 	PREVENT_BODY_SCROLL: "prevent_body_scroll",
 	IDLE_START_TIME: 60000,
 	VISIBLE_CLASS: "visible",
+	MIN_TEXT_BLOCK_BOTTOM_MARGIN: 100,
+	MIN_TEXT_BLOCK_TOP_MARGIN: 50,
 	id: "intro",
 	_route: "",
 	offset: 0,
@@ -17,7 +19,6 @@ main.views.IntroPaneView = main.views.PaneView.extend({
 	to_y: 0,
 	elementManipulator: main.utils.ElementManipulator,
 	num_posizes: 0,
-	underlaying_text_shown: false,
 	events:{
 		'click .btn-castle': 'onBtnCastleClick'
 	},
@@ -40,6 +41,7 @@ main.views.IntroPaneView = main.views.PaneView.extend({
     	this.intro_el = $('.intro', this.el);
     	this.grad_el = $('.gradient', this.el);
     	this.scroller_el = $('.scroller', this.el);
+    	this.this_el = $(this.el);
     	this.scroller_el.scroll(function(){
 	    	self.handleIntroScroll();
     	});
@@ -57,9 +59,7 @@ main.views.IntroPaneView = main.views.PaneView.extend({
     posElements: function() {
         var self = this;
         this.arrow_row_el.css('top', this.def_arrow_row_el_top + 'px');        
-        //!!!!!!!!!!!!!!!!!!!!!!!!!!
-        //need to instead use teh sum of the abs row heights
-        //!!!!!!!!!!!!!!!!!!!
+
         var last_h = 0;
         var to_h = 0;
         //this.to_y = parseInt(this.to_margin);    
@@ -72,7 +72,6 @@ main.views.IntroPaneView = main.views.PaneView.extend({
 			self.default_elements_y.push(self.to_y);
 			
 			console.log("self.to_y = " + self.to_y);
-			console.log("self.ELEMENT_ANIM_OFFSET = " + self.ELEMENT_ANIM_OFFSET);
 			
 	        //if row is not shown
 			//set its top to its value plus the offset
@@ -86,7 +85,8 @@ main.views.IntroPaneView = main.views.PaneView.extend({
             self.to_y += last_h;
         });
 
-        to_h = $(this.el).outerHeight() - this.nav_offset;
+        to_h = this.this_el.height() - this.nav_offset;
+
     	this.intro_el.css('height', to_h + 'px');
     	
     	to_h = self.to_y;
@@ -113,58 +113,73 @@ main.views.IntroPaneView = main.views.PaneView.extend({
     	//fade in the other items
     	//and faed out the arrow
     	var scroll_top = this.scroller_el.scrollTop();
+    	var delay = 0;
 
-		if(scroll_top > this.SHOW_UNDERLAYING_TEXT_SCROLL_TOP){
-			TweenLite.to(this.arrow_row_el, 0.25, { opacity:0 });
-	    	//move it up
-	    	TweenLite.to(this.arrow_row_el, 0.35, { top: this.def_arrow_row_el_top-30, ease: Expo.easeOut });
-			TweenLite.to(this.anim_rows.eq(1), 0.25, { opacity: 1, ease: Expo.easeOut });
-			TweenLite.to(this.anim_rows.eq(1), 0.5, { top: this.default_elements_y[1], ease: Expo.easeOut });
-			this.anim_rows.eq(1).addClass(this.VISIBLE_CLASS);
+		if(scroll_top >= 0 ){
+			if(scroll_top > this.SHOW_UNDERLAYING_TEXT_SCROLL_TOP){
+				TweenLite.to(this.arrow_row_el, 0.25, { opacity:0 });
+		    	//move it up
+		    	TweenLite.to(this.arrow_row_el, 0.35, { top: this.def_arrow_row_el_top-30, ease: Expo.easeOut });
+	    		if(scroll_top < ( this.default_elements_y[2] - (this.this_el.height() - this.nav_offset - this.grad_el.height() ) ) ){
+					TweenLite.to(this.anim_rows.eq(1), 0.25, { opacity: 1, ease: Expo.easeOut });
+					TweenLite.to(this.anim_rows.eq(1), 1, { top: this.default_elements_y[1], ease: Expo.easeOut });
+					this.anim_rows.eq(1).addClass(this.VISIBLE_CLASS);
+				}
+				//show the gradient
+				TweenLite.to(this.grad_el, 0.1, { opacity: 1, ease: Expo.easeOut, delay: 0.1 });
+			}
+			else if( scroll_top <= this.SHOW_UNDERLAYING_TEXT_SCROLL_TOP ){
+				delay = 0.2;
+				TweenLite.to(this.arrow_row_el, 0.25, { opacity:1, delay:delay });
+		    	//move it up
+		    	TweenLite.to(this.arrow_row_el, 0.5, { top: this.def_arrow_row_el_top, ease: Expo.easeOut });
+				TweenLite.to(this.anim_rows.eq(1), 0.5, { opacity: 0, ease: Expo.easeOut });
+				TweenLite.to(this.anim_rows.eq(1), 0.5, { top: this.default_elements_y[1] + this.ELEMENT_ANIM_OFFSET, ease: Expo.easeOut });
+				this.anim_rows.eq(1).removeClass(this.VISIBLE_CLASS);
+				//hide the gradient
+				TweenLite.to(this.grad_el, 0.1, { opacity: 0, ease: Expo.easeOut, delay: 0.1 });
+			}
+			//!!!!!!!!!!!!!!!!!!
+			//perhaps do this at half winow height instead?????
+			if( scroll_top  > ( this.default_elements_y[2] - (this.this_el.height() - this.nav_offset - this.grad_el.height()) ) ){
+				delay = 0;
+				TweenLite.to(this.anim_rows.eq(2), 0.5, { opacity: 1, ease: Expo.easeOut, delay:delay });
+				TweenLite.to(this.anim_rows.eq(2), 1.5, { top: this.default_elements_y[2], ease: Expo.easeOut, delay:delay });
+				this.anim_rows.eq(2).addClass(this.VISIBLE_CLASS);
+	
+				//hide the text above
+				//!!!!!!!!!!!!!!!!!!!!!!!!
+				//do the below once you scroll more
+				//!!!!!!!!!!!!!!!!!!!!!!!!å
+				TweenLite.to(this.anim_rows.eq(1), 0.5, { opacity: 0, ease: Expo.easeOut });
+				TweenLite.to(this.anim_rows.eq(1), 0.5, { top: this.default_elements_y[1] - this.ELEMENT_ANIM_OFFSET, ease: Expo.easeOut });
+				this.anim_rows.eq(1).removeClass(this.VISIBLE_CLASS);
+			}
+			if( scroll_top  <=  ( this.default_elements_y[2] - (this.this_el.height() - this.nav_offset - this.grad_el.height() )) ){
+				TweenLite.to(this.anim_rows.eq(2), 0.5, { opacity: 0, ease: Expo.easeOut });
+				TweenLite.to(this.anim_rows.eq(2), 0.5, { top: this.default_elements_y[2] + this.ELEMENT_ANIM_OFFSET, ease: Expo.easeOut });
+				this.anim_rows.eq(2).removeClass(this.VISIBLE_CLASS);
+			}
 		}
-		else if(scroll_top <= this.SHOW_UNDERLAYING_TEXT_SCROLL_TOP){
-			TweenLite.to(this.arrow_row_el, 0.25, { opacity:1, delay:0.2 });
-	    	//move it up
-	    	TweenLite.to(this.arrow_row_el, 0.5, { top: this.def_arrow_row_el_top, ease: Expo.easeOut });
-			TweenLite.to(this.anim_rows.eq(1), 0.5, { opacity: 0, ease: Expo.easeOut });
-			TweenLite.to(this.anim_rows.eq(1), 0.5, { top: this.default_elements_y[1] + this.ELEMENT_ANIM_OFFSET, ease: Expo.easeOut });
-			this.anim_rows.eq(1).removeClass(this.VISIBLE_CLASS);
-		}
-		//else if scrollTop
-		//is greater than the offset to pos
-		//of the next item
-		else if(scroll_top > this.SHOW_UNDERLAYING_TEXT_SCROLL_TOP){
-		}
-		
-		this.underlaying_text_shown = true;
-    },
-    // ----------------- hideUnderlayingText
-    hideUnderlayingText: function() {
     },
     // ----------------- prepForAnim
     prepForAnim: function() {
     	var self = this;
+    	
+    	this.grad_el.css('opacity', '0');
     	//hide all but first text-block
     	//add fade class to them    	
     	this.anim_rows.each(function(index, value){
 	    	if(index > 0) $(this).css('opacity', '0');
 	    	else $(this).addClass(self.VISIBLE_CLASS);
-	    	//position each row 
-			//down by offset
-	    	//$(this).css('top', (this.default_elements_y[index] + this.ELEMENT_ANIM_OFFSET) + 'px');
     	});
-    	
-    	//position each row 
-    	//30px down
-    	//!!!!!!!!!!!!!!!
-    	
     },
    	// ----------------- setIdleTimer
     setIdleTimer: function() {
 	    var self = this;
 	    this.idleTimeout = setTimeout(function(){
 		    //trigger the idle event
-		    $(self.el).trigger(self.IDLE);
+		    self.this_el.trigger(self.IDLE);
 	    }, this.IDLE_START_TIME);
     },
     // ----------------- unsetIdleTimer
@@ -193,18 +208,25 @@ main.views.IntroPaneView = main.views.PaneView.extend({
     	vert_blocks.each(function(index, value){
 	    	//give each a margin top and bottom
 	    	//according to window height
-	    	self.to_margin = ( ( $(self.el).outerHeight() - self.nav_offset - ( $(this).outerHeight() + 25 ) )/2 ) + 'px';
+	    	self.to_margin = ( ( self.this_el.outerHeight() - self.nav_offset - ( $(this).outerHeight() + 25 ) )/2 );
 			if(index == 0){
-				$(this).css('marginTop', self.to_margin);
+				if(self.to_margin < self.MIN_TEXT_BLOCK_TOP_MARGIN) self.to_margin = self.MIN_TEXT_BLOCK_TOP_MARGIN;
+				$(this).css('marginTop', self.to_margin + 'px');
 				self.def_arrow_row_el_top = parseInt($(this).outerHeight()) + parseInt(self.to_margin);
 			} 
-			else if (index == vert_blocks.length-1) $(this).css('marginBottom', self.to_margin);
+			else if (index == vert_blocks.length-1){
+				if(self.to_margin < self.MIN_TEXT_BLOCK_BOTTOM_MARGIN) self.to_margin = self.MIN_TEXT_BLOCK_BOTTOM_MARGIN;
+				$(this).css('marginBottom', self.to_margin + 'px');
+			} 
     	});
+    	
+    	setTimeout(function(){
+	    	self.posElements();
+    	}, 100);
 
     	//show the intro after 2nd posize
     	if(this.num_posizes == 1){
 			setTimeout(function(){
-	    		self.posElements();
 		    	self.showContent();
 		    }, 100);
     	} 

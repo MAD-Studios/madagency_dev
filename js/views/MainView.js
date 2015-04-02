@@ -31,7 +31,7 @@ main.views.MainView = Backbone.View.extend({
 	    if(this.corporateView && this.corporateView.posize) this.corporateView.posize();
 	    if(this.castleView && this.castleView.posize) this.castleView.posize();
 	    if($(document.documentElement).hasClass(this.elementManipulator.NO_DOCUMENT_SCROLL_CLASS)){
-		    $(this.el).css('height', $(window).height() + 'px');
+		    $(this.el).css('height', ($(window).height()) + 'px');
 	    }
 	    else{
 		    $(this.el).css('height', $(this.corporateView.el).outerHeight() + 'px');
