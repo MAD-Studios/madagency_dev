@@ -1,17 +1,19 @@
 // _________________________________________________________________________ IntroPaneView
 main.views.IntroPaneView = main.views.PaneView.extend({
- 	ELEMENT_TRANS_CLASS: ".element-trans",
-    LAST_ELEMENT_TRANS_CLASS: ".last-element-trans",
-    ELEMENT_ANIM_OFFSET: 300,
-    LAST_ELEMENT_ANIM_OFFSET: 900,
+ 	//ELEMENT_TRANS_CLASS: ".element-trans",
+    //LAST_ELEMENT_TRANS_CLASS: ".last-element-trans",
+    ELEMENT_ANIM_OFFSET: 60,
+    //LAST_ELEMENT_ANIM_OFFSET: 900,
     SHOW_UNDERLAYING_TEXT_SCROLL_TOP: 5,
 	IDLE: "idle",
 	PREVENT_BODY_SCROLL: "prevent_body_scroll",
 	IDLE_START_TIME: 60000,
+	VISIBLE_CLASS: "visible",
 	id: "intro",
 	_route: "",
 	offset: 0,
 	nav_offset: 0,
+	default_elements_y: [],
 	to_y: 0,
 	elementManipulator: main.utils.ElementManipulator,
 	num_posizes: 0,
@@ -42,6 +44,8 @@ main.views.IntroPaneView = main.views.PaneView.extend({
 	    	self.handleIntroScroll();
     	});
     	this.arrow_row_el = $('.row-arrow-container', this.el);
+    	
+    	this.anim_rows = $('.row-content .column > .row-absolute', this.el);
     	    	
     	this.createOverlay();
     	this.hideContent();
@@ -52,41 +56,42 @@ main.views.IntroPaneView = main.views.PaneView.extend({
     // ----------------- posElements
     posElements: function() {
         var self = this;
-        this.arrow_row_el.css('top', this.def_arrow_row_el_top + 'px');
-        
-        var to_h = $('.row-content', this.el).outerHeight();
-    	this.overlay_el.css('height', to_h + 'px');
-
-        to_h = $(this.el).outerHeight() - this.nav_offset;
-    	this.intro_el.css('height', to_h + 'px');
-        
+        this.arrow_row_el.css('top', this.def_arrow_row_el_top + 'px');        
+        //!!!!!!!!!!!!!!!!!!!!!!!!!!
+        //need to instead use teh sum of the abs row heights
+        //!!!!!!!!!!!!!!!!!!!
+        var last_h = 0;
+        var to_h = 0;
+        //this.to_y = parseInt(this.to_margin);    
+        this.to_y = 0;    
         this.default_elements_y = [];
     	
-        $('.row-absolute', this.el).each(function(){
-            
-            //!!!!!!!!!!!!!!!!!!
-            //refactor this later
-            //!!!!!!!!!!!!!!!!!!!!!!
-            $(this).css('top', self.to_y + 'px');
-            
-            /*$(this).css({ transform: 'translate3d(0,' + self.to_y + 'px, 0)',
-						 MozTransform: 'translate3d(0,' + self.to_y + 'px, 0)',
-						 WebkitTransform: 'translate3d(0,' + self.to_y + 'px, 0)',
-						 OTransform: 'translate3d(0,' + self.to_y + 'px, 0)',
-						 msTransform: 'translate3d(0,' + self.to_y + 'px, 0)'});*/
-            
-            $(this).css('opacity', '1');
+        this.anim_rows.each(function(){
+        	//make sure not arrow row
+        	//or row within an absolute  row
 			self.default_elements_y.push(self.to_y);
+			
+			console.log("self.to_y = " + self.to_y);
+			console.log("self.ELEMENT_ANIM_OFFSET = " + self.ELEMENT_ANIM_OFFSET);
+			
+	        //if row is not shown
+			//set its top to its value plus the offset
+			if(!$(this).hasClass(self.VISIBLE_CLASS)) $(this).css('top', (self.to_y + self.ELEMENT_ANIM_OFFSET) + 'px');
+			//otherwise set to default position
+			else $(this).css('top', self.to_y + 'px');
             
-            if($(this).css('display') != 'none') last_h = $(this).children().eq(0).outerHeight();
+            if($(this).css('display') != 'none') last_h = $(this).children().eq(0).outerHeight(true);
 			else last_h = 0;
-
-			/*if(last_h > 0) padding = parseInt($(this).css('paddingBottom'));
-			else padding = 0;
-			self.to_y += (last_h + padding);*/
             
             self.to_y += last_h;
         });
+
+        to_h = $(this.el).outerHeight() - this.nav_offset;
+    	this.intro_el.css('height', to_h + 'px');
+    	
+    	to_h = self.to_y;
+    	$('.row-content').css('height', to_h + 'px');
+    	this.overlay_el.css('height', to_h + 'px');
     },
     // ----------------- createOverlay
     createOverlay: function() {
@@ -109,7 +114,22 @@ main.views.IntroPaneView = main.views.PaneView.extend({
 			TweenLite.to(this.arrow_row_el, 0.25, { opacity:0, delay:0.2 });
 	    	//move it up
 	    	TweenLite.to(this.arrow_row_el, 0.5, { top: this.def_arrow_row_el_top-30, ease: Expo.easeOut });
-			$('.text-block', this.el).eq(0)
+			TweenLite.to(this.anim_rows.eq(1), 0.5, { opacity: 1, ease: Expo.easeOut });
+			TweenLite.to(this.anim_rows.eq(1), 0.5, { top: this.default_elements_y[1], ease: Expo.easeOut });
+			this.anim_rows.eq(1).addClass(this.VISIBLE_CLASS);
+		}
+		else if(scroll_top <= this.SHOW_UNDERLAYING_TEXT_SCROLL_TOP){
+			TweenLite.to(this.arrow_row_el, 0.25, { opacity:1, delay:0.2 });
+	    	//move it up
+	    	TweenLite.to(this.arrow_row_el, 0.5, { top: this.def_arrow_row_el_top, ease: Expo.easeOut });
+			TweenLite.to(this.anim_rows.eq(1), 0.5, { opacity: 0, ease: Expo.easeOut });
+			TweenLite.to(this.anim_rows.eq(1), 0.5, { top: this.default_elements_y[1] + this.ELEMENT_ANIM_OFFSET, ease: Expo.easeOut });
+			this.anim_rows.eq(1).removeClass(this.VISIBLE_CLASS);
+		}
+		//else if scrollTop
+		//is greater than the offset to pos
+		//of the next item
+		else if(scroll_top > this.SHOW_UNDERLAYING_TEXT_SCROLL_TOP){
 		}
 		
 		this.underlaying_text_shown = true;
@@ -119,11 +139,21 @@ main.views.IntroPaneView = main.views.PaneView.extend({
     },
     // ----------------- prepForAnim
     prepForAnim: function() {
+    	var self = this;
     	//hide all but first text-block
-    	//add fade class to them
-    	$('.text-block', this.el).each(function(index, value){
+    	//add fade class to them    	
+    	this.anim_rows.each(function(index, value){
 	    	if(index > 0) $(this).css('opacity', '0');
+	    	else $(this).addClass(self.VISIBLE_CLASS);
+	    	//position each row 
+			//down by offset
+	    	//$(this).css('top', (this.default_elements_y[index] + this.ELEMENT_ANIM_OFFSET) + 'px');
     	});
+    	
+    	//position each row 
+    	//30px down
+    	//!!!!!!!!!!!!!!!
+    	
     },
    	// ----------------- setIdleTimer
     setIdleTimer: function() {
@@ -162,16 +192,19 @@ main.views.IntroPaneView = main.views.PaneView.extend({
 	    	self.to_margin = ( ( $(self.el).outerHeight() - self.nav_offset - ( $(this).outerHeight() + 25 ) )/2 ) + 'px';
 			if(index == 0){
 				$(this).css('marginTop', self.to_margin);
-				this.def_arrow_row_el_top = $(this).outerHeight();
+				self.def_arrow_row_el_top = parseInt($(this).outerHeight()) + parseInt(self.to_margin);
 			} 
-			else if (vert_blocks.length) $(this).css('marginBottom', self.to_margin);
+			else if (index == vert_blocks.length-1) $(this).css('marginBottom', self.to_margin);
     	});
 
     	//show the intro after 2nd posize
     	if(this.num_posizes == 1){
-    		this.posElements();
-	    	this.showContent();
+			setTimeout(function(){
+	    		self.posElements();
+		    	self.showContent();
+		    }, 100);
     	} 
+    	
     	this.num_posizes++;
     },
     // ----------------- show
