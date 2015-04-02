@@ -105,16 +105,20 @@ main.views.IntroPaneView = main.views.PaneView.extend({
     },
     // ----------------- handleIntroScroll
     handleIntroScroll: function() {
+    	//kill any previous animations
+    	TweenLite.killTweensOf(this.arrow_row_el, false, {top:true, opacity:true} );
+    	TweenLite.killTweensOf(this.anim_rows.eq(1), false, {top:true, opacity:true} );
+    
     	//if scrolltop > a few pixels
     	//fade in the other items
     	//and faed out the arrow
     	var scroll_top = this.scroller_el.scrollTop();
 
 		if(scroll_top > this.SHOW_UNDERLAYING_TEXT_SCROLL_TOP){
-			TweenLite.to(this.arrow_row_el, 0.25, { opacity:0, delay:0.2 });
+			TweenLite.to(this.arrow_row_el, 0.25, { opacity:0 });
 	    	//move it up
-	    	TweenLite.to(this.arrow_row_el, 0.5, { top: this.def_arrow_row_el_top-30, ease: Expo.easeOut });
-			TweenLite.to(this.anim_rows.eq(1), 0.5, { opacity: 1, ease: Expo.easeOut });
+	    	TweenLite.to(this.arrow_row_el, 0.35, { top: this.def_arrow_row_el_top-30, ease: Expo.easeOut });
+			TweenLite.to(this.anim_rows.eq(1), 0.25, { opacity: 1, ease: Expo.easeOut });
 			TweenLite.to(this.anim_rows.eq(1), 0.5, { top: this.default_elements_y[1], ease: Expo.easeOut });
 			this.anim_rows.eq(1).addClass(this.VISIBLE_CLASS);
 		}

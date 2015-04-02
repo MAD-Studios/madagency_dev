@@ -96,7 +96,7 @@
 							<!-- absolue rows for animation performance -->
 							<div class="row-absolute"><div class="text-block vertical-center">
 								<h1 class="text-shadow white">Hi. We are Mad Agency.<br>We do a lot of cool things for our clients.</h1>
-					        	<h1 class="text-shadow white">Here’s a list of some things we could do for you.</h1>
+					        	<h1 class="text-shadow white last">Here’s a list of some things we could do for you.</h1>
 								<div class="row-absolute row-arrow-container"><div class="arrow circle-arrow down"></div></div>
 							</div></div>
 							<div class="row-absolute"><div class="text-block text-block-to-fade">

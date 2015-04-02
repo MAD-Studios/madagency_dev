@@ -59,11 +59,15 @@ $contactPaneInputMaxWidth: 400px;
 			top: 0;
 		}
 		.row-absolute{
+			@include transform(translate3d(0,0,0));
 			&:not(:first-child) {
 				h1{ margin-top: $lgMargin; }
 			}
 			h1{
 				margin-bottom: $lgMargin;
+				&.last{
+					margin-bottom: $xLgMargin;
+				}
 			}
 			h2{
 				font-weight: normal;

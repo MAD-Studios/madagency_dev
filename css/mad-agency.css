@@ -4779,13 +4779,21 @@ $xxLgMargin: 60px;*/
       position: absolute;
       z-index: 3;
       top: 0; }
-    #intro-pane .intro .row-absolute:not(:first-child) h1 {
-      margin-top: 24px; }
-    #intro-pane .intro .row-absolute h1 {
-      margin-bottom: 24px; }
-    #intro-pane .intro .row-absolute h2 {
-      font-weight: normal;
-      margin-bottom: 4px; }
+    #intro-pane .intro .row-absolute {
+      -webkit-transform: translate3d(0, 0, 0);
+      -moz-transform: translate3d(0, 0, 0);
+      -ms-transform: translate3d(0, 0, 0);
+      -o-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0); }
+      #intro-pane .intro .row-absolute:not(:first-child) h1 {
+        margin-top: 24px; }
+      #intro-pane .intro .row-absolute h1 {
+        margin-bottom: 24px; }
+        #intro-pane .intro .row-absolute h1.last {
+          margin-bottom: 48px; }
+      #intro-pane .intro .row-absolute h2 {
+        font-weight: normal;
+        margin-bottom: 4px; }
     #intro-pane .intro .circle-arrow {
       margin: 0 auto; }
     #intro-pane .intro h2 a {
