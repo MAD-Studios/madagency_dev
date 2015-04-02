@@ -29,7 +29,7 @@ main.views.WorkPaneView = main.views.PaneView.extend({
         //setTimeout to add the video
         setTimeout(function(){
 	        self.addVideo();
-        }, 1500);
+        }, 200);
 	},
 	// ----------------- addVideo
     addVideo: function() {

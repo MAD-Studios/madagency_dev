@@ -31,7 +31,7 @@ main.Router = Backbone.Router.extend({
 	 autoScrolling: false,
 	 unrouted: true,
      routes:{
-        "": "method",
+        "": "intro",
         "how": "how",
         "work": "work",
         "team": "team",
@@ -263,8 +263,10 @@ function initModernizr() {
 	});
 	Modernizr.addTest('large', function() {
 	    var device_width = $(window).width();
-	    //var device_width = window.width;
 	    return (device_width >= 768);
+	});
+	Modernizr.addTest('mobile', function() {
+	    return main.utils.DeviceDetector.isMobile();
 	});
 	if (!Modernizr.svg) {
 		//replace the svg with the png
@@ -288,34 +290,8 @@ function initModernizr() {
 function onDocReady() {
     
     initModernizr();
-	    
-	/*Modernizr.addTest('hires', function() {
-	    // starts with default value for modern browsers
-	    var dpr = window.devicePixelRatio || 1;
-	    return !!(dpr > 1);
-	});
-	Modernizr.addTest('large', function() {
-	    var device_width = $(window).width();
-	    //var device_width = window.width;
-	    return (device_width >= 640);
-	});
-	if (!Modernizr.svg) {
-		//replace the svg with the png
-		$('img').each(function(){
-			cur_src = $(this).attr('src');
-			cur_src = cur_src.replace(/svg/g, 'png');
-			$(this).attr('src', cur_src);
-		});
-	}
-	if (!Modernizr.hires) {
-		//replace the svg with the png
-		$('img').each(function(){
-			cur_src = $(this).attr('src');
-			cur_src = cur_src.replace(/@2x/g, '');
-			$(this).attr('src', cur_src);
-		});
-	}*/
 	
+	//load 
     main.utils.TemplateLoader.load([ 'scene-castle',
 								     'scene-xray',
 								     'scene-lab',

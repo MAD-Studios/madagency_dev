@@ -25,8 +25,72 @@ $contactPaneInputMaxWidth: 400px;
 	-webkit-tap-highlight-color:rgba(0,0,0,0);
 }
 
-/*------------------------- MethodPane  */
-#method-pane{
+/*------------------------- IntroPane  */
+#intro-pane{
+	background-color: $gold;
+	min-height: 520px;
+	.intro{
+		position:relative;
+		width: 100%;
+		overflow: hidden;
+		.gradient.gold{
+			position: absolute;
+			bottom: 0;
+			height: 20%;
+			width: 100%;
+			z-index: 2;
+			.top{
+				height: 100%;
+			}
+			.no-document-scroll &{
+				position: fixed;
+			}
+		}
+		.row-content{
+			padding: 0;
+			position: relative;
+			z-index: 1;
+		}
+		.overlay{
+			width: 100%;
+			position: absolute;
+			z-index: 3;
+			top: 0;
+		}
+		.text-block{
+			&:not(:first-child) {
+				h1{ margin-top: $lgMargin; }
+			}
+			h1{
+				margin-bottom: $lgMargin;
+			}
+			h2{
+				font-weight: normal;
+				margin-bottom: $xxSmMargin;
+			}
+		}
+		.circle-arrow {
+			margin: 0 auto;
+		}
+		h2 a {color: #FFF; font-weight: bold; text-decoration: none; position: relative;}
+		/* To achieve the underline effect as in th PDF Proof */
+		h2 a:after {
+			content: '';
+			position: absolute;
+			bottom: 6%; left: 0%;
+			width: 100%;
+			height: 4px;
+			background-color: #FDA139;
+		}
+	}
+	.unsupported-browser{
+		p{ top: 128px; }
+		a{ font-wieght: bold; }
+	}
+}
+
+/*------- CastleGateway */
+#castle-gateway{
 	background-color: $gold;
 	min-height: 520px;
 	h1,
@@ -50,7 +114,6 @@ $contactPaneInputMaxWidth: 400px;
 			margin-top: -24px;
 		}
 	}
-	.unsupported-browser p{ top: 128px; }
 	.row.row-content{
 		position: relative;
 		padding-top: 0;
@@ -100,11 +163,8 @@ $contactPaneInputMaxWidth: 400px;
 			width: 100%;
 		}
 	}
-	.unsupported-browser a{
-		font-wieght: bold;
-	}
 }
-.method-element-trans{
+.element-trans{
     -webkit-transition: top 1.4s cubic-bezier(0.600, 0, 0.735, 0.045), opacity 0.4s 0.6s; /* older webkit */
     -webkit-transition: top 1.4s cubic-bezier(0.600, -0.280, 0.735, 0.045), opacity 0.4s 0.6s; 
        -moz-transition: top 1.4s cubic-bezier(0.600, -0.280, 0.735, 0.045), opacity 0.4s 0.6s; 
@@ -143,7 +203,7 @@ $contactPaneInputMaxWidth: 400px;
          -o-transition-timing-function: cubic-bezier(0.600, -0.280, 0.735, 0.045); 
             transition-timing-function: cubic-bezier(0.600, -0.280, 0.735, 0.045); 
 }*/
-.method-last-element-trans{
+.last-element-trans{
     -webkit-transition: top 1.0s 0.25s cubic-bezier(0.755, 0.050, 0.855, 0.060), opacity 0.24s; 
        -moz-transition: top 1.0s 0.25s cubic-bezier(0.755, 0.050, 0.855, 0.060), opacity 0.24s; 
          -o-transition: top 1.0s 0.25s cubic-bezier(0.755, 0.050, 0.855, 0.060), opacity 0.24s; 
@@ -154,7 +214,7 @@ $contactPaneInputMaxWidth: 400px;
          -o-transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060); 
             transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060); /* easeOutExpo */
 }
-.method-input-blink-trans{
+.input-blink-trans{
     -webkit-transition: all 0.7s cubic-bezier(0.770, 0.000, 0.175, 1.000); 
        -moz-transition: all 0.7s cubic-bezier(0.770, 0.000, 0.175, 1.000); 
          -o-transition: all 0.7s cubic-bezier(0.770, 0.000, 0.175, 1.000); 
@@ -165,7 +225,7 @@ $contactPaneInputMaxWidth: 400px;
          -o-transition-timing-function: cubic-bezier(0.770, 0.000, 0.175, 1.000); 
             transition-timing-function: cubic-bezier(0.770, 0.000, 0.175, 1.000); /* easeInOutQuart */
 }
-.method-input-dull{
+.input-dull{
     /*decerease scale */
     -webkit-transform: scale(0.96,0.96);
     -moz-transform: scale(0.96,0.96);

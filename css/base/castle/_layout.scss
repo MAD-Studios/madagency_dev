@@ -47,7 +47,7 @@ $xxLgMargin: 60px;*/
 	position:static;
 }
 
-.story{
+.castle{
 	position: fixed;
 	top:0;
 	left:0;
@@ -57,7 +57,7 @@ $xxLgMargin: 60px;*/
 	overflow: hidden;
 	z-index: 500;
 }
-.gold-bg{
+/*.gold-bg{
 	position: absolute;
 	min-width: 100%;
 	background-color: $darkGold;
@@ -68,7 +68,7 @@ $xxLgMargin: 60px;*/
     transform: translate3d(0,0,0);
     -webkit-backface-visibility: hidden;
     z-index: 500;
-}
+}*/
 .transition{
 	position: absolute;
 	display: block;

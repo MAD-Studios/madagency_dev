@@ -20,7 +20,7 @@ main.views.PaneView = Backbone.View.extend({
 	    if(this.beforeRender) this.beforeRender();
         console.log("PaneView ---- render");
         //create a view for each pane
-        setTimeout(function(){
+       setTimeout(function(){
 	         self.posize();
         }, 100);
         return this;
@@ -28,13 +28,13 @@ main.views.PaneView = Backbone.View.extend({
 	// ----------------- posize
     posize: function() {
     	console.log("PaneView ---- posize ----------------- ");
-        if(this.beforePosize) this.beforePosize();
 		if( $(this.el).hasClass(this.FULL_SCREEN_CLASS)){
 			var to_h = $(window).outerHeight();
 			var min_h = $(this.el).css('min-height');
 			if(to_h < min_h) to_h = min_h;
 			$(this.el).height( to_h );
 		} 
+		if(this.beforePosize) this.beforePosize();
     },
     // ----------------- activate
     activate: function() {

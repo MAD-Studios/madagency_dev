@@ -10,11 +10,11 @@ main.views.CorporateView = Backbone.View.extend({
     initialize: function() {
         console.log("CorporateView ---- initialize");
         //if no el pull it in through template loader
-        if(!($(this.el).hasClass(this.CORPORATE_INIT))) {
+       /* if(!($(this.el).hasClass(this.CORPORATE_INIT))) {
 	         console.log("template load external");
 	         this.template = _.template(this.templateLoader.get(this.CORPORATE));
 	         this.template_load_external = true;
-        }
+        }*/
         this.render();
     },
     // ----------------- render
@@ -53,10 +53,10 @@ main.views.CorporateView = Backbone.View.extend({
 	    });
        this.modernCheck();
        setTimeout(function(){
-           self.paneContainerView.offset = $(self.headerView.el).outerHeight();
-	       if(self.template_load_external) self.posize();
+	       //if(self.template_load_external) self.posize();
+	       //self.posize();
 	       self.show();
-       }, 100);
+       }, 100); 
        return this;
 	},
 	// ----------------- modernCheck
@@ -71,10 +71,15 @@ main.views.CorporateView = Backbone.View.extend({
     },
 	// ----------------- posize
     posize: function() {
-	    $(this.el).css('height', $(window).height() + 'px');
-	    $('.corporate', this.el).css('height', $(window).height() + 'px');
-	     this.paneContainerView.posize();
-	     this.mainNavContainerView.posize();
+	   // $(this.el).css('height', $(window).height() + 'px');
+	    //$('.corporate', this.el).css('height', $(window).height() + 'px');
+	    this.paneContainerView.nav_offset = $(this.mainNavContainerView.el).outerHeight();
+        this.paneContainerView.offset = $(this.headerView.el).outerHeight();
+	    this.paneContainerView.posize();
+	    this.mainNavContainerView.posize();
+	    
+	    var to_height = $(this.paneContainerView.el).outerHeight() + $('#footer', this.el).outerHeight() - 2; 
+	    $(this.el).css('height', to_height + 'px');
     },
     // ----------------- unfixHeader
     unfixHeader: function(){

@@ -1,8 +1,13 @@
+// ------------------------------------------------------------------------- ElementManipulator
+// ElementManipulator
+// used tomanipulate elements(resize , ect.) 
+
 main.utils.ElementManipulator = {
 	SCALE_TYPE: {
 		FIT: "scale_to_fit",
 		COVER: "scale_to_cover"
 	},
+	NO_DOCUMENT_SCROLL_CLASS: "no-document-scroll",
 	//======================================
 	// manipulate element
 	// dimmensions
@@ -12,15 +17,6 @@ main.utils.ElementManipulator = {
 	//--------------------------------------
 	resizeElement:function(el, init_width, init_height, parent_width, parent_height, scale_type){
 		if(scale_type == null) scale_type = this.SCALE_TYPE.COVER;
-		/*var parent_el = $(el).parent();
-		var parent_width = parent_el.width();
-        var parent_height = parent_el.height();
-        
-		if(parent_width == null) parent_width = $(window).width();
-		if(parent_height == null) parent_height = $(window).height();*/
-		
-		console.log("&&&&&&&&&&&&&&&& parent_width = " + parent_width);
-		console.log("&&&&&&&&&&&&&&&& parent_height = " + parent_height);
 		        
         var el_width = init_width;
 	    var el_height = init_height;
@@ -33,10 +29,7 @@ main.utils.ElementManipulator = {
 			rat_width = (parent_width)/el_width;
 			rat_height = (parent_height)/el_height;
 		}
-		
-		console.log("&&&&&&&&&&&&&&&& rat_width = " + rat_width);
-		console.log("&&&&&&&&&&&&&&&& rat_height = " + rat_height);
-						
+
 		var delta_scale_width = Math.abs(1-rat_width);
 		var delta_scale_height = Math.abs(1-rat_height);
         
@@ -103,11 +96,14 @@ main.utils.ElementManipulator = {
 		}
 		var to_width = Math.ceil(parseFloat(el_width*scale));
 		var to_height = Math.ceil(parseFloat(el_height*scale));
-		
-		console.log("&&&&&&&&&&&&&&&& to_width = " + to_width);
-		console.log("&&&&&&&&&&&&&&&& to_height = " + to_height);
 
 		$(el).css('width', to_width + 'px');
 		$(el).css('height', to_height + 'px');
-	}
+	},
+	//--------------------------------------
+	// preventDocumentScroll
+	//--------------------------------------
+	preventDocumentScroll:function(){
+		$(document.documentElement).addClass(this.NO_DOCUMENT_SCROLL_CLASS);
+    }
 };

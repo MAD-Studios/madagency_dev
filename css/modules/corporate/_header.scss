@@ -6,12 +6,12 @@
 	width: 100%;
 	/*min-width: $contentWidth;*/
     background-color: $gold;
-	background-color: $transparentGold;
+	background-color: $opaqueGold;
 	border-bottom: 1px solid $navy;
 	box-sizing: border-box;
 	z-index: 200;
 
-    .btn-twitter{
+    /*.btn-twitter{
         width: em(18); height: em(15);
         background: transparent url(../assets/images/corporate/svg/header-twitter.svg) no-repeat;
         .no-svg &{ background-image: url(../assets/images/corporate/png/header-twitter.png); }
@@ -31,9 +31,9 @@
         height: 1em;
         background: transparent url(../assets/images/corporate/svg/header-google.svg) no-repeat;
         .no-svg & {background-image: url(../assets/images/corporate/png/header-google.png);}
-    }
+    }*/
 }
- .header-trans{
+.header-trans{
         -webkit-transition: top 1.0s 0.45s cubic-bezier(0.755, 0.050, 0.855, 0.060), opacity 0.24s 0.8s; 
            -moz-transition: top 1.0s 0.45s cubic-bezier(0.755, 0.050, 0.855, 0.060), opacity 0.24s 0.8s; 
              -o-transition: top 1.0s 0.45s cubic-bezier(0.755, 0.050, 0.855, 0.060), opacity 0.24s 0.8s; 

@@ -1,0 +1,25 @@
+/*----------------- ARROWS  */
+
+.circle-arrow {
+	width: 20px; height: 20px;
+	display: block;
+	/*margin: $xLgMargin auto;*/
+	background-color: $lightBlue;
+	background-image: url(../assets/images/corporate/png/down-arrow.png);
+	/*!!!!!!!!!!!!!!!!!!!!!*/
+	background-size: auto 20px;
+	background-position: center top;
+	background-repeat: no-repeat;
+	border: 1px solid $navy;
+	box-sizing: border-box;
+	cursor: pointer;
+	@include border-top-radius( 40px );
+	@include border-bottom-radius( 40px );
+	@include transition ( all 0.1s );
+	@include transform(translateY(0em));
+	@include box-shadow( 0em 0.25em $dropShadowBlueColor );
+	&:active {
+		@include transform(translateY(0.4em));
+		@include box-shadow( 0em 0em $dropShadowBlueColor );
+	}
+}
