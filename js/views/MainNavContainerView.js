@@ -11,6 +11,7 @@ main.views.MainNavContainerView = Backbone.View.extend({
 	MENU_OFFSET: 10,
 	MIN_TOP: 0,
 	OFF_NAV_HEIGHT: '7px',
+	BTN_SELECTOR_SUFFIX: "-btn",
 	default_top: 0, 
 	is_fixed: false,
 	is_fixed_prep: false,
@@ -19,11 +20,11 @@ main.views.MainNavContainerView = Backbone.View.extend({
 	default_nav_btn_height: 0,
 	events: {
 		'click .logo' : 'onLogoClick',
-		'click .btn-how' : 'onHowBtnClick',
-		'click .btn-work' : 'onWorkBtnClick',
-		'click .btn-team' : 'onTeamBtnClick',
-		'click .btn-disciplines' : 'onDisciplinesBtnClick',
-		'click .btn-contact' : 'onContactBtnClick'
+		'click #how-btn' : 'onBtnClick',
+		'click #work-btn' : 'onBtnClick',
+		'click #team-btn' : 'onBtnClick',
+		'click #disciplines-btn' : 'onBtnClick',
+		'click #contact-btn' : 'onBtnClick'
 	},
     // ----------------- initialize
     initialize: function() {
@@ -87,9 +88,9 @@ main.views.MainNavContainerView = Backbone.View.extend({
 	   }
     },
     // ----------------- checkPos
-    checkPos: function() {
+    checkPos: function(actual_scroll_top) {
 	    var self = this;
-	    var scroll_top = $(window).scrollTop();
+	    var scroll_top = actual_scroll_top;
 	    //if the top of this has reached
 	    if(scroll_top >= this.default_top - this.MENU_OFFSET) {
 		    //the header
@@ -227,8 +228,21 @@ main.views.MainNavContainerView = Backbone.View.extend({
 	    $(this.el).css('top', (cur_top + this.HIDE_ANIMATE_OFFSET)+ 'px');
 	    $(this.el).css('opacity', '0');
 	},
+	// ----------------- onBtnClick
+    onBtnClick: function(event) {
+    	console.log("onBtnClick -------- ");
+        $(this.el).trigger(main.events.Event.ENABLE_DOCUMENT_SCROLL);
+        
+    	if($(event.currentTarget).attr("id")) {
+	    	var id = $(event.currentTarget).attr("id");
+	    	id = id.replace(this.BTN_SELECTOR_SUFFIX, "");
+    	}
+    	
+        main.router.navigate(id, {trigger: true});
+        return false;
+    },
     // ----------------- onHowBtnClick
-    onHowBtnClick: function(event) {
+   /* onHowBtnClick: function(event) {
 	    if (Modernizr.history) main.router.navigate('', {trigger: false});
 	    main.router.navigate('how', {trigger: true});
 	    return false;
@@ -256,7 +270,7 @@ main.views.MainNavContainerView = Backbone.View.extend({
         if (Modernizr.history) main.router.navigate('', {trigger: false});
 	    main.router.navigate('contact', {trigger: true});
 	    return false;
-    },
+    },*/
     // ----------------- onLogoClick
     onLogoClick: function(event) {
         if (Modernizr.history) main.router.navigate('work', {trigger: false});

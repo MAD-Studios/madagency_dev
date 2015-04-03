@@ -101,9 +101,16 @@ main.utils.ElementManipulator = {
 		$(el).css('height', to_height + 'px');
 	},
 	//--------------------------------------
-	// preventDocumentScroll
+	// disableDocumentScroll
 	//--------------------------------------
-	preventDocumentScroll:function(){
+	disableDocumentScroll:function(){
 		$(document.documentElement).addClass(this.NO_DOCUMENT_SCROLL_CLASS);
+    },
+    //--------------------------------------
+	// enableDocumentScroll
+	//--------------------------------------
+	enableDocumentScroll:function(){
+		$(document.documentElement).removeClass(this.NO_DOCUMENT_SCROLL_CLASS);
     }
+
 };

@@ -1,10 +1,10 @@
-
-//set up main namespace
+// _________________________________________________________________________set up main namespace
 var main = {
     models: {},
     views: {},
     utils: {},
-    router: {}
+    router: {},
+    events: {}
 };
 
 // ----------------- Backbone.View.prototype.close
@@ -28,22 +28,16 @@ Backbone.View.prototype.dispose = function () {
 // _________________________________________________________________________ main Router
 main.Router = Backbone.Router.extend({
 	 UNROUTED_TIMEOUT: 300,
-	 autoScrolling: false,
 	 unrouted: true,
      routes:{
-        "": "intro",
-        "how": "how",
-        "work": "work",
-        "team": "team",
-        "disciplines": "disciplines",
-        "contact": "contact",
-        "play": "play"
      },
      // ----------------- initialize
      initialize: function() {
         console.log("initialize");
         var self = this;
-        this.responseGeneratorModel = new main.models.ResponseGeneratorModel();
+        
+        if(this.beforeInitialize) this.beforeInitialize();
+        
         this.mainView = new main.views.MainView( {el: $('#main', this.el)} );
         this.initTouchEvents();
         //break down url and navigate to the right place
@@ -60,119 +54,9 @@ main.Router = Backbone.Router.extend({
         setTimeout(function(){
 	        $(window).scrollTop(0);
 	        setTimeout(function(){
-		        if(route == "" || route == "web") self.navigate(route, {trigger: true}); 
+		        if(route == "") self.navigate(route, {trigger: true}); 
 		    }, 100);
         }, 100);
-     },
-     // ----------------- method
-     method: function(){
-         console.log("main --- method");
-         var self = this;
-         var id = "method";
-         //if first time set a delay
-         if(this.unrouted){
-	         setTimeout(function(){	
-		          self.mainView.scrollToPane(id);
-	         }, this.UNROUTED_TIMEOUT);
-	         self.unrouted = false;
-         }
-         else{
-		     //scroll to the  posY
-		     this.mainView.scrollToPane(id);
-	     }
-     },
-     // ----------------- how
-     how: function(){
-          console.log("main --- how");
-          var self = this;
-          var id = "how";
-          //if first time set a delay
-          if(this.unrouted){
-	         setTimeout(function(){
-		          self.mainView.scrollToPane(id);
-	         }, this.UNROUTED_TIMEOUT);
-	         self.unrouted = false;
-          }
-          else{
-		     //scroll to the  posY
-		     this.mainView.scrollToPane(id);
-	      }
-     },
-     // ----------------- work
-     work: function(){
-          console.log("main --- work");
-          var self = this;
-          var id = "work";
-          //if first time set a delay
-         if(this.unrouted){
-	         setTimeout(function(){	
-		          self.mainView.scrollToPane(id);
-	         }, this.UNROUTED_TIMEOUT);
-	         self.unrouted = false;
-         }
-         else{
-		     //scroll to the  posY
-		     this.mainView.scrollToPane(id);
-		 }
-     },
-     // ----------------- team
-     team: function(){
-          console.log("main --- team");
-          var self = this;
-          var id = "team";
-           //if first time set a delay
-         if(this.unrouted){
-	         setTimeout(function(){
-		          self.mainView.scrollToPane(id);
-	         }, this.UNROUTED_TIMEOUT);
-	         self.unrouted = false;
-         }
-         else{
-		     //scroll to the  posY
-		     this.mainView.scrollToPane(id);
-		 }
-     },
-     // ----------------- disciplines
-     disciplines: function(){
-         console.log("main --- disciplines");
-         var self = this;
-         var id = "disciplines";         
-           //if first time set a delay
-         if(this.unrouted){
-	         setTimeout(function(){
-		          self.mainView.scrollToPane(id);
-	         }, this.UNROUTED_TIMEOUT);
-	         self.unrouted = false;
-         }
-         else{
-		     //scroll to the  posY
-		     this.mainView.scrollToPane(id);
-	     }
-     },
-     // ----------------- contact
-     contact: function(){
-         console.log("main --- contact");
-         var self = this;
-         var id = "contact";         
-         //if first time set a delay
-         if(this.unrouted){
-	         setTimeout(function(){	
-		          self.mainView.scrollToPane(id);	          
-	         }, this.UNROUTED_TIMEOUT);
-	         self.unrouted = false;
-         }
-         else{
-		     //scroll to the  posY
-		     this.mainView.scrollToPane(id);
-		 }
-     },
-     // ----------------- play
-     play: function(){
-         console.log("main --- play");
-         var self = this;
-         setTimeout(function(){
-            self.mainView.moveIntoStory();  
-         }, 3000);
      },
      // ----------------- initTouchEvents
      initTouchEvents: function() {
@@ -199,6 +83,7 @@ main.Router = Backbone.Router.extend({
 });
 
 // _________________________________________________________________________
+var templates = null;
 
 if (!window.console) {
   var noOp = function(){}; // no-op function
@@ -288,27 +173,26 @@ function initModernizr() {
 
 // ----------------- doc handler
 function onDocReady() {
-    
     initModernizr();
-	
-	//load 
-    main.utils.TemplateLoader.load([ 'scene-castle',
-								     'scene-xray',
-								     'scene-lab',
-								     'scene-creation',
-								     'scene-gerbil',
-								     'scene-boy',
-								     'corporate',
-								     'story',
-								     'scroll-down-indicator'								     
-                                   ],
-        function() {
-            onReady();
-    });
+	loadTemplates(templates);
+}
+
+// ----------------- loadTemplates
+function loadTemplates(templates) {
+	console.log("loadTemplates");
+	if(templates && templates.length > 0){
+		main.utils.TemplateLoader.load( templates, function(){ onLoadTemplatesComplete(); });
+	}
+	else onLoadTemplatesComplete();
+}
+
+// ----------------- loadTemplatesComplete
+function onLoadTemplatesComplete() {
+	onReady();
 }
 
 // ----------------- onReady
-function onReady() {
+/*function onReady() {
     main.router = new main.Router();
     if (Modernizr.history){
 	    Backbone.history.start({ pushState: true, root: "dev/" });
@@ -317,4 +201,4 @@ function onReady() {
     else{
 	    Backbone.history.start({ pushState: false });
     }
-}
+}*/

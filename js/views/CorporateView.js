@@ -2,8 +2,8 @@
 main.views.CorporateView = Backbone.View.extend({
 	CORPORATE_SUBMIT: "corporate_submit",
 	CORPORATE: "corporate",
-	CORPORATE_INIT: "corporate-init",
-	METHOD_PANE_IDLE: "method_pane_idle",
+	//CORPORATE_INIT: "corporate-init",
+	//METHOD_PANE_IDLE: "method_pane_idle",
 	template_load_external: false,
 	templateLoader: main.utils.templateLoader,
     // ----------------- initialize
@@ -48,8 +48,9 @@ main.views.CorporateView = Backbone.View.extend({
 	        self.headerView.darkenBackground();
         });
         $(window).scroll(function(){
-        	self.mainNavContainerView.checkPos();
-	        self.paneContainerView.checkPanes();
+        	var scroll_top = $(window).scrollTop();
+        	self.mainNavContainerView.checkPos(scroll_top);
+	        self.paneContainerView.checkPanes(scroll_top);
 	    });
        this.modernCheck();
        setTimeout(function(){

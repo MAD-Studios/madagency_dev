@@ -41,13 +41,13 @@
     <script src="js/views/CorporateView.js" type="text/javascript"></script>
     <script src="js/views/PaneContainerView.js" type="text/javascript"></script>
     <script src="js/views/PaneView.js" type="text/javascript"></script>
-    <script src="js/views/MethodPaneView.js" type="text/javascript"></script>
+    <!-- <script src="js/views/MethodPaneView.js" type="text/javascript"></script>
     <script src="js/views/HowPaneView.js" type="text/javascript"></script>
     <script src="js/views/WorkPaneView.js" type="text/javascript"></script>
     <script src="js/views/TeamPaneView.js" type="text/javascript"></script>
     <script src="js/views/DisciplinesPaneView.js" type="text/javascript"></script>
     <script src="js/views/ContactPaneView.js" type="text/javascript"></script>
-    <script src="js/views/MainNavContainerView.js" type="text/javascript"></script>
+    <script src="js/views/MainNavContainerView.js" type="text/javascript"></script> -->
     <script src="js/views/HeaderView.js" type="text/javascript"></script>
     <script src="js/views/FooterView.js" type="text/javascript"></script>
     <script src="js/views/StoryView.js" type="text/javascript"></script>

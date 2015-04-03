@@ -17,7 +17,7 @@ main.views.IntroPaneView = main.views.PaneView.extend({
 	nav_offset: 0,
 	default_elements_y: [],
 	to_y: 0,
-	elementManipulator: main.utils.ElementManipulator,
+	//elementManipulator: main.utils.ElementManipulator,
 	num_posizes: 0,
 	events:{
 		'click .btn-castle': 'onBtnCastleClick'
@@ -26,7 +26,7 @@ main.views.IntroPaneView = main.views.PaneView.extend({
     initialize: function() {
         console.log("IntroPaneView ---- initialize"); 
         //prevent document scroll
-        this.elementManipulator.preventDocumentScroll();
+        $(this.el).trigger(main.events.Event.DISABLE_DOCUMENT_SCROLL);
     },
     // ----------------- beforeRender
     beforeRender: function() {
@@ -90,7 +90,7 @@ main.views.IntroPaneView = main.views.PaneView.extend({
     	this.intro_el.css('height', to_h + 'px');
     	
     	to_h = self.to_y;
-    	$('.row-content').css('height', to_h + 'px');
+    	$('.row-content', this.el).css('height', to_h + 'px');
     	this.overlay_el.css('height', to_h + 'px');
     },
     // ----------------- createOverlay
@@ -141,7 +141,6 @@ main.views.IntroPaneView = main.views.PaneView.extend({
 				//TweenLite.to(this.grad_el, 0.25, { opacity: 0, ease: Expo.easeOut });
                 this.grad_el.css('opacity', '0');
 			}
-			//!!!!!!!!!!!!!!!!!!
 			//perhaps do this at half winow height instead?????
 			//if( scroll_top  > ( this.default_elements_y[2] - (this.this_el.height() - this.nav_offset - this.grad_el.height()) ) ){
             if( scroll_top  > ( this.default_elements_y[2] - (this.this_el.height()/2) ) ){
@@ -239,6 +238,12 @@ main.views.IntroPaneView = main.views.PaneView.extend({
     	} 
     	
     	this.num_posizes++;
+    },
+    // ----------------- onScroll
+    onScroll: function(scroll_top) {
+    	if(scroll_top <= 1){
+	    	$(this.el).trigger(main.events.Event.DISABLE_DOCUMENT_SCROLL);
+    	}
     },
     // ----------------- show
     showContent: function() {

@@ -72,16 +72,12 @@ $contactPaneInputMaxWidth: 400px;
 			}
 			h2{
 				font-weight: normal;
-				margin-bottom: $xxSmMargin;
+				margin-bottom: $xSmMargin;
+				@media #{$small-only} {
+					font-size: em(24px);
+				}
 			}
 		}
-		/*.column{
-			min-height: 1px;
-			@media #{$small-only} {
-				padding-left: 0;
-				padding-right: 0;
-			}
-		}*/
 		.circle-arrow {
 			margin: 0 auto;
 		}

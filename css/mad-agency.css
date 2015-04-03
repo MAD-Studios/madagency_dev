@@ -4072,6 +4072,9 @@ p.white {
 
 /*----------------- DIMS  */
 /*--------------------------------  */
+/*.no-document-scroll body{
+	overflow-y: auto;
+}*/
 #main {
   position: absolute;
   min-width: 100%;
@@ -4740,13 +4743,6 @@ $xxLgMargin: 60px;*/
     position: relative;
     width: 100%;
     overflow: hidden;
-    /*.column{
-    	min-height: 1px;
-    	@media only screen and (max-width: 40em) {
-    		padding-left: 0;
-    		padding-right: 0;
-    	}
-    }*/
     /* To achieve the underline effect as in th PDF Proof */ }
     #intro-pane .intro .gradient.gold {
       position: absolute;
@@ -4787,7 +4783,10 @@ $xxLgMargin: 60px;*/
           margin-bottom: 48px; }
       #intro-pane .intro .row-absolute h2 {
         font-weight: normal;
-        margin-bottom: 4px; }
+        margin-bottom: 8px; }
+        @media only screen and (max-width: 40em) {
+          #intro-pane .intro .row-absolute h2 {
+            font-size: 1.71429em; } }
     #intro-pane .intro .circle-arrow {
       margin: 0 auto; }
     #intro-pane .intro h2 a {

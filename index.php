@@ -32,6 +32,8 @@
     <script src="js/vendor/jquery-image-loader.js"></script>
     
     <script src="js/main.js" type="text/javascript"></script>
+    <script src="js/corporate.js" type="text/javascript"></script>
+    <script src="js/events/Event.js" type="text/javascript"></script>
     <script src="js/utils/TemplateLoader.js" type="text/javascript"></script>
     <script src="js/utils/ElementManipulator.js" type="text/javascript"></script>
     <script src="js/utils/DeviceDetector.js" type="text/javascript"></script>
@@ -364,11 +366,16 @@
         	<div class="column large-12 small-12">
 	            <a href="#" class="full-logo full-logo-sm logo btn"></a>
 	            <ul class="nav hide-for-small show-for-large-up">
-	                <li><a class="btn nav-btn how-btn" href="/how">HOW WE ROLL</a></li>
-	                <li><a class="btn nav-btn work-btn" href="/work">THE WORK</a></li>
-	                <li><a class="btn nav-btn team-btn" href="/team">OUR TEAM</a></li>
-	                <li><a class="btn nav-btn disciplines-btn" href="/disciplines">DISCIPLINES</a></li>
-	                <li><a class="btn nav-btn contact-btn" href="/contact">CONTACT US</a></li>
+	            	<li><a class="btn nav-btn" id="how-btn" href="">HOW WE ROLL</a></li>
+	                <li><a class="btn nav-btn" id="work-btn" href="">THE WORK</a></li>
+	                <li><a class="btn nav-btn" id="team-btn" href="">OUR TEAM</a></li>
+	                <li><a class="btn nav-btn" id="disciplines-btn" href="">DISCIPLINES</a></li>
+	                <li><a class="btn nav-btn" id="contact-btn" href="">CONTACT US</a></li>
+	                <!-- <li><a class="btn nav-btn" id="how-btn" href="/how">HOW WE ROLL</a></li>
+	                <li><a class="btn nav-btn" id="work-btn" href="/work">THE WORK</a></li>
+	                <li><a class="btn nav-btn" id="team-btn" href="/team">OUR TEAM</a></li>
+	                <li><a class="btn nav-btn" id="disciplines-btn" href="/disciplines">DISCIPLINES</a></li>
+	                <li><a class="btn nav-btn" id="contact-btn" href="/contact">CONTACT US</a></li> -->
 	            </ul>
 	            <div id="enter-story-btn-container" class="shadow-bordered shadow-bordered-blue"><a id="enter-story-btn" class="btn-blue btn">ENTER CREATIVE CASTLE</a></div>
 			</div>

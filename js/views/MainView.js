@@ -15,6 +15,7 @@ main.views.MainView = Backbone.View.extend({
     render: function(eventName) {
         console.log("MainView ---- initialize");
         var self = this;
+        this.setMainListeners();
         this.initiateCorporate();
         setTimeout(function(){
 	        self.posize();
@@ -31,7 +32,38 @@ main.views.MainView = Backbone.View.extend({
 	    if(this.corporateView && this.corporateView.posize) this.corporateView.posize();
 	    if(this.castleView && this.castleView.posize) this.castleView.posize();
 	    if($(document.documentElement).hasClass(this.elementManipulator.NO_DOCUMENT_SCROLL_CLASS)){
-		    $(this.el).css('height', ($(window).height()) + 'px');
+		   	this.disableDocumentScroll();
+	    }
+	    else{
+	    	this.enableDocumentScroll();
+	    }
+    },
+    // ----------------- setMainListeners
+    setMainListeners: function() {
+    	var self = this;
+		$(this.el).on(main.events.Event.ENABLE_DOCUMENT_SCROLL, function(){
+			self.enableDocumentScroll();
+			self.elementManipulator.enableDocumentScroll();
+		});
+		$(this.el).on(main.events.Event.DISABLE_DOCUMENT_SCROLL, function(){
+			self.disableDocumentScroll();
+			self.elementManipulator.disableDocumentScroll();
+		});
+    },
+    // ----------------- enableDocumentScroll
+    enableDocumentScroll: function() {
+		this.elementManipulator.enableDocumentScroll();
+		this.updateDocumentScroll();
+    },
+    // ----------------- disableDocumentScroll
+    disableDocumentScroll: function() {
+    	this.elementManipulator.disableDocumentScroll();
+		this.updateDocumentScroll();
+    },
+    // ----------------- enableDocumentScroll
+    updateDocumentScroll: function() {
+    	if($(document.documentElement).hasClass(this.elementManipulator.NO_DOCUMENT_SCROLL_CLASS)){
+		   $(this.el).css('height', ($(window).height()) + 'px');
 	    }
 	    else{
 		    $(this.el).css('height', $(this.corporateView.el).outerHeight() + 'px');
@@ -68,8 +100,9 @@ main.views.MainView = Backbone.View.extend({
 		    }, 1200);
 	    }, 100);
 	},
+	
 	// ----------------- closeCastles
-    closeCastle: function() {
+   /* closeCastle: function() {
 	    var self = this;
 	    //first hide the castle
 	    this.castleView.hide();	    
@@ -111,9 +144,11 @@ main.views.MainView = Backbone.View.extend({
 			    $(self.corporateView.el).addClass(self.STAGE_CENTER_CLASS);
 		    }, 300);
 		 }, 100);
-    },
-     // ----------------- moveIntoCastle
-    moveIntoCastle: function(){
+    },*/
+    
+    //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    // ----------------- moveIntoCastle
+    /*moveIntoCastle: function(){
 	    //first begin the hide animation 
 	    //of the corporate view
 	    //then open/add the castle view 
@@ -125,10 +160,12 @@ main.views.MainView = Backbone.View.extend({
 	    setTimeout(function(){
 		    self.openCastle();
 	    }, 1400);
-    },
+    },*/
     // ----------------- initiateCorporate
     initiateCorporate: function(){
 	    var self = this;
+	    
+	    
 	    if(!this.corporateView) this.corporateView = new main.views.CorporateView( {el: $('.corporate', this.el)} );
 	    else {
 		    this.corporateView = new main.views.CorporateView();
@@ -143,6 +180,7 @@ main.views.MainView = Backbone.View.extend({
 		    }, 200);
 	    }
 	    //append corporate view
+	    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	    $(this.corporateView.el).on(this.corporateView.CORPORATE_SUBMIT, function(event){
 		    self.moveIntoCastle();
         });
@@ -154,8 +192,9 @@ main.views.MainView = Backbone.View.extend({
 	    	self.moveIntoCastle();
 	    });
     },
+    //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     // ----------------- beginHideCorporateView
-    beginHideCorporateView: function() {
+    /*beginHideCorporateView: function() {
 	    this.corporateView.beginHide();
     },
     // ----------------- removeCorporate
@@ -170,5 +209,5 @@ main.views.MainView = Backbone.View.extend({
 	    $(this.castleView.el).css('visibility', 'hidden');
 	    $(this.castleView.el).remove();
 	    $(this.castleView.el).off();
-    }
+    }*/
 });

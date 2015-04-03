@@ -118,11 +118,11 @@ main.views.PaneContainerView = Backbone.View.extend({
 	    this.initPanes();
     },
     // ----------------- checkPanes
-    checkPanes: function() {
+    checkPanes: function(actual_scroll_top) {
 		var pane_view, pane_model, direction;
 		var self = this;
-		var scroll_top = $(window).scrollTop() + this.offset;
-		var scroll_bottom = $(window).scrollTop() + $(window).height();
+		var scroll_top = actual_scroll_top + this.offset;
+		var scroll_bottom = actual_scroll_top + $(window).height();
 		if(this.lastScrollTop < scroll_top) direction = this.DOWN;
 		else direction = this.UP;
 		this.lastScrollTop = scroll_top;
@@ -134,6 +134,7 @@ main.views.PaneContainerView = Backbone.View.extend({
 		    //get the view based upon pane_data_model.el_id
 			if(pane_model) {
 				pane_view = pane_model.get("view");
+				if(pane_view.onScroll)  pane_view.onScroll(actual_scroll_top);
 				if( !$(pane_view.el).hasClass(pane_view.ACTIVE_CLASS) ){
 					pane_view.activate();
 					if(this.curPaneView && this.curPaneView.deactivate) this.curPaneView.deactivate();

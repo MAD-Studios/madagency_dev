@@ -7,6 +7,9 @@ $iconMargin: $medMargin;
 
 
 /*--------------------------------  */
+/*.no-document-scroll body{
+	overflow-y: auto;
+}*/
 #main{
 	position: absolute;
 	min-width: 100%;
