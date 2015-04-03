@@ -120,13 +120,14 @@ main.views.IntroPaneView = main.views.PaneView.extend({
 				TweenLite.to(this.arrow_row_el, 0.25, { opacity:0 });
 		    	//move it up
 		    	TweenLite.to(this.arrow_row_el, 0.35, { top: this.def_arrow_row_el_top-30, ease: Expo.easeOut });
-	    		if(scroll_top < ( this.default_elements_y[2] - (this.this_el.height() - this.nav_offset - this.grad_el.height() ) ) ){
+	    		if(scroll_top  <= ( this.default_elements_y[2] - (this.this_el.height()/2) ) ){
 					TweenLite.to(this.anim_rows.eq(1), 0.25, { opacity: 1, ease: Expo.easeOut });
 					TweenLite.to(this.anim_rows.eq(1), 1, { top: this.default_elements_y[1], ease: Expo.easeOut });
 					this.anim_rows.eq(1).addClass(this.VISIBLE_CLASS);
 				}
 				//show the gradient
-				TweenLite.to(this.grad_el, 0.1, { opacity: 1, ease: Expo.easeOut, delay: 0.1 });
+				//TweenLite.to(this.grad_el, 0.1, { opacity: 1, ease: Expo.easeOut, delay: 0.1 });
+                this.grad_el.css('opacity', '1');
 			}
 			else if( scroll_top <= this.SHOW_UNDERLAYING_TEXT_SCROLL_TOP ){
 				delay = 0.2;
@@ -137,27 +138,33 @@ main.views.IntroPaneView = main.views.PaneView.extend({
 				TweenLite.to(this.anim_rows.eq(1), 0.5, { top: this.default_elements_y[1] + this.ELEMENT_ANIM_OFFSET, ease: Expo.easeOut });
 				this.anim_rows.eq(1).removeClass(this.VISIBLE_CLASS);
 				//hide the gradient
-				TweenLite.to(this.grad_el, 0.1, { opacity: 0, ease: Expo.easeOut, delay: 0.1 });
+				//TweenLite.to(this.grad_el, 0.25, { opacity: 0, ease: Expo.easeOut });
+                this.grad_el.css('opacity', '0');
 			}
 			//!!!!!!!!!!!!!!!!!!
 			//perhaps do this at half winow height instead?????
-			if( scroll_top  > ( this.default_elements_y[2] - (this.this_el.height() - this.nav_offset - this.grad_el.height()) ) ){
+			//if( scroll_top  > ( this.default_elements_y[2] - (this.this_el.height() - this.nav_offset - this.grad_el.height()) ) ){
+            if( scroll_top  > ( this.default_elements_y[2] - (this.this_el.height()/2) ) ){
 				delay = 0;
 				TweenLite.to(this.anim_rows.eq(2), 0.5, { opacity: 1, ease: Expo.easeOut, delay:delay });
 				TweenLite.to(this.anim_rows.eq(2), 1.5, { top: this.default_elements_y[2], ease: Expo.easeOut, delay:delay });
 				this.anim_rows.eq(2).addClass(this.VISIBLE_CLASS);
-	
-				//hide the text above
-				//!!!!!!!!!!!!!!!!!!!!!!!!
-				//do the below once you scroll more
-				//!!!!!!!!!!!!!!!!!!!!!!!!å
-				TweenLite.to(this.anim_rows.eq(1), 0.5, { opacity: 0, ease: Expo.easeOut });
-				TweenLite.to(this.anim_rows.eq(1), 0.5, { top: this.default_elements_y[1] - this.ELEMENT_ANIM_OFFSET, ease: Expo.easeOut });
-				this.anim_rows.eq(1).removeClass(this.VISIBLE_CLASS);
+                
+                /*delay = 0.15;
+				TweenLite.to(this.anim_rows.eq(1), 0.5, { opacity: 0, ease: Expo.easeOut, delay:delay });
+				TweenLite.to(this.anim_rows.eq(1), 0.5, { top: this.default_elements_y[1] - this.ELEMENT_ANIM_OFFSET, ease: Expo.easeOut, delay:delay });
+				this.anim_rows.eq(1).removeClass(this.VISIBLE_CLASS);*/
 			}
-			if( scroll_top  <=  ( this.default_elements_y[2] - (this.this_el.height() - this.nav_offset - this.grad_el.height() )) ){
+            if( scroll_top  > ( this.default_elements_y[2] - (this.this_el.height()/3) ) ){
+                delay = 0;
+                TweenLite.to(this.anim_rows.eq(1), 0.5, { opacity: 0, ease: Expo.easeOut, delay:delay });
+                TweenLite.to(this.anim_rows.eq(1), 0.75, { top: this.default_elements_y[1] - this.ELEMENT_ANIM_OFFSET, ease: Expo.easeOut, delay:delay });
+                this.anim_rows.eq(1).removeClass(this.VISIBLE_CLASS);
+            }
+			//else if( scroll_top  <=  ( this.default_elements_y[2] - (this.this_el.height() - this.nav_offset - this.grad_el.height() )) ){
+            if( scroll_top  <= ( this.default_elements_y[2] - (this.this_el.height()/2) ) ){
 				TweenLite.to(this.anim_rows.eq(2), 0.5, { opacity: 0, ease: Expo.easeOut });
-				TweenLite.to(this.anim_rows.eq(2), 0.5, { top: this.default_elements_y[2] + this.ELEMENT_ANIM_OFFSET, ease: Expo.easeOut });
+				TweenLite.to(this.anim_rows.eq(2), 1, { top: this.default_elements_y[2] + this.ELEMENT_ANIM_OFFSET, ease: Expo.easeOut });
 				this.anim_rows.eq(2).removeClass(this.VISIBLE_CLASS);
 			}
 		}
