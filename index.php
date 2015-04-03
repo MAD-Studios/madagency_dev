@@ -37,6 +37,8 @@
     <script src="js/utils/TemplateLoader.js" type="text/javascript"></script>
     <script src="js/utils/ElementManipulator.js" type="text/javascript"></script>
     <script src="js/utils/DeviceDetector.js" type="text/javascript"></script>
+    <script src="js/routers/Router.js" type="text/javascript"></script>
+    <script src="js/routers/corporate/Router.js" type="text/javascript"></script>
     <script src="js/models/PaneModel.js" type="text/javascript"></script>
     <script src="js/models/SceneModel.js" type="text/javascript"></script>
     <script src="js/models/ResponseGeneratorModel.js" type="text/javascript"></script>

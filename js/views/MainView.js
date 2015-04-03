@@ -74,8 +74,10 @@ main.views.MainView = Backbone.View.extend({
 	   this.corporateView.scrollWindowTo(id);
 	   this.corporateView.markNav(id);
     },
+    
+    //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     // ----------------- openCastle
-    openCastle: function() {
+    /*openCastle: function() {
 	    var self = this;
 	    var castle_div;
 	    if(!this.castleView) this.castleView = new main.views.CastleView( { el: $('.castle', this.el) } );
@@ -99,7 +101,7 @@ main.views.MainView = Backbone.View.extend({
 			    self.removeCorporate();
 		    }, 1200);
 	    }, 100);
-	},
+	},*/
 	
 	// ----------------- closeCastles
    /* closeCastle: function() {
