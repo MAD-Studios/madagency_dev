@@ -322,7 +322,6 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     	//set active class on 
     	//underlying btn
     	//!!!!!!!!!!!!!!!!!!
-
     	this.scrollToShowMore();
 	    return false;
     },

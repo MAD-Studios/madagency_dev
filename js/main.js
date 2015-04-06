@@ -22,7 +22,7 @@ Backbone.View.prototype.dispose = function () {
 var main = {
     utils: {},
     router: {},
-    events: {},
+    //events: {},
     section: [],
     // ----------------- createSectionNamespaces
     init: function(){
@@ -35,7 +35,7 @@ var main = {
     },
     // ----------------- createSectionNamespaces
     createSectionNamespaces: function(){
-		var namespace_enities = ["models", "views", "routers"];
+		var namespace_enities = ["models", "views", "routers", "events"];
 	    //for each 
 	    for(var i=0;i<namespace_enities.length;i++){
 		    this[namespace_enities[i]] = {};
