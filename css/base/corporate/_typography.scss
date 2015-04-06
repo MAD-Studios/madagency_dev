@@ -1,0 +1,70 @@
+$defaultFontColor: $navy;
+$defaultFontSize: 14px;
+$defaultSmallFontSize: 11px;
+$inputFontSize: 12px;
+$inputFontColor: #586069;
+$navFontColor: #555252;
+
+.corporate{
+	width: 100%;
+	position: absolute;
+	color: $defaultFontColor;
+	font-size: $defaultFontSize;
+	font-family: "franklin-gothic-urw",sans-serif !important;
+	h1{
+		font-size: em(62px);
+		line-height: em(14px);
+		font-weight: 900;
+		@media #{$small-only}{
+			font-size: em(36px);
+		}
+	}
+	h2{
+		font-size: em(33px);
+		font-weight: 900;
+		line-height: em(15px);
+	}
+	h3{
+		font-size: em(20px);
+		font-weight: 500;
+		line-height: em(16px);
+	}
+	h4{
+		font-size: em(12px);
+		font-weight: 900;
+		line-height: em(16px);
+	}
+	p{  
+		font-weight: 400;
+		line-height: em(18px);
+	}
+	a{  text-decoration: none; outline:none; }
+	ul{ list-style: none; }
+	input{
+		padding: $xxSmMargin $smMargin;
+		font-size: em($inputFontSize) !important; color: $inputFontColor;
+		font-style: italic;
+		letter-spacing: em(2px);
+		font-weight: 400;
+		-webkit-border-radius: 0;
+		-moz-border-radius: 0;
+		border-radius: 0;
+	}
+	textarea{
+		padding: $xSmMargin $smMargin;
+		font-size: em($inputFontSize) !important; color: $inputFontColor;
+		font-style: italic;
+		letter-spacing: em(2px);
+		font-weight: 400;
+		-webkit-border-radius: 0;
+		-moz-border-radius: 0;
+		border-radius: 0;
+	}
+}
+::-webkit-input-placeholder { color: $inputFontColor; }
+:-moz-placeholder {  color: $inputFontColor;  }
+::-moz-placeholder {  color: $inputFontColor;  }
+:-ms-input-placeholder {  color: $inputFontColor;  }
+b{ font-weight: bold; }
+i{ font-style: italic; }
+

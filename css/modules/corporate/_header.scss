@@ -1,0 +1,23 @@
+/*-------------------------------- HEADER  */
+#header{
+	position: fixed;
+	top: 0; left: 0;
+	height: 30px;
+	width: 100%;
+    background-color: $gold;
+	background-color: $opaqueGold;
+	border-bottom: 1px solid $navy;
+	box-sizing: border-box;
+	z-index: 200;
+}
+.header-trans{
+        -webkit-transition: top 1.0s 0.45s cubic-bezier(0.755, 0.050, 0.855, 0.060), opacity 0.24s 0.8s; 
+           -moz-transition: top 1.0s 0.45s cubic-bezier(0.755, 0.050, 0.855, 0.060), opacity 0.24s 0.8s; 
+             -o-transition: top 1.0s 0.45s cubic-bezier(0.755, 0.050, 0.855, 0.060), opacity 0.24s 0.8s; 
+                transition: top 1.0s 0.45s cubic-bezier(0.755, 0.050, 0.855, 0.060), opacity 0.24s 0.8s; /* easeOutExpo*/
+
+        -webkit-transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060); 
+           -moz-transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060); 
+             -o-transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060); 
+                transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060); /* easeOutExpo */
+}

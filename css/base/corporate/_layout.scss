@@ -1,0 +1,58 @@
+/*----------------- DIMS  */
+$contentWidth: 1040px;
+$inputHeight: 32px;
+$minHeaderWidth: $contentWidth;
+$iconWidth: 50px;
+$iconMargin: $medMargin;
+
+
+/*--------------------------------  */
+/*.no-document-scroll body{
+	overflow-y: auto;
+}*/
+#main{
+	position: absolute;
+	min-width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+.corporate{
+	position: absolute;
+	visibility: hidden;
+	min-width: 100%;
+	height: 100%;
+	z-index: 1;
+}
+.content-sect{
+	float:left;
+	min-width: 100%;
+}
+.shadow-bordered{
+	border-bottom: 5px solid $dropShadowColor;
+}
+.shadow-bordered-lt-blue{
+	border-color: $dropShadowLightBlueColor;
+}
+.shadow-bordered-blue{
+	border-color: $dropShadowBlueColor;
+}
+.divider{
+    float:left;
+    width: 100%;
+    height: 1px;
+    border-top: 1px solid $navy;
+    &.shadow-bordered{
+        width: 100%;
+        height: 5px;
+        border-top: 1px solid $navy;
+    }
+}
+input{
+	display: block;
+    height: $inputHeight;
+    border: 1px solid $navy;
+    font-family: "franklin-gothic-urw-n4","franklin-gothic-urw",sans-serif;
+}
+
+
+

@@ -1,0 +1,30 @@
+.gradient.gold{
+    .top{
+	  float:left; width: 100%;
+	  background-image: -webkit-gradient(linear, left bottom, left top, from($transparentGold), to($nonTransparentGold 40%));
+	  background-image: -webkit-linear-gradient(top, $transparentGold, $nonTransparentGold 40%);
+	  background-image: -moz-linear-gradient(top, $transparentGold, $nonTransparentGold 40%);
+	  background-image: -o-linear-gradient(top, $transparentGold, $nonTransparentGold 40%);
+	  background-image: linear-gradient(to bottom, $transparentGold, $nonTransparentGold 40%);
+	}
+	.bottom{
+		float:left; width: 100%;
+		background-color: $gold;
+	}
+}
+
+.gradient.gold.gradient-small{
+	.top{
+	  float:left; width: 100%;
+	  background-image: -webkit-gradient(linear, left bottom, left top, from($transparentGold), to($nonTransparentGold 80%));
+	  background-image: -webkit-linear-gradient(top, $transparentGold, $nonTransparentGold 80%);
+	  background-image: -moz-linear-gradient(top, $transparentGold, $nonTransparentGold 80%);
+	  background-image: -o-linear-gradient(top, $transparentGold, $nonTransparentGold 80%);
+	  background-image: linear-gradient(to bottom, $transparentGold, $nonTransparentGold 80%);
+	}
+	.bottom{
+		float:left; width: 100%;
+		background-color: $gold;
+	}
+
+}

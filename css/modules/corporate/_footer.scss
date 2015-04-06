@@ -1,0 +1,39 @@
+/*-------------------------------- FOOTER  */
+#footer{
+	float:left;
+	width: 100%;
+	background-color: $navy;
+	border-top: 5px solid $dropShadowColor;
+	padding: $xLgMargin 0;
+    .main-nav-container{
+        width: 200px;
+        float: left;
+    }
+    .main-nav{ 
+        float:left;
+        display: block;
+        margin-left: 38px; 
+        a{
+            color: #FFF;
+            font-size: em(10px); font-weight: lighter;
+            padding: 1px $medMargin 0 $medMargin;
+            &:hover{
+                background-color: $xLightBlue;
+                color: $defaultFontColor;
+            }
+        }
+    }
+    .logo{
+	    margin-bottom: $smMargin;
+    }
+    .social-nav{ 
+        margin-top: 188px; 
+        float: right;
+        .btn{
+        	color: $gold;
+        }
+    }
+    li{ 
+        margin-bottom: $xxSmMargin; 
+    }
+}

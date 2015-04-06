@@ -1,0 +1,19 @@
+.row-float{
+	width: 100%; float:left;
+}
+.row-absolute{
+	width: 100%; position:absolute;
+	left: 0;
+}
+.columns,
+.column {
+	/*@media #{$small-only} {
+		padding-left: 0;
+		padding-right: 0;
+	}*/
+	position: relative;
+}
+
+
+
+

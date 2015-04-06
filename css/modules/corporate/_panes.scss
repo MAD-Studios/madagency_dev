@@ -1,0 +1,444 @@
+/*-------------------------------- PANES  */
+$contactPaneInputMaxWidth: 400px;
+    
+.pane{
+	float:left;
+	min-width: 100%;
+	.row-content{
+		padding-top: $xLgMargin;
+	    padding-bottom: $lgMargin;
+	}
+}
+.pane-title{
+	width: 140px; margin: 0 auto;	
+	background-color: $navy;
+	padding: 3px $xSmMargin;
+	text-align: center;
+	color: #FFF;
+	font-size: em(12px); font-weight: 900;
+	letter-spacing: em(1.5);
+}
+#pane-container{
+	float:left;
+	min-width: 100%;
+	overflow-x: hidden;
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+
+/*------------------------- IntroPane  */
+#intro-pane{
+	background-color: $gold;
+	/*min-height: 520px;*/
+	.intro{
+		position:relative;
+		width: 100%;
+		overflow: hidden;
+		.gradient.gold{
+			position: absolute;
+			bottom: 0;
+			height: 20%;
+			width: 100%;
+			z-index: 2;
+			@include transform(translate3d(0,0,0));
+			.top{
+				height: 100%;
+			}
+			.no-document-scroll &{
+				position: fixed;
+			}
+		}
+		.row-content{
+			padding-top: 0;
+			padding-bottom: 0;
+			position: relative;
+			z-index: 1;
+		}
+		.overlay{
+			width: 100%;
+			position: absolute;
+			z-index: 3;
+			top: 0;
+		}
+		.row-absolute{
+			@include transform(translate3d(0,0,0));
+			&:not(:first-child) {
+				h1{ margin-top: $lgMargin; }
+			}
+			h1{
+				margin-bottom: $lgMargin;
+				&.last{
+					margin-bottom: $xLgMargin;
+				}
+			}
+			h2{
+				font-weight: normal;
+				margin-bottom: $xSmMargin;
+				@media #{$small-only} {
+					font-size: em(24px);
+				}
+			}
+		}
+		.circle-arrow {
+			margin: 0 auto;
+		}
+		h2 a {color: #FFF; font-weight: bold; text-decoration: none; position: relative;}
+		/* To achieve the underline effect as in th PDF Proof */
+		h2 a:after {
+			content: '';
+			position: absolute;
+			bottom: 6%; left: 0%;
+			width: 100%;
+			height: 4px;
+			background-color: #FDA139;
+		}
+		.text-block{
+			float: left;
+		}
+	}
+	.unsupported-browser{
+		p{ top: 128px; }
+		a{ font-wieght: bold; }
+	}
+}
+
+/*------------------------- HowPane  */
+.btn-move img{
+	float: left;
+}
+.btn-move p{
+	float: left;
+	margin-right: $xSmMargin; margin-top: 3px;
+	color: $navy;
+	font-size: em(12px); font-weight: 900;
+}
+#how-pane{ 
+    h2{ margin-bottom: $medMargin; }
+    h3{ margin-bottom: $lgMargin; }
+    p{ margin-bottom: $medMargin; }
+    #img-how{
+        width:210px; height:225px;
+        display: block;
+        margin: 30px 0 $lgMargin 0;
+        float: right;
+        @media #{$small-only} {
+        	float: none;
+        	margin-left: auto;
+        	margin-right: auto;
+        }
+    }
+    .btn-move-container{
+        width: 134px;
+        margin: 0 30px 0 0; 
+        float: right;
+         @media #{$small-only} {
+        	float: none;
+        	margin-left: auto;
+        	margin-right: auto;
+        }
+    }
+}
+
+/*------------------------- WorkPane  */
+#work-pane{
+    p{ 
+        text-align:  center;
+         @media #{$small-only} {
+	    	text-align: left;
+	    }
+    }
+    .row-content:last-child{
+		padding-top: 0;
+	}
+    .video-container{
+        /*init size of video container*/
+        position: absolute;
+        width: 100%;
+        max-width: 612px;
+        max-height: 710px;
+        @media #{$small-only} {
+            max-width: 612px;
+			max-height: 770px;
+        }
+    }
+    iframe{
+    	width: 100%;
+    	height: 100%;
+        z-index: 100;
+    }
+}
+
+/*------------------------- TeamPane  */
+#team-pane{
+    @media #{$small-only} {
+        background-color: $lightGold;
+    }
+    .pane-title{
+        @media #{$small-only} {
+            margin-top: -24px;
+        }
+    }
+    .row-content{
+	    padding-top: $xLgMargin;
+        background-color: $lightGold;
+        @media #{$medium-only}, #{$small-only} {
+            padding-top: $smMargin;
+        }
+        @media #{$small-only} {
+            background-color: transparent;
+        }
+        > .row{
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+    }
+    .large-6{
+    	padding-bottom: $xLgMargin;
+        p{
+            float: left;
+            font-size: em(12px);
+            font-weight: lighter;
+        }
+        > .row {
+            padding: 0;
+        }
+        &:not(.last){
+            @media #{$medium-only}, #{$small-only}{
+                border-bottom: 1px solid $darkGold;
+            }
+        }
+        @media #{$medium-only}, #{$small-only}{
+            padding-bottom: $lgMargin;
+            padding-top: $lgMargin;
+        }
+    }
+    .btn-move-container{
+        width: 165px;
+        float: right;
+    }
+}
+.icon-role{
+	float: left;
+	width: $iconWidth; height: $iconWidth;
+	-moz-background-size: contain;
+	-o-background-size: contain;
+	-webkit-background-size: contain;
+	background-size: contain;
+	margin-right: $iconMargin;
+}
+.icon-creative-director{
+	background: transparent url(../assets/images/corporate/svg/team-icon-creativedirector.svg) no-repeat;
+    .no-svg  &{ background-image: url(../assets/images/corporate/png/team-icon-creativedirector.png); }
+}
+.icon-front-end{
+	background: transparent url(../assets/images/corporate/svg/team-icon-frontend.svg) no-repeat;
+    .no-svg  &{ background-image: url(../assets/images/corporate/png/team-icon-frontend.png); }
+}
+.icon-art-director{
+	background: transparent url(../assets/images/corporate/svg/team-icon-artdirector.svg) no-repeat;
+    .no-svg  &{ background-image: url(../assets/images/corporate/png/team-icon-artdirector.png); }
+}
+.icon-programmer{
+	background: transparent url(../assets/images/corporate/svg/team-icon-programmer.svg) no-repeat;
+    .no-svg  &{ background-image: url(../assets/images/corporate/png/team-icon-programmer.png); }
+}
+.icon-copy-writer{
+	background: transparent url(../assets/images/corporate/svg/team-icon-copywriter.svg) no-repeat;
+    .no-svg  &{ background-image: url(../assets/images/corporate/png/team-icon-copywriter.png); }
+}
+.icon-proj-manager{
+	background: transparent url(../assets/images/corporate/svg/team-icon-projmanger.svg) no-repeat;
+    .no-svg  &{ background-image: url(../assets/images/corporate/png/team-icon-projmanger.png); }
+}
+
+/*------------------------- DisciplinesPane  */
+#disciplines-pane{
+    .row-pane-divider{
+        margin-top: -24px;
+    }
+    .row-content{
+        padding-top: $lgMargin;
+        &:last-child{
+            padding-bottom: $xLgMargin;
+        }
+    }
+    li{
+        margin-bottom: $xSmMargin;
+        &:before {
+            content: "+";
+            margin-right: $medMargin;
+            color: $gold;
+        }
+    }
+    ul{
+        @media #{$medium-only}, #{$small-only}{
+            margin-left: 8%;
+        }
+    }
+}
+
+/*------------------------- ContactPane  */
+#contact-pane{
+    background-color: $xLightBlue;
+    border-top: 1px solid $navy;
+    border-bottom: 1px solid $navy;
+    .pane-title{
+        margin-top: -24px;
+    }
+    .map-cnt{
+        width: 100%;
+        height: 250px;
+        background-color: #FFF;
+        border: 1px solid $navy;
+        margin: $lgMargin 0 $xLgMargin 0;
+    }
+    .map{
+        width: 100%; height: 100%;
+    }
+    .row-content{
+        padding-top: 0;
+        padding-bottom: 0;
+        &.row-header{
+            padding-top: $xLgMargin;
+        }
+        &:last-child{
+            padding-bottom: $xLgMargin;
+        }
+    }
+    .btn-addr{
+        float: left;
+        margin: 0 0 -$smMargin 4px;
+        padding: 2px $xSmMargin;
+        color: $navy;
+        border: 1px solid transparent;
+        &.active{
+            background-color: #FFF;
+            border: 1px solid $navy;
+        }
+    }
+    #contact-form {
+	    .large-6:nth-child(1) div{
+            float: right;
+        }
+        .large-6 div,
+        .large-6:nth-child(1) div{
+	    	@media #{$medium-only}, #{$small-only}{
+             	float: none;
+			 	margin-left: auto;
+			 	margin-right: auto;
+	    	}
+	    }
+    }
+    .msg{
+        text-align: center;
+        margin-bottom: $xLgMargin;
+    }
+    .input-container{
+        max-width: $contactPaneInputMaxWidth;
+        height: 55px;
+        color: $lightNavy;
+        margin-bottom: $smMargin;
+        p{
+            font-size: em(12px);
+            margin-bottom: $xxSmMargin;
+        }
+    }
+    .input-container-ta{
+        height: 123px;
+    }
+    textarea{
+        height: 100px;
+        border: 1px solid $navy;
+    }
+    .btn-submit{
+        margin-top: 16px;
+    }
+    .btn-submit-container{
+        max-width: $contactPaneInputMaxWidth;
+        height: 53px;
+    }
+    .notice-col{
+        height: 0;
+    }
+    .notice{
+        text-align: center;
+        &.error-msg{
+            color: $darkGold;
+            font-weight: 900;
+        }
+        &.success-msg{
+        }
+    }
+    .padding-row{
+        margin-bottom: $xxLgMargin;
+    }
+}
+p.addr{
+	font-size: em(12px);
+}
+.flag-map{
+	float: left;
+	position: relative;
+	width: 230px; height: 94px;
+	-moz-background-size: contain;
+	-o-background-size: contain;
+	-webkit-background-size: contain;
+	background-size: contain;
+	background: transparent url(../assets/images/corporate/png/contact-map.png) no-repeat;
+    .hires &{ 
+        background-image: url(../assets/images/corporate/png/contact-map@2x.png); 
+        -moz-background-size: contain;
+        -o-background-size: contain;
+        -webkit-background-size: contain;
+        background-size: contain;
+    }
+}
+.flag{
+	position: absolute; display: block; 
+	width: 30px; height:40px;
+	overflow: hidden;
+	background: transparent url(../assets/images/corporate/png/contact-flag.png) no-repeat;
+    .hires  &{ 
+        width: 30px; height:40px;
+        overflow: hidden;
+        background-image: url(../assets/images/corporate/png/contact-flag@2x.png);
+        -moz-background-size: 30px;
+        -o-background-size: 30px;
+        -webkit-background-size: 30px;
+        background-size: 30px; 
+    }
+}
+#flag-fl{
+	top: 36px; height: 40px; left: 201px; top: 36px;
+ 	background-position: 0 2px;
+
+    &.active{
+        left: 201px; top: 36px;
+        background-position: 0 -42px;
+         &:hover{
+            top: 38px; height: 38px;
+            background-position: 0 2px;
+        }
+    }
+    &:hover{
+        top: 38px; height: 38px;
+        background-position: 0 -42px;
+    }
+}
+#flag-mn{
+	top: -18px; left: 126px;
+	background-position: 0 0;
+    &:hover{
+        top: -17px;
+        background-position: 0 -43px;
+        height: 39px;
+    }
+    &.active{
+        top: -18px;
+        background-position: 0 -43px;
+        &:hover{
+            top: -17px; left: 126px;
+            background-position: 0 0;
+            height: 39px;
+        }
+    }
+}

@@ -1,0 +1,39 @@
+$defaultFontSize: 14px;
+
+/*----------------- Mixins */
+/* Turn numbers with units into unitless numbers: https://github.com/nex3/sass/issues/533 */
+@function clear-units($value){
+    @if type-of($value) == "number" {
+        @if (unitless($value)) {
+            @return $value;
+        } @else if unit($value) == "em"{
+            @return $value / 1em;
+        } @else if unit($value) == "px" {
+            @return $value / 1px;
+        } @else if unit($value) == "pt" {
+            @return $value / 1pt;
+        }
+    } @else {
+        @warn "Not a number value: #{$value}";
+        @return $value;
+    }
+}
+$browser-context: $defaultFontSize; // Default
+@function em($pixels, $context: $browser-context) {
+  @return #{clear-units($pixels)/clear-units($context)}em
+}
+
+// We use these functions to get the ranges for the media queries variables. 
+@function lower-bound($range){
+    @if length($range) <= 0 {
+        @return 0;
+    }
+    @return nth($range,1);
+}
+ 
+@function upper-bound($range) {
+    @if length($range) < 2 {
+        @return 999999999999;
+    }
+    @return nth($range, 2);
+}
