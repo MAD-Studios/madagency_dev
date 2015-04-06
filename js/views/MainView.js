@@ -17,7 +17,6 @@ main.views.MainView = Backbone.View.extend({
         var self = this;
         this.setMainListeners();
         this.initiateCorporate();
-        console.log("after ---------- initiateCorporate");
         if(this.setCorporateListeners) this.setCorporateListeners();
         setTimeout(function(){
 	        self.posize();
@@ -61,7 +60,7 @@ main.views.MainView = Backbone.View.extend({
     // ----------------- enableDocumentScroll
     updateDocumentScroll: function() {
     	if($(document.documentElement).hasClass(this.elementManipulator.NO_DOCUMENT_SCROLL_CLASS)){
-		   $(this.el).css('height', ($(window).height()) + 'px');
+		   $(this.el).css('height', ($(window).outerHeight()) + 'px');
 	    }
 	    else $(this.el).css('height', $(this.corporateView.el).outerHeight() + 'px');
     },

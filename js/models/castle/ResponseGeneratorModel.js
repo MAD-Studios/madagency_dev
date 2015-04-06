@@ -3,11 +3,11 @@ main.models.castle.ResponseGeneratorModel = Backbone.Model.extend({
 	 // set vars
      defaults: {
          "questions": [
-			"How can I increase my social media presence?",
+			/* "How can I increase my social media presence?",
 			"What's more effective, advertising online or on television?",
 			"Are Facebook ads effective at targeting consumers?",
 			"What are some simple web marketing techniques?",
-			"How do I use web analytics to my advantage?",
+			"How do I use web analytics to my advantage?", */
 			"Tell us one of your company’s biggest challenges?"
 		 ],
          "answers": [

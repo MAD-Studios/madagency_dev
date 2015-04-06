@@ -1,9 +1,6 @@
 // _________________________________________________________________________ IntroPaneView
 main.views.corporate.IntroPaneView = main.views.PaneView.extend({
- 	//ELEMENT_TRANS_CLASS: ".element-trans",
-    //LAST_ELEMENT_TRANS_CLASS: ".last-element-trans",
     ELEMENT_ANIM_OFFSET: 100,
-    //LAST_ELEMENT_ANIM_OFFSET: 900,
     SHOW_UNDERLAYING_TEXT_SCROLL_TOP: 5,
 	IDLE: "idle",
 	PREVENT_BODY_SCROLL: "prevent_body_scroll",
@@ -11,16 +8,19 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
 	VISIBLE_CLASS: "visible",
 	MIN_TEXT_BLOCK_BOTTOM_MARGIN: 100,
 	MIN_TEXT_BLOCK_TOP_MARGIN: 50,
+	BTN_HIDDEN_PADDING_BOTTOM: 10,
+	OVERLAY_HTML: '<div class="overlay"></div>',
+	OVERLAY_BTN_HTML: '<div class="btn btn-overlay"></div>',
 	id: "intro",
 	_route: "",
 	offset: 0,
 	nav_offset: 0,
 	default_elements_y: [],
 	to_y: 0,
-	//elementManipulator: main.utils.ElementManipulator,
 	num_posizes: 0,
 	events:{
-		'click .btn-castle': 'onBtnCastleClick'
+		'click .btn-castle': 'onBtnCastleClick',
+		
 	},
 	// ----------------- initialize
     initialize: function() {
@@ -51,21 +51,17 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     	    	
     	this.createOverlay();
     	this.hideContent();
-    	
-    	//castleGatewayView
-    	//!!!!!!!!!!!!!!!!!!!!!!
     },
     // ----------------- posElements
     posElements: function() {
-        var self = this;
+        var self 					= this;
+        var last_h 					= 0;
+        var to_h 					= 0;
+        this.to_y				 	= 0;    
+        this.default_elements_y	 	= [];
+        
         this.arrow_row_el.css('top', this.def_arrow_row_el_top + 'px');        
 
-        var last_h = 0;
-        var to_h = 0;
-        //this.to_y = parseInt(this.to_margin);    
-        this.to_y = 0;    
-        this.default_elements_y = [];
-    	
         this.anim_rows.each(function(){
         	//make sure not arrow row
         	//or row within an absolute  row
@@ -92,6 +88,8 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     	to_h = self.to_y;
     	$('.row-content', this.el).css('height', to_h + 'px');
     	this.overlay_el.css('height', to_h + 'px');
+    	
+    	this.posOverlayBtns();
     },
     // ----------------- createOverlay
     createOverlay: function() {
@@ -99,9 +97,62 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     	//to allow for
     	//scroll when mouse over
     	//gradient
-    	this.overlay_el = $('<div class="overlay"></div>');
+    	this.overlay_el = $(this.OVERLAY_HTML);
     	
     	$('.scroller-content', this.el).append(this.overlay_el);
+    	
+    	this.createOverlayBtns();
+    },
+    // ----------------- createOverlayBtns
+    createOverlayBtns: function() {
+        var self 					= this;	
+    	var overlay_btn;
+    	var btn_w 					= 0, 
+    		btn_h 					= 0;
+    	var btn_id 					= "";
+    	this.overlay_btns 			= [];
+    	this.btn_els 				= $('.btn', this.scroller_el);
+    	//create invisible overlay btns
+    	//at the positions of the 
+    	//btns inside the scroller content
+    	this.btn_els.each(function(){
+	    	overlay_btn = $(self.OVERLAY_BTN_HTML);
+	    	//SET ITS WITRH AND HEIGHT
+	    	btn_w = $(this).outerWidth();
+	    	btn_h = $(this).outerHeight() + self.BTN_HIDDEN_PADDING_BOTTOM;
+	    	overlay_btn.css('width', btn_w + 'px');
+			overlay_btn.css('height', btn_h + 'px');
+			//give it an id that 
+			//corresponds to the btn
+			//(use events ?)
+			
+	    	//append to the overlay
+	    	//add click listener
+	    	$(this).click(function(){
+		    	//call its associated function
+	    	});
+	    	self.overlay_btns.push(overlay_btn);
+	    	self.overlay_el.append(overlay_btn);
+    	});
+    },
+    // ----------------- posOverlayBtns
+    posOverlayBtns: function() {
+        console.log("posOverlayBtns");
+
+        var self 					= this;	
+        var overlay_btn;
+    	var btn_y 					= 0,
+    		btn_x 					= 0;
+    	this.btn_els.each(function(index, value){
+    		overlay_btn = self.overlay_btns[index];
+    		//SET ITS TOP AND LEFT POSITIONS 
+			btn_y = $(this).offset().top;
+			if( !$(this).parent().parent().parent().hasClass(self.VISIBLE_CLASS) ) btn_y -= self.ELEMENT_ANIM_OFFSET;
+			btn_x = $(this).offset().left;
+			
+			overlay_btn.css('top', btn_y + 'px');
+			overlay_btn.css('left', btn_x + 'px');	
+    	});
     },
     // ----------------- handleIntroScroll
     handleIntroScroll: function() {
@@ -171,6 +222,8 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     // ----------------- prepForAnim
     prepForAnim: function() {
     	var self = this;
+    	
+    	console.log("prepForAnim");
     	
     	this.grad_el.css('opacity', '0');
     	//hide all but first text-block

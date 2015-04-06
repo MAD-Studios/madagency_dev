@@ -10,17 +10,6 @@ main.views.castle.MainView = main.views.MainView.extend({
 	    var self = this;
 	    var castle_div;
 	    if(!this.castleView) this.castleView = new main.views.castle.CastleView( { el: $('.castle', this.el) } );
-	    /*else {
-			this.castleView = new main.views.CastleView();
-		    $(this.el).append($(this.castleView.el));
-		}*/
-	    //create Castle view
-	    /*$(this.castleView.el).on(this.castleView.EXIT, function(event){
-		    self.closeCastle();
-	    });
-	    $(this.castleView.el).on(this.castleView.HIDE_COMPLETE, function(event){
-		    self.handleHideCastleComplete();
-	    });*/
 	    $(this.castleView.el).addClass(this.STAGE_CENTER_CLASS);
 	    this.castleView.render();
 	    this.castleView.startLoader();
@@ -31,50 +20,6 @@ main.views.castle.MainView = main.views.MainView.extend({
 		    }, 1200);
 	    }, 100);
 	},
-    // ----------------- closeCastles
-    /*closeCastle: function() {
-	    var self = this;
-	    //first hide the castle
-	    this.castleView.hide();	    
-	},
-    // ----------------- handleHideCastleComplete
-    handleHideCastleComplete: function() {
-	    var self = this;
-	    setTimeout(function(){
-	        $(document.body).height($(window).height());
-	        $(document.body).css('overflow-x', 'visible');
-	        $(document.body).css('overflow-y', 'visible');
-	        $(document.documentElement).css('overflow-x', 'visible');
-	        $(document.documentElement).css('overflow-y', 'visible');
-	        $(document.documentElement).removeClass('no-skrollr');
-		    //add the corporate view back
-		    self.initiateCorporate();
-		    //add the left transition class
-		    $(self.corporateView.el).addClass(self.STAGE_TRANSITION);
-		    $(self.castleView.el).addClass(self.STAGE_TRANSITION);
-		    $(self.corporateView.el).removeClass(self.STAGE_CENTER_CLASS);
-		    $(self.corporateView.el).addClass(self.STAGE_LEFT_CLASS);
-		    $(self.corporateView.el).css('top', '0');
-		    //set it to the left of the stage
-		    //transition the castle view 
-		    //out to the right
-		    //set it from fixed to absolute
-		    setTimeout(function(){
-			    $(self.castleView.el).css('position', 'absolute');
-			    $(self.corporateView.el).removeClass(self.STAGE_CENTER_CLASS);
-			    $(self.castleView.el).addClass(self.STAGE_RIGHT_CLASS);     
-			    //add webkit transition end listener
-			    $(self.castleView.el).on('transitionend webkitTransitionEnd oTransitionEnd', function(){
-				    $(self.castleView.el).off('transitionend webkitTransitionEnd oTransitionEnd');
-				    self.removeCastle();
-				});
-			    //trasnition th ecorporate view
-			    //in from the left
-			    $(self.corporateView.el).removeClass(self.STAGE_LEFT_CLASS);
-			    $(self.corporateView.el).addClass(self.STAGE_CENTER_CLASS);
-		    }, 300);
-		 }, 100);
-    },*/
     // ----------------- moveIntoCastle
     moveIntoCastle: function(){
 	    //first begin the hide animation 
@@ -99,13 +44,6 @@ main.views.castle.MainView = main.views.MainView.extend({
 	    $(this.corporateView.el).remove();
 	    $(this.corporateView.el).off();
     },
-    // ----------------- removeCastle
-    /*removeCastle: function() {
-	    this.castleView.dispose(); 
-	    $(this.castleView.el).css('visibility', 'hidden');
-	    $(this.castleView.el).remove();
-	    $(this.castleView.el).off();
-    },*/
     // ----------------- setCorporateListeners
     setCorporateListeners: function(){
 	    var self = this;	

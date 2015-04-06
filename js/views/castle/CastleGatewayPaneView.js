@@ -11,7 +11,7 @@ main.views.castle.CastleGatewayPaneView = main.views.PaneView.extend({
 	IDLE: "idle",
 	UNSUPPORTED_H1_COPY: "We noticed you aren’t running at full optimization",
 	UNSUPPORTED_P_COPY: 'We recommend you upgrade your browser to the latest version of Safari or <a href="https://www.google.com/intl/en_US/chrome/browser/">Chrome</a>.',
-	MAX_INPUT_PLACEHOLDER_CHARS: 45,
+	MAX_INPUT_PLACEHOLDER_CHARS: 55,
 	//time to wait before auto 
 	//going into the story view
 	INPUT_ALERT_START_TIME: 4000,

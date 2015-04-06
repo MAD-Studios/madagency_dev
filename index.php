@@ -87,7 +87,7 @@
 							<div class="row-absolute"><div class="text-block vertical-center">
 								<h1 class="text-shadow white">Hi. We are Mad Agency.<br>We do a lot of cool things for our clients.</h1>
 					        	<h1 class="text-shadow white last">Here’s a list of some things we could do for you.</h1>
-								<div class="row-absolute row-arrow-container"><div class="arrow circle-arrow down"></div></div>
+								<div class="row-absolute row-arrow-container"><div class="btn arrow circle-arrow down"></div></div>
 							</div></div>
 							<div class="row-absolute"><div class="text-block text-block-to-fade">
 					        	<h2>Yes, we can help you retain your customers.</h2>
@@ -113,7 +113,7 @@
 								<h1 class="text-shadow white">That&rsquo;s a lot of cool things.<br>Right?</h1>
 								<h2>If you’re ready to start hearing &lsquo;yes&rsquo; to your businesses needs go ahead and contact us.</h2>
 								<h2>We&rsquo;d love to hear from you.</h2>
-								<h2>While your here take a look around and be sure to check out our <a href="#">Creative Castle.</a></h2>
+								<h2>While your here take a look around and be sure to check out our <a class="btn" href="#">Creative Castle.</a></h2>
 							</div></div>
 
 						</div>

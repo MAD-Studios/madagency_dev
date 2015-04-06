@@ -59,6 +59,10 @@ $contactPaneInputMaxWidth: 400px;
 			z-index: 3;
 			top: 0;
 		}
+		.btn-overlay{
+			cursor: pointer;
+			position: absolute;
+		}
 		.row-absolute{
 			@include transform(translate3d(0,0,0));
 			&:not(:first-child) {
