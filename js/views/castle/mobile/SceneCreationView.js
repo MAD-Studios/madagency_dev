@@ -1,5 +1,5 @@
 // _________________________________________________________________________ SceneCreationView
-main.views.SceneCreationView = main.views.SceneView.extend({
+main.views.SceneCreationView = main.views.castle.SceneView.extend({
 	state: "",
 	name: "scene-creation",
     // ----------------- initialize

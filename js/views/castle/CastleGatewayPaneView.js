@@ -1,5 +1,5 @@
-// _________________________________________________________________________ CastleGatewayView
-main.castle.views.CastleGatewayView = Backbone.View.extend({
+// _________________________________________________________________________ CastleGatewayPaneView
+main.views.castle.CastleGatewayPaneView = main.views.PaneView.extend({
     ELEMENT_TRANS_CLASS: ".element-trans",
     LAST_ELEMENT_TRANS_CLASS: ".last-element-trans",
 	INPUT_BLINK_TRANS_CLASS: "input-blink-trans",
@@ -33,12 +33,12 @@ main.castle.views.CastleGatewayView = Backbone.View.extend({
 	},
 	// ----------------- initialize
     initialize: function() {
-        console.log("CastleGatewayView ---- initialize"); 
+        console.log("CastleGatewayPaneView ---- initialize"); 
         var self = this;
     },
-    // ----------------- render
-    render: function() {
-        console.log("CastleGatewayView ---- beforeRender");
+    // ----------------- beforeRender
+    beforeRender: function() {
+        console.log("CastleGatewayPaneView ---- beforeRender");
         var self = this;
         //this.h1_el = $('h1', this.el);
 	    //this.p_el = $('p', this.el);
@@ -55,7 +55,7 @@ main.castle.views.CastleGatewayView = Backbone.View.extend({
 	        //self.default_h1_top = parseInt(self.h1_el.css('top'));
 	        //self.default_p_top = parseInt(self.p_el.css('top')); 
 	        //self.default_input_cta_top = parseInt(self.input_cnt_el.css('top'));   
-	        self.model = main.router.responseGeneratorModel;
+	        self.model = main.responseGeneratorModel;
 	        self.questions = self.model.get("questions");
 	        self.setQuestionPlaceholder();
         }, 100);
@@ -177,7 +177,7 @@ main.castle.views.CastleGatewayView = Backbone.View.extend({
 	    
     },
 	// ----------------- beforeActivate
-   /* beforeActivate: function() {
+    beforeActivate: function() {
 	    //this.setIdleTimer();
 	    this.setInputAlertTimer();
 	},
@@ -185,15 +185,15 @@ main.castle.views.CastleGatewayView = Backbone.View.extend({
     beforeDeactivate: function() {
 	    //this.unsetIdleTimer();
 	    this.unsetInputAlertTimer();
-    },*/
-    // ----------------- posize
-    posize: function() {
+    },
+    // ----------------- beforePosize
+    beforePosize: function() {
 	    this.posElements();
 	    this.content_el.css('opacity', '1');
     	
     	//also set the height of the 
     	//content Element
-    	var to_margin_top = ($(this.el).outerHeight() - this.to_y)/3;
+    	var to_margin_top = ($(this.el).outerHeight() - this.to_y)/2.1;
     	
 	    //position content to be nearly centered
 	    //var to_margin_top = ($(this.el).outerHeight() - $('.row-content', this.el).outerHeight())/2;

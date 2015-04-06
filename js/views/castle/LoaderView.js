@@ -1,5 +1,5 @@
 // _________________________________________________________________________ LoaderView
-main.castle.views.LoaderView = Backbone.View.extend({
+main.views.castle.LoaderView = Backbone.View.extend({
 	GOLD_GRAD_TRANS_CLASS: "gradient-transition",
 	GOLD_GRAD_TRANS_CLASS_OUT: "gradient-transition-out",
 	INFO_TRANS_CLASS: "info-transition",
@@ -632,7 +632,7 @@ main.castle.views.LoaderView = Backbone.View.extend({
 		    }, 100);
 	    }  
 	    else{
-		   rainbowView = new main.views.RainbowView(); 
+		   rainbowView = new main.views.castle.RainbowView(); 
 		   if(contain) rainbowView.contain = true;
 		   this.rainbowContainer_el.append($(rainbowView.el));
 	    } 
@@ -655,7 +655,7 @@ main.castle.views.LoaderView = Backbone.View.extend({
 });
 
 // _________________________________________________________________________ RainbowView
-main.views.RainbowView = Backbone.View.extend({
+main.views.castle.RainbowView = Backbone.View.extend({
 	KILL: "kill",
 	RAINBOW_SOLID_W_RANGE: {min: 0, max: 1400},
 	EASE_OUT_TRANS_CLASS: "rainbow-ease-out-transition",

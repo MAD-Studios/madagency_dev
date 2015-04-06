@@ -1,5 +1,5 @@
 // _________________________________________________________________________ SceneCreationView
-main.castle.views.SceneCreationView = main.views.SceneView.extend({
+main.views.castle.SceneCreationView = main.views.castle.SceneView.extend({
 	SCENE_TRANSITION_CLASS: "scene-transition",
 	STATE_LEFT: "state-left",
 	STATE_GERBIL: "state-gerbil",

@@ -1,4 +1,4 @@
-<script src="js/vendor/modernizr.custom.80155.js"></script>
+<script src="/dev/js/vendor/modernizr.custom.80155.js"></script>
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

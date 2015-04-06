@@ -15,48 +15,54 @@
     <meta property="og:url" content="http://www.madstudios.net" />
     <meta property="og:image" content="http://www.madstudios.net/assets/img/share_logo.jpg" />
     <meta property="og:description" content="MAD Agency is a full service Advertising/Marketing/Production agency. We have the people needed to build your project here, onsite. This allows for tighter timelines and a more cohesive end result." />
-    <link href="css/castle.css" type="text/css" rel="stylesheet" />
+    <link href="../css/mad-agency.css" type="text/css" rel="stylesheet" />
     
-    <script src="js/vendor/jquery.activity-indicator-1.0.0.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+    <script src="../js/vendor/jquery.activity-indicator-1.0.0.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="//use.typekit.net/ntj1viz.js"></script>
-	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-    <script src="js/vendor/skrollr.min.js"></script>
-    <script src="js/vendor/underscore-min.js" type="text/javascript"></script>
-    <script src="js/vendor/backbone-min.js" type="text/javascript"></script>
-    <script src="js/vendor/greensock/TweenLite.min.js"></script>
-    <script src="js/vendor/greensock/CSSPlugin.min.js"></script>
-    <script src="js/vendor/greensock/EasePack.min.js"></script>
-    <script src="js/vendor/greensock/ScrollToPlugin.min.js"></script>
-    <script src="js/vendor/jquery-image-loader.js"></script>
+    <script src="../js/vendor/skrollr.min.js"></script>
+    <script src="../js/vendor/underscore-min.js" type="text/javascript"></script>
+    <script src="../js/vendor/backbone-min.js" type="text/javascript"></script>
+    <script src="../js/vendor/greensock/TweenLite.min.js"></script>
+    <script src="../js/vendor/greensock/CSSPlugin.min.js"></script>
+    <script src="../js/vendor/greensock/EasePack.min.js"></script>
+    <script src="../js/vendor/greensock/ScrollToPlugin.min.js"></script>
+    <script src="../js/vendor/jquery-image-loader.js"></script>
     
-    <script src="js/main.js" type="text/javascript"></script>
-    <script src="js/utils/TemplateLoader.js" type="text/javascript"></script>
-    <script src="js/utils/ElementManipulator.js" type="text/javascript"></script>
-    <script src="js/models/PaneModel.js" type="text/javascript"></script>
-    <script src="js/models/castle/SceneModel.js" type="text/javascript"></script>
-    <script src="js/models/castle/ResponseGeneratorModel.js" type="text/javascript"></script>
-    <script src="js/models/castle/LoaderModel.js" type="text/javascript"></script>
-    <script src="js/models/castle/AudioModel.js" type="text/javascript"></script>
-    <script src="js/views/MainView.js" type="text/javascript"></script>
-    <script src="js/views/castle/MainView.js" type="text/javascript"></script>
-    <script src="js/views/CorporateView.js" type="text/javascript"></script>
-    <script src="js/views/castle/CorporateView.js" type="text/javascript"></script>
-    <script src="js/views/PaneContainerView.js" type="text/javascript"></script>
-    <script src="js/views/castle/PaneContainerView.js" type="text/javascript"></script>
-    <script src="js/views/PaneView.js" type="text/javascript"></script>
-    <script src="js/views/HeaderView.js" type="text/javascript"></script>
-    <script src="js/views/FooterView.js" type="text/javascript"></script>
-    <script src="js/views/CastleView.js" type="text/javascript"></script>
-    <script src="js/views/castle/SceneView.js" type="text/javascript"></script>
-    <script src="js/views/castle/SceneCastleView.js" type="text/javascript"></script>
-    <script src="js/views/castle/SceneCreationView.js" type="text/javascript"></script>
-    <script src="js/views/castle/SceneGerbilView.js" type="text/javascript"></script>
-    <script src="js/views/castle/SceneXrayView.js" type="text/javascript"></script>
-    <script src="js/views/castle/SceneLabView.js" type="text/javascript"></script>
-    <script src="js/views/castle/SceneBoyView.js" type="text/javascript"></script>
-    <script src="js/views/castle/LoaderView.js" type="text/javascript"></script>
-    <script src="js/views/castle/SceneContainerView.js" type="text/javascript"></script>
-    <script src="js/views/castle/ScrollDownIndicatorView.js" type="text/javascript"></script> 
+    <script src="../js/main.js" type="text/javascript"></script>
+    <script src="../js/castle.js" type="text/javascript"></script>
+    <script src="../js/events/Event.js" type="text/javascript"></script>
+    <script src="../js/utils/TemplateLoader.js" type="text/javascript"></script>
+    <script src="../js/utils/ElementManipulator.js" type="text/javascript"></script>
+    <script src="../js/utils/DeviceDetector.js" type="text/javascript"></script>
+    <script src="../js/routers/Router.js" type="text/javascript"></script>
+    <script src="../js/routers/castle/Router.js" type="text/javascript"></script>
+    <script src="../js/models/PaneModel.js" type="text/javascript"></script>
+    <script src="../js/models/castle/SceneModel.js" type="text/javascript"></script>
+    <script src="../js/models/castle/ResponseGeneratorModel.js" type="text/javascript"></script>
+    <script src="../js/models/castle/LoaderModel.js" type="text/javascript"></script>
+    <script src="../js/models/castle/AudioModel.js" type="text/javascript"></script>
+    <script src="../js/views/MainView.js" type="text/javascript"></script>
+    <script src="../js/views/castle/MainView.js" type="text/javascript"></script>
+    <script src="../js/views/CorporateView.js" type="text/javascript"></script>
+    <script src="../js/views/castle/CorporateView.js" type="text/javascript"></script>
+    <script src="../js/views/PaneContainerView.js" type="text/javascript"></script>
+    <script src="../js/views/castle/PaneContainerView.js" type="text/javascript"></script>
+    <script src="../js/views/PaneView.js" type="text/javascript"></script>
+    <script src="../js/views/HeaderView.js" type="text/javascript"></script>
+    <script src="../js/views/FooterView.js" type="text/javascript"></script>
+    <script src="../js/views/castle/CastleGatewayPaneView.js" type="text/javascript"></script>
+    <script src="../js/views/castle/CastleView.js" type="text/javascript"></script>
+    <script src="../js/views/castle/SceneView.js" type="text/javascript"></script>
+    <script src="../js/views/castle/SceneCastleView.js" type="text/javascript"></script>
+    <script src="../js/views/castle/SceneCreationView.js" type="text/javascript"></script>
+    <script src="../js/views/castle/SceneGerbilView.js" type="text/javascript"></script>
+    <script src="../js/views/castle/SceneXrayView.js" type="text/javascript"></script>
+    <script src="../js/views/castle/SceneLabView.js" type="text/javascript"></script>
+    <script src="../js/views/castle/SceneBoyView.js" type="text/javascript"></script>
+    <script src="../js/views/castle/LoaderView.js" type="text/javascript"></script>
+    <script src="../js/views/castle/SceneContainerView.js" type="text/javascript"></script>
+    <script src="../js/views/castle/ScrollDownIndicatorView.js" type="text/javascript"></script> 
     
     <!--[if lt IE 9]>
             <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -78,7 +84,7 @@
 	<!------------ CORPORATE ------------->
 	<div class="corporate">
 	
-	<?php include 'inc/header.php';?>
+	<?php include '../inc/header.php';?>
 	
 	<section class="content-sect">
 	<div id="pane-container">
@@ -108,11 +114,17 @@
 	</section>
 	
 	</div>
+	</section>
 	
-	<!------------ STORY ------------->
-	<div class="story story">
+	<div class="divider shadow-bordered bottom-sticky"></div>
+	
+	</div>
+	
+	<!------------ CASTLE ------------->
+	<div class="castle">
 		<div class="scene-container"><div id="skrollr-body"></div></div>
 		<div class="loader"></div>
 	</div>
+</div>
 
-<?php include 'inc/dom-end.php';?>
+<?php include '../inc/dom-end.php';?>

@@ -1,0 +1,29 @@
+# permanently redirect from non-www domain to www domain
+RewriteEngine on
+
+# server custom error pages
+ErrorDocument 404 http://m.yeswearemad.com/404/
+
+# prevent folder listing
+#IndexIgnore *
+
+# disable directory browsing
+Options All -Indexes
+
+# prevent viewing of specific files
+<FilesMatch "(.htaccess)">
+Order Allow,Deny
+Deny from all
+</FilesMatch>
+
+# rewrite rules
+RewriteRule ^(404)/$ 404.html [NC,QSA,L]
+
+# html5 pushstate (history) support:
+<ifModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} !index
+    RewriteRule (.*) index.php [L]
+</ifModule>

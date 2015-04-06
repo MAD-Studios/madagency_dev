@@ -1,5 +1,5 @@
 // _________________________________________________________________________ SceneContainerView
-main.castle.views.SceneContainerView = Backbone.View.extend({
+main.views.castle.SceneContainerView = Backbone.View.extend({
 	PEPARE_OFFSET: 1000,
 	ALL_SCENE_ASSETS_LOADED: "all_scene_assets_loaded",
 	ACTIVE_CLASS: "active",
@@ -26,11 +26,11 @@ main.castle.views.SceneContainerView = Backbone.View.extend({
 	    var self = this;
 	    //ceraet audio collection
 	    //to handle sound data
-	    this.audioCollection = new main.models.AudioCollection();
+	    this.audioCollection = new main.models.castle.AudioCollection();
 	    this.story_is_stopped = false;
 	    //scene-container
 	    //set model to the sceneCollection
-	    this.model = new main.models.SceneCollection();
+	    this.model = new main.models.castle.SceneCollection();
 	    this.model.setAudio(this.audioCollection);
 	    this.skrollr_body_el = $('#skrollr-body', this.el);
 	    this.createScenes();
@@ -61,17 +61,17 @@ main.castle.views.SceneContainerView = Backbone.View.extend({
 	   //create and render each scene view
 	   //scene-castle
 	   //find the right scene model
-	   this.sceneCastleView = new main.views.SceneCastleView();
+	   this.sceneCastleView = new main.views.castle.SceneCastleView();
 	   this.scene_views.push(this.sceneCastleView);
-	   this.sceneXrayView = new main.views.SceneXrayView();
+	   this.sceneXrayView = new main.views.castle.SceneXrayView();
 	   this.scene_views.push(this.sceneXrayView);
-	   this.sceneLabView = new main.views.SceneLabView();
+	   this.sceneLabView = new main.views.castle.SceneLabView();
 	   this.scene_views.push(this.sceneLabView);
-	   this.sceneCreationView = new main.views.SceneCreationView();
+	   this.sceneCreationView = new main.views.castle.SceneCreationView();
 	   this.scene_views.push(this.sceneCreationView);
-	   this.sceneGerbilView = new main.views.SceneGerbilView();
+	   this.sceneGerbilView = new main.views.castle.SceneGerbilView();
 	   this.scene_views.push(this.sceneGerbilView);
-	   this.sceneBoyView = new main.views.SceneBoyView();
+	   this.sceneBoyView = new main.views.castle.SceneBoyView();
 	   this.scene_views.push(this.sceneBoyView);
 	   
    	   for(var i=0;i<this.scene_views.length;i++){

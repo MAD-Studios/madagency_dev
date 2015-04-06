@@ -31,6 +31,7 @@ main.views.PaneContainerView = Backbone.View.extend({
     },
     // ----------------- renderCommonPanes
     renderCommonPanes: function() {
+	    var self = this;
         var pane_view;
         this.paneViews = [];
         if(this.renderPanes) this.renderPanes();
@@ -50,9 +51,6 @@ main.views.PaneContainerView = Backbone.View.extend({
     },
 	// ----------------- updateForUnsupportedBrowsers
     updateForUnsupportedBrowsers: function() {
-        //castle
-        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-	    //this.introPaneView.updateForUnsupportedBrowsers();
 	},
 	// ----------------- initPanes
     initPanes: function() {
@@ -75,7 +73,8 @@ main.views.PaneContainerView = Backbone.View.extend({
     // ----------------- posize
     posize: function() {
 	    var pane_view;
-	    this.introPaneView.nav_offset = this.nav_offset;
+	    if(this.beforePosize) this.beforePosize();
+	    
 	    for(var i=0;i<this.paneViews.length;i++){
 	    	pane_view = this.paneViews[i];
 	    	if(pane_view.posize) pane_view.posize();
@@ -125,12 +124,17 @@ main.views.PaneContainerView = Backbone.View.extend({
     scrollWindowTo: function(id, animate) {
      if(animate == null || typeof animate === undefined) animate = true;
 	  var self = this;
+	  
+	  console.log("--------- id = " + id);
+	  
 	  //scroll the window to the correct pane 
 	  //according to id
 	  if(this.paneCollection){
 		  var pane_model = this.paneCollection.find(function(model){
 			return ( model.get("el_id") == (id + self.PANE_ID_END_STR) );
 		  });
+		  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		  //throwing error
 		  var scroll_to_y = pane_model.get("posY");
 
 		  if(animate) TweenLite.to(window, 1.4, {scrollTo:{y:scroll_to_y, autoKill:false}, ease:Expo.easeOut, onStart:self.onAutoScrollStart, onComplete:self.onAutoScrollComplete});

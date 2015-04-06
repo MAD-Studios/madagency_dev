@@ -1,5 +1,5 @@
 // _________________________________________________________________________ PaneModel
-main.models.ResponseGeneratorModel = Backbone.Model.extend({
+main.models.castle.ResponseGeneratorModel = Backbone.Model.extend({
 	 // set vars
      defaults: {
          "questions": [

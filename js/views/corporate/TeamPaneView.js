@@ -1,5 +1,5 @@
 // _________________________________________________________________________ TeamPaneView
-main.corporate.views.TeamPaneView = main.views.PaneView.extend({
+main.views.corporate.TeamPaneView = main.views.PaneView.extend({
 	id: "team",
 	_route: "team",
 	offset: 0,

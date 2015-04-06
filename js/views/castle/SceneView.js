@@ -1,5 +1,5 @@
 // _________________________________________________________________________ SceneView
-main.castle.views.SceneView = Backbone.View.extend({
+main.views.castle.SceneView = Backbone.View.extend({
 	ASSET_LOADED: "asset_loaded",
 	ALL_ASSETS_LOADED: "all_assets_loaded",
 	ACTIVE_CLASS: "scene-active",

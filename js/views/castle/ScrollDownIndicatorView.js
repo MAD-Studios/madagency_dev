@@ -1,5 +1,5 @@
 // _________________________________________________________________________ ScrollDownIndicatorView
-main.castle.views.ScrollDownIndicatorView = Backbone.View.extend({
+main.views.castle.ScrollDownIndicatorView = Backbone.View.extend({
 	FADE_CLASS: "fade-fast",
 	SCROLL_DOWN_INDICATOR: "scroll-down-indicator",
 	SCROLL_DOWN_INDICATOR_CTA: "scroll-down-indicator-cta",

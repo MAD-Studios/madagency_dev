@@ -1,5 +1,5 @@
 // _________________________________________________________________________ SceneSwipeInstructionView
-main.views.SceneSwipeInstructionView = main.views.SceneView.extend({
+main.views.SceneSwipeInstructionView = main.views.castle.SceneView.extend({
 	STAGE_TOP: "stage-top",
 	INFO_TRANS_CLASS: "info-transition",
 	ANIM_OFFSET: 60,

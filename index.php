@@ -39,19 +39,14 @@
     <script src="js/routers/Router.js" type="text/javascript"></script>
     <script src="js/routers/corporate/Router.js" type="text/javascript"></script>
     <script src="js/models/PaneModel.js" type="text/javascript"></script>
-    <!-- <script src="js/models/SceneModel.js" type="text/javascript"></script>
-    <script src="js/models/ResponseGeneratorModel.js" type="text/javascript"></script>
-    <script src="js/models/LoaderModel.js" type="text/javascript"></script>
-    <script src="js/models/AudioModel.js" type="text/javascript"></script> -->
     <script src="js/views/MainView.js" type="text/javascript"></script>
     <script src="js/views/corporate/MainView.js" type="text/javascript"></script>
     <script src="js/views/CorporateView.js" type="text/javascript"></script>
-    <script src="js/views/corporate/MainView.js" type="text/javascript"></script>
+    <script src="js/views/corporate/CorporateView.js" type="text/javascript"></script>
     <script src="js/views/PaneContainerView.js" type="text/javascript"></script>
     <script src="js/views/corporate/PaneContainerView.js" type="text/javascript"></script>
     <script src="js/views/PaneView.js" type="text/javascript"></script>
     <script src="js/views/corporate/IntroPaneView.js" type="text/javascript"></script>
-    <!-- <script src="js/views/CastleGatewayView.js" type="text/javascript"></script> -->
     <script src="js/views/corporate/HowPaneView.js" type="text/javascript"></script>
     <script src="js/views/corporate/WorkPaneView.js" type="text/javascript"></script>
     <script src="js/views/corporate/TeamPaneView.js" type="text/javascript"></script>
@@ -60,17 +55,6 @@
     <script src="js/views/MainNavContainerView.js" type="text/javascript"></script>
     <script src="js/views/HeaderView.js" type="text/javascript"></script>
     <script src="js/views/FooterView.js" type="text/javascript"></script>
-    <!-- <script src="js/views/StoryView.js" type="text/javascript"></script>
-    <script src="js/views/SceneView.js" type="text/javascript"></script>
-    <script src="js/views/SceneCastleView.js" type="text/javascript"></script>
-    <script src="js/views/SceneCreationView.js" type="text/javascript"></script>
-    <script src="js/views/SceneGerbilView.js" type="text/javascript"></script>
-    <script src="js/views/SceneXrayView.js" type="text/javascript"></script>
-    <script src="js/views/SceneLabView.js" type="text/javascript"></script>
-    <script src="js/views/SceneBoyView.js" type="text/javascript"></script>
-    <script src="js/views/LoaderView.js" type="text/javascript"></script>
-    <script src="js/views/SceneContainerView.js" type="text/javascript"></script>
-    <script src="js/views/ScrollDownIndicatorView.js" type="text/javascript"></script> -->
 
     <!--[if lt IE 9]>
             <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -375,18 +359,13 @@
 	                <li><a class="btn nav-btn" id="team-btn" href="">OUR TEAM</a></li>
 	                <li><a class="btn nav-btn" id="disciplines-btn" href="">DISCIPLINES</a></li>
 	                <li><a class="btn nav-btn" id="contact-btn" href="">CONTACT US</a></li>
-	                <!-- <li><a class="btn nav-btn" id="how-btn" href="/how">HOW WE ROLL</a></li>
-	                <li><a class="btn nav-btn" id="work-btn" href="/work">THE WORK</a></li>
-	                <li><a class="btn nav-btn" id="team-btn" href="/team">OUR TEAM</a></li>
-	                <li><a class="btn nav-btn" id="disciplines-btn" href="/disciplines">DISCIPLINES</a></li>
-	                <li><a class="btn nav-btn" id="contact-btn" href="/contact">CONTACT US</a></li> -->
 	            </ul>
 	            <div id="enter-story-btn-container" class="shadow-bordered shadow-bordered-blue"><a id="enter-story-btn" class="btn-blue btn">ENTER CREATIVE CASTLE</a></div>
 			</div>
         </div>
 	</div>
 	
-	
+	</div>
 </div>
 
 <?php include 'inc/dom-end.php';?>

@@ -1,5 +1,5 @@
 // _________________________________________________________________________ SceneModel
-main.models.SceneModel = Backbone.Model.extend({
+main.models.castle.SceneModel = Backbone.Model.extend({
      // set vars
      defaults: {
          "id": -1,
@@ -16,8 +16,8 @@ main.models.SceneModel = Backbone.Model.extend({
 });
 
 // _________________________________________________________________________ SceneCollection
-main.models.SceneCollection = Backbone.Collection.extend({
-   model: main.models.SceneModel,
+main.models.castle.SceneCollection = Backbone.Collection.extend({
+   model: main.models.castle.SceneModel,
    scenes: [
 	   { name:"scene-castle", topOffset: 0, topOffsetEnd: 1099 },
 	   { name:"scene-xray", topOffset: 1200, topOffsetEnd: 4900 },

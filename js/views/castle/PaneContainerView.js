@@ -1,8 +1,12 @@
 // _________________________________________________________________________ PaneContainerView
-main.castle.views.PaneContainerView = Backbone.View.extend({
+main.views.castle.PaneContainerView = main.views.PaneContainerView.extend({
     // ----------------- renderPanes
     renderPanes: function() {
-        this.castleGatewayPaneView = new main.castle.views.CastleGatewayPaneView({ el: $('#castle-gateway-pane', this.el) });
+        this.castleGatewayPaneView = new main.views.castle.CastleGatewayPaneView({ el: $('#castle-gateway-pane', this.el) });
+		this.paneViews.push(this.castleGatewayPaneView);
+		
+		this.castleGatewayPaneView.activate();
+        this.curPaneView = this.castleGatewayPaneView;
     },
     // ----------------- updateForUnsupportedBrowsers
     updateForUnsupportedBrowsers: function() {

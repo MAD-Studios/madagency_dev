@@ -1,5 +1,5 @@
 // _________________________________________________________________________ SceneFinalView
-main.views.SceneFinalView = main.views.SceneView.extend({
+main.views.SceneFinalView = main.views.castle.SceneView.extend({
 	//EXIT_SWIPE: "exit_swipe",
 	ACTIVE_Z_INDEX: 300,
 	name: "scene-final",

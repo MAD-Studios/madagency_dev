@@ -1,5 +1,5 @@
 // _________________________________________________________________________ IntroPaneView
-main.corporate.views.IntroPaneView = main.views.PaneView.extend({
+main.views.corporate.IntroPaneView = main.views.PaneView.extend({
  	//ELEMENT_TRANS_CLASS: ".element-trans",
     //LAST_ELEMENT_TRANS_CLASS: ".last-element-trans",
     ELEMENT_ANIM_OFFSET: 100,

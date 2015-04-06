@@ -1,5 +1,5 @@
 // _________________________________________________________________________ SceneBoyView
-main.views.SceneBoyView = main.views.SceneView.extend({
+main.views.SceneBoyView = main.views.castle.SceneView.extend({
 	TOP_Z_INDEX: 999,
 	ANIM_OFFSET: 40,
 	name: "scene-boy",

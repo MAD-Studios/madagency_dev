@@ -13,10 +13,12 @@ main.views.MainView = Backbone.View.extend({
     },
     // ----------------- render
     render: function(eventName) {
-        console.log("MainView ---- initialize");
+        console.log("MainView ---- render");
         var self = this;
         this.setMainListeners();
         this.initiateCorporate();
+        console.log("after ---------- initiateCorporate");
+        if(this.setCorporateListeners) this.setCorporateListeners();
         setTimeout(function(){
 	        self.posize();
         }, 300);
@@ -69,8 +71,7 @@ main.views.MainView = Backbone.View.extend({
 	   this.corporateView.markNav(id);
     },
     // ----------------- initiateCorporate
-    initiateCorporate: function(){        
+    initiateCorporate: function(){   
 	    if(!this.corporateView) this.corporateView = new main.views.CorporateView( {el: $('.corporate', this.el)} );
-        this.setCorporateListeners();
     }
 });

@@ -57,3 +57,10 @@ button:focus {
         outline: $darkGold solid 2px;
     }
 }
+
+.bottom-sticky{
+	position: fixed;
+	float: none;
+	bottom: 0;
+	left: 0;
+}

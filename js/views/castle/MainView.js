@@ -1,21 +1,26 @@
 // _________________________________________________________________________ MainView
-main.castle.views.MainView = Backbone.View.extend({
+main.views.castle.MainView = main.views.MainView.extend({
+    // ----------------- initiateCorporate
+    initiateCorporate: function(){  
+    	console.log("main.views.castle.MainView ------------- initiateCorporate "); 
+	    this.corporateView = new main.views.castle.CorporateView( {el: $('.corporate', this.el)} );
+    },
     // ----------------- openCastle
     openCastle: function() {
 	    var self = this;
 	    var castle_div;
-	    if(!this.castleView) this.castleView = new main.views.CastleView( { el: $('.castle', this.el) } );
-	    else {
+	    if(!this.castleView) this.castleView = new main.views.castle.CastleView( { el: $('.castle', this.el) } );
+	    /*else {
 			this.castleView = new main.views.CastleView();
 		    $(this.el).append($(this.castleView.el));
-		}
+		}*/
 	    //create Castle view
-	    $(this.castleView.el).on(this.castleView.EXIT, function(event){
+	    /*$(this.castleView.el).on(this.castleView.EXIT, function(event){
 		    self.closeCastle();
 	    });
 	    $(this.castleView.el).on(this.castleView.HIDE_COMPLETE, function(event){
 		    self.handleHideCastleComplete();
-	    });
+	    });*/
 	    $(this.castleView.el).addClass(this.STAGE_CENTER_CLASS);
 	    this.castleView.render();
 	    this.castleView.startLoader();
@@ -27,7 +32,7 @@ main.castle.views.MainView = Backbone.View.extend({
 	    }, 100);
 	},
     // ----------------- closeCastles
-    closeCastle: function() {
+    /*closeCastle: function() {
 	    var self = this;
 	    //first hide the castle
 	    this.castleView.hide();	    
@@ -69,7 +74,7 @@ main.castle.views.MainView = Backbone.View.extend({
 			    $(self.corporateView.el).addClass(self.STAGE_CENTER_CLASS);
 		    }, 300);
 		 }, 100);
-    },
+    },*/
     // ----------------- moveIntoCastle
     moveIntoCastle: function(){
 	    //first begin the hide animation 
@@ -84,9 +89,6 @@ main.castle.views.MainView = Backbone.View.extend({
 		    self.openCastle();
 	    }, 1400);
     },
-    // ----------------- initiateCorporate
-    initiateCorporate: function(){
-    },
     // ----------------- beginHideCorporateView
     beginHideCorporateView: function() {
 	    this.corporateView.beginHide();
@@ -98,25 +100,26 @@ main.castle.views.MainView = Backbone.View.extend({
 	    $(this.corporateView.el).off();
     },
     // ----------------- removeCastle
-    removeCastle: function() {
+    /*removeCastle: function() {
 	    this.castleView.dispose(); 
 	    $(this.castleView.el).css('visibility', 'hidden');
 	    $(this.castleView.el).remove();
 	    $(this.castleView.el).off();
-    },
+    },*/
     // ----------------- setCorporateListeners
     setCorporateListeners: function(){
 	    var self = this;	
+	    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	    //append corporate view
-	    $(this.corporateView.el).on(this.corporateView.CORPORATE_SUBMIT, function(event){
+	    /*$(this.corporateView.el).on(this.corporateView.CORPORATE_SUBMIT, function(event){
 		    self.moveIntoCastle();
-        });
+        });*/
         //listen fo rthe method pane idle event
         //so that you can 
         //automatically go into the castle
         //when the method pane is idle
-	    $(this.corporateView.el).on(this.corporateView.METHOD_PANE_IDLE, function(event){
+	    /*$(this.corporateView.el).on(this.corporateView.METHOD_PANE_IDLE, function(event){
 	    	self.moveIntoCastle();
-	    });
+	    });*/
     }
 });

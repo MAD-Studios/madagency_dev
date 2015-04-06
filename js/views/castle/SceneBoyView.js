@@ -1,5 +1,5 @@
 // _________________________________________________________________________ SceneBoyView
-main.castle.views.SceneBoyView = main.views.SceneView.extend({
+main.views.castle.SceneBoyView = main.views.castle.SceneView.extend({
 	FADE_CLASS: "fade-fast",
 	FADE_SLOW_CLASS: "fade-slow",
 	ANIMATE_CLASS: "animate",

@@ -1,7 +1,9 @@
 // _________________________________________________________________________ CorporateView
-main.castle.views.CorporateView = Backbone.View.extend({
+main.views.castle.CorporateView = main.views.CorporateView.extend({
     // ----------------- renderParts
     renderParts: function() {
+    	this.paneContainerView = new main.views.castle.PaneContainerView({el: $('#pane-container', this.el)});
+
         this.modernCheck();
     },
     // ----------------- beginHide

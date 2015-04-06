@@ -1,5 +1,5 @@
 // _________________________________________________________________________ AudioModel
-main.models.AudioModel = Backbone.Model.extend({
+main.models.castle.AudioModel = Backbone.Model.extend({
 	ACTIVE_CLASS: "active",
      // set vars
      defaults: {
@@ -18,8 +18,8 @@ main.models.AudioModel = Backbone.Model.extend({
 });
 
 // _________________________________________________________________________ AudioCollection
-main.models.AudioCollection = Backbone.Collection.extend({
-   model: main.models.AudioModel,
+main.models.castle.AudioCollection = Backbone.Collection.extend({
+   model: main.models.castle.AudioModel,
    sounds: [
    	   //--------- scene-castle
 	   { scene:"scene-castle", name:"royal-trumpet", src:"sounds/castle-horn.mp3", startScrollOffset:[490], endScrollOffset:[], loop:false, fade:false, playOnUp:false },

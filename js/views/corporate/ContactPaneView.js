@@ -1,5 +1,5 @@
 // _________________________________________________________________________ ContactPaneView
-main.corporate.views.ContactPaneView = main.views.PaneView.extend({
+main.views.corporate.ContactPaneView = main.views.PaneView.extend({
 	SHOW_MESSAGE: "showMessage",
 	CUSTOM_FOCUS_CLASS: "custom-focus",
 	offset: -1,

@@ -1,5 +1,5 @@
 // _________________________________________________________________________ SceneGerbilView
-main.views.SceneGerbilView = main.views.SceneView.extend({
+main.views.SceneGerbilView = main.views.castle.SceneView.extend({
 	SCENE_TRANSITION_CLASS: "scene-transition",
 	STATE_LEFT: "state-left",
 	STATE_GERBIL: "state-gerbil",

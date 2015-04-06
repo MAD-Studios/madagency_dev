@@ -1,5 +1,5 @@
 // _________________________________________________________________________ LoaderModel
-main.models.LoaderModel = Backbone.Model.extend({
+main.models.castle.LoaderModel = Backbone.Model.extend({
      // set vars
      defaults: {
          "totalNumAssets": 0,

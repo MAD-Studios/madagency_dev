@@ -1,5 +1,5 @@
 // _________________________________________________________________________ CastleView
-main.castle.views.CastleView = Backbone.View.extend({
+main.views.castle.CastleView = Backbone.View.extend({
 	SHOW_SCENES: "show_scenes",
 	CASTLE: "castle",
 	EXIT: "exit",
@@ -27,22 +27,22 @@ main.castle.views.CastleView = Backbone.View.extend({
     // ----------------- initialize
     initialize: function() {
         console.log("CastleView ---- initialize");
-        if(!($(this.el).hasClass(this.CASTLE_INIT))) {
+        /*if(!($(this.el).hasClass(this.CASTLE_INIT))) {
 	         console.log("template load external");
 	         this.template = _.template(this.templateLoader.get(this.CASTLE));
 	         this.template_load_external = true;
-        }
+        }*/
     },
     // ----------------- render
     render: function(eventName) {
         console.log("CastleView ---- render");
 	    var self = this;
-	     if(this.template_load_external) {
+	     /*if(this.template_load_external) {
 		    $(this.el).html(this.template());
 		    $(this.el).addClass(this.CASTLE);
-	    }
+	    }*/
 	    //-------- sceneContainerView
-        this.sceneContainerView = new main.views.SceneContainerView({el:$('.scene-container', this.el)});
+        this.sceneContainerView = new main.views.castle.SceneContainerView({el:$('.scene-container', this.el)});
         //ALL_SCENE_ASSETS_LOADED
         $(this.sceneContainerView.el).on(this.sceneContainerView.ALL_SCENE_ASSETS_LOADED, function(){
 	        self.stopLoader();
@@ -63,8 +63,8 @@ main.castle.views.CastleView = Backbone.View.extend({
         this.createBg();
         
         //-------- LoaderView
-        this.loaderModel = new main.models.LoaderModel();
-        this.loaderView = new main.views.LoaderView({ el:$('.loader', this.el), model: this.loaderModel});
+        this.loaderModel = new main.models.castle.LoaderModel();
+        this.loaderView = new main.views.castle.LoaderView({ el:$('.loader', this.el), model: this.loaderModel});
         $(this.loaderView.el).on(this.loaderView.IS_COVERING, function(){
 	       	self.unveilScenes();
         });
@@ -73,7 +73,7 @@ main.castle.views.CastleView = Backbone.View.extend({
         });
         
         //-------- ScrollDownIndicatorView
-       this.scrollDownIndicatorView = new main.views.ScrollDownIndicatorView();
+       this.scrollDownIndicatorView = new main.views.castle.ScrollDownIndicatorView();
        $(this.el).append(this.scrollDownIndicatorView.el);
         
         //position and size the elements
@@ -153,6 +153,8 @@ main.castle.views.CastleView = Backbone.View.extend({
 	    // maxTop: 100, //the max value you can scroll to. curTop/maxTop will give you the current progress.
 	    //direction: 'down' /
 	    var scrollVal = obj.curTop;
+	    //!!!!!!!!!!!!!!!!!!!!!!!!
+	    //refactor the below later
 		this.triggerSelector('#castle-container-parts', 60, scrollVal, 1100);
 		this.triggerSelector('#horn-container', 441, scrollVal);
 		this.triggerSelector('#lake-02', 800, scrollVal, 1300);

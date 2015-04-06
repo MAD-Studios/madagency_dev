@@ -9,6 +9,10 @@ main.routers.corporate.Router = main.routers.Router.extend({
         "disciplines": "disciplines",
         "contact": "contact"
      },
+      // ----------------- createMainView
+     createMainView: function() {
+     	this.mainView = new main.views.corporate.MainView( {el: $('#main', this.el)} );
+     },
      // ----------------- intro
      intro: function(){
          console.log("main --- intro");

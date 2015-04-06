@@ -11,7 +11,8 @@ main.routers.Router = Backbone.Router.extend({
         
         if(this.beforeInitialize) this.beforeInitialize();
         
-        this.mainView = new main.views.MainView( {el: $('#main', this.el)} );
+        if(this.createMainView) this.createMainView(); 
+        
         this.initTouchEvents();
         //break down url and navigate to the right place
         //if rerefreshed from story 
@@ -30,6 +31,10 @@ main.routers.Router = Backbone.Router.extend({
 		        if(route == "") self.navigate(route, {trigger: true}); 
 		    }, 100);
         }, 100);
+     },
+     // ----------------- createMainView
+     createMainView: function() {
+     	this.mainView = new main.views.MainView( {el: $('#main', this.el)} );
      },
      // ----------------- initTouchEvents
      initTouchEvents: function() {
