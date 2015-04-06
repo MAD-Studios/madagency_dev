@@ -33,34 +33,30 @@
     <script src="js/utils/TemplateLoader.js" type="text/javascript"></script>
     <script src="js/utils/ElementManipulator.js" type="text/javascript"></script>
     <script src="js/models/PaneModel.js" type="text/javascript"></script>
-    <script src="js/models/SceneModel.js" type="text/javascript"></script>
-    <script src="js/models/ResponseGeneratorModel.js" type="text/javascript"></script>
-    <script src="js/models/LoaderModel.js" type="text/javascript"></script>
-    <script src="js/models/AudioModel.js" type="text/javascript"></script>
+    <script src="js/models/castle/SceneModel.js" type="text/javascript"></script>
+    <script src="js/models/castle/ResponseGeneratorModel.js" type="text/javascript"></script>
+    <script src="js/models/castle/LoaderModel.js" type="text/javascript"></script>
+    <script src="js/models/castle/AudioModel.js" type="text/javascript"></script>
     <script src="js/views/MainView.js" type="text/javascript"></script>
+    <script src="js/views/castle/MainView.js" type="text/javascript"></script>
     <script src="js/views/CorporateView.js" type="text/javascript"></script>
+    <script src="js/views/castle/CorporateView.js" type="text/javascript"></script>
     <script src="js/views/PaneContainerView.js" type="text/javascript"></script>
+    <script src="js/views/castle/PaneContainerView.js" type="text/javascript"></script>
     <script src="js/views/PaneView.js" type="text/javascript"></script>
-    <!-- <script src="js/views/MethodPaneView.js" type="text/javascript"></script>
-    <script src="js/views/HowPaneView.js" type="text/javascript"></script>
-    <script src="js/views/WorkPaneView.js" type="text/javascript"></script>
-    <script src="js/views/TeamPaneView.js" type="text/javascript"></script>
-    <script src="js/views/DisciplinesPaneView.js" type="text/javascript"></script>
-    <script src="js/views/ContactPaneView.js" type="text/javascript"></script>
-    <script src="js/views/MainNavContainerView.js" type="text/javascript"></script> -->
     <script src="js/views/HeaderView.js" type="text/javascript"></script>
     <script src="js/views/FooterView.js" type="text/javascript"></script>
-    <script src="js/views/StoryView.js" type="text/javascript"></script>
-    <script src="js/views/SceneView.js" type="text/javascript"></script>
-    <script src="js/views/SceneCastleView.js" type="text/javascript"></script>
-    <script src="js/views/SceneCreationView.js" type="text/javascript"></script>
-    <script src="js/views/SceneGerbilView.js" type="text/javascript"></script>
-    <script src="js/views/SceneXrayView.js" type="text/javascript"></script>
-    <script src="js/views/SceneLabView.js" type="text/javascript"></script>
-    <script src="js/views/SceneBoyView.js" type="text/javascript"></script>
-    <script src="js/views/LoaderView.js" type="text/javascript"></script>
-    <script src="js/views/SceneContainerView.js" type="text/javascript"></script>
-    <script src="js/views/ScrollDownIndicatorView.js" type="text/javascript"></script> 
+    <script src="js/views/CastleView.js" type="text/javascript"></script>
+    <script src="js/views/castle/SceneView.js" type="text/javascript"></script>
+    <script src="js/views/castle/SceneCastleView.js" type="text/javascript"></script>
+    <script src="js/views/castle/SceneCreationView.js" type="text/javascript"></script>
+    <script src="js/views/castle/SceneGerbilView.js" type="text/javascript"></script>
+    <script src="js/views/castle/SceneXrayView.js" type="text/javascript"></script>
+    <script src="js/views/castle/SceneLabView.js" type="text/javascript"></script>
+    <script src="js/views/castle/SceneBoyView.js" type="text/javascript"></script>
+    <script src="js/views/castle/LoaderView.js" type="text/javascript"></script>
+    <script src="js/views/castle/SceneContainerView.js" type="text/javascript"></script>
+    <script src="js/views/castle/ScrollDownIndicatorView.js" type="text/javascript"></script> 
     
     <!--[if lt IE 9]>
             <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>

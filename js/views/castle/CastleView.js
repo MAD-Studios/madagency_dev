@@ -1,5 +1,5 @@
 // _________________________________________________________________________ CastleView
-main.views.CastleView = Backbone.View.extend({
+main.castle.views.CastleView = Backbone.View.extend({
 	SHOW_SCENES: "show_scenes",
 	CASTLE: "castle",
 	EXIT: "exit",

@@ -1,34 +1,33 @@
 // _________________________________________________________________________ CorporateView
 main.views.CorporateView = Backbone.View.extend({
-	CORPORATE_SUBMIT: "corporate_submit",
 	CORPORATE: "corporate",
-	//CORPORATE_INIT: "corporate-init",
-	//METHOD_PANE_IDLE: "method_pane_idle",
-	template_load_external: false,
-	templateLoader: main.utils.templateLoader,
     // ----------------- initialize
     initialize: function() {
         console.log("CorporateView ---- initialize");
-        //if no el pull it in through template loader
-       /* if(!($(this.el).hasClass(this.CORPORATE_INIT))) {
-	         console.log("template load external");
-	         this.template = _.template(this.templateLoader.get(this.CORPORATE));
-	         this.template_load_external = true;
-        }*/
         this.render();
     },
     // ----------------- render
     render: function(eventName) {
-        console.log("CorporateView ---- render");
-	    var self = this;
-	    if(this.template_load_external) {
-		    $(this.el).html(this.template());
-		    $(this.el).addClass(this.CORPORATE);
-	    }
+       console.log("CorporateView ---- render");
+	   var self = this;
+        
+       this.renderCommonParts();
+       setTimeout(function(){
+	       self.show();
+       }, 100); 
+        
+       return this;
+	},
+    // ----------------- renderCommonParts
+    renderCommonParts: function() {
         this.paneContainerView = new main.views.PaneContainerView({el: $('#pane-container', this.el)});
-        this.mainNavContainerView = new main.views.MainNavContainerView({el: $('#main-nav-container', this.el)});
+        //corp
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //this.mainNavContainerView = new main.views.MainNavContainerView({el: $('#main-nav-container', this.el)});
         this.headerView = new main.views.HeaderView({el: $('#header', this.el)});
-        this.mainNavContainerView.transition_point = $('#header', this.el).outerHeight();
+        //corp
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //this.mainNavContainerView.transition_point = $('#header', this.el).outerHeight();
         this.footerView = new main.views.FooterView({el: $('#footer', this.el)});  
         $(this.paneContainerView.el).on(this.paneContainerView.PANE_ACTIVATE, function(event, params){
 	        //for all
@@ -41,25 +40,33 @@ main.views.CorporateView = Backbone.View.extend({
         $(this.paneContainerView.el).on(this.paneContainerView.SCROLL_TO_BOTTOM, function(event, params){
 			self.scrollToBottom();
         });
-        $(this.mainNavContainerView.el).on(this.mainNavContainerView.ANIMATE_TO_FIXED, function(){
+        //corp
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        /*$(this.mainNavContainerView.el).on(this.mainNavContainerView.ANIMATE_TO_FIXED, function(){
 	        self.headerView.lightenBackground();
         });
 		$(this.mainNavContainerView.el).on(this.mainNavContainerView.ANIMATE_TO_MOVEABLE, function(){
 	        self.headerView.darkenBackground();
-        });
+        });*/
         $(window).scroll(function(){
-        	var scroll_top = $(window).scrollTop();
-        	self.mainNavContainerView.checkPos(scroll_top);
-	        self.paneContainerView.checkPanes(scroll_top);
+            self.onScroll();
 	    });
-       this.modernCheck();
-       setTimeout(function(){
-	       //if(self.template_load_external) self.posize();
-	       //self.posize();
-	       self.show();
-       }, 100); 
-       return this;
-	},
+        //castle
+        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        //this.modernCheck();
+        
+        if (this.renderParts) this.renderParts();
+    },
+    // ----------------- onScroll
+    onScroll: function() {
+        var scroll_top = $(window).scrollTop();
+        //corp
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //self.mainNavContainerView.checkPos(scroll_top);
+        this.paneContainerView.checkPanes(scroll_top);
+        
+        if(this.afterOnScroll) this.afterOnScroll(scroll_top);
+    },
 	// ----------------- modernCheck
     modernCheck: function() {
 	    //if 3dTransforms not supported
@@ -72,12 +79,14 @@ main.views.CorporateView = Backbone.View.extend({
     },
 	// ----------------- posize
     posize: function() {
-	   // $(this.el).css('height', $(window).height() + 'px');
-	    //$('.corporate', this.el).css('height', $(window).height() + 'px');
+        if(this.beforePosize) this.beforePosize();
+        
 	    this.paneContainerView.nav_offset = $(this.mainNavContainerView.el).outerHeight();
         this.paneContainerView.offset = $(this.headerView.el).outerHeight();
 	    this.paneContainerView.posize();
-	    this.mainNavContainerView.posize();
+        //corp
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	    //this.mainNavContainerView.posize();
 	    
 	    var to_height = $(this.paneContainerView.el).outerHeight() + $('#footer', this.el).outerHeight() - 2; 
 	    $(this.el).css('height', to_height + 'px');
@@ -98,14 +107,16 @@ main.views.CorporateView = Backbone.View.extend({
     // ----------------- scrollWindowTo
     scrollWindowTo: function(id, animate) {
 	    if(animate == null ||  typeof animate === undefined) animate = true;
-	   this.paneContainerView.scrollWindowTo(id, animate);
+	    this.paneContainerView.scrollWindowTo(id, animate);
     },
      // ----------------- scrollTo
     scrollToBottom: function() {
 	   this.paneContainerView.scrollToBottom($(window));
     },
+    //castle
+    //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     // ----------------- beginHide
-    beginHide: function() {
+    /*beginHide: function() {
 	    this.headerView.beginHide();
 	    this.mainNavContainerView.beginHide();
 	    this.paneContainerView.beginHide();
@@ -114,7 +125,7 @@ main.views.CorporateView = Backbone.View.extend({
 	    //setTimeout
 	    //show the gold cover
 	    //move corporate off stage and make it invisible
-    },
+    },*/
     // ----------------- hide
     hide: function() {
     },
@@ -124,8 +135,6 @@ main.views.CorporateView = Backbone.View.extend({
     },
     // ----------------- markNav
     markNav: function(btn_id, delay) {
-    	if(delay == null) delay = false;
-	    this.mainNavContainerView.markBtn(btn_id, delay);
 	},
 	// ----------------- basicDispose
 	basicDispose: function(){
@@ -133,15 +142,20 @@ main.views.CorporateView = Backbone.View.extend({
 	},
 	// ----------------- beforeDispose
 	beforeDispose: function(){
-		 $(this.el).removeClass(this.CORPORATE_INIT);
+         this.basicDispose();
 		 //remove any event listeners 
 		 $(this.paneContainerView.el).off();
-		 $(this.mainNavContainerView.el).off();
-	     $(window).off('scroll');
+         //corp
+         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		 //$(this.mainNavContainerView.el).off();
 		 //dispose children
 		 this.paneContainerView.dispose();
-		 this.mainNavContainerView.dispose();
+         //corp
+         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+         //this.mainNavContainerView.dispose();
 		 this.headerView.dispose();
 		 this.footerView.dispose();
+        
+        if(this.disposeParts) this.disposeParts();
 	}
 });

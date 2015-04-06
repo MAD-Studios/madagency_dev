@@ -22,14 +22,13 @@
     <script src="js/vendor/jquery.ui.map.full.min.js" type="text/javascript"></script>
     <script src="js/vendor/jquery.activity-indicator-1.0.0.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="//use.typekit.net/ntj1viz.js"></script>
-	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     <script src="js/vendor/underscore-min.js" type="text/javascript"></script>
     <script src="js/vendor/backbone-min.js" type="text/javascript"></script>
     <script src="js/vendor/greensock/TweenLite.min.js"></script>
     <script src="js/vendor/greensock/CSSPlugin.min.js"></script>
     <script src="js/vendor/greensock/EasePack.min.js"></script>
     <script src="js/vendor/greensock/ScrollToPlugin.min.js"></script>
-    <script src="js/vendor/jquery-image-loader.js"></script>
+    <script src="js/vendor/jquery-image-loader.js"></script>    
     
     <script src="js/main.js" type="text/javascript"></script>
     <script src="js/corporate.js" type="text/javascript"></script>
@@ -40,25 +39,28 @@
     <script src="js/routers/Router.js" type="text/javascript"></script>
     <script src="js/routers/corporate/Router.js" type="text/javascript"></script>
     <script src="js/models/PaneModel.js" type="text/javascript"></script>
-    <script src="js/models/SceneModel.js" type="text/javascript"></script>
+    <!-- <script src="js/models/SceneModel.js" type="text/javascript"></script>
     <script src="js/models/ResponseGeneratorModel.js" type="text/javascript"></script>
     <script src="js/models/LoaderModel.js" type="text/javascript"></script>
-    <script src="js/models/AudioModel.js" type="text/javascript"></script>
+    <script src="js/models/AudioModel.js" type="text/javascript"></script> -->
     <script src="js/views/MainView.js" type="text/javascript"></script>
+    <script src="js/views/corporate/MainView.js" type="text/javascript"></script>
     <script src="js/views/CorporateView.js" type="text/javascript"></script>
+    <script src="js/views/corporate/MainView.js" type="text/javascript"></script>
     <script src="js/views/PaneContainerView.js" type="text/javascript"></script>
+    <script src="js/views/corporate/PaneContainerView.js" type="text/javascript"></script>
     <script src="js/views/PaneView.js" type="text/javascript"></script>
-    <script src="js/views/IntroPaneView.js" type="text/javascript"></script>
-    <script src="js/views/CastleGatewayView.js" type="text/javascript"></script>
-    <script src="js/views/HowPaneView.js" type="text/javascript"></script>
-    <script src="js/views/WorkPaneView.js" type="text/javascript"></script>
-    <script src="js/views/TeamPaneView.js" type="text/javascript"></script>
-    <script src="js/views/DisciplinesPaneView.js" type="text/javascript"></script>
-    <script src="js/views/ContactPaneView.js" type="text/javascript"></script>
+    <script src="js/views/corporate/IntroPaneView.js" type="text/javascript"></script>
+    <!-- <script src="js/views/CastleGatewayView.js" type="text/javascript"></script> -->
+    <script src="js/views/corporate/HowPaneView.js" type="text/javascript"></script>
+    <script src="js/views/corporate/WorkPaneView.js" type="text/javascript"></script>
+    <script src="js/views/corporate/TeamPaneView.js" type="text/javascript"></script>
+    <script src="js/views/corporate/DisciplinesPaneView.js" type="text/javascript"></script>
+    <script src="js/views/corporate/ContactPaneView.js" type="text/javascript"></script>
     <script src="js/views/MainNavContainerView.js" type="text/javascript"></script>
     <script src="js/views/HeaderView.js" type="text/javascript"></script>
     <script src="js/views/FooterView.js" type="text/javascript"></script>
-    <script src="js/views/StoryView.js" type="text/javascript"></script>
+    <!-- <script src="js/views/StoryView.js" type="text/javascript"></script>
     <script src="js/views/SceneView.js" type="text/javascript"></script>
     <script src="js/views/SceneCastleView.js" type="text/javascript"></script>
     <script src="js/views/SceneCreationView.js" type="text/javascript"></script>
@@ -68,7 +70,7 @@
     <script src="js/views/SceneBoyView.js" type="text/javascript"></script>
     <script src="js/views/LoaderView.js" type="text/javascript"></script>
     <script src="js/views/SceneContainerView.js" type="text/javascript"></script>
-    <script src="js/views/ScrollDownIndicatorView.js" type="text/javascript"></script> 
+    <script src="js/views/ScrollDownIndicatorView.js" type="text/javascript"></script> -->
 
     <!--[if lt IE 9]>
             <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>

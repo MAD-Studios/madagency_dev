@@ -1,5 +1,5 @@
 // _________________________________________________________________________ CastleGatewayView
-main.views.CastleGatewayView = Backbone.View.extend({
+main.castle.views.CastleGatewayView = Backbone.View.extend({
     ELEMENT_TRANS_CLASS: ".element-trans",
     LAST_ELEMENT_TRANS_CLASS: ".last-element-trans",
 	INPUT_BLINK_TRANS_CLASS: "input-blink-trans",

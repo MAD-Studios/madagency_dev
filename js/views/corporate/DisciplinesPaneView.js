@@ -1,5 +1,5 @@
 // _________________________________________________________________________ DisciplinesPaneView
-main.views.DisciplinesPaneView = main.views.PaneView.extend({
+main.corporate.views.DisciplinesPaneView = main.views.PaneView.extend({
 	id: "disciplines",
 	_route: "disciplines",
 	offset: 0,

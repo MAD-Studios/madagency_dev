@@ -21,52 +21,19 @@ main.views.PaneContainerView = Backbone.View.extend({
     render: function(eventName) {
         console.log("PaneContainerView ---- render");
         var self = this;
+        this.renderCommonParts();
+        
+        return this;
+	},
+    // ----------------- renderCommonParts
+    renderCommonParts: function() {
+        this.renderCommonPanes();
+    },
+    // ----------------- renderCommonPanes
+    renderCommonPanes: function() {
         var pane_view;
         this.paneViews = [];
-        
-        this.introPaneView = new main.views.IntroPaneView( {el: $('#intro-pane', this.el)} );
-        this.paneViews.push(this.introPaneView);
-        this.howPaneView = new main.views.HowPaneView( {el: $('#how-pane', this.el)} );
-        this.paneViews.push(this.howPaneView);
-        this.workPaneView = new main.views.WorkPaneView( {el: $('#work-pane', this.el)} );
-        this.paneViews.push(this.workPaneView);
-        this.teamPaneView = new main.views.TeamPaneView( {el: $('#team-pane', this.el)} );
-        this.paneViews.push(this.teamPaneView);
-        this.disciplinesPaneView = new main.views.DisciplinesPaneView( {el: $('#disciplines-pane', this.el)} );
-        this.paneViews.push(this.disciplinesPaneView);
-        this.contactPaneView = new main.views.ContactPaneView( {el: $('#contact-pane', this.el)} );
-        this.paneViews.push(this.contactPaneView);
-        
-        //set unique properties
-        //for each pane
-        //intro pane -------
-        $(this.introPaneView.el).on(this.introPaneView.SUBMIT, function(event){
-	        $(self.el).trigger(self.INTRO_PANE_SUBMIT);
-        });
-        //listen for the intro apne idle event
-        $(this.introPaneView.el).on(this.introPaneView.IDLE, function(event){
-	        $(self.el).trigger(self.INTRO_PANE_IDLE);
-        });
-        //set the introPaneView to active
-        this.introPaneView.activate();
-        this.curPaneView = this.introPaneView;
-        
-        //work pane ----
-        $(this.workPaneView.el).on(this.workPaneView.VIDEO_ADDED, function(event){
-	        self.initPanes();
-        });
-
-        //contact pane ----
-        $(this.contactPaneView.el).on(this.contactPaneView.RESIZE, function(event){
-	        self.initPanes();
-        });
-        $(this.contactPaneView.el).on(this.contactPaneView.SHOW_MESSAGE, function(event){
-	        //scrollto bottom of the screen
-	        $(self.el).trigger(self.SCROLL_TO_BOTTOM);
-        });        
-        
-        //set common properties
-        //for each pane
+        if(this.renderPanes) this.renderPanes();
         for(var i=0;i<this.paneViews.length;i++){
 		    pane_view = this.paneViews[i];
 			$(pane_view.el).on(pane_view.ACTIVATE, function(event, params){
@@ -76,17 +43,16 @@ main.views.PaneContainerView = Backbone.View.extend({
 		}        
         setTimeout(function(){
 	        self.lastScrollTop = $(window).scrollTop();
-	        //self.initPanes();
-	        //self.posize();
 	        setTimeout(function(){
 		        self.checkPanes();
 	        }, 400);
         }, 200);
-        return this;
-	},
+    },
 	// ----------------- updateForUnsupportedBrowsers
     updateForUnsupportedBrowsers: function() {
-	    this.introPaneView.updateForUnsupportedBrowsers();
+        //castle
+        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+	    //this.introPaneView.updateForUnsupportedBrowsers();
 	},
 	// ----------------- initPanes
     initPanes: function() {
@@ -110,7 +76,6 @@ main.views.PaneContainerView = Backbone.View.extend({
     posize: function() {
 	    var pane_view;
 	    this.introPaneView.nav_offset = this.nav_offset;
-	    console.log("--------- this.introPaneView.nav_offset = " + this.introPaneView.nav_offset);
 	    for(var i=0;i<this.paneViews.length;i++){
 	    	pane_view = this.paneViews[i];
 	    	if(pane_view.posize) pane_view.posize();
@@ -178,9 +143,6 @@ main.views.PaneContainerView = Backbone.View.extend({
 	  var scroll_to_y = $(this.el).height() - $(window).height() + (this.offset*2);
 	  //only scroll here if current scroll is above the custom bottom value
 	  //if scroll_to_y > the current scroll
-	  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	  console.log("scrollTop = " + $(el).scrollTop());
-	  console.log("scroll_to_y = " + scroll_to_y);
 	  if($(el).scrollTop() < scroll_to_y){
 		  TweenLite.to(el, 1.4, {scrollTo:{y:scroll_to_y, autoKill:false}, ease:Expo.easeOut, onStart:self.onAutoScrollStart, onComplete:self.onAutoScrollComplete});
 	  }

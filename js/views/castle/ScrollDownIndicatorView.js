@@ -1,5 +1,5 @@
 // _________________________________________________________________________ ScrollDownIndicatorView
-main.views.ScrollDownIndicatorView = Backbone.View.extend({
+main.castle.views.ScrollDownIndicatorView = Backbone.View.extend({
 	FADE_CLASS: "fade-fast",
 	SCROLL_DOWN_INDICATOR: "scroll-down-indicator",
 	SCROLL_DOWN_INDICATOR_CTA: "scroll-down-indicator-cta",
@@ -27,14 +27,12 @@ main.views.ScrollDownIndicatorView = Backbone.View.extend({
 	},
 	// ----------------- show
 	show: function() {
-		console.log("ScrollDownIndicatorView ------------------- show");
 		this.indicator_el.off('transitionend webkitTransitionEnd oTransitionEnd');
 	    this.indicator_el.css('visibility', 'visible');
 	    this.indicator_el.css('opacity', '1');
 	},
 	// ----------------- show
 	hide: function() {
-		console.log("ScrollDownIndicatorView ------------------- hide");
 	    this.indicator_el.css('opacity', '0');
 	    //make invisible on transition end
 		this.indicator_el.on('transitionend webkitTransitionEnd oTransitionEnd', function(){

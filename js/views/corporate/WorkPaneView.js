@@ -1,5 +1,5 @@
 // _________________________________________________________________________ WorkPaneView
-main.views.WorkPaneView = main.views.PaneView.extend({
+main.corporate.views.WorkPaneView = main.views.PaneView.extend({
 	//VIDEO_EMBED_STR: '<iframe src="//instagram.com/p/m5N1iwEWuP/embed/" width="_width_" height="_height_" frameborder="0" scrolling="no" wmode="Opaque" allowtransparency="true"></iframe>',
 	VIDEO_EMBED_STR: '<iframe src="//instagram.com/p/m5N1iwEWuP/embed/" frameborder="0" scrolling="no" wmode="Opaque" allowtransparency="true"></iframe>',
 	//	VIDEO_EMBED_STR: '<iframe src="//instagram.com/p/m5N1iwEWuP/embed/" width="612" height="710" frameborder="0" scrolling="no" allowtransparency="true"></iframe>',

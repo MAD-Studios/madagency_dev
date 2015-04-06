@@ -10,7 +10,11 @@ main.views.SceneContainerView = Backbone.View.extend({
 	SCENE_DEACTIVATE: "scene_deactivate",
 	SCENE_ACTIVATE: "scene_activate",
 	SCENE_DEACTIVATE: "scene_deactivate",
+	ALLOW_SWIPE_CLASS: 'allowSwipe',
+	SHOW_AUDIO_LOADER: "show_audio_loader",
+	HIDE_AUDIO_LOADER: "hide_audio_loader",
 	scene_views: [],
+	cur_scene_index: 0,
 	curSceneView: {},
 	num_scenes_loaded: 0,
 	num_scenes: 0,
@@ -32,8 +36,8 @@ main.views.SceneContainerView = Backbone.View.extend({
 	    //set model to the sceneCollection
 	    this.model = new main.models.SceneCollection();
 	    this.model.setAudio(this.audioCollection);
-	    this.skrollr_body_el = $('#skrollr-body', this.el);
 	    this.createScenes();
+	    $('body').addClass(this.ALLOW_SWIPE_CLASS);
 	    setTimeout(function(){
 	        //self.lastScrollTop = $(window).scrollTop();
 	        self.initScenes();
@@ -61,6 +65,8 @@ main.views.SceneContainerView = Backbone.View.extend({
 	   //create and render each scene view
 	   //scene-castle
 	   //find the right scene model
+	   this.sceneSwipeInstructionView = new main.views.SceneSwipeInstructionView();
+	   this.scene_views.push(this.sceneSwipeInstructionView);
 	   this.sceneCastleView = new main.views.SceneCastleView();
 	   this.scene_views.push(this.sceneCastleView);
 	   this.sceneXrayView = new main.views.SceneXrayView();
@@ -73,25 +79,48 @@ main.views.SceneContainerView = Backbone.View.extend({
 	   this.scene_views.push(this.sceneGerbilView);
 	   this.sceneBoyView = new main.views.SceneBoyView();
 	   this.scene_views.push(this.sceneBoyView);
+	   this.sceneFinalView = new main.views.SceneFinalView();
+	   this.scene_views.push(this.sceneFinalView);
+	   //set the castle scene as the fisrt scene
 	   
    	   for(var i=0;i<this.scene_views.length;i++){
    	   	   scene = this.scene_views[i];
+   	   	   console.log(" befroe render --------- scene.name ------- " +  scene.name);
    	   	   model = this.model.find(function(scene_model){ return ( scene_model.get("name") ==  scene.name ) });
 	   	   scene.model = model;
 	   	   scene.render();
-	   	   $(scene.el).on(scene.ACTIVATE, function(event, params){ $(self.el).trigger(self.SCENE_ACTIVATE, [params]); });
-	   	   $(scene.el).on(scene.DEACTIVATE, function(event){ $(self.el).trigger(self.SCENE_DEACTIVATE); });
+	   	   $(scene.el).on(scene.NEXT, function(event, params){ self.showNextScene() });
+	   	   //$(scene.el).on(scene.DEACTIVATE, function(event){ $(self.el).trigger(self.SCENE_DEACTIVATE); });
 	       $(scene.el).on(scene.INIT_ASSETS, function(event, params){  $(self.el).trigger(self.INIT_SCENE_ASSETS, [params]); });
 	       //$(scene.el).on(scene.IDLE, function(event){ $(self.el).trigger(self.SCENE_IDLE); });
 	       $(scene.el).on(scene.ASSET_LOADED, function(event){ $(self.el).trigger(self.SCENE_ASSET_LOADED); });
-	   	   $(scene.el).on(scene.ALL_ASSETS_LOADED, function(){ self.handleLoadSceneComplete(); });
+	   	   $(scene.el).on(scene.ALL_ASSETS_LOADED, function(event){ self.handleLoadSceneComplete(); });
+	   	   $(scene.el).on(scene.SHOW_AUDIO_LOADER, function(event){ $(self.el).trigger(self.SHOW_AUDIO_LOADER); });
+	   	   $(scene.el).on(scene.HIDE_AUDIO_LOADER, function(event){ $(self.el).trigger(self.HIDE_AUDIO_LOADER); });
    	   }
-	   $(this.sceneBoyView.el).on(this.sceneBoyView.EXIT_CLICK, function(){ $(self.el).trigger(self.EXIT_SCENES); });
+	  //$(this.sceneFinalView.el).on(this.sceneFinalView.EXIT_SWIPE, function(){ $(self.el).trigger(self.EXIT_SCENES); });
 	   this.num_scenes = this.scene_views.length;
 	   setTimeout(function(){
 		   self.beginLoadingAssets();
 	   }, 100);
 	   this.hideScenes();
+    },
+    // ----------------- showNextScene
+    showNextScene: function() {
+	    console.log("showNextScene");
+	    //activate the next scene
+	    //var cur_scene_view = scene_views[this.cur_scene_index];
+	    //cur_scene_view.deactivate();
+	    this.cur_scene_index++;
+	    if(this.cur_scene_index >= this.scene_views.length) {
+		    //exit BAU
+		    $(this.el).trigger(this.EXIT_SCENES);
+	    }
+	    else{
+		    //and deactivate the current scene
+		    var next_scene_view = this.scene_views[this.cur_scene_index];
+		    next_scene_view.activate();
+	    }
     },
     // ----------------- initScenes
     initScenes: function() {
@@ -116,70 +145,14 @@ main.views.SceneContainerView = Backbone.View.extend({
     showAnswerScreen: function() {
 	    this.sceneBoyView.showAnswerScreen();
     },
-   	// ----------------- removeForceToPosition
-	removeForceToPosition: function(){
-		this.sceneCreationView.removeForceToPosition(); 
-		this.sceneGerbilView.removeForceToPosition();
-	},
-	// ----------------- forceToCreationStatue
-	forceToCreationStatue: function(){
-		this.sceneCreationView.forceToStatue(); 
-		this.sceneGerbilView.forceToStatue();
-	},
-	// ----------------- forceToGerbil
-	forceToGerbil: function(){
-		this.sceneCreationView.forceToGerbil(); 
-		this.sceneGerbilView.forceToGerbil();
-	},
-	// ----------------- forceToGerbilLeft
-	forceToGerbilLeft: function(){
-		this.sceneCreationView.forceToLeft(); 
-		this.sceneGerbilView.forceToLeft();
-	},
-	// ----------------- checkScenes
-	checkScenes: function(obj){
-	   //obj
-	   //curTop: 10, //the current scroll top offset
-	   //lastTop: 0, //the top value of last time
-	   // maxTop: 100, //the max value you can scroll to. curTop/maxTop will give you the current progress.
-	   //direction: 'down' /
-   	   var scene, scene_model;
-   	   var scroll_top = obj.curTop;
-   	   if(!this.story_is_stopped){
-		if(scroll_top >= 0){
-		    scene_model = this.model.find(function(model){
-		         return ( scroll_top >= model.get("topOffset") && scroll_top < model.get("topOffsetEnd") );
-		    });
-		    //get the view 
-			if(scene_model) {
-				scene = scene_model.get("view");
-				if( !$(scene.el).hasClass(scene.ACTIVE_CLASS) ){
-					scene.activate();
-					if(this.curSceneView && this.curSceneView.deactivate) this.curSceneView.deactivate();
-					this.curSceneView = scene;
-				} 				
-			}
-		 }
-   	   }
-   	},
-    // ----------------- checkSounds
-	checkSounds: function(obj){
-   	   var scene;
-   	   if(!this.story_is_stopped){
-	   	   for(var i=0;i<this.scene_views.length;i++){
-		   	   scene = this.scene_views[i];
-		   	   scene.checkSounds(obj);
-	   	   }
-   	   }
-   	},
    	// ----------------- stopSounds
-	stopSounds: function(obj){
+	/*stopSounds: function(obj){
 		var scene;
 		for(var i=0;i<this.scene_views.length;i++){
 		   scene = this.scene_views[i];
 		   scene.stopSounds();
 		}
-	},
+	},*/
    	// ----------------- addScenes
     setScenes: function() {
 	},
@@ -188,11 +161,13 @@ main.views.SceneContainerView = Backbone.View.extend({
 	   var scene;
    	   for(var i=0;i<this.scene_views.length;i++){
    	   	   scene = this.scene_views[i];
-	   	   this.skrollr_body_el.append($(scene.el));
+	   	   $(this.el).append($(scene.el));
+	   	   scene.onAppend();
    	   }
     },
     // ----------------- beginLoadingAssets
     beginLoadingAssets: function() {
+    	console.log("beginLoadingAssets");
 	    this.loadSceneAssets();
     },
     // ----------------- loadSceneAssets
@@ -203,7 +178,6 @@ main.views.SceneContainerView = Backbone.View.extend({
     // ----------------- handleLoadSceneComplete
     handleLoadSceneComplete: function() {
 	    this.num_scenes_loaded++;
-	    //begin loading the aseets of the next scene
 	    if( this.num_scenes_loaded < this.num_scenes ) this.loadSceneAssets();
 	    else $(this.el).trigger(this.ALL_SCENE_ASSETS_LOADED);
     },
@@ -213,7 +187,10 @@ main.views.SceneContainerView = Backbone.View.extend({
 	},
     // ----------------- show
     show: function() {
+	    console.log("SceneContainerView ------ show");
     	$(this.el).css('visibility', 'visible');
+    	var scene = this.scene_views[this.cur_scene_index];
+    	if(scene.show) scene.show();
 	},
 	// ----------------- beforeDispose
 	beforeDispose: function(){

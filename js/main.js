@@ -35,19 +35,11 @@ var main = {
     },
     // ----------------- createSectionNamespaces
     createSectionNamespaces: function(){
-    	console.log("createSectionNamespaces ---- this.section = " + this.section);
-    			        	console.log("createSectionNamespaces ---- this.section.length = " + this.section.length);
-
 		var namespace_enities = ["models", "views", "routers"];
 	    //for each 
 	    for(var i=0;i<namespace_enities.length;i++){
 		    this[namespace_enities[i]] = {};
 		    for(var section in this.section){
-		    
-		        	console.log("createSectionNamespaces ---- section = " + section);
-		        	console.log("createSectionNamespaces ---- namespace_enities[i] = " + namespace_enities[i]);
-		        	
-
 		    	 this[namespace_enities[i]][section] = {};
 		    	 for(subsection in this.section[section]){
 			    	 this[namespace_enities[i]][section][subsection] = {};
@@ -155,6 +147,7 @@ var section = null;
 
 // ----------------- document ready handler
 $(document).ready(function() {
+    try{Typekit.load();}catch(e){}
 	main.handleUnsupportedFeatures();
     onDocReady();
 });

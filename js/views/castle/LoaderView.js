@@ -1,5 +1,5 @@
 // _________________________________________________________________________ LoaderView
-main.views.LoaderView = Backbone.View.extend({
+main.castle.views.LoaderView = Backbone.View.extend({
 	GOLD_GRAD_TRANS_CLASS: "gradient-transition",
 	GOLD_GRAD_TRANS_CLASS_OUT: "gradient-transition-out",
 	INFO_TRANS_CLASS: "info-transition",

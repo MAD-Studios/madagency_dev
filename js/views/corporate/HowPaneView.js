@@ -1,5 +1,5 @@
 // _________________________________________________________________________ HowPaneView
-main.views.HowPaneView = main.views.PaneView.extend({
+main.corporate.views.HowPaneView = main.views.PaneView.extend({
 	id: "how",
 	_route: "how",
 	offset: 0,
