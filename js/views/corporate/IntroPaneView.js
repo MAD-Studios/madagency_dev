@@ -114,6 +114,7 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     	//at the positions of the 
     	//btns inside the scroller content
     	this.btn_els.each(function(){
+    		btn_click_funct = null;
 	    	overlay_btn = $(self.OVERLAY_BTN_HTML);
 	    	//SET ITS WITH AND HEIGHT
 	    	btn_w = $(this).outerWidth();
@@ -123,27 +124,36 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
 			//give it an id that 
 			//corresponds to the btn
 			btn_id = $(this).attr('id');
+			overlay_btn.attr('id', btn_id);
 			btn_href = $(this).attr('href');
 			if(btn_href) overlay_btn.attr('href', btn_href);
-			//find the btn id in the events object
-			//then get its corresponding function
-			//if() events
-			for(event in self.events){
-				if(event.indexOf(btn_id) > -1) btn_click_funct = self.events[event];
-			}
 			
-			if(btn_click_funct){
-		    	//append to the overlay
-		    	//add click listener
-		    	$(overlay_btn).click(function(){
-			    	//call its associated function
-			    	self[btn_click_funct]();
-		    	});
-	    	}
+			$(overlay_btn).click(function(event){
+				self.onOverlayBtnClick(event);
+			});
 
 	    	self.overlay_btns.push(overlay_btn);
 	    	self.overlay_el.append(overlay_btn);
     	});
+    },
+    // ----------------- onOverlayBtnClick
+    onOverlayBtnClick: function(event) {
+    	var self = this;
+        var btn_id = $(event.currentTarget).attr('id');
+        var btn_click_funct = null;
+        //find the btn id in the events object
+		//then get its corresponding function
+		for(event in self.events){
+			if(event.indexOf(btn_id) > -1) btn_click_funct = self.events[event];
+		}
+		if(btn_click_funct){
+	    	//append to the overlay
+	    	//add click listener
+	    	$(overlay_btn).click(function(){
+		    	//call its associated function
+		    	self[btn_click_funct]();
+	    	});
+    	}
     },
     // ----------------- posOverlayBtns
     posOverlayBtns: function() {
