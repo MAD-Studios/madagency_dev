@@ -9,8 +9,9 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
 	MIN_TEXT_BLOCK_BOTTOM_MARGIN: 100,
 	MIN_TEXT_BLOCK_TOP_MARGIN: 50,
 	BTN_HIDDEN_PADDING_BOTTOM: 10,
+	SHOW_MORE_PADDING_BOTTOM:  50,
 	OVERLAY_HTML: '<div class="overlay"></div>',
-	OVERLAY_BTN_HTML: '<div class="btn btn-overlay"></div>',
+	OVERLAY_BTN_HTML: '<a class="btn btn-overlay"></a>',
 	id: "intro",
 	_route: "",
 	offset: 0,
@@ -19,8 +20,7 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
 	to_y: 0,
 	num_posizes: 0,
 	events:{
-		'click .btn-castle': 'onBtnCastleClick',
-		
+		'click #btn-show-more': 'onBtnShowMoreClick'
 	},
 	// ----------------- initialize
     initialize: function() {
@@ -46,7 +46,6 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
 	    	self.handleIntroScroll();
     	});
     	this.arrow_row_el = $('.row-arrow-container', this.el);
-    	
     	this.anim_rows = $('.row-content .column > .row-absolute', this.el);
     	    	
     	this.createOverlay();
@@ -66,8 +65,6 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
         	//make sure not arrow row
         	//or row within an absolute  row
 			self.default_elements_y.push(self.to_y);
-			
-			console.log("self.to_y = " + self.to_y);
 			
 	        //if row is not shown
 			//set its top to its value plus the offset
@@ -98,7 +95,6 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     	//scroll when mouse over
     	//gradient
     	this.overlay_el = $(this.OVERLAY_HTML);
-    	
     	$('.scroller-content', this.el).append(this.overlay_el);
     	
     	this.createOverlayBtns();
@@ -106,10 +102,12 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     // ----------------- createOverlayBtns
     createOverlayBtns: function() {
         var self 					= this;	
-    	var overlay_btn;
     	var btn_w 					= 0, 
     		btn_h 					= 0;
     	var btn_id 					= "";
+    	var overlay_btn,
+    		btn_click_funct, 
+    		btn_href;
     	this.overlay_btns 			= [];
     	this.btn_els 				= $('.btn', this.scroller_el);
     	//create invisible overlay btns
@@ -117,28 +115,38 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     	//btns inside the scroller content
     	this.btn_els.each(function(){
 	    	overlay_btn = $(self.OVERLAY_BTN_HTML);
-	    	//SET ITS WITRH AND HEIGHT
+	    	//SET ITS WITH AND HEIGHT
 	    	btn_w = $(this).outerWidth();
 	    	btn_h = $(this).outerHeight() + self.BTN_HIDDEN_PADDING_BOTTOM;
 	    	overlay_btn.css('width', btn_w + 'px');
 			overlay_btn.css('height', btn_h + 'px');
 			//give it an id that 
 			//corresponds to the btn
-			//(use events ?)
+			btn_id = $(this).attr('id');
+			btn_href = $(this).attr('href');
+			if(btn_href) overlay_btn.attr('href', btn_href);
+			//find the btn id in the events object
+			//then get its corresponding function
+			//if() events
+			for(event in self.events){
+				if(event.indexOf(btn_id) > -1) btn_click_funct = self.events[event];
+			}
 			
-	    	//append to the overlay
-	    	//add click listener
-	    	$(this).click(function(){
-		    	//call its associated function
-	    	});
+			if(btn_click_funct){
+		    	//append to the overlay
+		    	//add click listener
+		    	$(overlay_btn).click(function(){
+			    	//call its associated function
+			    	self[btn_click_funct]();
+		    	});
+	    	}
+
 	    	self.overlay_btns.push(overlay_btn);
 	    	self.overlay_el.append(overlay_btn);
     	});
     },
     // ----------------- posOverlayBtns
     posOverlayBtns: function() {
-        console.log("posOverlayBtns");
-
         var self 					= this;	
         var overlay_btn;
     	var btn_y 					= 0,
@@ -192,18 +200,11 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
 				//TweenLite.to(this.grad_el, 0.25, { opacity: 0, ease: Expo.easeOut });
                 this.grad_el.css('opacity', '0');
 			}
-			//perhaps do this at half winow height instead?????
-			//if( scroll_top  > ( this.default_elements_y[2] - (this.this_el.height() - this.nav_offset - this.grad_el.height()) ) ){
             if( scroll_top  > ( this.default_elements_y[2] - (this.this_el.height()/2) ) ){
 				delay = 0;
 				TweenLite.to(this.anim_rows.eq(2), 0.5, { opacity: 1, ease: Expo.easeOut, delay:delay });
 				TweenLite.to(this.anim_rows.eq(2), 1.5, { top: this.default_elements_y[2], ease: Expo.easeOut, delay:delay });
 				this.anim_rows.eq(2).addClass(this.VISIBLE_CLASS);
-                
-                /*delay = 0.15;
-				TweenLite.to(this.anim_rows.eq(1), 0.5, { opacity: 0, ease: Expo.easeOut, delay:delay });
-				TweenLite.to(this.anim_rows.eq(1), 0.5, { top: this.default_elements_y[1] - this.ELEMENT_ANIM_OFFSET, ease: Expo.easeOut, delay:delay });
-				this.anim_rows.eq(1).removeClass(this.VISIBLE_CLASS);*/
 			}
             if( scroll_top  > ( this.default_elements_y[2] - (this.this_el.height()/3) ) ){
                 delay = 0;
@@ -289,7 +290,6 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
 		    	self.showContent();
 		    }, 100);
     	} 
-    	
     	this.num_posizes++;
     },
     // ----------------- onScroll
@@ -315,10 +315,23 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
 		//updateForUnsupportedBrowsers
 		//this.castleGatewayView.updateForUnsupportedBrowsers();
 	},
-	// ----------------- onBtnCastleClick
-    onBtnCastleClick:function(){
-	    
+    // ----------------- onBtnShowMoreClick
+    onBtnShowMoreClick:function(){
+    	//scrolldown
+    	//!!!!!!!!!!!!!!!!!!!
+    	//set active class on 
+    	//underlying btn
+    	//!!!!!!!!!!!!!!!!!!
+
+    	this.scrollToShowMore();
+	    return false;
     },
+    // ----------------- scrollToShowMore
+	scrollToShowMore: function(){
+		//scroll to the top of the second anim row
+    	var scroll_to_y = this.anim_rows.eq(1).offset().top - this.ELEMENT_ANIM_OFFSET - this.SHOW_MORE_PADDING_BOTTOM;
+    	TweenLite.to(this.scroller_el, 1.4, { scrollTo:{y:scroll_to_y, autoKill:false}, ease:Expo.easeOut });
+	},
 	// ----------------- beforeDispose
 	beforeDispose: function(){
 	}

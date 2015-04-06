@@ -122,19 +122,14 @@ main.views.PaneContainerView = Backbone.View.extend({
     },
     // ----------------- scrollWindowTo
     scrollWindowTo: function(id, animate) {
-     if(animate == null || typeof animate === undefined) animate = true;
-	  var self = this;
-	  
-	  console.log("--------- id = " + id);
-	  
+      if(animate == null || typeof animate === undefined) animate = true;
+	  var self = this;	  
 	  //scroll the window to the correct pane 
 	  //according to id
 	  if(this.paneCollection){
 		  var pane_model = this.paneCollection.find(function(model){
 			return ( model.get("el_id") == (id + self.PANE_ID_END_STR) );
 		  });
-		  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		  //throwing error
 		  var scroll_to_y = pane_model.get("posY");
 
 		  if(animate) TweenLite.to(window, 1.4, {scrollTo:{y:scroll_to_y, autoKill:false}, ease:Expo.easeOut, onStart:self.onAutoScrollStart, onComplete:self.onAutoScrollComplete});

@@ -2,7 +2,6 @@
 main.views.corporate.PaneContainerView = main.views.PaneContainerView.extend({
     // ----------------- renderPanes
     renderPanes: function() {
-    	console.log("corporate.PaneContainerView ---------- renderPanes ----------");
         var self = this;
         this.introPaneView = new main.views.corporate.IntroPaneView( {el: $('#intro-pane', this.el)} );
         this.paneViews.push(this.introPaneView);

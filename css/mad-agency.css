@@ -4755,7 +4755,8 @@ $xxLgMargin: 60px;*/
       top: 0; }
     #intro-pane .intro .btn-overlay {
       cursor: pointer;
-      position: absolute; }
+      position: absolute;
+      display: block; }
     #intro-pane .intro .row-absolute {
       -webkit-transform: translate3d(0, 0, 0);
       -moz-transform: translate3d(0, 0, 0);

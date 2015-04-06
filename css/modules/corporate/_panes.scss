@@ -62,6 +62,7 @@ $contactPaneInputMaxWidth: 400px;
 		.btn-overlay{
 			cursor: pointer;
 			position: absolute;
+			display: block;
 		}
 		.row-absolute{
 			@include transform(translate3d(0,0,0));
