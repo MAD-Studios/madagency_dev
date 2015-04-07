@@ -87,7 +87,7 @@ main.views.castle.LoaderView = Backbone.View.extend({
     createLoaderInfo: function() {
 	    //create a container for the 
 	    //loaded ratio indicator
-	    this.loaderInfoContainer = $('<div class="loader-info-container"></div>');
+	    this.loaderInfoContainer = $('<div class="info-container"></div>');
 	    $(this.el).append(this.loaderInfoContainer);
 	    //create the loaded ratio indicator
 	    //loaded_ratio_indicator_copy

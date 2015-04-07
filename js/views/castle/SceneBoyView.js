@@ -29,7 +29,7 @@ main.views.castle.SceneBoyView = main.views.castle.SceneView.extend({
         //add fade class
 		this.answer_el.addClass(this.FADE_CLASS);
 		setTimeout(function(){
-	        self.model = main.router.responseGeneratorModel;
+	        self.model = main.responseGeneratorModel;
 	        self.answers = self.model.get("answers");
 	        self.setAnswer();
 	        self.prepareForAnimation();

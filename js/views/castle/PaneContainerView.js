@@ -12,4 +12,10 @@ main.views.castle.PaneContainerView = main.views.PaneContainerView.extend({
     updateForUnsupportedBrowsers: function() {
 	    this.castleGatewayPaneView.updateForUnsupportedBrowsers();
 	},
+	// ----------------- afterBeginHide
+    afterBeginHide: function() {
+	    //not going into this
+    	//begin hide the gateway view
+    	this.castleGatewayPaneView.beginHide();
+    }
 });

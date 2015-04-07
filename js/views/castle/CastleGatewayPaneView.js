@@ -1,7 +1,7 @@
 // _________________________________________________________________________ CastleGatewayPaneView
 main.views.castle.CastleGatewayPaneView = main.views.PaneView.extend({
-    ELEMENT_TRANS_CLASS: ".element-trans",
-    LAST_ELEMENT_TRANS_CLASS: ".last-element-trans",
+    ELEMENT_TRANS_CLASS: "element-trans",
+    LAST_ELEMENT_TRANS_CLASS: "last-element-trans",
 	INPUT_BLINK_TRANS_CLASS: "input-blink-trans",
 	INPUT_DULL_CLASS: "input-dull",
     ELEMENT_ANIM_OFFSET: 300,
@@ -16,16 +16,13 @@ main.views.castle.CastleGatewayPaneView = main.views.PaneView.extend({
 	//going into the story view
 	INPUT_ALERT_START_TIME: 4000,
 	IDLE_START_TIME: 60000,
-	//PREPEND_PLACEHOLDER_STR: "Example: ",
 	PREPEND_PLACEHOLDER_STR: "",
 	id: "method",
 	_route: "",
 	offset: 0,
 	questions: [],
-	//default_h1_top: 0,
-	//default_p_top: 0,
-	//default_input_cta_top: 0,
-    default_elements_y: [],
+    default_anim_rows_y: [],
+    anim_rows: [],
 	blink_i: 0,
 	to_y: 0,
 	events:{
@@ -40,8 +37,7 @@ main.views.castle.CastleGatewayPaneView = main.views.PaneView.extend({
     beforeRender: function() {
         console.log("CastleGatewayPaneView ---- beforeRender");
         var self = this;
-        //this.h1_el = $('h1', this.el);
-	    //this.p_el = $('p', this.el);
+        
 	    this.input_cnt_el = $('.input-w-btn-container', this.el);
 	    this.input_cnt_el.addClass(this.INPUT_BLINK_TRANS_CLASS);
 	    this.input_el = $('.input-method', this.el);
@@ -51,10 +47,7 @@ main.views.castle.CastleGatewayPaneView = main.views.PaneView.extend({
 	    //this.to_y = 0;
         this.initElements();
         setTimeout(function(){ 
-            self.posElements();
-	        //self.default_h1_top = parseInt(self.h1_el.css('top'));
-	        //self.default_p_top = parseInt(self.p_el.css('top')); 
-	        //self.default_input_cta_top = parseInt(self.input_cnt_el.css('top'));   
+            self.posElements();  
 	        self.model = main.responseGeneratorModel;
 	        self.questions = self.model.get("questions");
 	        self.setQuestionPlaceholder();
@@ -76,9 +69,10 @@ main.views.castle.CastleGatewayPaneView = main.views.PaneView.extend({
   	},
     // ----------------- initElements
     initElements: function() {
-        $('.row-absolute', this.el).each(function(){
+    	var self = this;
+        $('.row-absolute', this.el).each(function(index, value){
             $(this).css('opacity', '0');
-        });
+ 	    });
     },
     // ----------------- saveElementsPos
     posElements: function() {
@@ -86,6 +80,7 @@ main.views.castle.CastleGatewayPaneView = main.views.PaneView.extend({
         var last_h = 0, padding = 0;
         this.to_y = 0;
         var input_to_left, ta_to_left = 0;
+        this.anim_rows = [];
         $('.row-absolute', this.el).each(function(){
             //grab all row absolutes
             //and sset their positions by height of 
@@ -97,15 +92,27 @@ main.views.castle.CastleGatewayPaneView = main.views.PaneView.extend({
 						 msTransform: 'translate3d(0,' + self.to_y + 'px, 0)'});
 						 
 			$(this).css('opacity', '1');
-			self.default_elements_y.push(self.to_y);
 
-			if($(this).css('display') != 'none') last_h = $(this).children().eq(0).outerHeight();
-			else last_h = 0;
+			if($(this).css('display') != 'none'){
+				self.default_anim_rows_y.push(self.to_y);
+				last_h = $(this).children().eq(0).outerHeight();
+				//push this into an array
+				self.anim_rows.push($(this));
+			} 
+			else{
+				last_h = 0;
+			} 
 
 			if(last_h > 0) padding = parseInt($(this).css('paddingBottom'));
 			else padding = 0;
 			self.to_y += (last_h + padding);
         });
+        
+        for(var i=0;i<this.anim_rows.length;i++){
+        	//add the slower transition class
+	        if(i == this.anim_rows.length-1) this.anim_rows[i].addClass(this.LAST_ELEMENT_TRANS_CLASS);
+	        else this.anim_rows[i].addClass(this.ELEMENT_TRANS_CLASS);
+	    }
         
         //center the input container within its row
         $('.input-w-btn-container',  this.el).each(function(){
@@ -196,7 +203,6 @@ main.views.castle.CastleGatewayPaneView = main.views.PaneView.extend({
     	var to_margin_top = ($(this.el).outerHeight() - this.to_y)/2.1;
     	
 	    //position content to be nearly centered
-	    //var to_margin_top = ($(this.el).outerHeight() - $('.row-content', this.el).outerHeight())/2;
 	    //b/c content is abs positioned we need to set the height
 	    this.content_el.css('margin-top', to_margin_top + 'px');
     },
@@ -207,8 +213,6 @@ main.views.castle.CastleGatewayPaneView = main.views.PaneView.extend({
 		quest = this.shortenPlaceholder(quest);
 		//set the input placeholder to the 
 		//generated question
-		/*this.input_el.attr('placeholder', quest);
-		this.input_ta_el.attr('placeholder', quest);*/
         $('.input', this.el).each(function(){
             $(this).attr('placeholder', quest);
         });
@@ -240,32 +244,47 @@ main.views.castle.CastleGatewayPaneView = main.views.PaneView.extend({
 	// ----------------- submit
 	submit:function(){
 		this.model.set({current_question: this.input_el.val()});
+		console.log("submit");
 		//send them into 
 		//the story
-		$(this.el).trigger(this.SUBMIT);
+		$(this.el).trigger(main.events.castle.Event.ENTER_CASTLE);
 		//also update the model 
         //so that you can send the question for reference
         //if the user sends a contact email
 	},
 	// ----------------- beginHide
     beginHide: function() {
+    	var self = this;
+    	var to_top;
+    	var delay = 0;
 	    ////movethe h1 up
-	    /*this.h1_el.addClass(this.H1_TRANS_CLASS);
-	    this.p_el.addClass(this.P_TRANS_CLASS);*/
 	    this.input_cnt_el.removeClass(this.INPUT_BLINK_TRANS_CLASS);
 	    this.input_cnt_el.removeClass(this.INPUT_DULL_CLASS);
-        //!!!!!!!!!!!!!!!!!!!!!
         
-	    //this.input_cnt_el.addClass(this.INPUT_CNT_TRANS_CLASS);
-	    //them move the h1 & p up
-	    /*this.h1_el.css('top', (this.default_h1_top + this.H1_ANIM_OFFSET) + 'px');
-	    this.h1_el.css('opacity', '0');
-	    this.p_el.css('top', (this.default_p_top + this.P_ANIM_OFFSET) + 'px');
-	    this.p_el.css('opacity', '0');
-	    //move the input container down
-	    this.input_cnt_el.css('top', (this.default_input_cta_top + (this.INPUT_CNT_ANIM_OFFSET*3)) + 'px');
-	    this.input_cnt_el.css('opacity', '0');*/
+        //this.row_absolute_jq.each(function(index, value){
+        for(var i=0;i<this.anim_rows.length;i++){
+        	delay = i*100;
+	        //for the last el
+	        to_top = this.default_anim_rows_y[i];
+	        if(i == this.anim_rows.length-1) to_top += self.LAST_ELEMENT_ANIM_OFFSET;
+	        else to_top += self.ELEMENT_ANIM_OFFSET;
+	        
+	        this.animateRow(this.anim_rows[i], to_top, delay);
+		}
     },
+    // ----------------- animateRow
+	animateRow: function(row, to_top, delay){
+		var self = this;
+		setTimeout(function(){
+		    row.css('opacity', '0');
+		    
+		    row.css({ transform: 'translate3d(0,' + to_top + 'px, 0)',
+						 MozTransform: 'translate3d(0,' + to_top + 'px, 0)',
+						 WebkitTransform: 'translate3d(0,' + to_top + 'px, 0)',
+						 OTransform: 'translate3d(0,' + to_top + 'px, 0)',
+						 msTransform: 'translate3d(0,' + to_top + 'px, 0)'}); 
+		}, delay);
+	},
 	// ----------------- onBtnAskClick
 	onBtnAskClick: function(){
 		this.submit();

@@ -32,6 +32,7 @@
     <script src="../js/main.js" type="text/javascript"></script>
     <script src="../js/castle.js" type="text/javascript"></script>
     <script src="../js/events/Event.js" type="text/javascript"></script>
+    <script src="../js/events/castle/Event.js" type="text/javascript"></script>
     <script src="../js/utils/TemplateLoader.js" type="text/javascript"></script>
     <script src="../js/utils/ElementManipulator.js" type="text/javascript"></script>
     <script src="../js/utils/DeviceDetector.js" type="text/javascript"></script>
@@ -99,13 +100,13 @@
                     <div class="row-absolute hide-for-small show-for-medium-up">
                         <div class="input-w-btn-container">
                             <div class="shadow-bordered"><input class="input input-method" placeholder="How do I sell more ..."/></div>
-                            <div class="shadow-bordered shadow-bordered-blue"><a class="btn btn-blue btn-ask" href="#">ENTER</a></div>
+                            <div class="shadow-bordered shadow-bordered-blue"><a class="btn btn-blue btn-ask" href="">ENTER</a></div>
                         </div>
                     </div>
                     <div class="row-absolute show-for-small hide-for-medium-up">
                 	   <div class="input-w-btn-container ta-w-btn-container">
                             <div class="shadow-bordered row-float input-container-ta"><textarea class="input input-ta-method"></textarea></div>
-                            <div class="shadow-bordered shadow-bordered-blue row-float"><a class="btn btn-blue btn-ask" href="#">ENTER</a></div>
+                            <div class="shadow-bordered shadow-bordered-blue row-float"><a class="btn btn-blue btn-ask" href="">ENTER</a></div>
                         </div>
                     </div>
 				</div>

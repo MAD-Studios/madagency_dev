@@ -3,7 +3,7 @@ main.views.castle.ScrollDownIndicatorView = Backbone.View.extend({
 	FADE_CLASS: "fade-fast",
 	SCROLL_DOWN_INDICATOR: "scroll-down-indicator",
 	SCROLL_DOWN_INDICATOR_CTA: "scroll-down-indicator-cta",
-	templateLoader: main.utils.templateLoader,
+	templateLoader: main.utils.TemplateLoader,
 	// ----------------- initialize
     initialize: function() {
         console.log("ScrollDownIndicatorView ---- initialize");

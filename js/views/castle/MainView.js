@@ -2,8 +2,12 @@
 main.views.castle.MainView = main.views.MainView.extend({
     // ----------------- initiateCorporate
     initiateCorporate: function(){  
-    	console.log("main.views.castle.MainView ------------- initiateCorporate "); 
+    	var self = this; 
 	    this.corporateView = new main.views.castle.CorporateView( {el: $('.corporate', this.el)} );
+	    
+	    $(this.corporateView.el).on( main.events.castle.Event.ENTER_CASTLE, function(){
+		    self.moveIntoCastle();
+	    });
     },
     // ----------------- openCastle
     openCastle: function() {

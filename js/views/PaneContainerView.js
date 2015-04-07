@@ -148,8 +148,11 @@ main.views.PaneContainerView = Backbone.View.extend({
     },
     // ----------------- beginHide
     beginHide: function() {
+    	console.log("PaneContainerView ------- beginHide ----- ");
 	    this.scrollToTop();
-	    this.introPaneView.beginHide();
+	    //this.introPaneView.beginHide();
+	    console.log("before ------- afterBeginHide ----- ");
+		if(this.afterBeginHide) this.afterBeginHide();
     },
     // ----------------- onAutoScrollStart
     onAutoScrollStart: function() {

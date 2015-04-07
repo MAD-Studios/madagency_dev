@@ -10,7 +10,7 @@ main.views.castle.SceneView = Backbone.View.extend({
 	INIT_ASSETS: "init-assets",
 	VOLUME_DECREMENT: 0.2,
 	//IDLE_START_TIME: 8000,
-	templateLoader: main.utils.templateLoader,
+	templateLoader: main.utils.TemplateLoader,
 	scene_name: "",
 	offset: 0,
 	id: "",

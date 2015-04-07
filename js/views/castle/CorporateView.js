@@ -9,7 +9,8 @@ main.views.castle.CorporateView = main.views.CorporateView.extend({
     // ----------------- beginHide
     beginHide: function() {
 	    this.headerView.beginHide();
-	    this.mainNavContainerView.beginHide();
+	    console.log("CorporateView ---------paneContainerView beginHide");
+	    //this.mainNavContainerView.beginHide();
 	    this.paneContainerView.beginHide();
 	    this.basicDispose();
 	    //add the gold cover

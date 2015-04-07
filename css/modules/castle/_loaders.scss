@@ -63,7 +63,7 @@ $loaderFontSize: 15px;
 		font-family: "franklin-gothic-urw",sans-serif !important;
 	}
 	p{  font-weight: 400;}
-	.gradient-gold{
+	.gradient.gold{
 		position: absolute;
 		min-width: 100%; 
 		-webkit-transform: translate3d(0,0,0);
@@ -122,6 +122,14 @@ $loaderFontSize: 15px;
 	    h1{
 			font-family: 'The Skinny', 'Helvetica', Arial, sans-serif;
 		}
+	}
+	.loaded-ratio-indicator{
+		position: absolute; min-width:1px; height: 75px; 
+		-webkit-transform: translate3d(0,0,0);
+		-moz-transform: translate3d(0,0,0);
+	    -o-transform: translate3d(0,0,0);
+	    -ms-transform: translate3d(0,0,0);
+	    transform: translate3d(0,0,0);
 	}
 }
 .rainbow-container{

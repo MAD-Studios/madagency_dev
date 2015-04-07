@@ -141,7 +141,7 @@
 					
 					<div class="column large-5 large-uncentered medium-5 medium-uncentered small-10 small-centered">
 						<div class="row-float"><img id="img-how" src="assets/images/corporate/png/how-logo-method.png"  alt="How Method" title="How Method" /></div>
-						<div class="row-float hide-for-small show-for-medium-up"><div class="btn-move-container"><a class="btn btn-move" href="#"><p>SEE IT IN ACTION</p><img style="width:16px;height:16px;"src="assets/images/corporate/svg/how-btn-arrow.svg" alt="arrow down" title="arrow down"/></a></div>
+						<div class="row-float hide-for-small show-for-medium-up"><div class="btn-move-container"><a class="btn btn-move" href=""><p>SEE IT IN ACTION</p><img style="width:16px;height:16px;"src="assets/images/corporate/svg/how-btn-arrow.svg" alt="arrow down" title="arrow down"/></a></div>
 					</div>
 					
 				</div>
@@ -238,7 +238,7 @@
 							</div>
                             
                             <div class="row show-for-large-up hide-for-medium hide-for-small">
-                                <div class="column large-12 small-12"><div class="btn-move-container"><a class="btn btn-move" href="#"><p>WATCH THEM GET’R DONE</p><img style="width:16px;height:16px;"src="assets/images/corporate/svg/how-btn-arrow.svg" alt="arrow up" title="arrow up" /></a></div>
+                                <div class="column large-12 small-12"><div class="btn-move-container"><a class="btn btn-move" href=""><p>WATCH THEM GET’R DONE</p><img style="width:16px;height:16px;"src="assets/images/corporate/svg/how-btn-arrow.svg" alt="arrow up" title="arrow up" /></a></div>
                             </div>
 							
 						</div>
@@ -302,17 +302,17 @@
                 
 				<div class="row row-content row-header">
 				    <div class="column large-5 medium-5 hide-for-small show-for-medium-up">
-                        <div class="flag-map"><a href="#" id="flag-fl" class="flag active"></a><a href="#" id="flag-mn" class="flag"></a></div>
+                        <div class="flag-map"><a href="" id="flag-fl" class="flag active"></a><a href="" id="flag-mn" class="flag"></a></div>
                     </div>
                     <div class="column large-1 medium-1 hide-for-small show-for-medium-up">
                         &nbsp;
                     </div>
                     <div class="column large-3 medium-3 small-6" id="mad-south-addr">
-                        <div class="row-float" ><a id="btn-fl" class="btn-addr btn active" href="#"><h4 class="addr-title">MAD SOUTH</h4></a></div>
+                        <div class="row-float" ><a id="btn-fl" class="btn-addr btn active" href=""><h4 class="addr-title">MAD SOUTH</h4></a></div>
                         <p class="addr">101 NE 3rd Avenue<br />Suite 1920<br />Fort Lauderdale, FL 33301</p>
                     </div>
                     <div class="column large-3 medium-3 small-6" id="mad-midwest-addr">
-                        <div class="row-float" ><a id="btn-mn" class="btn-addr btn" href="#"><h4 class="addr-title">MAD MIDWEST</h4></a></div>
+                        <div class="row-float" ><a id="btn-mn" class="btn-addr btn" href=""><h4 class="addr-title">MAD MIDWEST</h4></a></div>
                         <p class="addr">333 Washington Ave N<br />Suite 321<br />Minneapolis, MN 55401</p>
                     </div>
                 </div>
@@ -333,7 +333,7 @@
                     </div>
                     <div class="column large-6 small-12">
                         <div class="input-container input-container-ta shadow-bordered shadow-bordered-lt-blue row-float"><p class="row-float"><i>Your Business’ Challenge</i></p><textarea class="row-float" id="input-challenge"></textarea></div>
-				        <div class="row-float shadow-bordered shadow-bordered-blue btn-submit-container"><a href="#" class="btn btn-blue btn-submit row-float">SUBMIT</a></div>
+				        <div class="row-float shadow-bordered shadow-bordered-blue btn-submit-container"><a href="" class="btn btn-blue btn-submit row-float">SUBMIT</a></div>
                     </div>
                 </div>
             
@@ -352,7 +352,7 @@
 	    <div class="divider shadow-bordered"></div>
         <div class="row">
         	<div class="column large-12 small-12">
-	            <a href="#" class="full-logo full-logo-sm logo btn"></a>
+	            <a href="" class="full-logo full-logo-sm logo btn"></a>
 	            <ul class="nav hide-for-small show-for-large-up">
 	            	<li><a class="btn nav-btn" id="how-btn" href="">HOW WE ROLL</a></li>
 	                <li><a class="btn nav-btn" id="work-btn" href="">THE WORK</a></li>
@@ -360,7 +360,7 @@
 	                <li><a class="btn nav-btn" id="disciplines-btn" href="">DISCIPLINES</a></li>
 	                <li><a class="btn nav-btn" id="contact-btn" href="">CONTACT US</a></li>
 	            </ul>
-	            <div id="enter-story-btn-container" class="shadow-bordered shadow-bordered-blue"><a id="enter-story-btn" class="btn-blue btn">ENTER CREATIVE CASTLE</a></div>
+	            <div id="enter-story-btn-container" class="shadow-bordered shadow-bordered-blue"><a id="enter-story-btn" class="btn-blue btn" href="castle">ENTER CREATIVE CASTLE</a></div>
 			</div>
         </div>
 	</div>
