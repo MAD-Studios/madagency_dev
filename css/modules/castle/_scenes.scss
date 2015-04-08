@@ -574,7 +574,7 @@ height:100%;*/
 width:1599px;
 height:1101px;
 z-index:600;
-background:url(../../assets/images/scene/castle/castle-tile.jpg) repeat;
+background:url(/assets/images/scene/castle/castle-tile.jpg) repeat;
 background-position:0% 100%;
 -webkit-transform: translate3d(0,0,0);
 -moz-transform: translate3d(0,0,0);
@@ -873,7 +873,7 @@ position:absolute;
 position:absolute;
 width:100%;
 height:100%;
-background:url(../../assets/images/scene/xray/xray-pattern.gif) repeat;
+background:url(/assets/images/scene/xray/xray-pattern.gif) repeat;
 opacity:0.5;
 z-index:601;
 }
@@ -2052,7 +2052,7 @@ height:100%;
 width:100%;
 height:100%;
 /*margin-top:45%;*/
-background:url(../../assets/images/scene/creation/dust-spry-film.png);
+background:url(/assets/images/scene/creation/dust-spry-film.png);
 background-repeat:no-repeat;
 opacity:0;
 /* -webkit-animation: smashSprite .5s steps(5) in*/
@@ -2873,7 +2873,7 @@ position:fixed;
 z-index:601;
 width:100%;
 height:100%;
-background:url(../../assets/images/scene/gerbil/tunnel-bw.png) no-repeat;
+background:url(/assets/images/scene/gerbil/tunnel-bw.png) no-repeat;
 /*background-size*/
    -moz-background-size:cover;
         background-size:cover;
@@ -2916,7 +2916,7 @@ top: 0;
 #scene-boy #storm-bg{
 width:100%;
 height:100%;
-background: url(../../assets/images/scene/boy/statue-background.jpg);
+background: url(/assets/images/scene/boy/statue-background.jpg);
 background-size: cover;
 background-position: center;
 }

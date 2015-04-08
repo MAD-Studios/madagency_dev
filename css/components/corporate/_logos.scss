@@ -8,8 +8,8 @@
 .full-logo {
 	width: 140px;
 	height: 110px;
-	background: url(../assets/images/corporate/svg/mad-agency-brackets.svg) center center no-repeat; 
-	.no-svg & { background: url(../assets/images/corporate/png/mad-agency-brackets-big.png) center center no-repeat; }
+	background: url(/assets/images/corporate/svg/mad-agency-brackets.svg) center center no-repeat; 
+	.no-svg & { background: url(/assets/images/corporate/png/mad-agency-brackets-big.png) center center no-repeat; }
 }
 .full-logo-sm{
 	float: left;
@@ -19,12 +19,12 @@
 .full-logo-white{
 	width: 84px; 
 	height: 65px;
-	background: url(../assets/images/corporate/svg/mad-agency-brackets-white.svg) center center no-repeat; 
-	.no-svg & { background: url(../assets/images/corporate/png/mad-agency-brackets-white.png) center center no-repeat; }
+	background: url(/assets/images/corporate/svg/mad-agency-brackets-white.svg) center center no-repeat; 
+	.no-svg & { background: url(/assets/images/corporate/png/mad-agency-brackets-white.png) center center no-repeat; }
 }
 .h-logo{
 	float: left;
     width: 155px; height: 25px;
-	background: transparent url(../assets/images/corporate/svg/mad-agency-horizontal.svg) no-repeat;
-    .no-svg &{ background-image: url(../assets/images/corporate/png/mad-agency-horizontal.png); }
+	background: transparent url(/assets/images/corporate/svg/mad-agency-horizontal.svg) no-repeat;
+    .no-svg &{ background-image: url(/assets/images/corporate/png/mad-agency-horizontal.png); }
 }

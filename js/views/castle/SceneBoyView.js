@@ -9,6 +9,7 @@ main.views.castle.SceneBoyView = main.views.castle.SceneView.extend({
 	name: "scene-boy",
 	answer: "",
 	exp_screen_is_shown: false,
+	responseModel: {},
 	events:{
 		'click #btn-different-answer': 'onBtnDifferentAnswerClick',
 		'click #btn-exit': 'onBtnExitClick'
@@ -28,14 +29,20 @@ main.views.castle.SceneBoyView = main.views.castle.SceneView.extend({
         this.cta_container_el = $('#cta-container', this.el);
         //add fade class
 		this.answer_el.addClass(this.FADE_CLASS);
+		
+		this.setResponseModel();
+		
 		setTimeout(function(){
-	        self.model = main.responseGeneratorModel;
-	        self.answers = self.model.get("answers");
 	        self.setAnswer();
 	        self.prepareForAnimation();
         }, 100);
         return this;
 	},
+	// ----------------- setModel
+    setResponseModel: function() {
+    	 this.responseModel = main.router.responseGeneratorModel;
+	     this.answers = this.responseModel.get("answers");
+    },
 	// ----------------- beforePosize
     beforePosize: function() {
         console.log("SceneBoyView ---- beforePosize");

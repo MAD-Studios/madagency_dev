@@ -25,6 +25,7 @@ main.views.castle.CastleGatewayPaneView = main.views.PaneView.extend({
     anim_rows: [],
 	blink_i: 0,
 	to_y: 0,
+	responseModel: {},
 	events:{
 		'click .btn-ask': 'onBtnAskClick'
 	},
@@ -48,8 +49,8 @@ main.views.castle.CastleGatewayPaneView = main.views.PaneView.extend({
         this.initElements();
         setTimeout(function(){ 
             self.posElements();  
-	        self.model = main.responseGeneratorModel;
-	        self.questions = self.model.get("questions");
+	        self.responseModel = main.router.responseGeneratorModel;
+	        self.questions = self.responseModel.get("questions");
 	        self.setQuestionPlaceholder();
         }, 100);
         
@@ -243,8 +244,8 @@ main.views.castle.CastleGatewayPaneView = main.views.PaneView.extend({
 	},
 	// ----------------- submit
 	submit:function(){
-		this.model.set({current_question: this.input_el.val()});
-		console.log("submit");
+		this.responseModel.set({current_question: this.input_el.val()});
+
 		//send them into 
 		//the story
 		$(this.el).trigger(main.events.castle.Event.ENTER_CASTLE);
@@ -261,7 +262,6 @@ main.views.castle.CastleGatewayPaneView = main.views.PaneView.extend({
 	    this.input_cnt_el.removeClass(this.INPUT_BLINK_TRANS_CLASS);
 	    this.input_cnt_el.removeClass(this.INPUT_DULL_CLASS);
         
-        //this.row_absolute_jq.each(function(index, value){
         for(var i=0;i<this.anim_rows.length;i++){
         	delay = i*100;
 	        //for the last el

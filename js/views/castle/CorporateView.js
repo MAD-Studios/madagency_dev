@@ -17,5 +17,7 @@ main.views.castle.CorporateView = main.views.CorporateView.extend({
 	    //setTimeout
 	    //show the gold cover
 	    //move corporate off stage and make it invisible
+	    
+	    //!!!!!!!!!!!!!!!!!!!!!!
     }
 });

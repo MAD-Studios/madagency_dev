@@ -13,7 +13,7 @@
     <meta property="og:title" content="MAD Agency - Design + Printing + Marketing" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://www.madstudios.net" />
-    <meta property="og:image" content="http://www.madstudios.net/assets/img/share_logo.jpg" />
+    <meta property="og:image" content="http://www.yeswearemad.com/assets/img/share_logo.jpg" />
     <meta property="og:description" content="MAD Agency is a full service Advertising/Marketing/Production agency. We have the people needed to build your project here, onsite. This allows for tighter timelines and a more cohesive end result." />
     <link href="../css/mad-agency.css" type="text/css" rel="stylesheet" />
     

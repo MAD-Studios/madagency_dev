@@ -66,7 +66,7 @@ main.views.castle.LoaderView = Backbone.View.extend({
     createBG: function() {
 	    this.rainbowContainer_el = $('<div class="rainbow-container"></div>');
 	    $(this.el).append(this.rainbowContainer_el);
-	    this.goldGrad_el = $('<div class="gradient"></div>');
+	    this.goldGrad_el = $('<div class="gradient gold"></div>');
 	    this.goldGrad_el_top = $('<div class="top"></div>');
 	    this.goldGrad_el_bottom = $('<div class="bottom"></div>');
 	    this.goldGrad_el.append(this.goldGrad_el_top);
@@ -668,7 +668,6 @@ main.views.castle.RainbowView = Backbone.View.extend({
 	contain: false,
 	// ----------------- initialize
     initialize: function() {
-        console.log("RainbowView ---- initialize");
         this.rainbow_el = $('<div class="rainbow"></div>');
 	    this.el = this.rainbow_el; 
 	    this.el.css('visibility', 'hidden');
@@ -676,7 +675,6 @@ main.views.castle.RainbowView = Backbone.View.extend({
     },
     // ----------------- render
     render: function(eventName) {
-        console.log("RainbowView ---- render");
         var self = this;
         //create the unicorn & his rainbow
         setTimeout(function(){

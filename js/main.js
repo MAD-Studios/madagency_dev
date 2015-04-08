@@ -22,7 +22,6 @@ Backbone.View.prototype.dispose = function () {
 var main = {
     utils: {},
     router: {},
-    //events: {},
     section: [],
     // ----------------- createSectionNamespaces
     init: function(){

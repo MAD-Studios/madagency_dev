@@ -10,10 +10,16 @@ main.utils.TemplateLoader = {
     load: function(names, callback) {
 
         var deferreds = [],
-            self = this;
+            self = this,
+            name = "",
+            path_arr= [];
 
-        $.each(names, function(index, name) {
-            deferreds.push($.get('tpl/' + name + '.html', function(data) {
+        $.each(names, function(index, path) {
+            deferreds.push($.get('/tpl/' + path + '.html', function(data) {
+            	//at this point set the name
+            	//grab last string  as name
+            	path_arr = path.split("/");
+            	name = path_arr[path_arr.length-1];
                 self.templates[name] = data;
             }));
         });

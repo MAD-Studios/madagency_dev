@@ -88,19 +88,6 @@ main.views.CorporateView = Backbone.View.extend({
     scrollToBottom: function() {
 	   this.paneContainerView.scrollToBottom($(window));
     },
-    //castle
-    //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    // ----------------- beginHide
-    /*beginHide: function() {
-	    this.headerView.beginHide();
-	    this.mainNavContainerView.beginHide();
-	    this.paneContainerView.beginHide();
-	    this.basicDispose();
-	    //add the gold cover
-	    //setTimeout
-	    //show the gold cover
-	    //move corporate off stage and make it invisible
-    },*/
     // ----------------- hide
     hide: function() {
     },
@@ -120,14 +107,8 @@ main.views.CorporateView = Backbone.View.extend({
          this.basicDispose();
 		 //remove any event listeners 
 		 $(this.paneContainerView.el).off();
-         //corp
-         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		 //$(this.mainNavContainerView.el).off();
 		 //dispose children
 		 this.paneContainerView.dispose();
-         //corp
-         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
-         //this.mainNavContainerView.dispose();
 		 this.headerView.dispose();
 		 this.footerView.dispose();
         

@@ -57,6 +57,7 @@ main.views.castle.SceneView = Backbone.View.extend({
 	        this.soundCollection.add(this.sounds[i]);
         }
         this.num_sounds = this.sounds.length;
+        console.log(" ------------- this.num_sounds = " + this.num_sounds);
     },
 	// ----------------- posize
     posize: function() {
@@ -99,6 +100,9 @@ main.views.castle.SceneView = Backbone.View.extend({
 	    var self = this;
 	    self.setImages();
         self.setSounds(self.model.get("sounds"));
+        
+        console.log('self.model.get("sounds").length = ' + self.model.get("sounds").length);
+        
         self.num_assets = self.num_sounds + self.num_images;
 	    setTimeout(function(){
 	        $(self.el).trigger(self.INIT_ASSETS, [self.num_assets]);

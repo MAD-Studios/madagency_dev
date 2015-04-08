@@ -31,7 +31,7 @@ main.views.castle.SceneContainerView = Backbone.View.extend({
 	    //scene-container
 	    //set model to the sceneCollection
 	    this.model = new main.models.castle.SceneCollection();
-	    this.model.setAudio(this.audioCollection);
+	    this.model.setSounds(this.audioCollection);
 	    this.skrollr_body_el = $('#skrollr-body', this.el);
 	    this.createScenes();
 	    setTimeout(function(){

@@ -11,7 +11,7 @@ main.routers.castle.Router = main.routers.Router.extend({
      },
      // ----------------- beforeInitialize
      beforeInitialize: function() {
-         main.responseGeneratorModel = new main.models.castle.ResponseGeneratorModel();
+         this.responseGeneratorModel = new main.models.castle.ResponseGeneratorModel();
      },
      // ----------------- gateway
      gateway: function(){

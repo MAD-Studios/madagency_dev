@@ -32,8 +32,9 @@ main.models.castle.SceneCollection = Backbone.Collection.extend({
        //create a model for each scene
        this.reset(this.scenes);
    },
-   // ----------------- setAudio
-   setAudio: function(audioCollection){
+   // ----------------- setSounds
+   setSounds: function(audioCollection){
+
 	   var sounds = [];
 	   //for each model
 	   //filter audioCollection
@@ -44,6 +45,5 @@ main.models.castle.SceneCollection = Backbone.Collection.extend({
 		   });
 		   model.set({sounds: sounds});
 	   });
-	   
    }
 });

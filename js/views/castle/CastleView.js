@@ -322,7 +322,7 @@ main.views.castle.CastleView = Backbone.View.extend({
     },
     // ----------------- createBg
     createBg: function() {
-	    this.goldBg_el = $('<div class="gold-bg"></div>');
+	    this.goldBg_el = $('<div class="dark-gold-bg"></div>');
 	    //make it's width the size of the window
 	    var to_h = $(window).height();
 	    this.goldBg_el.css('opacity', '0');
@@ -333,6 +333,7 @@ main.views.castle.CastleView = Backbone.View.extend({
     },
     // ----------------- show
     showBg: function() {
+    	console.log("showBg");
 	    var self = this;
 	    //this.goldBg_el.css('visibility', 'visible');
 	    //fade in the  bg 
