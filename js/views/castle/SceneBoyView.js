@@ -11,8 +11,8 @@ main.views.castle.SceneBoyView = main.views.castle.SceneView.extend({
 	exp_screen_is_shown: false,
 	responseModel: {},
 	events:{
-		'click #btn-different-answer': 'onBtnDifferentAnswerClick',
-		'click #btn-exit': 'onBtnExitClick'
+		'click #btn-different-answer': 'onBtnDifferentAnswerClick'
+		//'click #btn-exit': 'onBtnExitClick'
 	},
     // ----------------- initialize
     initialize: function() {
@@ -186,10 +186,10 @@ main.views.castle.SceneBoyView = main.views.castle.SceneView.extend({
 		//show transition screen instead 
 		this.showExplanationScreen();
 		return false;
-	},
+	}/*,
 	// ----------------- onBtnExitClick
 	onBtnExitClick: function(){
 		$(this.el).trigger(this.EXIT_CLICK);
 		return false;
-	}
+	}*/
 });

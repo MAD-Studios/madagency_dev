@@ -1,22 +1,18 @@
 /*-------------------------------- Sass  */
 /*----------------- COLORS  */
-/*$ltGold: #fceec9;
-$gold: #ffc627;
-$darkGold: #ffa227;
-$navy: #333e48;
-$lightBlue: #bdd0ff;
-$blue: #a1b3ff;
-$xLightBlue: #e7ebf3;*/
-/*----------------- DIMS  */
 $contentWidth: 960px;
-/*$headerHeight: 40px;
+$headerHeight: 40px;
 $xxSmMargin: 4px;
 $xSmMargin: 8px;
 $smMargin: 12px;
 $medMargin: 16px;
 $lgMargin: 24px;
 $xLgMargin: 48px;
-$xxLgMargin: 60px;*/
+$xxLgMargin: 60px;
+
+/*----------------- DIMS  */
+$contentWidth: 960px;
+
 
 .skrollable {
 	/*
@@ -56,6 +52,17 @@ $xxLgMargin: 60px;*/
 	height: 100%;
 	overflow: hidden;
 	z-index: 500;
+	.dark-gold-bg{
+		position: absolute;
+		min-width: 100%;
+		@include transform(translate3d(0,0,0));
+	}
+	.row{
+		position: static !important;
+		float:left;
+		width: 100%;
+		max-width: none !important;
+	}
 }
 /*.gold-bg{
 	position: absolute;
