@@ -4216,7 +4216,22 @@ i {
 
 /*-------------------------------- Sass  */
 /*----------------- COLORS  */
+/*$ltGold: #fceec9;
+$gold: #ffc627;
+$darkGold: #ffa227;
+$navy: #333e48;
+$lightBlue: #bdd0ff;
+$blue: #a1b3ff;
+$xLightBlue: #e7ebf3;*/
 /*----------------- DIMS  */
+/*$headerHeight: 40px;
+$xxSmMargin: 4px;
+$xSmMargin: 8px;
+$smMargin: 12px;
+$medMargin: 16px;
+$lgMargin: 24px;
+$xLgMargin: 48px;
+$xxLgMargin: 60px;*/
 .skrollable {
   /*
    * First-level skrollables are positioned relative to window
@@ -4254,19 +4269,6 @@ i {
   height: 100%;
   overflow: hidden;
   z-index: 500; }
-  .castle .dark-gold-bg {
-    position: absolute;
-    min-width: 100%;
-    -webkit-transform: translate3d(0, 0, 0);
-    -moz-transform: translate3d(0, 0, 0);
-    -ms-transform: translate3d(0, 0, 0);
-    -o-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0); }
-  .castle .row {
-    position: static !important;
-    float: left;
-    width: 100%;
-    max-width: none !important; }
 
 /*.gold-bg{
 	position: absolute;
@@ -4368,7 +4370,7 @@ i {
   display: block;
   /*margin: $xLgMargin auto;*/
   background-color: #bdd0ff;
-  background-image: url(/assets/images/corporate/png/down-arrow.png);
+  background-image: url(../assets/images/corporate/png/down-arrow.png);
   /*!!!!!!!!!!!!!!!!!!!!!*/
   background-size: auto 20px;
   background-position: center top;
@@ -4419,6 +4421,28 @@ i {
   text-decoration: none;
   text-align: center; }
 
+/*------------------------- social buttons  */
+/*.btn-twitter{
+    width: 18px; height: 15px;
+    background: transparent url(../assets/images/corporate/svg/footer-twitter.svg) no-repeat;
+    .no-svg & { background-image: url(../assets/images/corporate/png/footer-twitter.png); }
+}
+.btn-facebook{
+    width: 15px; height: 15px;
+    background: transparent url(../assets/images/corporate/svg/footer-facebook.svg) no-repeat;
+    .no-svg & { background-image: url(../assets/images/corporate/png/footer-facebook.png); }
+}
+.btn-instagram{
+    width: 15px; height: 15px;
+    background: transparent url(../assets/images/corporate/svg/footer-instagram.svg) no-repeat;
+    .no-svg & { background-image: url(../assets/images/corporate/png/footer-instagram.png); }
+}
+.btn-google {
+    width: 15px;
+    height: 15px;
+    background: transparent url(../assets/images/corporate/svg/footer-google.svg) no-repeat;
+    .no-svg & {background-image: url(../assets/images/corporate/png/footer-google.png);}
+}*/
 .gradient.gold .top {
   float: left;
   width: 100%;
@@ -4497,12 +4521,6 @@ i {
   height: 100%;
   overflow: hidden; }
 
-.gold-bg {
-  background-color: #ffc627; }
-
-.dark-gold-bg {
-  background-color: #ffa227; }
-
 .logo {
   box-sizing: border-box;
   -moz-background-size: contain;
@@ -4513,9 +4531,9 @@ i {
 .full-logo {
   width: 140px;
   height: 110px;
-  background: url(/assets/images/corporate/svg/mad-agency-brackets.svg) center center no-repeat; }
+  background: url(../assets/images/corporate/svg/mad-agency-brackets.svg) center center no-repeat; }
   .no-svg .full-logo {
-    background: url(/assets/images/corporate/png/mad-agency-brackets-big.png) center center no-repeat; }
+    background: url(../assets/images/corporate/png/mad-agency-brackets-big.png) center center no-repeat; }
 
 .full-logo-sm {
   float: left;
@@ -4525,17 +4543,17 @@ i {
 .full-logo-white {
   width: 84px;
   height: 65px;
-  background: url(/assets/images/corporate/svg/mad-agency-brackets-white.svg) center center no-repeat; }
+  background: url(../assets/images/corporate/svg/mad-agency-brackets-white.svg) center center no-repeat; }
   .no-svg .full-logo-white {
-    background: url(/assets/images/corporate/png/mad-agency-brackets-white.png) center center no-repeat; }
+    background: url(../assets/images/corporate/png/mad-agency-brackets-white.png) center center no-repeat; }
 
 .h-logo {
   float: left;
   width: 155px;
   height: 25px;
-  background: transparent url(/assets/images/corporate/svg/mad-agency-horizontal.svg) no-repeat; }
+  background: transparent url(../assets/images/corporate/svg/mad-agency-horizontal.svg) no-repeat; }
   .no-svg .h-logo {
-    background-image: url(/assets/images/corporate/png/mad-agency-horizontal.png); }
+    background-image: url(../assets/images/corporate/png/mad-agency-horizontal.png); }
 
 /*-------------------------------- HEADER  */
 #header {

@@ -156,6 +156,7 @@ function onAppReady() {
 }
 // ----------------- onDocReady
 function onDocReady() {
+	if(beforeOnDocReady) beforeOnDocReady();
 	main.init();
 	main.loadTemplates(templates, function(){ onAppReady(); });
 }
