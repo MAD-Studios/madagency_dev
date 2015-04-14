@@ -1,6 +1,6 @@
 // _________________________________________________________________________ OrientationAlertView
-main.views.OrientationAlertView = Backbone.View.extend({
-    templateLoader: main.utils.templateLoader,
+main.views.castle.mobile.OrientationAlertView = Backbone.View.extend({
+    templateLoader: main.utils.TemplateLoader,
     // ----------------- initialize
     initialize: function() {
         console.log("OrientationAlertView ---- initialize");

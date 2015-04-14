@@ -33,16 +33,18 @@
     <script src="../js/castle.js" type="text/javascript"></script>
     <script src="../js/events/Event.js" type="text/javascript"></script>
     <script src="../js/events/castle/Event.js" type="text/javascript"></script>
+    <script src="../js/utils/JSLoader.js" type="text/javascript"></script>
     <script src="../js/utils/TemplateLoader.js" type="text/javascript"></script>
     <script src="../js/utils/ElementManipulator.js" type="text/javascript"></script>
     <script src="../js/utils/DeviceDetector.js" type="text/javascript"></script>
     <script src="../js/routers/Router.js" type="text/javascript"></script>
     <script src="../js/routers/castle/Router.js" type="text/javascript"></script>
+    <!-- <script src="../js/routers/castle/mobile/Router.js" type="text/javascript"></script> -->
     <script src="../js/models/PaneModel.js" type="text/javascript"></script>
-    <script src="../js/models/castle/SceneModel.js" type="text/javascript"></script>
+    <!-- <script src="../js/models/castle/SceneModel.js" type="text/javascript"></script> -->
     <script src="../js/models/castle/ResponseGeneratorModel.js" type="text/javascript"></script>
     <script src="../js/models/castle/LoaderModel.js" type="text/javascript"></script>
-    <script src="../js/models/castle/AudioModel.js" type="text/javascript"></script>
+    <!-- <script src="../js/models/castle/AudioModel.js" type="text/javascript"></script> -->
     <script src="../js/views/MainView.js" type="text/javascript"></script>
     <script src="../js/views/castle/MainView.js" type="text/javascript"></script>
     <script src="../js/views/CorporateView.js" type="text/javascript"></script>
@@ -53,7 +55,7 @@
     <script src="../js/views/HeaderView.js" type="text/javascript"></script>
     <script src="../js/views/FooterView.js" type="text/javascript"></script>
     <script src="../js/views/castle/CastleGatewayPaneView.js" type="text/javascript"></script>
-    <script src="../js/views/castle/CastleView.js" type="text/javascript"></script>
+    <!-- <script src="../js/views/castle/CastleView.js" type="text/javascript"></script>
     <script src="../js/views/castle/SceneView.js" type="text/javascript"></script>
     <script src="../js/views/castle/SceneCastleView.js" type="text/javascript"></script>
     <script src="../js/views/castle/SceneCreationView.js" type="text/javascript"></script>
@@ -63,7 +65,7 @@
     <script src="../js/views/castle/SceneBoyView.js" type="text/javascript"></script>
     <script src="../js/views/castle/LoaderView.js" type="text/javascript"></script>
     <script src="../js/views/castle/SceneContainerView.js" type="text/javascript"></script>
-    <script src="../js/views/castle/ScrollDownIndicatorView.js" type="text/javascript"></script> 
+    <script src="../js/views/castle/ScrollDownIndicatorView.js" type="text/javascript"></script> -->
     
     <!--[if lt IE 9]>
             <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>

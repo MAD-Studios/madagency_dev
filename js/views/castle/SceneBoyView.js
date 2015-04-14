@@ -40,8 +40,8 @@ main.views.castle.SceneBoyView = main.views.castle.SceneView.extend({
 	},
 	// ----------------- setModel
     setResponseModel: function() {
-    	 this.responseModel = main.router.responseGeneratorModel;
-	     this.answers = this.responseModel.get("answers");
+    	 //this.responseModel = main.router.responseGeneratorModel;
+	     this.answers = main.router.responseGeneratorModel.get("answers");
     },
 	// ----------------- beforePosize
     beforePosize: function() {
@@ -90,7 +90,7 @@ main.views.castle.SceneBoyView = main.views.castle.SceneView.extend({
         //also update the model 
         //so that you can send  the answer for reference
         //if the user sends a contact email
-        this.model.set({current_answer: this.answer});
+        main.router.responseGeneratorModel.set({current_answer: this.answer});
 	},
 	// ----------------- hideAnswer
 	hideAnswer:function(){

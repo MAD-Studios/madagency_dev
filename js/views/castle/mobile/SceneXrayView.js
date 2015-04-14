@@ -1,5 +1,5 @@
 // _________________________________________________________________________ SceneXrayView
-main.views.SceneXrayView = main.views.castle.SceneView.extend({
+main.views.castle.mobile.SceneXrayView = main.views.castle.mobile.SceneView.extend({
 	name: "scene-xray",
     // ----------------- initialize
     initialize: function() {

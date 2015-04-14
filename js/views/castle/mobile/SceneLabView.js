@@ -1,5 +1,5 @@
 // _________________________________________________________________________ SceneLabView
-main.views.SceneLabView = main.views.castle.SceneView.extend({
+main.views.castle.mobile.SceneLabView = main.views.castle.mobile.SceneView.extend({
 	name: "scene-lab",
     // ----------------- initialize
     initialize: function() {

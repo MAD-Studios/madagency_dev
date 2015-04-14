@@ -1,5 +1,5 @@
 // _________________________________________________________________________ SceneContainerView
-main.views.SceneContainerView = Backbone.View.extend({
+main.views.castle.mobile.SceneContainerView = Backbone.View.extend({
 	PEPARE_OFFSET: 1000,
 	ALL_SCENE_ASSETS_LOADED: "all_scene_assets_loaded",
 	ACTIVE_CLASS: "active",
@@ -30,11 +30,11 @@ main.views.SceneContainerView = Backbone.View.extend({
 	    var self = this;
 	    //ceraet audio collection
 	    //to handle sound data
-	    this.audioCollection = new main.models.AudioCollection();
+	    this.audioCollection = new main.models.castle.mobile.AudioCollection();
 	    this.story_is_stopped = false;
 	    //scene-container
 	    //set model to the sceneCollection
-	    this.model = new main.models.SceneCollection();
+	    this.model = new main.models.castle.mobile.SceneCollection();
 	    this.model.setAudio(this.audioCollection);
 	    this.createScenes();
 	    $('body').addClass(this.ALLOW_SWIPE_CLASS);
@@ -65,27 +65,26 @@ main.views.SceneContainerView = Backbone.View.extend({
 	   //create and render each scene view
 	   //scene-castle
 	   //find the right scene model
-	   this.sceneSwipeInstructionView = new main.views.SceneSwipeInstructionView();
+	   this.sceneSwipeInstructionView = new main.views.castle.mobile.SceneSwipeInstructionView();
 	   this.scene_views.push(this.sceneSwipeInstructionView);
-	   this.sceneCastleView = new main.views.SceneCastleView();
+	   this.sceneCastleView = new main.views.castle.mobile.SceneCastleView();
 	   this.scene_views.push(this.sceneCastleView);
-	   this.sceneXrayView = new main.views.SceneXrayView();
+	   this.sceneXrayView = new main.views.castle.mobile.SceneXrayView();
 	   this.scene_views.push(this.sceneXrayView);
-	   this.sceneLabView = new main.views.SceneLabView();
+	   this.sceneLabView = new main.views.castle.mobile.SceneLabView();
 	   this.scene_views.push(this.sceneLabView);
-	   this.sceneCreationView = new main.views.SceneCreationView();
+	   this.sceneCreationView = new main.views.castle.mobile.SceneCreationView();
 	   this.scene_views.push(this.sceneCreationView);
-	   this.sceneGerbilView = new main.views.SceneGerbilView();
+	   this.sceneGerbilView = new main.views.castle.mobile.SceneGerbilView();
 	   this.scene_views.push(this.sceneGerbilView);
-	   this.sceneBoyView = new main.views.SceneBoyView();
+	   this.sceneBoyView = new main.views.castle.mobile.SceneBoyView();
 	   this.scene_views.push(this.sceneBoyView);
-	   this.sceneFinalView = new main.views.SceneFinalView();
+	   this.sceneFinalView = new main.views.castle.mobile.SceneFinalView();
 	   this.scene_views.push(this.sceneFinalView);
 	   //set the castle scene as the fisrt scene
 	   
    	   for(var i=0;i<this.scene_views.length;i++){
    	   	   scene = this.scene_views[i];
-   	   	   console.log(" befroe render --------- scene.name ------- " +  scene.name);
    	   	   model = this.model.find(function(scene_model){ return ( scene_model.get("name") ==  scene.name ) });
 	   	   scene.model = model;
 	   	   scene.render();

@@ -1,5 +1,5 @@
 // _________________________________________________________________________ SceneView
-main.views.castle.SceneView = Backbone.View.extend({
+main.views.castle.mobile.SceneView = Backbone.View.extend({
 	ASSET_LOADED: "asset_loaded",
 	ALL_ASSETS_LOADED: "all_assets_loaded",
 	SCENE_ACTIVE_CLASS: "scene-active",
@@ -23,7 +23,7 @@ main.views.castle.SceneView = Backbone.View.extend({
 	BASE_Z_INDEX: 200,
 	BACK: 'back',
 	//IDLE_START_TIME: 8000,
-	templateLoader: main.utils.templateLoader,
+	templateLoader: main.utils.TemplateLoader,
 	scene_name: "",
 	offset: 0,
 	id: "",

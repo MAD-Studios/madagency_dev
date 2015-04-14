@@ -25,7 +25,7 @@ main.views.castle.CastleGatewayPaneView = main.views.PaneView.extend({
     anim_rows: [],
 	blink_i: 0,
 	to_y: 0,
-	responseModel: {},
+	responseGeneratorModel: {},
 	events:{
 		'click .btn-ask': 'onBtnAskClick'
 	},
@@ -49,8 +49,8 @@ main.views.castle.CastleGatewayPaneView = main.views.PaneView.extend({
         this.initElements();
         setTimeout(function(){ 
             self.posElements();  
-	        self.responseModel = main.router.responseGeneratorModel;
-	        self.questions = self.responseModel.get("questions");
+	        //self.responseGeneratorModel = main.router.responseGeneratorModel;
+	        self.questions = main.router.responseGeneratorModel.get("questions");
 	        self.setQuestionPlaceholder();
         }, 100);
         
@@ -244,7 +244,7 @@ main.views.castle.CastleGatewayPaneView = main.views.PaneView.extend({
 	},
 	// ----------------- submit
 	submit:function(){
-		this.responseModel.set({current_question: this.input_el.val()});
+		main.router.responseGeneratorModel.set({current_question: this.input_el.val()});
 
 		//send them into 
 		//the story

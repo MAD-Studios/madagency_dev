@@ -13,8 +13,17 @@ main.views.castle.MainView = main.views.MainView.extend({
     openCastle: function() {
 	    var self = this;
 	    var castle_div;
-	        	        	    	
-	    if(!this.castleView) this.castleView = new main.views.castle.CastleView( { el: $('.castle', this.el) } );
+	    
+	    this.initCastle();
+	},
+	// ----------------- createCastle
+    createCastle: function(){
+    	if(!this.castleView) this.castleView = new main.views.castle.CastleView( { el: $('.castle', this.el) } );
+    },
+	// ----------------- initCastle
+    initCastle: function(){
+    	var self = this;
+    	this.createCastle();
 	    $(this.castleView.el).addClass(this.STAGE_CENTER_CLASS);
 	    this.castleView.render();
 	    this.castleView.startLoader();
@@ -24,7 +33,7 @@ main.views.castle.MainView = main.views.MainView.extend({
 			    self.removeCorporate();
 		    }, 1200);
 	    }, 200);
-	},
+    },
     // ----------------- moveIntoCastle
     moveIntoCastle: function(){
 	    //first begin the hide animation 

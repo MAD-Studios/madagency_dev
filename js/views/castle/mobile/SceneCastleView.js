@@ -1,5 +1,5 @@
 // _________________________________________________________________________ SceneCastleView
-main.views.SceneCastleView = main.views.castle.SceneView.extend({
+main.views.castle.mobile.SceneCastleView = main.views.castle.mobile.SceneView.extend({
 	FADE_CLASS: "fade-fast",
 	name: "scene-castle",
     // ----------------- initialize

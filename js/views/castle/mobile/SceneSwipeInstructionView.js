@@ -1,5 +1,5 @@
 // _________________________________________________________________________ SceneSwipeInstructionView
-main.views.SceneSwipeInstructionView = main.views.castle.SceneView.extend({
+main.views.castle.mobile.SceneSwipeInstructionView = main.views.castle.mobile.SceneView.extend({
 	STAGE_TOP: "stage-top",
 	INFO_TRANS_CLASS: "info-transition",
 	ANIM_OFFSET: 60,
@@ -7,7 +7,6 @@ main.views.SceneSwipeInstructionView = main.views.castle.SceneView.extend({
     // ----------------- initialize
     initialize: function() {
         console.log("SceneSwipeInstructionView ---- initialize");
-        console.log("SceneSwipeInstructionView ---- this.name = " + this.name);
 
         this.template = _.template(this.templateLoader.get(this.name));
     },

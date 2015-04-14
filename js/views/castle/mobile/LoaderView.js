@@ -1,5 +1,5 @@
 // _________________________________________________________________________ LoaderView
-main.views.LoaderView = Backbone.View.extend({
+main.views.castle.mobile.LoaderView = Backbone.View.extend({
 	GOLD_GRAD_TRANS_CLASS: "gold-grad-transition",
 	GOLD_GRAD_TRANS_CLASS_OUT: "gold-grad-transition-out",
 	INFO_TRANS_CLASS: "info-transition",
@@ -648,7 +648,7 @@ main.views.LoaderView = Backbone.View.extend({
 		    }, 100);
 	    }  
 	    else{
-		   rainbowView = new main.views.RainbowView(); 
+		   rainbowView = new main.views.castle.mobile.RainbowView(); 
 		   if(contain) rainbowView.contain = true;
 		   		$(rainbowView.el).css('visibility', 'hidden');
 		   		//setTimeout(function(){
@@ -675,7 +675,7 @@ main.views.LoaderView = Backbone.View.extend({
 });
 
 // _________________________________________________________________________ RainbowView
-main.views.RainbowView = Backbone.View.extend({
+main.views.castle.mobile.RainbowView = Backbone.View.extend({
 	KILL: "kill",
 	RAINBOW_SOLID_W_RANGE: {min: 0, max: 1400},
 	EASE_OUT_TRANS_CLASS: "rainbow-ease-out-transition",

@@ -60,7 +60,7 @@ main.models.castle.AudioCollection = Backbone.Collection.extend({
 
 // _________________________________________________________________________ BasicAudioCollection
 main.models.BasicAudioCollection = Backbone.Collection.extend({
-   model: main.models.AudioModel,
+   model: main.models.castle.AudioModel,
    // ----------------- initialize
    initialize: function(){
        console.log("AudioCollection --- initialize");

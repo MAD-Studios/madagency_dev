@@ -1,5 +1,5 @@
 // _________________________________________________________________________ AudioModel
-main.models.AudioModel = Backbone.Model.extend({
+main.models.castle.mobile.AudioModel = Backbone.Model.extend({
 	ACTIVE_CLASS: "active",
      // set vars
      defaults: {
@@ -15,8 +15,8 @@ main.models.AudioModel = Backbone.Model.extend({
 });
 
 // _________________________________________________________________________ AudioCollection
-main.models.AudioCollection = Backbone.Collection.extend({
-   model: main.models.AudioModel,
+main.models.castle.mobile.AudioCollection = Backbone.Collection.extend({
+   model: main.models.castle.mobile.AudioModel,
    sounds: [
    	   //--------- cene-swipe-instruction
 	   { scene:"scene-swipe-instruction", name:"royal-trumpet", src:"sounds/castle-horn.mp3" },
@@ -41,7 +41,7 @@ main.models.AudioCollection = Backbone.Collection.extend({
 
 // _________________________________________________________________________ BasicAudioCollection
 main.models.BasicAudioCollection = Backbone.Collection.extend({
-   model: main.models.AudioModel,
+   model: main.models.castle.mobile.AudioModel,
    // ----------------- initialize
    initialize: function(){
        console.log("AudioCollection --- initialize");

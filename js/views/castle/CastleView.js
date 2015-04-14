@@ -23,7 +23,7 @@ main.views.castle.CastleView = Backbone.View.extend({
 	maintain_aspect_ratios: [],
 	template_load_external: false,
 	scrollDownIndicatorShowNum: 0,
-	templateLoader: main.utils.templateLoader,
+	templateLoader: main.utils.TemplateLoader,
     // ----------------- initialize
     initialize: function() {
         console.log("CastleView ---- initialize");
