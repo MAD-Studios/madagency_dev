@@ -79,13 +79,13 @@ var castle = {
 	mobile_router_path 		: this.router_path + "mobile/",
 	mobile_routers 			: [ 'Router' ],
 	// ----------------- init
-    init: function(){
-        //check if mobile
-    	this.device_is_mobile = main.utils.DeviceDetector.isMobile();
-    	this.setExternalFiles();
+	init: function(){
+	    //check if mobile
+		this.device_is_mobile = main.utils.DeviceDetector.isMobile();
+		this.setExternalFiles();
 	},
 	// ----------------- setExternalFiles
-    setExternalFiles: function(){
+	setExternalFiles: function(){
 	    var ext_file_sections = ["templates", "views", "models", "routers"];
 		for(var i=0;i<ext_file_sections.length;i++){
 			this.setExternalFilePaths(ext_file_sections[i]);
@@ -99,7 +99,7 @@ var castle = {
 		if(js_files && routers) js_files = js_files.concat(routers);
 		else if(routers)  js_files = routers;*/
 		
-    },
+	},
 	// ----------------- setExternalFilePathVars
 	setExternalFilePaths: function(var_name){
 		var singular_var_name = var_name;
