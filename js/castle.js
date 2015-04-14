@@ -90,7 +90,7 @@ var castle = {
 		for(var i=0;i<ext_file_sections.length;i++){
 			this.setExternalFilePaths(ext_file_sections[i]);
 		}
-		
+        
 		//separate into
 		//templates and js_files
 		//!!!!!!!!!!!!!!!!!!!!!!!!!!!
