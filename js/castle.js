@@ -23,7 +23,7 @@ var castle = {
 							  ],
 	//mobile templates
 	mobile_template_path 	: this.template_path + this.mobile_path,
-	mobile_templates 		: [ 'scene-swipe-instruction',
+	mobile_templates		: [ 'scene-swipe-instruction',
 								'scene-castle',
 								'scene-xray',
 								'scene-lab',
