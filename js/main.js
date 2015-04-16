@@ -1,3 +1,23 @@
+// _________________________________________________________________________extend Backbone
+// ----------------- Backbone.View.prototype.close
+Backbone.View.prototype.close = function () {
+    //extend the close method of of all views
+    //apply beforeClose
+    if (this.beforeClose) {
+        this.beforeClose();
+    }
+}
+// ----------------- Backbone.View.prototype.dispose
+Backbone.View.prototype.dispose = function () {
+    if (this.beforeDispose) {
+        this.beforeDispose();
+    }
+    this.unbind();
+    this.undelegateEvents();
+    this.remove();
+};
+
+
 // _________________________________________________________________________main
 var main = {
     utils: {},
@@ -5,6 +25,8 @@ var main = {
     section: {},
     // ----------------- init
     init: function(){
+        console.log("main init");
+
 	     this.initModernizr();
     },
     // ----------------- setSection
@@ -135,6 +157,7 @@ var main = {
 	},
 	// ----------------- loadExternalFiles
 	loadExternalFiles: function(templates, js_files, callback) {
+	    console.log("loadExternalFiles -------");
 		var self = this;
 		this.templates = templates;
 		this.js_files = js_files;
@@ -145,8 +168,10 @@ var main = {
 	},
 	// ----------------- onJsLoadComplete
 	onJsLoadComplete: function() {
+        console.log("onJsLoadComplete -------");
 		var self = this;
-		if(this.templates) this.loadTemplates(this.templates, function(){ self.load_ext_files_callback(); });
+		if(this.templates) this.loadTemplates(this.templates, function(){  console.log("main--------- onJsLoadComplete"); self.load_ext_files_callback(); });
+		else this.load_ext_files_callback();
 	}
 };
 
@@ -170,29 +195,10 @@ function onAppReady() {
 }
 // ----------------- onDocReady
 function onDocReady() {
+    console.log("onDocReady");
 	if(beforeOnDocReady) beforeOnDocReady();
 	main.init();
 	
 	main.loadExternalFiles(templates, js_files, onAppReady);
 }
-
-// _________________________________________________________________________extend Backbone
-// ----------------- Backbone.View.prototype.close
-Backbone.View.prototype.close = function () {
-    //extend the close method of of all views
-    //apply beforeClose
-    if (this.beforeClose) {
-        this.beforeClose();
-    }
-}
-// ----------------- Backbone.View.prototype.dispose
-Backbone.View.prototype.dispose = function () {
-    if (this.beforeDispose) {
-        this.beforeDispose();
-    }
-    this.unbind();
-    this.undelegateEvents();
-    this.remove();
-};
-
 

@@ -54,7 +54,6 @@ main.views.castle.LoaderView = Backbone.View.extend({
 	},
 	// ----------------- initModel
     initModel: function() {
-            console.log("LoaderView ---- initModel");
 	    var self = this;
 	    //when the model's loaded ratio changes
 	    //update the loaded ratio indicator
@@ -107,9 +106,31 @@ main.views.castle.LoaderView = Backbone.View.extend({
 	    this.loadedRatioIndicator = $('<div class="loaded-ratio-indicator"></div>');
 	    this.loadedRatioIndicatorTextContainer = $('<div class="loaded-ratio-indicator-text-cta"></div>');
 	    this.loadedRatioIndicator.append(this.loadedRatioIndicatorTextContainer);
-	    this.loadedRatioIndicatorActivityIndicator = $('<div class="activity-indicator"></div>');
-	    this.loadedRatioIndicator.append(this.loadedRatioIndicatorActivityIndicator);
-	    this.loadedRatioIndicatorActivityIndicator.activity({segments: 8, width:3, space: 0, length: 5, color: '#333e48', valign:'top', align:'left', padding:17});
+	    //this.loadedRatioIndicatorActivityIndicator = $('<div class="activity-indicator"></div>');
+	    //this.loadedRatioIndicator.append(this.loadedRatioIndicatorActivityIndicator);
+	    
+	    var opts = {
+            lines: 8, // The number of lines to draw
+            length: 5, // The length of each line
+            width: 3, // The line thickness
+            radius: 30, // The radius of the inner circle
+            corners: 1, // Corner roundness (0..1)
+            color: '#333e48', // #rgb or #rrggbb or array of colors
+            speed: 1, // Rounds per second
+            trail: 60, // Afterglow percentage
+            //shadow: false, // Whether to render a shadow
+            //hwaccel: false, // Whether to use hardware acceleration
+            className: 'activity-indicator', // The CSS class to assign to the spinner
+            //zIndex: 2e9, // The z-index (defaults to 2000000000)
+            //top: '50%', // Top position relative to parent
+            //left: '50%' // Left position relative to parent
+        };
+        //var spinner = new Spinner(opts).spin(this.loadedRatioIndicator);
+        
+        var spinner = new Spinner(opts).spin();
+        this.loadedRatioIndicator.append($(spinner.el));
+	    
+	   //this.loadedRatioIndicatorActivityIndicator.activity({segments: 8, width:3, space: 0, length: 5, color: '#333e48', valign:'top', align:'left', padding:17});
 	    var to_x = (this.loaderInfoContainer.outerWidth() - this.loadedRatioIndicator.outerWidth())/2;
 		this.loadedRatioIndicator.css('left', to_x + 'px');
 	    this.loadedRatioIndicator.css('visibilty', 'hidden');
@@ -154,7 +175,8 @@ main.views.castle.LoaderView = Backbone.View.extend({
             letter_el.addClass(this.FADE_CLASS);
             this.addLetter(letter_el, delay);
             if(this.model.get("loadedRatio") == 1){
-                this.loadedRatioIndicatorActivityIndicator.remove();
+                //!!!!!!!!!!!!!!!!!!!!!!!!
+                //this.loadedRatioIndicatorActivityIndicator.remove();
             }
         }
         self.ratio_indicator_num_letters = num_letters_to_show;

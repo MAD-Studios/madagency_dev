@@ -73,8 +73,8 @@ main.views.castle.CastleView = Backbone.View.extend({
         });
         
         //-------- ScrollDownIndicatorView
-       this.scrollDownIndicatorView = new main.views.castle.ScrollDownIndicatorView();
-       $(this.el).append(this.scrollDownIndicatorView.el);
+        this.scrollDownIndicatorView = new main.views.castle.ScrollDownIndicatorView();
+        $(this.el).append(this.scrollDownIndicatorView.el);
         
         //position and size the elements
 	    self.posize();

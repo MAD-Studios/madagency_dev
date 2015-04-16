@@ -6,13 +6,13 @@ main.setSection(section);
 
 // _________________________________________________________________________castle
 var castle = {
+    MOBILE                  : 'mobile',
 	device_is_mobile		: false,
-	section_path 			: section_name + "/",
-	js_path 				: "/js/",
-	mobile_path 			: "mobile/",
-	
+	//section_path 			: window['section_name'] + '/',
+	//js_path               : '/js/',
+	//mobile_path 			: 'mobile/',
 	//templates
-	template_path			: '/tpl/' + this.section_path,
+	template_path			: '/tpl/' + window['section_name'] + '/',
 	templates 				: [ 'scene-castle',
 								'scene-xray',
 								'scene-lab',
@@ -22,7 +22,7 @@ var castle = {
 								'scroll-down-indicator'								     
 							  ],
 	//mobile templates
-	mobile_template_path 	: this.template_path + this.mobile_path,
+	mobile_template_path 	: '/tpl/' + window['section_name'] + '/mobile/',
 	mobile_templates		: [ 'scene-swipe-instruction',
 								'scene-castle',
 								'scene-xray',
@@ -34,9 +34,8 @@ var castle = {
 								'orientation-alert'
 							  ],
 	//views
-	view_path 				: this.js_path + "views/" + this.section_path,
+	view_path 				: '/js/views/' + window['section_name'] + '/',
 	views 					: [ 'CastleView',
-								'LoaderView',
 								'SceneView',
 								'SceneBoyView',
 								'SceneCastleView',
@@ -48,7 +47,7 @@ var castle = {
 								'ScrollDownIndicatorView'							     
 							  ],
 	//mobile views
-	mobile_view_path 		: this.view_path + this.mobile_path,
+	mobile_view_path 		: '/js/views/' + window['section_name'] + '/mobile/',
 	mobile_views 			: [ 'MainView',
 								'CastleView',
 								'LoaderView',
@@ -65,23 +64,25 @@ var castle = {
 								'SceneXrayView'
 							  ],
 	//models
-	model_path 				: this.js_path + "models/" + this.section_path,
+	model_path 				: '/js/models/' + window['section_name'] + '/',
 	models 					: [ 'AudioModel',
 								'SceneModel',						     
 							  ],
 	//mobile models
-	mobile_model_path 		: this.model_path + this.mobile_path,
+	mobile_model_path 		: '/js/models/' + window['section_name'] + '/' + '/mobile/',
 	mobile_models 			: [ 'AudioModel',
 								'SceneModel',						     
 							  ],
 	//mobile routers
-	router_path				: this.js_path + 'routers/' + this.section_path + '/',
-	mobile_router_path 		: this.router_path + "mobile/",
+	router_path				: '/js/routers/' + window['section_name'] + '/',
+	mobile_router_path 		: '/js/routers/' + window['section_name'] + '/mobile/',
 	mobile_routers 			: [ 'Router' ],
+	
 	// ----------------- init
 	init: function(){
 	    //check if mobile
 		this.device_is_mobile = main.utils.DeviceDetector.isMobile();
+        if(this.device_is_mobile) main.addSubSection(this.MOBILE);
 		this.setExternalFiles();
 	},
 	// ----------------- setExternalFiles
@@ -90,14 +91,15 @@ var castle = {
 		for(var i=0;i<ext_file_sections.length;i++){
 			this.setExternalFilePaths(ext_file_sections[i]);
 		}
-        
 		//separate into
 		//templates and js_files
-		//!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		//concatenate views and models androuters
-		/*var js_files = views;
-		if(js_files && routers) js_files = js_files.concat(routers);
-		else if(routers)  js_files = routers;*/
+		//concatenate views and models and routers
+		window['templates'] = this.templates;
+		window['js_files'] = this.views;
+		if(window['js_files'] && this.models) window['js_files'] = window['js_files'].concat(this.models);
+		else if(this.models)  window['js_files'] = this.models;
+		if(window['js_files'] && this.routers) window['js_files'] = window['js_files'].concat(this.routers);
+		else if(this.routers)  window['js_files'] = this.routers;
 		
 	},
 	// ----------------- setExternalFilePathVars
@@ -119,7 +121,7 @@ var castle = {
 
 // _________________________________________________________________________
 function beforeOnDocReady(){
-	castle.intit();
+	castle.init();
 }
                 
 function onAppReady() {

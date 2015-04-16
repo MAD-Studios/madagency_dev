@@ -106,7 +106,6 @@ main.views.castle.mobile.SceneContainerView = Backbone.View.extend({
     },
     // ----------------- showNextScene
     showNextScene: function() {
-	    console.log("showNextScene");
 	    //activate the next scene
 	    //var cur_scene_view = scene_views[this.cur_scene_index];
 	    //cur_scene_view.deactivate();
@@ -166,7 +165,6 @@ main.views.castle.mobile.SceneContainerView = Backbone.View.extend({
     },
     // ----------------- beginLoadingAssets
     beginLoadingAssets: function() {
-    	console.log("beginLoadingAssets");
 	    this.loadSceneAssets();
     },
     // ----------------- loadSceneAssets
@@ -186,7 +184,6 @@ main.views.castle.mobile.SceneContainerView = Backbone.View.extend({
 	},
     // ----------------- show
     show: function() {
-	    console.log("SceneContainerView ------ show");
     	$(this.el).css('visibility', 'visible');
     	var scene = this.scene_views[this.cur_scene_index];
     	if(scene.show) scene.show();

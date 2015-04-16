@@ -13,8 +13,7 @@ main.views.castle.mobile.SceneFinalView = main.views.castle.mobile.SceneView.ext
         console.log("SceneFinalView ---- render");
         var self = this;
         $(this.el).html(this.template());
-        //this.finalMove = Hammer($('#scene-final', this.el));
-        //this.finalMove.on('swipeleft dragleft', function() {
+
         $('#scene-final', this.el).on('swipeleft', function(){
 	         self.deactivate();
 	         //$(self.el).trigger(self.EXIT_SWIPE);
@@ -31,7 +30,6 @@ main.views.castle.mobile.SceneFinalView = main.views.castle.mobile.SceneView.ext
 		this.cta_final_container_el = $('#cta-final-container', this.el);
 		this.cta_final_container_el.css('opacity', '0'); 
 		this.cta_final_container_el.css('display', 'block');
-		console.log("this.FADE_SLOW_CLASS = " + this.FADE_SLOW_CLASS);
 		this.cta_final_container_el.addClass(this.FADE_SLOW_CLASS);
 		
 		this.sub_text_top_el = $('.sub-text-top', this.cta_final_container_el);
@@ -74,20 +72,6 @@ main.views.castle.mobile.SceneFinalView = main.views.castle.mobile.SceneView.ext
 			}, 200);		
 		}, 500);
 	},
-	// ----------------- removeExplanation
-	/*removeExplanation: function(){
-		if(this.exp_screen_is_shown && this.cta_final_container_el && this.cta_container_el){
-			this.cta_final_container_el.css('opacity', '0');
-			this.cta_final_container_el.css('zIndex', this.TOP_Z_INDEX-1);
-			this.cta_container_el.css('zIndex', this.TOP_Z_INDEX);
-			this.sub_text_el.css('opacity', '0');
-			this.h1_el.css('opacity', '0');
-			this.btn_el.css('opacity', '0');
-			this.exp_screen_is_shown = false;
-			//this.cta_container_el.css('opacity', '1');
-		}
-		this.cta_container_el.removeClass(this.ANIMATE_CLASS);
-	},*/
 	// ----------------- beginAnimation
     beginAnimation: function() {
 	     $('#scene-final', this.el).addClass(this.ANIMATE_CLASS);
@@ -97,19 +81,6 @@ main.views.castle.mobile.SceneFinalView = main.views.castle.mobile.SceneView.ext
     // ----------------- transitionOut
     transitionOut: function() {
 	    var self = this;
-	    //  $('#scene-final', self.el).addClass(self.NEXT_CLASS).delay(3000).queue(function() {
         $(self.el).trigger(self.NEXT);
-        
-        // });
-        //after transition end
-        //set to display none
-        //$('#scene-xray', self.el).on('transitionend webkitTransitionEnd oTransitionEnd', function(){
-        /*this.endTimeout = setTimeout(function(){
-	        $(self.el).css('display', 'none');
-        //});
-        }, 5000);
-
-        $('#xray-parts', self.el).addClass(self.ANIMATE_CLASS);
-        $('#xray-parts', self.el).addClass(self.NEXT_CLASS);*/
     }
 });

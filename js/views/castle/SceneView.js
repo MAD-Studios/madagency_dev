@@ -120,7 +120,7 @@ main.views.castle.SceneView = Backbone.View.extend({
 	    var self = this;
 	    //if images already loaded move on with loading sounds	    
 	    $(this.el).loadImages({
-		      imgLoadedClb: function(){ console.log("image Loaded"); $(self.el).trigger(self.ASSET_LOADED); }, // Triggered when an image is loaded. ('this' is the loaded image)
+		      imgLoadedClb: function(){ $(self.el).trigger(self.ASSET_LOADED); }, // Triggered when an image is loaded. ('this' is the loaded image)
 			  allLoadedClb: function(){ self.loadSounds(); }, // Triggered when all images are loaded. ('this' is the wrapper in which all images are loaded, or the image if you ran it on one image)
 			  imgErrorClb:  function(){ /*self.loadSounds();*/ } // Triggered when the image gives an error. Useful when you want to add a placeholder instead or remove it. ('this' is the loaded image)
 	    });

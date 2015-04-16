@@ -11,7 +11,7 @@
 	}*/
 	
 	.loader{
-		.info-container{
+		/*.info-container{
 			width: 100%;
 			position: absolute;
 			top: 55px;
@@ -29,8 +29,7 @@
 			width: $contentWidth;
 			height: 150px;
 			@media #{$medium-only} {
-				/*!!!!!!!!!!!!!!!!*/
-				width: $lgContentWidth;
+				//width: $lgContentWidth;
 			}			
 		}
 		.loaded-ratio-indicator{
@@ -86,7 +85,7 @@
 		.rainbow-all{
 			margin-top: 26px;
 		}
-	}
+	}*/
 	/*.large .unicorn{
 		margin-left: -72px;
 		width: 236px; height: 174px;

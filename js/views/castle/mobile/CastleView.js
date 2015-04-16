@@ -57,7 +57,7 @@ main.views.castle.mobile.CastleView = Backbone.View.extend({
         
         //-------- LoaderView
         this.loaderModel = new main.models.castle.LoaderModel();
-        this.loaderView = new main.views.castle.LoaderView({ el:$('.loader', this.el), model: this.loaderModel});
+        this.loaderView = new main.views.castle.mobile.LoaderView({ el:$('.loader', this.el), model: this.loaderModel});
         $(this.loaderView.el).on(this.loaderView.IS_COVERING, function(){
 	       	self.unveilScenes();
         });
@@ -103,14 +103,8 @@ main.views.castle.mobile.CastleView = Backbone.View.extend({
 	    this.goldBg_el.css('height', $(window).height() + 'px');
 	    this.sceneContainerView.posize();
 	    this.loaderView.posize();
-	   // this.audioLoaderView.posize();
-        
-        //if aspect ratio is landsape
-        //show alert that orientation
-        //is best in portrait
-        if(window.orientation && Math.abs(window.orientation) == 90){
-            $(this.orientationAlertView.el).css('display', 'block');
-        }
+	    this.orientationAlertView.posize();
+	   // this.audioLoaderView.posize();    
     },
     // ----------------- createBg
     createBg: function() {

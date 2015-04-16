@@ -28,9 +28,9 @@ main.views.castle.mobile.SceneCastleView = main.views.castle.mobile.SceneView.ex
 	    setTimeout(function(){
 		    //haven't hit the can play sound event yet
 		    //do not do not play the sound
-		    if(self.can_play_sound) main.router.mainView.storyView.audio_el.get(0).play();
+		    if(self.can_play_sound) main.router.mainView.castleView.audio_el.get(0).play();
 		     setTimeout(function(){
-				 if(!self.can_play_sound) main.router.mainView.storyView.audio_el.get(0).pause();
+				 if(!self.can_play_sound) main.router.mainView.castleView.audio_el.get(0).pause();
 			 }, 1500);
 		}, 3000);
     }, 
