@@ -111,8 +111,7 @@ main.views.castle.mobile.SceneContainerView = Backbone.View.extend({
 	    //cur_scene_view.deactivate();
 	    this.cur_scene_index++;
 	    if(this.cur_scene_index >= this.scene_views.length) {
-		    //exit BAU
-		    $(this.el).trigger(this.EXIT_SCENES);
+		   $(this.el).trigger(main.events.castle.Event.EXIT_CASTLE);
 	    }
 	    else{
 		    //and deactivate the current scene

@@ -16,11 +16,11 @@
     	width: 100%;
     	height: 100%;
     	z-index: 1000;
-    	/*z-index: 600;
+    	/*z-index: 600;*/
     	-moz-transform: translate3d(0,0,0);
         -o-transform: translate3d(0,0,0);
         -ms-transform: translate3d(0,0,0);
-        transform: translate3d(0,0,0);*/
+        transform: translate3d(0,0,0);
     }
     .scene-audio-cnt{
     	position: absolute; 
@@ -33,7 +33,6 @@
     	left: 100%;
     }
     
-    /*#orientation-alert {display: none;}*/
     #swipe-instructions {-webkit-transform: translate3d(0px, 0px, 1px);}
     .fade-to-black {background-color: #000; width: 100%; height: 100%; z-index: 100;}
     
@@ -667,7 +666,7 @@
     	-webkit-transition: all 2s;
     }
     #scene-gerbil  div{
-    	position: absolute;
+    	position: absolute; 
     }
     #scene-gerbil.animate {
     	-webkit-transition-delay: 1.5s;
@@ -676,6 +675,7 @@
     #scene-gerbil .fade-to-black {
     	opacity: 0;
     	-webkit-transition: all 2s;
+    	z-index: 100;
     }
     #scene-gerbil.next .fade-to-black {opacity: 1;}
 	#gerbil-background {}

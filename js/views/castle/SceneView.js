@@ -57,7 +57,6 @@ main.views.castle.SceneView = Backbone.View.extend({
 	        this.soundCollection.add(this.sounds[i]);
         }
         this.num_sounds = this.sounds.length;
-        console.log(" ------------- this.num_sounds = " + this.num_sounds);
     },
 	// ----------------- posize
     posize: function() {
@@ -83,18 +82,6 @@ main.views.castle.SceneView = Backbone.View.extend({
 		    //this.unsetIdleTimer();
 	    }
     },
-    // ----------------- setIdleTimer
-    /*setIdleTimer: function() {
-	    var self = this;
-	    this.idleTimeout = setTimeout(function(){
-		    //trigger the idle event
-		    $(self.el).trigger(self.IDLE);
-	    }, this.IDLE_START_TIME);
-    },
-    // ----------------- unsetIdleTimer
-    unsetIdleTimer: function() {
-	    clearTimeout(this.idleTimeout);
-    },*/
     // ----------------- initAssets
     initAssets: function() {
 	    var self = this;

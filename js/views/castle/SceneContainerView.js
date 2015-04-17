@@ -86,7 +86,9 @@ main.views.castle.SceneContainerView = Backbone.View.extend({
 	       $(scene.el).on(scene.ASSET_LOADED, function(event){ $(self.el).trigger(self.SCENE_ASSET_LOADED); });
 	   	   $(scene.el).on(scene.ALL_ASSETS_LOADED, function(){ self.handleLoadSceneComplete(); });
    	   }
-	   $(this.sceneBoyView.el).on(this.sceneBoyView.EXIT_CLICK, function(){ $(self.el).trigger(self.EXIT_SCENES); });
+   	   //!!!!!!!!!!!!!!!!!!!!!!!!!
+	   //$(this.sceneBoyView.el).on(this.sceneBoyView.EXIT_CLICK, function(){ $(self.el).trigger(self.EXIT_SCENES); });
+	   //EXIT_CASTLE
 	   this.num_scenes = this.scene_views.length;
 	   setTimeout(function(){
 		   self.beginLoadingAssets();

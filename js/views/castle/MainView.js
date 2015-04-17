@@ -1,5 +1,6 @@
 // _________________________________________________________________________ MainView
 main.views.castle.MainView = main.views.MainView.extend({
+    EXIT_URL: "/contact",
     // ----------------- initiateCorporate
     initiateCorporate: function(){  
     	var self = this; 
@@ -25,6 +26,13 @@ main.views.castle.MainView = main.views.MainView.extend({
     	var self = this;
     	this.createCastle();
 	    $(this.castleView.el).addClass(this.STAGE_CENTER_CLASS);
+	    
+	     //create Story view
+	    $(this.castleView.el).on(main.events.castle.Event.EXIT_CASTLE, function(event){
+		   //navigate back to corporate site
+		   window.location.href = self.EXIT_URL;
+	    });
+
 	    this.castleView.render();
 	    this.castleView.startLoader();
 	    setTimeout(function(){

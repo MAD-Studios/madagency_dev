@@ -178,6 +178,8 @@ main.views.castle.mobile.SceneView = Backbone.View.extend({
 		    var cur_sound_model = this.sounds[0];
 	        	
 	        main.router.mainView.castleView.audio_el.attr('src', cur_sound_model.get("src"));
+	        console.log('cur_sound_model.get("src") = ' + cur_sound_model.get("src"));
+	        
 		    //play the audio
 		    main.router.mainView.castleView.audio_el.get(0).load();
 		   // $(self.el).trigger(this.SHOW_AUDIO_LOADER);

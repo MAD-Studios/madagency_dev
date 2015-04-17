@@ -31,9 +31,6 @@ main.views.castle.mobile.SceneSwipeInstructionView = main.views.castle.mobile.Sc
         this.swipe_instructions_el.css('opacity', '0');
         this.swipe_instructions_el.css('bottom', String(-this.ANIM_OFFSET) + 'px');
         this.swipe_instructions_el.addClass(this.INFO_TRANS_CLASS);
-        //Hammer.defaults.behavior.touchAction = 'pan-y';
-       // var myCustomBehavior = Hammer.utils.extend({}, Hammer.defaults.behavior);
-		//myCustomBehavior.touchAction = 'pan-y';
 
         $('#scene-swipe-instruction', self.el).swipeleft( function(event){
         	//!!!!!!!!!!!!!!
@@ -74,14 +71,13 @@ main.views.castle.mobile.SceneSwipeInstructionView = main.views.castle.mobile.Sc
 	    this.transitionTimeout = setTimeout(function(){
 		    $(self.el).removeClass(self.STAGE_CENTER);
 		   	$(self.el).addClass(self.STAGE_TOP);
-		   self.removeTimeout = setTimeout(function(){
-		        //on comolete
-		   	    //display none
-			    $(self.el).css('display', 'none');
-		   }, 2000);
+            self.removeTimeout = setTimeout(function(){
+                //on comolete
+            	//display none
+                $(self.el).css('display', 'none');
+            }, 2000);
 		   	
 	   	}, 200);
-	   	
         $(self.el).trigger(self.NEXT);
     }
 });

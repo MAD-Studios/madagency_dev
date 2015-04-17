@@ -97,6 +97,18 @@ $contentWidth: 960px;
 	     -o-transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); 
 	        transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); /* easeOutExpo */
 }
+.scene-transition{
+	-webkit-transition: all 2.0s cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	   -moz-transition: all 2.0s cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	     -o-transition: all 2.0s cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	        transition: all 2.0s cubic-bezier(0.190, 1.000, 0.220, 1.000); /* easeOutExpo*/
+
+	-webkit-transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	   -moz-transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	     -o-transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	        transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); /* easeOutExpo */
+}
+
 .stage-left{
 	left: -100%;
 }

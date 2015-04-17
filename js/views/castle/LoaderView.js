@@ -404,7 +404,7 @@ main.views.castle.LoaderView = Backbone.View.extend({
 		}
 	    
 	    setTimeout(function(){
-		    self.loadedRatioIndicatorActivityIndicator.remove();
+		    //self.loadedRatioIndicatorActivityIndicator.remove();
 			for(var i=add_letter_start;i<add_letter_end;i++){
 				letter_el = self.loadedRatioIndicatorTextContainer.children().eq(i);
 				letter_el.css('opacity', '1');
@@ -544,7 +544,6 @@ main.views.castle.LoaderView = Backbone.View.extend({
 							  OTransform: 'translateY(' + to_y + 'px)',
 							  msTransform: 'translateY(' + to_y + 'px)'});  
      
-							  
 	  setTimeout(function(){
 		  self.rainbowContainer_el.css('visibilty', 'hidden');
 	      self.rainbowContainer_el.remove();
@@ -563,13 +562,11 @@ main.views.castle.LoaderView = Backbone.View.extend({
 			self.goldGrad_el.off('transitionend webkitTransitionEnd oTransitionEnd');
 			self.totalHide();
 		});
-         //setTimeout(function(){
-	        self.goldGrad_el.css({transform: 'translateY(' + to_y + 'px)',
-	                              MozTransform: 'translateY(' + to_y + 'px)',
-	                              WebkitTransform: 'translateY(' + to_y + 'px)',
-	                              OTransform: 'translateY(' + to_y + 'px)',
-	                              msTransform: 'translateY(' + to_y + 'px)'});
-         //}, 100);
+        self.goldGrad_el.css({transform: 'translateY(' + to_y + 'px)',
+                              MozTransform: 'translateY(' + to_y + 'px)',
+                              WebkitTransform: 'translateY(' + to_y + 'px)',
+                              OTransform: 'translateY(' + to_y + 'px)',
+                              msTransform: 'translateY(' + to_y + 'px)'});
     },
     // ----------------- totalHide
     totalHide: function() {

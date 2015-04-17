@@ -71,31 +71,15 @@ $loaderFontSize: 15px;
 	    -o-transform: translate3d(0,0,0);
 	    -ms-transform: translate3d(0,0,0);
 	    transform: translate3d(0,0,0);
-	    /*.top{
-		  float:left; width: 100%;
-		  background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(255,198,39,0)), to(rgba(255,198,39,1) 40%));
-		  background-image: -webkit-linear-gradient(top, rgba(255,198,39,0) , rgba(255,198,39,1) 40%);
-		  background-image: -moz-linear-gradient(top, rgba(255,198,39,0), rgba(255,198,39,1) 40%);
-		  background-image: -o-linear-gradient(top, rgba(255,198,39,0), rgba(255,198,39,1) 40%);
-		  background-image: linear-gradient(to bottom, rgba(255,198,39,0), rgba(255,198,39,1) 40%);
-		}
-		.bottom{
-			float:left; width: 100%;
-			background-color: $gold;
-		}*/
 	}
 	.info-container{
 		width: $contentWidth;
 		position: absolute;
 		height: 150px;
 		text-align: center;
-		h2{
-		    margin-bottom: $lgMargin;
-		}
-		p{
-			margin-bottom: $xxSmMargin;
-		}
-	}
+		h2{ margin-bottom: $lgMargin; }
+		p{ margin-bottom: $xxSmMargin; }
+    }
 	.info{
 		width: 100%;
 		position: absolute;

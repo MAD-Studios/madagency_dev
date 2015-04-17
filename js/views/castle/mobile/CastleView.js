@@ -37,7 +37,7 @@ main.views.castle.mobile.CastleView = Backbone.View.extend({
 	        self.stopLoader();
         });
         //EXIT_SCENES
-        $(this.sceneContainerView.el).on(this.sceneContainerView.EXIT_SCENES, function(){ self.exit(); });
+       // $(this.sceneContainerView.el).on(this.sceneContainerView.EXIT_SCENES, function(){ self.exit(); });
         //listen for the init assets event
         //that comes from each scene
         //so that you can sen the total num assets 
@@ -108,7 +108,7 @@ main.views.castle.mobile.CastleView = Backbone.View.extend({
     },
     // ----------------- createBg
     createBg: function() {
-	    this.goldBg_el = $('<div class="gold-bg"></div>');
+	    this.goldBg_el = $('<div class="dark-gold-bg"></div>');
 	    //make it's width the size of the window
 	    var to_h = $(window).height();
 	    this.goldBg_el.css('opacity', '0');
