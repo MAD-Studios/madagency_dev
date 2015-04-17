@@ -86,7 +86,7 @@ main.views.castle.LoaderView = Backbone.View.extend({
     createLoaderInfo: function() {
 	    //create a container for the 
 	    //loaded ratio indicator
-	    this.loaderInfoContainer = $('<div class="info-container"></div>');
+	    this.loaderInfoContainer = $('<div class="info-container row-absolute"></div>');
 	    $(this.el).append(this.loaderInfoContainer);
 	    //create the loaded ratio indicator
 	    //loaded_ratio_indicator_copy
@@ -104,17 +104,17 @@ main.views.castle.LoaderView = Backbone.View.extend({
 	// ----------------- createRatioIndicator
     createRatioIndicator: function() {
 	    this.loadedRatioIndicator = $('<div class="loaded-ratio-indicator"></div>');
-	    this.loadedRatioIndicatorTextContainer = $('<div class="loaded-ratio-indicator-text-cta"></div>');
+	    this.loadedRatioIndicatorTextContainer = $('<div class="loaded-ratio-indicator-text-cnt"></div>');
 	    this.loadedRatioIndicator.append(this.loadedRatioIndicatorTextContainer);
-	    //this.loadedRatioIndicatorActivityIndicator = $('<div class="activity-indicator"></div>');
-	    //this.loadedRatioIndicator.append(this.loadedRatioIndicatorActivityIndicator);
+	    this.loadedRatioIndicatorActivityIndicatorContainer = $('<div class="activity-indicator-cnt"></div>');
+	    this.loadedRatioIndicator.append(this.loadedRatioIndicatorActivityIndicatorContainer);
 	    
 	    var opts = {
             lines: 8, // The number of lines to draw
-            length: 5, // The length of each line
+            length: 3, // The length of each line
             width: 3, // The line thickness
-            radius: 30, // The radius of the inner circle
-            corners: 1, // Corner roundness (0..1)
+            radius: 8, // The radius of the inner circle
+            corners: 0, // Corner roundness (0..1)
             color: '#333e48', // #rgb or #rrggbb or array of colors
             speed: 1, // Rounds per second
             trail: 60, // Afterglow percentage
@@ -122,15 +122,12 @@ main.views.castle.LoaderView = Backbone.View.extend({
             //hwaccel: false, // Whether to use hardware acceleration
             className: 'activity-indicator', // The CSS class to assign to the spinner
             //zIndex: 2e9, // The z-index (defaults to 2000000000)
-            //top: '50%', // Top position relative to parent
-            //left: '50%' // Left position relative to parent
-        };
-        //var spinner = new Spinner(opts).spin(this.loadedRatioIndicator);
-        
+            top: '50%', // Top position relative to parent
+            left: '50%' // Left position relative to parent
+        };        
         var spinner = new Spinner(opts).spin();
-        this.loadedRatioIndicator.append($(spinner.el));
+        this.loadedRatioIndicatorActivityIndicatorContainer.append($(spinner.el));
 	    
-	   //this.loadedRatioIndicatorActivityIndicator.activity({segments: 8, width:3, space: 0, length: 5, color: '#333e48', valign:'top', align:'left', padding:17});
 	    var to_x = (this.loaderInfoContainer.outerWidth() - this.loadedRatioIndicator.outerWidth())/2;
 		this.loadedRatioIndicator.css('left', to_x + 'px');
 	    this.loadedRatioIndicator.css('visibilty', 'hidden');
@@ -280,7 +277,7 @@ main.views.castle.LoaderView = Backbone.View.extend({
     },
      // ----------------- stopLoader
     stopLoader: function() {
-	    var self = this;
+	    /*var self = this;
 	    //clear the generate rainbow timer
 	    //if basic loader hasn't
 	    //played out
@@ -289,7 +286,7 @@ main.views.castle.LoaderView = Backbone.View.extend({
 			    this.completeStopLoader();
 		    }
 	    }
-	    this.is_stopped = true;
+	    this.is_stopped = true;*/
 	},
     // ----------------- completeStopLoader
     completeStopLoader: function() {

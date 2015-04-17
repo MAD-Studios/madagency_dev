@@ -9,6 +9,8 @@ main.routers.corporate.Router = main.routers.Router.extend({
         "disciplines": "disciplines",
         "contact": "contact"
      },
+     pane_id: "",
+     enable_doc_scroll: false,
       // ----------------- createMainView
      createMainView: function() {
      	this.mainView = new main.views.corporate.MainView( {el: $('#main', this.el)} );
@@ -16,57 +18,50 @@ main.routers.corporate.Router = main.routers.Router.extend({
      // ----------------- intro
      intro: function(){
          console.log("main --- intro");
-         var self = this;
-         var id = "intro";
-         this.handleRoute(id);
+         this.handleRoute("intro", false);
      },
      // ----------------- how
      how: function(){
           console.log("main --- how");
-          var self = this;
-          var id = "how";
-          this.handleRoute(id);
+          this.handleRoute("how", true);
      },
      // ----------------- work
      work: function(){
           console.log("main --- work");
-          var self = this;
-          var id = "work";
-          this.handleRoute(id);
+          this.handleRoute("work", true);
      },
      // ----------------- team
      team: function(){
           console.log("main --- team");
-          var self = this;
-          var id = "team";
-          this.handleRoute(id);
+          this.handleRoute("team", true);
      },
      // ----------------- disciplines
      disciplines: function(){
          console.log("main --- disciplines");
-         var self = this;
-         var id = "disciplines";         
-         this.handleRoute(id);
+         this.handleRoute("disciplines", true);
      },
      // ----------------- contact
      contact: function(){
          console.log("main --- contact");
-         var self = this;
-         var id = "contact";         
-         this.handleRoute(id); 
+         this.handleRoute("contact", true);
      },
      // ----------------- handleRoute
      handleRoute: function(id){
      	var self = this;
      	if(this.unrouted){
 	         setTimeout(function(){	
-		          self.mainView.scrollToPane(id);	          
+                 self.scrollToPane(id);          
 	         }, this.UNROUTED_TIMEOUT);
 	         self.unrouted = false;
          }
          else{
 		     //scroll to the  posY
-		     this.mainView.scrollToPane(id);
+		     self.scrollToPane(id);
 		 }
+     },
+     // ----------------- scrollToPane
+     scrollToPane: function(id, enable_doc_scroll){
+        if(enable_doc_scroll) this.mainView.enableDocumentScroll();
+        this.mainView.scrollToPane(id);
      }
 });

@@ -4,14 +4,14 @@
         <div class="row">
             <div class="column large-12 small-12">
                 <div class="main-nav-container">
-                    <div class="full-logo-sm full-logo-white full-logo logo"></div>
+                    <a href="" class="full-logo-sm full-logo-white full-logo logo"></a>
                     <ul class="main-nav">
-                        <li><a class="btn btn-method" href="/">ABOVE THE FOLD</a></li>
-                        <li><a class="btn btn-how" href="/how">HOW WE ROLL</a></li>
-                        <li><a class="btn btn-work" href="/work">THE WORK</a></li>
-                        <li><a class="btn btn-team" href="/team">OUR TEAM</a></li>
-                        <li><a class="btn btn-disciplines" href="/disciplines">DISCIPLINES</a></li>
-                        <li><a class="btn btn-contact" href="/contact">CONTACT US</a></li>
+                        <li><a class="btn" id="intro-btn" href="/">ABOVE THE FOLD</a></li>
+                        <li><a class="btn" id="how-btn" href="/how">HOW WE ROLL</a></li>
+                        <li><a class="btn" id="work-btn" href="/work">THE WORK</a></li>
+                        <li><a class="btn" id="team-btn" href="/team">OUR TEAM</a></li>
+                        <li><a class="btn" id="disciplines-btn" href="/disciplines">DISCIPLINES</a></li>
+                        <li><a class="btn" id="contact-btn" href="/contact">CONTACT US</a></li>
                     </ul>
                 </div>
                 

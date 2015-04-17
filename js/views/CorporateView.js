@@ -20,6 +20,7 @@ main.views.CorporateView = Backbone.View.extend({
 	},
     // ----------------- renderCommonParts
     renderCommonParts: function() {
+        var self = this;
         this.headerView = new main.views.HeaderView({el: $('#header', this.el)});
         this.footerView = new main.views.FooterView({el: $('#footer', this.el)});  
         $(window).scroll(function(){

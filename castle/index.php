@@ -82,9 +82,12 @@
     
 	<!------- preload story loader assets -------->
     <div class="preload-container">
-	    <div class="preload-unicorn"></div>
+	    <!-- <div class="preload-unicorn"></div>
 	    <div class="preload-rainbow-end"></div>
-	    <div class="preload-rainbow-solid"></div>
+	    <div class="preload-rainbow-solid"></div> -->
+	    <img src="/assets/images/loader/png/loader-unicorn.png">
+	    <img src="/assets/images/loader/png/loader-rainbow.png">
+	    <img src="/assets/images/loader/png/loader-snippet.png">
     </div>
     
 	<!------------ CORPORATE ------------->

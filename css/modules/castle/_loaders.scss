@@ -9,7 +9,7 @@ $loaderFontSize: 15px;
 	z-index:0;
 }
 /* preload stry loader assets */
-.preload-unicorn {
+/*.preload-unicorn {
   width: 0;
   height: 0;
   background: transparent url(../../assets/images/loader/png/loader-unicorn.png) no-repeat;
@@ -26,7 +26,7 @@ $loaderFontSize: 15px;
   height: 0;
   background: transparent url(../../assets/images/loader/png/loader-snippet.png) repeat-x;
   visibility:hidden; 
-}
+}*/
 
 
 /* -------------- LoaderView */
@@ -62,7 +62,8 @@ $loaderFontSize: 15px;
 		font-weight: 900;
 		font-family: "franklin-gothic-urw",sans-serif !important;
 	}
-	p{  font-weight: 400;}
+	p{  font-weight: 400;
+	}
 	.gradient.gold{
 		position: absolute;
 		min-width: 100%; 
@@ -73,7 +74,8 @@ $loaderFontSize: 15px;
 	    transform: translate3d(0,0,0);
 	}
 	.info-container{
-		width: $contentWidth;
+		max-width: $contentWidth;
+		width: 100%;
 		position: absolute;
 		height: 150px;
 		text-align: center;
@@ -115,6 +117,21 @@ $loaderFontSize: 15px;
 	    -ms-transform: translate3d(0,0,0);
 	    transform: translate3d(0,0,0);
 	}
+	.loaded-ratio-indicator-text-cnt{ 
+	    float: left;
+	    h1{
+            float: left;
+            display: block;	
+    	}
+    }
+    .activity-indicator-cnt{
+        float: left;
+        position: relative;
+        width: 25px;
+        height: 25px;
+        margin-top: 28px;
+        margin-left: $smMargin;
+    }
 }
 .rainbow-container{
 	position: absolute;
