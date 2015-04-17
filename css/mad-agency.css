@@ -4268,6 +4268,8 @@ i {
     float: left;
     width: 100%;
     max-width: none !important; }
+  .castle img {
+    max-width: none; }
 
 .transition {
   position: absolute;
