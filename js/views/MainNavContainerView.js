@@ -183,14 +183,22 @@ main.views.MainNavContainerView = Backbone.View.extend({
     },
     // ----------------- markBtn
     markBtn: function(btn_id, delay) {
+        console.log("markBtn ------- btn_id = " + btn_id);
 	    var self = this;
+	    var attr_btn_id = "";
 	    clearTimeout(this.markBtnTimeout);
 	    if(delay == null) delay = false;
 	    if(delay){
 		    this.markBtnTimeout = setTimeout(function(){
 			    if( !main.router.autoScrolling ){
 				    $('.nav-btn', self.el).each(function(){
-					    if($(this).hasClass(btn_id + self.BTN_CLASS_END_STR, self.el)){
+				        //!!!!!!!!!!!!!!!!!!!!!!!!!
+				        //instead grab the id
+				        //and check it
+				        //!!!!!!!!!!!!!!!!!!!!!!!!
+				        
+				        attr_btn_id = $(this).attr('id');
+				        if(attr_btn_id.indexOf(btn_id) > -1){
 						     $(this).addClass('active');
 						     TweenLite.to(this, 1, {height:self.default_nav_btn_height, ease: Expo.easeOut});
 					    }
@@ -230,47 +238,15 @@ main.views.MainNavContainerView = Backbone.View.extend({
 	},
 	// ----------------- onBtnClick
     onBtnClick: function(event) {
-    	console.log("onBtnClick -------- ");
         $(this.el).trigger(main.events.Event.ENABLE_DOCUMENT_SCROLL);
         
     	if($(event.currentTarget).attr("id")) {
 	    	var id = $(event.currentTarget).attr("id");
 	    	id = id.replace(this.BTN_SELECTOR_SUFFIX, "");
     	}
-    	
         main.router.navigate(id, {trigger: true});
         return false;
     },
-    // ----------------- onHowBtnClick
-   /* onHowBtnClick: function(event) {
-	    if (Modernizr.history) main.router.navigate('', {trigger: false});
-	    main.router.navigate('how', {trigger: true});
-	    return false;
-    },
-    // ----------------- onWorkBtnClick
-    onWorkBtnClick: function(event) {
-    	if (Modernizr.history) main.router.navigate('', {trigger: false});
-	    main.router.navigate('work', {trigger: true});
-	    return false;
-    },
-    // ----------------- onHowBtnClick
-    onTeamBtnClick: function(event) {
-        if (Modernizr.history) main.router.navigate('', {trigger: false});
-	    main.router.navigate('team', {trigger: true});
-	    return false;
-    },
-    // ----------------- onHowBtnClick
-    onDisciplinesBtnClick: function(event) {
-        if (Modernizr.history) main.router.navigate('', {trigger: false});
-	    main.router.navigate('disciplines', {trigger: true});
-	    return false;
-    },  
-	// ----------------- onHowBtnClick
-    onContactBtnClick: function(event) {
-        if (Modernizr.history) main.router.navigate('', {trigger: false});
-	    main.router.navigate('contact', {trigger: true});
-	    return false;
-    },*/
     // ----------------- onLogoClick
     onLogoClick: function(event) {
         if (Modernizr.history) main.router.navigate('work', {trigger: false});

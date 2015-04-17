@@ -1,0 +1,23 @@
+/* Sections 
+====================*/
+.panel img {
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: auto;
+	max-width: none;
+}
+.story section {
+	display: block;
+	float: none;
+	width: 100%; height: 100%;
+	position: absolute;
+}
+.story > section > div,
+.story > section > img {
+	display: block;
+	position: absolute;
+	top: 0; left: 0;
+	width: 100%; height: 100%;
+	/*z-index: 1;*/
+}

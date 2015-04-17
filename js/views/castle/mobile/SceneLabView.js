@@ -1,5 +1,5 @@
 // _________________________________________________________________________ SceneLabView
-main.views.SceneLabView = main.views.castle.SceneView.extend({
+main.views.castle.mobile.SceneLabView = main.views.castle.mobile.SceneView.extend({
 	name: "scene-lab",
     // ----------------- initialize
     initialize: function() {
@@ -63,9 +63,9 @@ main.views.SceneLabView = main.views.castle.SceneView.extend({
     playAudioUnique: function() {
 	    var self = this;
 	    //setTimeout(function(){
-		main.router.mainView.storyView.audio_el.get(0).play();
+		main.router.mainView.castleView.audio_el.get(0).play();
 		setTimeout(function(){
-			 if(!self.can_play_sound) main.router.mainView.storyView.audio_el.get(0).pause();
+			 if(!self.can_play_sound) main.router.mainView.castleView.audio_el.get(0).pause();
 		}, 1500);
 
 		//}, 2500);

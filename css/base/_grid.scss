@@ -1,9 +1,14 @@
+$rowMaxWidth: $contentWidth;
+
 .row-float{
 	width: 100%; float:left;
+	position: static !important;
+    max-width: $rowMaxWidth;
 }
 .row-absolute{
 	width: 100%; position:absolute;
 	left: 0;
+    max-width: $rowMaxWidth;
 }
 .columns,
 .column {

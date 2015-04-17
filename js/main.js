@@ -22,9 +22,11 @@ Backbone.View.prototype.dispose = function () {
 var main = {
     utils: {},
     router: {},
-    section: [],
-    // ----------------- createSectionNamespaces
+    section: {},
+    // ----------------- init
     init: function(){
+        console.log("main init");
+
 	     this.initModernizr();
     },
     // ----------------- setSection
@@ -37,18 +39,26 @@ var main = {
 		var namespace_enities = ["models", "views", "routers", "events"];
 	    //for each 
 	    for(var i=0;i<namespace_enities.length;i++){
-		    this[namespace_enities[i]] = {};
+		    if( !this[namespace_enities[i]] ) this[namespace_enities[i]] = {};
 		    for(var section in this.section){
-		    	 this[namespace_enities[i]][section] = {};
+		    	 if( !this[namespace_enities[i]][section] ) this[namespace_enities[i]][section] = {};
 		    	 for(subsection in this.section[section]){
-			    	 this[namespace_enities[i]][section][subsection] = {};
+			    	 if( !this[namespace_enities[i]][section][subsection] ) this[namespace_enities[i]][section][subsection] = {};
 			    	 for(subsubsection in this.section[section][subsection]){
-				    	 this[namespace_enities[i]][section][subsection][subsubsection] = {};
+				    	 if( !this[namespace_enities[i]][section][subsection][subsubsection] ) this[namespace_enities[i]][section][subsection][subsubsection] = {};
 			    	 }
 		    	 }
 		    }
 	    }
 	},
+	// ----------------- addSubSection
+    addSubSection: function(subsection){
+    	for(var section in this.section){
+		    this.section[section][subsection] = {};
+		}
+    	
+    	this.createSectionNamespaces();
+    },
 	// ----------------- handleUnsupportedFeatures
     handleUnsupportedFeatures: function(){
 	    if (!Object.keys) {
@@ -134,15 +144,44 @@ var main = {
 	// ----------------- loadTemplates
 	loadTemplates: function(templates, callback) {
 		if(templates && templates.length > 0){
-			main.utils.TemplateLoader.load( templates, function(){ callback(); });
+			this.utils.TemplateLoader.load( templates, function(){ console.log('templates laoded'); callback(); });
 		}
 		else callback();
+	},
+	// ----------------- loadJS
+	loadJS: function(js_files, callback) {
+		if(js_files && js_files.length > 0){
+			this.utils.JSLoader.load( js_files, function(){ console.log('js loaded'); callback(); });
+		}
+		else callback();
+	},
+	// ----------------- loadExternalFiles
+	loadExternalFiles: function(templates, js_files, callback) {
+	    console.log("loadExternalFiles -------");
+		var self = this;
+		this.templates = templates;
+		this.js_files = js_files;
+		this.load_ext_files_callback = callback;
+		
+		if(this.js_files) main.loadJS(js_files, function(){ self.onJsLoadComplete(); } );
+		else self.onJsLoadComplete(templates);
+	},
+	// ----------------- onJsLoadComplete
+	onJsLoadComplete: function() {
+        console.log("onJsLoadComplete -------");
+		var self = this;
+		if(this.templates) this.loadTemplates(this.templates, function(){  console.log("main--------- onJsLoadComplete"); self.load_ext_files_callback(); });
+		else this.load_ext_files_callback();
 	}
 };
 
 // _________________________________________________________________________
-var templates = null;
 var section = null;
+var templates = null;
+var js_files = null;
+/*var views = null;
+var routers = null;*/
+var beforeOnDocReady = null;
 
 // ----------------- document ready handler
 $(document).ready(function() {
@@ -156,7 +195,10 @@ function onAppReady() {
 }
 // ----------------- onDocReady
 function onDocReady() {
+    console.log("onDocReady");
 	if(beforeOnDocReady) beforeOnDocReady();
 	main.init();
-	main.loadTemplates(templates, function(){ onAppReady(); });
+	
+	main.loadExternalFiles(templates, js_files, onAppReady);
 }
+

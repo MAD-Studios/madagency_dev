@@ -1,5 +1,5 @@
 // _________________________________________________________________________ SceneCreationView
-main.views.SceneCreationView = main.views.castle.SceneView.extend({
+main.views.castle.mobile.SceneCreationView = main.views.castle.mobile.SceneView.extend({
 	state: "",
 	name: "scene-creation",
     // ----------------- initialize
@@ -61,9 +61,9 @@ main.views.SceneCreationView = main.views.castle.SceneView.extend({
     playAudioUnique: function() {
 	    var self = this;
 	   // setTimeout(function(){
-		main.router.mainView.storyView.audio_el.get(0).play();
+		main.router.mainView.castleView.audio_el.get(0).play();
 		setTimeout(function(){
-			 if(!self.can_play_sound) main.router.mainView.storyView.audio_el.get(0).pause();
+			 if(!self.can_play_sound) main.router.mainView.castleView.audio_el.get(0).pause();
 		}, 2000);
 
 		//}, 2500);

@@ -1,5 +1,6 @@
 // _________________________________________________________________________ MainView
 main.views.castle.MainView = main.views.MainView.extend({
+    EXIT_URL: "/contact",
     // ----------------- initiateCorporate
     initiateCorporate: function(){  
     	var self = this; 
@@ -13,9 +14,25 @@ main.views.castle.MainView = main.views.MainView.extend({
     openCastle: function() {
 	    var self = this;
 	    var castle_div;
-	        	        	    	
-	    if(!this.castleView) this.castleView = new main.views.castle.CastleView( { el: $('.castle', this.el) } );
+	    
+	    this.initCastle();
+	},
+	// ----------------- createCastle
+    createCastle: function(){
+    	if(!this.castleView) this.castleView = new main.views.castle.CastleView( { el: $('.castle', this.el) } );
+    },
+	// ----------------- initCastle
+    initCastle: function(){
+    	var self = this;
+    	this.createCastle();
 	    $(this.castleView.el).addClass(this.STAGE_CENTER_CLASS);
+	    
+	     //create Story view
+	    $(this.castleView.el).on(main.events.castle.Event.EXIT_CASTLE, function(event){
+		   //navigate back to corporate site
+		   window.location.href = self.EXIT_URL;
+	    });
+
 	    this.castleView.render();
 	    this.castleView.startLoader();
 	    setTimeout(function(){
@@ -24,7 +41,7 @@ main.views.castle.MainView = main.views.MainView.extend({
 			    self.removeCorporate();
 		    }, 1200);
 	    }, 200);
-	},
+    },
     // ----------------- moveIntoCastle
     moveIntoCastle: function(){
 	    //first begin the hide animation 

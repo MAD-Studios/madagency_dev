@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, target-densitydpi=device-dpi" />
     <title>MAD Agency - Creative Castle</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="title" content="MAD Agency - Creative Castle" />
@@ -18,7 +18,7 @@
     <link href="../css/mad-agency.css" type="text/css" rel="stylesheet" />
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
-    <script src="../js/vendor/jquery.activity-indicator-1.0.0.min.js" type="text/javascript"></script>
+    <script src="../js/vendor/spin.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="//use.typekit.net/ntj1viz.js"></script>
     <script src="../js/vendor/skrollr.min.js"></script>
     <script src="../js/vendor/underscore-min.js" type="text/javascript"></script>
@@ -28,21 +28,25 @@
     <script src="../js/vendor/greensock/EasePack.min.js"></script>
     <script src="../js/vendor/greensock/ScrollToPlugin.min.js"></script>
     <script src="../js/vendor/jquery-image-loader.js"></script>
+    <script src="../js/vendor/jquery.mobile.custom.edit10172014.js"></script>
+    <script src="../js/vendor/fastclick.js" type="text/javascript"></script>
     
     <script src="../js/main.js" type="text/javascript"></script>
     <script src="../js/castle.js" type="text/javascript"></script>
     <script src="../js/events/Event.js" type="text/javascript"></script>
     <script src="../js/events/castle/Event.js" type="text/javascript"></script>
+    <script src="../js/utils/JSLoader.js" type="text/javascript"></script>
     <script src="../js/utils/TemplateLoader.js" type="text/javascript"></script>
     <script src="../js/utils/ElementManipulator.js" type="text/javascript"></script>
     <script src="../js/utils/DeviceDetector.js" type="text/javascript"></script>
     <script src="../js/routers/Router.js" type="text/javascript"></script>
     <script src="../js/routers/castle/Router.js" type="text/javascript"></script>
+    <!-- <script src="../js/routers/castle/mobile/Router.js" type="text/javascript"></script> -->
     <script src="../js/models/PaneModel.js" type="text/javascript"></script>
-    <script src="../js/models/castle/SceneModel.js" type="text/javascript"></script>
+    <!-- <script src="../js/models/castle/SceneModel.js" type="text/javascript"></script> -->
     <script src="../js/models/castle/ResponseGeneratorModel.js" type="text/javascript"></script>
     <script src="../js/models/castle/LoaderModel.js" type="text/javascript"></script>
-    <script src="../js/models/castle/AudioModel.js" type="text/javascript"></script>
+    <!-- <script src="../js/models/castle/AudioModel.js" type="text/javascript"></script> -->
     <script src="../js/views/MainView.js" type="text/javascript"></script>
     <script src="../js/views/castle/MainView.js" type="text/javascript"></script>
     <script src="../js/views/CorporateView.js" type="text/javascript"></script>
@@ -53,7 +57,9 @@
     <script src="../js/views/HeaderView.js" type="text/javascript"></script>
     <script src="../js/views/FooterView.js" type="text/javascript"></script>
     <script src="../js/views/castle/CastleGatewayPaneView.js" type="text/javascript"></script>
-    <script src="../js/views/castle/CastleView.js" type="text/javascript"></script>
+    <script src="../js/views/castle/LoaderView.js" type="text/javascript"></script>
+    
+    <!-- <script src="../js/views/castle/CastleView.js" type="text/javascript"></script>
     <script src="../js/views/castle/SceneView.js" type="text/javascript"></script>
     <script src="../js/views/castle/SceneCastleView.js" type="text/javascript"></script>
     <script src="../js/views/castle/SceneCreationView.js" type="text/javascript"></script>
@@ -61,9 +67,8 @@
     <script src="../js/views/castle/SceneXrayView.js" type="text/javascript"></script>
     <script src="../js/views/castle/SceneLabView.js" type="text/javascript"></script>
     <script src="../js/views/castle/SceneBoyView.js" type="text/javascript"></script>
-    <script src="../js/views/castle/LoaderView.js" type="text/javascript"></script>
     <script src="../js/views/castle/SceneContainerView.js" type="text/javascript"></script>
-    <script src="../js/views/castle/ScrollDownIndicatorView.js" type="text/javascript"></script> 
+    <script src="../js/views/castle/ScrollDownIndicatorView.js" type="text/javascript"></script> -->
     
     <!--[if lt IE 9]>
             <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -77,9 +82,12 @@
     
 	<!------- preload story loader assets -------->
     <div class="preload-container">
-	    <div class="preload-unicorn"></div>
+	    <!-- <div class="preload-unicorn"></div>
 	    <div class="preload-rainbow-end"></div>
-	    <div class="preload-rainbow-solid"></div>
+	    <div class="preload-rainbow-solid"></div> -->
+	    <img src="/assets/images/loader/png/loader-unicorn.png">
+	    <img src="/assets/images/loader/png/loader-rainbow.png">
+	    <img src="/assets/images/loader/png/loader-snippet.png">
     </div>
     
 	<!------------ CORPORATE ------------->

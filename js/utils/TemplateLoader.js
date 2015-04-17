@@ -15,7 +15,7 @@ main.utils.TemplateLoader = {
             path_arr= [];
 
         $.each(names, function(index, path) {
-            deferreds.push($.get('/tpl/' + path + '.html', function(data) {
+            deferreds.push($.get(path + '.html', function(data) {
             	//at this point set the name
             	//grab last string  as name
             	path_arr = path.split("/");

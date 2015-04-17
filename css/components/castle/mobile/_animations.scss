@@ -1,0 +1,218 @@
+/* Swipe Instruction Animations */
+@-webkit-keyframes handSwipe {
+	0%
+	{opacity: 0; -webkit-transform: translateX(10%) translateY(10%) rotate(0deg);}
+	20%
+	{opacity: 1; -webkit-transform: translateX(0%) translateY(0%) rotate(0deg);}
+	80%
+	{opacity: 1; -webkit-transform: translateX(-95%) translateY(0%) rotate(0deg);}
+	100%
+	{opacity: 0; -webkit-transform: translateX(-100%) translateY(10%) rotate(0deg);}
+}
+@-webkit-keyframes removeSwipeInstructions {
+	0%
+	{display: block; opacity: 1; visibility: visible;}
+	100%
+	{display: block; opacity: 0; visibility: visible;}
+}
+/* Castle Animations */
+@-webkit-keyframes fadeIn {
+	from{opacity: 0;}
+	to{opacity: 1;}
+}
+@-webkit-keyframes fadeOut {
+	0%	{opacity: 1;}
+	90%	{opacity: 0; display: block;}
+	100%{opacity: 0; display: none;}
+}
+@-webkit-keyframes fadeLast {
+	0%	{opacity: 1;}
+	100%{opacity: 0;}
+}
+@-webkit-keyframes tentacles {
+	0%, 100%
+	{-webkit-transform: rotate(-2deg);}
+	50%
+	{-webkit-transform: rotate(2deg);}
+}
+@-webkit-keyframes sharkFin {
+	0%	{-webkit-transform:	translateY(1px) rotate(-3deg);}
+	25%	{-webkit-transform:	translateY(-1px) rotate(3deg);}
+	50%	{-webkit-transform:	translateY(1px) rotate(-3deg);}
+	75%	{-webkit-transform:	translateY(-1px) rotate(3deg);}
+	100%{-webkit-transform:	translateY(1px) rotate(-3deg);}
+}
+
+/* Xray Animations */
+@-webkit-keyframes flicker {
+	0%	{opacity: 0;}
+	10%	{opacity: 0.7;}
+	15%	{opacity: 0.1;}
+	20%	{opacity: 0.8;}
+	25%	{opacity: 0.1;}
+	30%	{opacity: 0.9;}
+	35%	{opacity: 0.1;}
+	40%	{opacity: 0.6;}
+	50%	{opacity: 0.9;}
+	60%	{opacity: 0.1;}
+	70%	{opacity: 0.8;}
+	80%	{opacity: 0.2;}
+	90%	{opacity: 0.6;}
+	100%{opacity: 1;}
+}
+@-webkit-keyframes vManMove {
+	0%	{-webkit-transform: translate(0%, 0%);}
+	40%	{-webkit-transform: translate(-80%, 0%);}
+	100%{-webkit-transform: translate(-81%, 500%);}
+}
+@-webkit-keyframes transitionNext {
+	0%	{-webkit-transform: translateX(0%);}
+	100%{-webkit-transform: translateX(-100%);}
+}
+
+/* Lab Animations */
+@-webkit-keyframes smokeAmbient {
+	0%, 100%
+	{-webkit-transform: skewX(-1deg);}
+	50%
+	{-webkit-transform: skewX(1deg);}
+}
+@-webkit-keyframes vmanWobble {
+	0%, 100%
+	{-webkit-transform: skewX(-2deg) rotate(-179deg) translateY(-1px);}
+	50%
+	{-webkit-transform: skewX( 2deg) rotate(-182deg) translateY(1px);}
+}
+@-webkit-keyframes vmanFall {
+	0%	{-webkit-transform: translateY(-600%) rotate(0deg); opacity: 1;}
+	80%	{-webkit-transform: translateY(-100%) rotate(180deg); opacity: 1;}
+	85%	{-webkit-transform: translateY(-50%) rotate(180deg); opacity: 1;}
+	100%{-webkit-transform: translateY(0%) rotate(180deg); opacity: 0;}
+}
+@-webkit-keyframes smokeRed {
+	0%
+	{-webkit-transform: scale(0.1, 0); opacity: 0;}
+	100%
+	{-webkit-transform: scale(1.0, 1); opacity: 1;}
+}
+@-webkit-keyframes rainbowExpand {
+	0%
+	{-webkit-transform: scaleX(0);}
+	70%
+	{-webkit-transform: scaleX(0.5); opacity: 1;}
+	99%
+	{-webkit-transform: scaleX(0.5); opacity: 0; display: block;}
+	100%
+	{-webkit-transform: scaleX(0.5); opacity: 0; display: none;}
+}
+@-webkit-keyframes unicornAllow {
+	0% {
+		margin-left: 0%;
+		display: none;
+		-webkit-transform: scale(0) rotateY(180deg);
+	}
+	2% {
+		margin-left: -38%;
+		display: block;
+		-webkit-transform: scale(0.1) rotateY(180deg);
+	}
+	50%
+	{
+		margin-left: -38%;
+		display: block;
+		-webkit-transform: scale(1) rotateY(180deg);
+	}
+	100% {
+		margin-left: -38%;
+		display: block;
+		-webkit-transform: scale(1) rotateY(180deg);
+	}
+}
+
+/* Creation Animations */
+@-webkit-keyframes hammerThrow {
+	0%
+	{-webkit-transform: rotate(0deg);}
+	70%
+	{-webkit-transform: rotate(60deg);}
+	100%
+	{-webkit-transform: rotate(-5deg);}
+}
+@-webkit-keyframes chiselAni {
+	0%
+	{-webkit-transform: translate(0%, 0%);}
+	100%
+	{-webkit-transform: translate(-10%, 8%);}
+}
+@-webkit-keyframes eraseUnicorn {
+	0%
+	{}
+	99%
+	{}
+}
+
+/* Gerbil Animations */
+@-webkit-keyframes gorillaContainer {
+	0%
+	{-webkit-transform: rotateY(180deg) rotateZ(-10deg) translate(100%, -10%); opacity: 1;}
+	40%
+	{-webkit-transform: rotateY(180deg) rotateZ(0deg) translate(0%, 0%); opacity: 1;}
+	90%
+	{-webkit-transform: rotateY(180deg) rotateZ(30deg) translate(-100%, -30%); opacity: 1;}
+	100%
+	{-webkit-transform: rotateY(180deg) rotateZ(50deg) translate(-150%, -50%); opacity: 0;}
+}
+
+/*@-webkit-keyframes david {
+	0%
+	{-webkit-transform: rotate(0);}
+	70%
+	{-webkit-transform:  translate(300%, -30%) rotate(-20deg);}
+	100%
+	{-webkit-transform:  translate(367%, -100%) rotate(-60deg);}
+}*/
+
+@-webkit-keyframes gerbilMove {
+	0%, 100%
+	{-webkit-transform: rotate(-3deg);}
+	50%
+	{-webkit-transform: rotate( 3deg);}
+}
+@-webkit-keyframes boilerWheel {
+	0%
+	{-webkit-transform: rotate(  0deg);}
+	100%
+	{-webkit-transform: rotate(-360deg);}
+}
+
+@-webkit-keyframes steamExpand {
+	0%
+	{-webkit-transform: scale(0); opacity: 0;}
+	50%
+	{-webkit-transform: scale(1); opacity: 1;}
+	100%
+	{-webkit-transform: scale(1.5); opacity: 0;}
+}
+
+
+/* Gerbil Animations */
+@-webkit-keyframes boyIntro {
+	0%
+	{-webkit-transform: scale(6);}
+	100%
+	{-webkit-transform: scale(1);}
+}
+@-webkit-keyframes headTremble {
+	0%, 50%, 100%
+	{-webkit-transform: translateX(0px);}
+	25%, 75%
+	{-webkit-transform: translateX(-1px);}
+}
+
+
+
+
+
+
+
+

@@ -1,5 +1,5 @@
 // _________________________________________________________________________ SceneView
-main.views.castle.SceneView = Backbone.View.extend({
+main.views.castle.mobile.SceneView = Backbone.View.extend({
 	ASSET_LOADED: "asset_loaded",
 	ALL_ASSETS_LOADED: "all_assets_loaded",
 	SCENE_ACTIVE_CLASS: "scene-active",
@@ -23,7 +23,7 @@ main.views.castle.SceneView = Backbone.View.extend({
 	BASE_Z_INDEX: 200,
 	BACK: 'back',
 	//IDLE_START_TIME: 8000,
-	templateLoader: main.utils.templateLoader,
+	templateLoader: main.utils.TemplateLoader,
 	scene_name: "",
 	offset: 0,
 	id: "",
@@ -120,7 +120,7 @@ main.views.castle.SceneView = Backbone.View.extend({
 	    this.images =  $('[data-src]', this.el).toArray();
 
 	    if(!this.images) this.num_images = 0;
-	    else this.num_images = this.images.length;
+	    else this.num_images = this.images.length;  
     },
 	// ----------------- setSounds
     setSounds: function(arr) {
@@ -177,30 +177,32 @@ main.views.castle.SceneView = Backbone.View.extend({
 		    var self = this;
 		    var cur_sound_model = this.sounds[0];
 	        	
-	        main.router.mainView.storyView.audio_el.attr('src', cur_sound_model.get("src"));
+	        main.router.mainView.castleView.audio_el.attr('src', cur_sound_model.get("src"));
+	        console.log('cur_sound_model.get("src") = ' + cur_sound_model.get("src"));
+	        
 		    //play the audio
-		    main.router.mainView.storyView.audio_el.get(0).load();
+		    main.router.mainView.castleView.audio_el.get(0).load();
 		   // $(self.el).trigger(this.SHOW_AUDIO_LOADER);
 
 			//set unique timeout per scene
 		    this.playAudioUnique();
 			
-			$(main.router.mainView.storyView.audio_el.get(0)).on('loadeddata', function(){
+			$(main.router.mainView.castleView.audio_el.get(0)).on('loadeddata', function(){
 				$(this).off('loadeddata');
 				self.can_play_sound = true;
 				//self.deactivate();
 				//$(self.el).trigger(self.HIDE_AUDIO_LOADER);
 				console.log("loadSound CANPLAY");
 			});
-			$(main.router.mainView.storyView.audio_el.get(0)).on('error', function(){
+			$(main.router.mainView.castleView.audio_el.get(0)).on('error', function(){
 			    //continue even if error
 			    console.log("loadSound ERROR");
 			    $(this).off();
 		    });
-		    $(main.router.mainView.storyView.audio_el.get(0)).on('stalled', function(){
+		    $(main.router.mainView.castleView.audio_el.get(0)).on('stalled', function(){
 		    	console.log("loadSound stalled");
 		    });
-		     $(main.router.mainView.storyView.audio_el.get(0)).on('suspend', function(){
+		     $(main.router.mainView.castleView.audio_el.get(0)).on('suspend', function(){
 		    	console.log("loadSound suspend ");
 		    });
 	    }
@@ -227,8 +229,9 @@ main.views.castle.SceneView = Backbone.View.extend({
     },
     // ----------------- loadImages
     loadImages: function() {
+	    console.log("loadImages");
 	    var self = this;
-	    if(this.num_images == 0 ) this.handleLoadSoundsComplete();
+	    if( this.num_images == 0 ) this.handleLoadSoundsComplete();
 	    //if images already loaded move on with loading sounds	    
 	    $(this.el).loadImages({
 		      imgLoadedClb: function(){ $(self.el).trigger(self.ASSET_LOADED); }, // Triggered when an image is loaded. ('this' is the loaded image)

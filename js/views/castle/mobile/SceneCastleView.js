@@ -1,5 +1,5 @@
 // _________________________________________________________________________ SceneCastleView
-main.views.SceneCastleView = main.views.castle.SceneView.extend({
+main.views.castle.mobile.SceneCastleView = main.views.castle.mobile.SceneView.extend({
 	FADE_CLASS: "fade-fast",
 	name: "scene-castle",
     // ----------------- initialize
@@ -28,9 +28,9 @@ main.views.SceneCastleView = main.views.castle.SceneView.extend({
 	    setTimeout(function(){
 		    //haven't hit the can play sound event yet
 		    //do not do not play the sound
-		    if(self.can_play_sound) main.router.mainView.storyView.audio_el.get(0).play();
+		    if(self.can_play_sound) main.router.mainView.castleView.audio_el.get(0).play();
 		     setTimeout(function(){
-				 if(!self.can_play_sound) main.router.mainView.storyView.audio_el.get(0).pause();
+				 if(!self.can_play_sound) main.router.mainView.castleView.audio_el.get(0).pause();
 			 }, 1500);
 		}, 3000);
     }, 

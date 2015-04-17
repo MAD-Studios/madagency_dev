@@ -1,12 +1,14 @@
 // _________________________________________________________________________ FooterView
 main.views.FooterView = Backbone.View.extend({
+    BTN_SELECTOR_SUFFIX: "-btn",
 	events: {
-		'click .method-btn' : 'onMethodBtnClick',
-		'click .how-btn' : 'onHowBtnClick',
-		'click .work-btn' : 'onWorkBtnClick',
-		'click .team-btn' : 'onTeamBtnClick',
-		'click .disciplines-btn' : 'onDisciplinesBtnClick',
-		'click .contact-btn' : 'onContactBtnClick'
+		'click .logo' : 'onLogoClick',
+        'click #init-btn' : 'onBtnClick',
+		'click #how-btn' : 'onBtnClick',
+		'click #work-btn' : 'onBtnClick',
+		'click #team-btn' : 'onBtnClick',
+		'click #disciplines-btn' : 'onBtnClick',
+		'click #contact-btn' : 'onBtnClick'
 	},
     // ----------------- initialize
     initialize: function() {
@@ -21,6 +23,31 @@ main.views.FooterView = Backbone.View.extend({
 	// ----------------- posize
     posize: function() {
 	},
+    // ----------------- onBtnClick
+    onBtnClick: function(event) {
+    	console.log("onBtnClick -------- ");
+        //$(this.el).trigger(main.events.Event.ENABLE_DOCUMENT_SCROLL);
+        
+    	if($(event.currentTarget).attr("id")) {
+	    	var id = $(event.currentTarget).attr("id");
+	    	id = id.replace(this.BTN_SELECTOR_SUFFIX, "");
+    	}
+    	
+        main.router.navigate(id, {trigger: true});
+        return false;
+    },
+    // ----------------- onLogoClick
+    onLogoClick: function(event) {
+        if (Modernizr.history) main.router.navigate('work', {trigger: false});
+	    main.router.navigate('', {trigger: true});
+	    return false;
+    }
+    // ----------------- onLogoClick
+    /*onLogoClick: function(event) {
+        if (Modernizr.history) main.router.navigate('work', {trigger: false});
+	    main.router.navigate('', {trigger: true});
+	    return false;
+    }
 	// ----------------- onHowBtnClick
     onMethodBtnClick: function(event) {
 	    main.router.navigate('', {trigger: true});
@@ -50,5 +77,5 @@ main.views.FooterView = Backbone.View.extend({
     onContactBtnClick: function(event) {
 	    main.router.navigate('contact', {trigger: true});
 	    return false;
-    }
+    }*/
 });

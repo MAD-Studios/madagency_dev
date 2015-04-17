@@ -13,14 +13,9 @@ main.views.corporate.CorporateView = main.views.CorporateView.extend({
 		$(this.mainNavContainerView.el).on(this.mainNavContainerView.ANIMATE_TO_MOVEABLE, function(){
 	        self.headerView.darkenBackground();
         });
-        
-        //!!!!!!!!!!!!!!!!!
-        /*$(this.paneContainerView.el).on(this.paneContainerView.METHOD_PANE_SUBMIT, function(event){
-	        $(self.el).trigger(self.CORPORATE_SUBMIT);
-        });*/
     },
     // ----------------- afterOnScroll
-    afterOnScroll: function() {
+    afterOnScroll: function(scroll_top) {
         this.mainNavContainerView.checkPos(scroll_top);
     },
     // ----------------- beforePosize

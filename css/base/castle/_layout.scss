@@ -13,7 +13,6 @@ $xxLgMargin: 60px;
 /*----------------- DIMS  */
 $contentWidth: 960px;
 
-
 .skrollable {
 	/*
 	 * First-level skrollables are positioned relative to window
@@ -42,7 +41,6 @@ $contentWidth: 960px;
 	 */
 	position:static;
 }
-
 .castle{
 	position: fixed;
 	top:0;
@@ -63,19 +61,10 @@ $contentWidth: 960px;
 		width: 100%;
 		max-width: none !important;
 	}
+	img{
+    	max-width: none;
+	}
 }
-/*.gold-bg{
-	position: absolute;
-	min-width: 100%;
-	background-color: $darkGold;
-	-webkit-transform: translate3d(0,0,0);
-	-moz-transform: translate3d(0,0,0);
-    -o-transform: translate3d(0,0,0);
-    -ms-transform: translate3d(0,0,0);
-    transform: translate3d(0,0,0);
-    -webkit-backface-visibility: hidden;
-    z-index: 500;
-}*/
 .transition{
 	position: absolute;
 	display: block;
@@ -87,6 +76,12 @@ $contentWidth: 960px;
 	   -moz-transition: opacity 1.2s; 
 	     -o-transition: opacity 1.2s; 
 	        transition: opacity 1.2s; 
+}
+.fade-med{
+	-webkit-transition: opacity 0.6s; 
+	   -moz-transition: opacity 0.6s; 
+	     -o-transition: opacity 0.6s; 
+	        transition: opacity 0.6s; 
 }
 .fade-fast{
 	-webkit-transition: opacity 0.5s; 
@@ -105,50 +100,18 @@ $contentWidth: 960px;
 	     -o-transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); 
 	        transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); /* easeOutExpo */
 }
+.scene-transition{
+	-webkit-transition: all 2.0s cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	   -moz-transition: all 2.0s cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	     -o-transition: all 2.0s cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	        transition: all 2.0s cubic-bezier(0.190, 1.000, 0.220, 1.000); /* easeOutExpo*/
 
+	-webkit-transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	   -moz-transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	     -o-transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	        transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); /* easeOutExpo */
+}
 
-/*.stage-left{
-	-webkit-transform: translate3d(-100%,0,0);
-	-moz-transform: translate3d(-100%,0,0);
-    -o-transform: translate3d(-100%,0,0);
-    -ms-transform: translate3d(-100%,0,0);
-    transform: translate3d(-100%,0,0);
-}
-.stage-center{
-	-webkit-transform: translate3d(0,0,0);
-	-moz-transform: translate3d(0,0,0);
-    -o-transform: translate3d(0,0,0);
-    -ms-transform: translate3d(0,0,0);
-    transform: translate3d(0,0,0);
-}
-.stage-right{
-	-webkit-transform: translate3d(100%,0,0);
-	-moz-transform: translate3d(100%,0,0);
-    -o-transform: translate3d(100%,0,0);
-    -ms-transform: translate3d(100%,0,0);
-    transform: translate3d(100%,0,0);
-}*/
-/*.stage-left{
-	-webkit-transform: translate(-100%,0);
-	-moz-transform: translate(-100%,0);
-    -o-transform: translate(-100%,0);
-    -ms-transform: translate(-100%,0);
-    transform: translate(-100%,0);
-}
-.stage-center{
-	-webkit-transform: translate(0,0);
-	-moz-transform: translate(0,0);
-    -o-transform: translate(0,0);
-    -ms-transform: translate(0,0);
-    transform: translate(0,0);
-}
-.stage-right{
-	-webkit-transform: translateX(100%);
-	-moz-transform: translateX(100%);
-    -o-transform: translateX(100%);
-    -ms-transform: translateX(100%);
-    transform: translateX(100%);
-}*/
 .stage-left{
 	left: -100%;
 }

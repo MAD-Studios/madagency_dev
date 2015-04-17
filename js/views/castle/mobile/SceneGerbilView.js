@@ -1,5 +1,5 @@
 // _________________________________________________________________________ SceneGerbilView
-main.views.SceneGerbilView = main.views.castle.SceneView.extend({
+main.views.castle.mobile.SceneGerbilView = main.views.castle.mobile.SceneView.extend({
 	SCENE_TRANSITION_CLASS: "scene-transition",
 	STATE_LEFT: "state-left",
 	STATE_GERBIL: "state-gerbil",
@@ -68,9 +68,9 @@ main.views.SceneGerbilView = main.views.castle.SceneView.extend({
     playAudioUnique: function() {
 	    var self = this;
 	    //setTimeout(function(){
-		main.router.mainView.storyView.audio_el.get(0).play();
+		main.router.mainView.castleView.audio_el.get(0).play();
 		 setTimeout(function(){
-			 if(!self.can_play_sound) main.router.mainView.storyView.audio_el.get(0).pause();
+			 if(!self.can_play_sound) main.router.mainView.castleView.audio_el.get(0).pause();
 		 }, 2000);
 		//}, 2500);
     }, 

@@ -1,5 +1,5 @@
 // _________________________________________________________________________ SceneModel
-main.models.SceneModel = Backbone.Model.extend({
+main.models.castle.mobile.SceneModel = Backbone.Model.extend({
      // set vars
      defaults: {
          "id": -1,
@@ -14,8 +14,8 @@ main.models.SceneModel = Backbone.Model.extend({
 });
 
 // _________________________________________________________________________ SceneCollection
-main.models.SceneCollection = Backbone.Collection.extend({
-   model: main.models.SceneModel,
+main.models.castle.mobile.SceneCollection = Backbone.Collection.extend({
+   model: main.models.castle.mobile.SceneModel,
    scenes: [
    	   { name:"scene-swipe-instruction" },
 	   { name:"scene-castle" },

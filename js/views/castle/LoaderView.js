@@ -54,7 +54,6 @@ main.views.castle.LoaderView = Backbone.View.extend({
 	},
 	// ----------------- initModel
     initModel: function() {
-            console.log("LoaderView ---- initModel");
 	    var self = this;
 	    //when the model's loaded ratio changes
 	    //update the loaded ratio indicator
@@ -87,7 +86,7 @@ main.views.castle.LoaderView = Backbone.View.extend({
     createLoaderInfo: function() {
 	    //create a container for the 
 	    //loaded ratio indicator
-	    this.loaderInfoContainer = $('<div class="info-container"></div>');
+	    this.loaderInfoContainer = $('<div class="info-container row-absolute"></div>');
 	    $(this.el).append(this.loaderInfoContainer);
 	    //create the loaded ratio indicator
 	    //loaded_ratio_indicator_copy
@@ -105,11 +104,30 @@ main.views.castle.LoaderView = Backbone.View.extend({
 	// ----------------- createRatioIndicator
     createRatioIndicator: function() {
 	    this.loadedRatioIndicator = $('<div class="loaded-ratio-indicator"></div>');
-	    this.loadedRatioIndicatorTextContainer = $('<div class="loaded-ratio-indicator-text-cta"></div>');
+	    this.loadedRatioIndicatorTextContainer = $('<div class="loaded-ratio-indicator-text-cnt"></div>');
 	    this.loadedRatioIndicator.append(this.loadedRatioIndicatorTextContainer);
-	    this.loadedRatioIndicatorActivityIndicator = $('<div class="activity-indicator"></div>');
-	    this.loadedRatioIndicator.append(this.loadedRatioIndicatorActivityIndicator);
-	    this.loadedRatioIndicatorActivityIndicator.activity({segments: 8, width:3, space: 0, length: 5, color: '#333e48', valign:'top', align:'left', padding:17});
+	    this.loadedRatioIndicatorActivityIndicatorContainer = $('<div class="activity-indicator-cnt"></div>');
+	    this.loadedRatioIndicator.append(this.loadedRatioIndicatorActivityIndicatorContainer);
+	    
+	    var opts = {
+            lines: 8, // The number of lines to draw
+            length: 3, // The length of each line
+            width: 3, // The line thickness
+            radius: 8, // The radius of the inner circle
+            corners: 0, // Corner roundness (0..1)
+            color: '#333e48', // #rgb or #rrggbb or array of colors
+            speed: 1, // Rounds per second
+            trail: 60, // Afterglow percentage
+            //shadow: false, // Whether to render a shadow
+            //hwaccel: false, // Whether to use hardware acceleration
+            className: 'activity-indicator', // The CSS class to assign to the spinner
+            //zIndex: 2e9, // The z-index (defaults to 2000000000)
+            top: '50%', // Top position relative to parent
+            left: '50%' // Left position relative to parent
+        };        
+        var spinner = new Spinner(opts).spin();
+        this.loadedRatioIndicatorActivityIndicatorContainer.append($(spinner.el));
+	    
 	    var to_x = (this.loaderInfoContainer.outerWidth() - this.loadedRatioIndicator.outerWidth())/2;
 		this.loadedRatioIndicator.css('left', to_x + 'px');
 	    this.loadedRatioIndicator.css('visibilty', 'hidden');
@@ -154,7 +172,8 @@ main.views.castle.LoaderView = Backbone.View.extend({
             letter_el.addClass(this.FADE_CLASS);
             this.addLetter(letter_el, delay);
             if(this.model.get("loadedRatio") == 1){
-                this.loadedRatioIndicatorActivityIndicator.remove();
+                //!!!!!!!!!!!!!!!!!!!!!!!!
+                //this.loadedRatioIndicatorActivityIndicator.remove();
             }
         }
         self.ratio_indicator_num_letters = num_letters_to_show;
@@ -258,7 +277,7 @@ main.views.castle.LoaderView = Backbone.View.extend({
     },
      // ----------------- stopLoader
     stopLoader: function() {
-	    var self = this;
+	    /*var self = this;
 	    //clear the generate rainbow timer
 	    //if basic loader hasn't
 	    //played out
@@ -267,7 +286,7 @@ main.views.castle.LoaderView = Backbone.View.extend({
 			    this.completeStopLoader();
 		    }
 	    }
-	    this.is_stopped = true;
+	    this.is_stopped = true;*/
 	},
     // ----------------- completeStopLoader
     completeStopLoader: function() {
@@ -382,7 +401,7 @@ main.views.castle.LoaderView = Backbone.View.extend({
 		}
 	    
 	    setTimeout(function(){
-		    self.loadedRatioIndicatorActivityIndicator.remove();
+		    //self.loadedRatioIndicatorActivityIndicator.remove();
 			for(var i=add_letter_start;i<add_letter_end;i++){
 				letter_el = self.loadedRatioIndicatorTextContainer.children().eq(i);
 				letter_el.css('opacity', '1');
@@ -522,7 +541,6 @@ main.views.castle.LoaderView = Backbone.View.extend({
 							  OTransform: 'translateY(' + to_y + 'px)',
 							  msTransform: 'translateY(' + to_y + 'px)'});  
      
-							  
 	  setTimeout(function(){
 		  self.rainbowContainer_el.css('visibilty', 'hidden');
 	      self.rainbowContainer_el.remove();
@@ -541,13 +559,11 @@ main.views.castle.LoaderView = Backbone.View.extend({
 			self.goldGrad_el.off('transitionend webkitTransitionEnd oTransitionEnd');
 			self.totalHide();
 		});
-         //setTimeout(function(){
-	        self.goldGrad_el.css({transform: 'translateY(' + to_y + 'px)',
-	                              MozTransform: 'translateY(' + to_y + 'px)',
-	                              WebkitTransform: 'translateY(' + to_y + 'px)',
-	                              OTransform: 'translateY(' + to_y + 'px)',
-	                              msTransform: 'translateY(' + to_y + 'px)'});
-         //}, 100);
+        self.goldGrad_el.css({transform: 'translateY(' + to_y + 'px)',
+                              MozTransform: 'translateY(' + to_y + 'px)',
+                              WebkitTransform: 'translateY(' + to_y + 'px)',
+                              OTransform: 'translateY(' + to_y + 'px)',
+                              msTransform: 'translateY(' + to_y + 'px)'});
     },
     // ----------------- totalHide
     totalHide: function() {

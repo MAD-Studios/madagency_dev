@@ -1,5 +1,5 @@
 // _________________________________________________________________________ SceneBoyView
-main.views.SceneBoyView = main.views.castle.SceneView.extend({
+main.views.castle.mobile.SceneBoyView = main.views.castle.mobile.SceneView.extend({
 	TOP_Z_INDEX: 999,
 	ANIM_OFFSET: 40,
 	name: "scene-boy",
@@ -36,8 +36,8 @@ main.views.SceneBoyView = main.views.castle.SceneView.extend({
         //add fade class
 		this.answer_el.addClass(this.FADE_CLASS);
 		setTimeout(function(){
-	        self.model = main.router.responseGeneratorModel;
-	        self.answers = self.model.get("answers");
+	        //self.model = main.router.responseGeneratorModel;
+	        self.answers = main.router.responseGeneratorModel.get("answers");
 	        self.setAnswer();
 	        self.prepareForAnimation();
         }, 100);
@@ -77,7 +77,7 @@ main.views.SceneBoyView = main.views.castle.SceneView.extend({
         //also update the model 
         //so that you can send  the answer for reference
         //if the user sends a contact email
-        this.model.set({current_answer: this.answer});
+        main.router.responseGeneratorModel.set({current_answer: this.answer});
 	},
 	// ----------------- onAppend
     onAppend: function() {

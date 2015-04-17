@@ -5,6 +5,7 @@ main.routers.castle.Router = main.routers.Router.extend({
         "enter": "enter",
         "play": "play"
      },
+     is_mobile: false,
      // ----------------- createMainView
      createMainView: function() {
      	this.mainView = new main.views.castle.MainView( {el: $('#main', this.el)} );
