@@ -1,6 +1,6 @@
 .row-float{
 	width: 100%; float:left;
-	position: static;
+	position: static !important;
 }
 .row-absolute{
 	width: 100%; position:absolute;
