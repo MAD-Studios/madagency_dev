@@ -38,6 +38,11 @@ main.views.CorporateView = Backbone.View.extend({
         $(this.paneContainerView.el).on(this.paneContainerView.SCROLL_TO_BOTTOM, function(event, params){
 			self.scrollToBottom();
         });
+        $(this.paneContainerView.el).on(this.paneContainerView.UPDATE_HEIGHT, function(event){
+            setTimeout(function(){
+			 self.posize();
+            }, 400);
+        });
     },
     // ----------------- onScroll
     onScroll: function() {
@@ -65,6 +70,8 @@ main.views.CorporateView = Backbone.View.extend({
 	    this.paneContainerView.posize();
 	    
 	    var to_height = $(this.paneContainerView.el).outerHeight() + $('#footer', this.el).outerHeight(); 
+        console.log("$(this.paneContainerView.el).outerHeight() = " + $(this.paneContainerView.el).outerHeight());
+        console.log("$('#footer', this.el).outerHeight() = " + $('#footer', this.el).outerHeight());
 	    $(this.el).css('height', to_height + 'px');
     },
     // ----------------- unfixHeader

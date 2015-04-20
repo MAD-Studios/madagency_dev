@@ -81,6 +81,7 @@ main.views.MainNavContainerView = Backbone.View.extend({
 	   //if does not have class top-sticky
 	   //position it at the bottom of the window
 	   this.default_height = $(this.el).outerHeight();
+       console.log("--------- this.default_height = " + this.default_height);
 	   this.default_top = $(window).height() - this.default_height;
 	   if(this.default_top < this.MIN_TOP) this.default_top = this.MIN_TOP;
 	   if( !$(this.el).hasClass(this.TOP_STICKY_CLASS) ){
@@ -183,7 +184,6 @@ main.views.MainNavContainerView = Backbone.View.extend({
     },
     // ----------------- markBtn
     markBtn: function(btn_id, delay) {
-        console.log("markBtn ------- btn_id = " + btn_id);
 	    var self = this;
 	    var attr_btn_id = "";
 	    clearTimeout(this.markBtnTimeout);
@@ -192,11 +192,6 @@ main.views.MainNavContainerView = Backbone.View.extend({
 		    this.markBtnTimeout = setTimeout(function(){
 			    if( !main.router.autoScrolling ){
 				    $('.nav-btn', self.el).each(function(){
-				        //!!!!!!!!!!!!!!!!!!!!!!!!!
-				        //instead grab the id
-				        //and check it
-				        //!!!!!!!!!!!!!!!!!!!!!!!!
-				        
 				        attr_btn_id = $(this).attr('id');
 				        if(attr_btn_id.indexOf(btn_id) > -1){
 						     $(this).addClass('active');
@@ -214,7 +209,9 @@ main.views.MainNavContainerView = Backbone.View.extend({
 	    else{
 			if( !main.router.autoScrolling ){
 			    $('.nav-btn', self.el).each(function(){
-				    if($(this).hasClass(btn_id + self.BTN_CLASS_END_STR, self.el)){
+				    //if($(this).hasClass(btn_id + self.BTN_CLASS_END_STR, self.el)){
+                    attr_btn_id = $(this).attr('id');
+				    if(attr_btn_id.indexOf(btn_id) > -1){
 						$(this).addClass('active');
 						 TweenLite.to(this, 1, {height:self.default_nav_btn_height, ease: Expo.easeOut});
 				    } 

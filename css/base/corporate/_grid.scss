@@ -5,12 +5,11 @@ $rowPadding: 35px;
 $xSmRowPadding: $smMargin;
 
 .row {
-  max-width: $rowMaxWidth;
   padding-left: $rowPadding;
   padding-right: $rowPadding;
 }
-.row-absolute{
-	max-width: $rowMaxWidth;
+.row-float {
+    max-width: none;
 }
 .columns,
 .column {

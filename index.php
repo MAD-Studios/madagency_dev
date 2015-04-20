@@ -21,7 +21,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
     <script src="js/vendor/jquery.ui.map.full.min.js" type="text/javascript"></script>
     <script src="js/vendor/jquery.activity-indicator-1.0.0.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="//use.typekit.net/ntj1viz.js"></script>
+    <script src="//use.typekit.net/ntj1viz.js" type="text/javascript"></script>
     <script src="js/vendor/underscore-min.js" type="text/javascript"></script>
     <script src="js/vendor/backbone-min.js" type="text/javascript"></script>
     <script src="js/vendor/greensock/TweenLite.min.js"></script>
@@ -29,7 +29,7 @@
     <script src="js/vendor/greensock/EasePack.min.js"></script>
     <script src="js/vendor/greensock/ScrollToPlugin.min.js"></script>
     <script src="js/vendor/jquery-image-loader.js"></script>    
-    <script src="../js/vendor/fastclick.js" type="text/javascript"></script>
+    <script src="js/vendor/fastclick.js" type="text/javascript"></script>
     
     <script src="js/main.js" type="text/javascript"></script>
     <script src="js/corporate.js" type="text/javascript"></script>
@@ -95,8 +95,6 @@
 								<h2>Yes, we can help you acquire new customers.</h2>
 								<h2>Yes, we can design a kick-ass logo for your business.</h2>
 								<h2>Yes, we can design a super-corporate logo too.</h2>
-								<h2>Yes, reluctantly, we can make that logo bigger.</h2>
-								<h2>Yes, we can build you a new web presence.</h2>
 								<h2>Yes, reluctantly, we can make that logo bigger.</h2>
 								<h2>Yes, we can build you a new web presence.</h2>
 								<h2>Yes, we can build you a website too.</h2>
@@ -328,9 +326,15 @@
             
                 <div class="row row-content" id="contact-form">
                     <div class="column large-6 small-12">
-                        <div class="input-container shadow-bordered shadow-bordered-lt-blue row-float"><p class="row-float"><i>Your Name</i></p><input class="row-float" id="input-name" /></div>
-                        <div class="input-container shadow-bordered shadow-bordered-lt-blue row-float"><p class="row-float"><i>Your E-mail</i></p><input class="row-float" id="input-email" /></div>
-				        <div class="input-container shadow-bordered shadow-bordered-lt-blue row-float"><p class="row-float"><i>Your Industry</i></p><input class="row-float" id="input-industry" /></div>
+                        <div class="input-container shadow-bordered shadow-bordered-lt-blue row-float">
+                            <p class="row-float"><i>Your Name</i></p><input class="row-float" id="input-name" />
+                        </div>
+                        <div class="input-container shadow-bordered shadow-bordered-lt-blue row-float">
+                            <p class="row-float"><i>Your E-mail</i></p><input class="row-float" id="input-email" />
+                        </div>
+				        <div class="input-container shadow-bordered shadow-bordered-lt-blue row-float">
+                            <p class="row-float"><i>Your Industry</i></p><input class="row-float" id="input-industry" />
+                        </div>
                     </div>
                     <div class="column large-6 small-12">
                         <div class="input-container input-container-ta shadow-bordered shadow-bordered-lt-blue row-float"><p class="row-float"><i>Your Business’ Challenge</i></p><textarea class="row-float" id="input-challenge"></textarea></div>
@@ -361,8 +365,35 @@
 	                <li><a class="btn nav-btn" id="disciplines-btn" href="">DISCIPLINES</a></li>
 	                <li><a class="btn nav-btn" id="contact-btn" href="">CONTACT US</a></li>
 	            </ul>
-	            <div id="enter-story-btn-container" class="shadow-bordered shadow-bordered-blue"><a id="enter-story-btn" class="btn-blue btn" href="castle">ENTER CREATIVE CASTLE</a></div>
+	            <div id="enter-story-btn-container" class="shadow-bordered shadow-bordered-blue">
+                    <a id="enter-story-btn" class="btn-blue btn" href="castle">ENTER CREATIVE CASTLE</a>
+                </div>
 			</div>
+        </div>
+	</div>
+        
+    <!------------ SMALL MENU ------------->
+	<div class="small-menu show-for-small hide-for-large-up">
+		<div class="nav-container">
+			<div class="header"></div>
+			<ul class="main-nav">
+				<li><a class="btn btn-how" href="/how">HOW WE ROLL</a></li>
+				<li><a class="btn btn-work" href="/work">THE WORK</a></li>
+				<li><a class="btn btn-team" href="/team">OUR TEAM</a></li>
+				<li><a class="btn btn-disciplines" href="/disciplines">DISCIPLINES</a></li>
+				<li><a class="btn btn-contact" href="/contact">CONTACT US</a></li>
+			</ul>
+			<div class="social-nav-cnt">
+				<a href="#" class="header btn btn-social">SOCIAL<img class="arrow" src="images/corporate/png/nav-arrow@2x.png" alt="social" /></a>
+				<ul class="social-nav">
+					<li><a class="btn btn-instagram" href="http://instagram.com/madstudiosco" target=_blank><div class="icon-instagram icon"></div></a></li>
+					<li><a class="btn btn-facebook" href="https://www.facebook.com/MadStudiosCo" target=_blank><div class="icon-facebook icon"></div></a></li>
+					<li><a class="btn btn-twitter" href="https://twitter.com/madstudiosco" target=_blank><div class="icon-twitter icon"></div></a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="btn-nav-cnt">
+            <a href="#" class="btn btn-nav btn-blue"><img class="arrow" src="images/corporate/png/nav-arrow@2x.png" alt="open menu" /></a>
         </div>
 	</div>
 	

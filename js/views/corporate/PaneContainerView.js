@@ -32,12 +32,16 @@ main.views.corporate.PaneContainerView = main.views.PaneContainerView.extend({
         
         //work pane ----
         $(this.workPaneView.el).on(this.workPaneView.VIDEO_ADDED, function(event){
-	        self.initPanes();
+            console.log("this.workPaneView.VIDEO_ADDED *************");
+            self.posize();
+            self.updateHeight();
         });
 
         //contact pane ----
         $(this.contactPaneView.el).on(this.contactPaneView.RESIZE, function(event){
-	        self.initPanes();
+	        //self.initPanes();
+            self.posize();
+            self.updateHeight();
         });
         $(this.contactPaneView.el).on(this.contactPaneView.SHOW_MESSAGE, function(event){
 	        //scrollto bottom of the screen

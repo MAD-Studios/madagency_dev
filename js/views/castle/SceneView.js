@@ -87,9 +87,7 @@ main.views.castle.SceneView = Backbone.View.extend({
 	    var self = this;
 	    self.setImages();
         self.setSounds(self.model.get("sounds"));
-        
-        console.log('self.model.get("sounds").length = ' + self.model.get("sounds").length);
-        
+                
         self.num_assets = self.num_sounds + self.num_images;
 	    setTimeout(function(){
 	        $(self.el).trigger(self.INIT_ASSETS, [self.num_assets]);
@@ -109,7 +107,7 @@ main.views.castle.SceneView = Backbone.View.extend({
 	    $(this.el).loadImages({
 		      imgLoadedClb: function(){ $(self.el).trigger(self.ASSET_LOADED); }, // Triggered when an image is loaded. ('this' is the loaded image)
 			  allLoadedClb: function(){ self.loadSounds(); }, // Triggered when all images are loaded. ('this' is the wrapper in which all images are loaded, or the image if you ran it on one image)
-			  imgErrorClb:  function(){ /*self.loadSounds();*/ } // Triggered when the image gives an error. Useful when you want to add a placeholder instead or remove it. ('this' is the loaded image)
+			  imgErrorClb:  function(){ } // Triggered when the image gives an error. Useful when you want to add a placeholder instead or remove it. ('this' is the loaded image)
 	    });
     },
     // ----------------- loadSounds

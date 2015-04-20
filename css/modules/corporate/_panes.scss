@@ -10,7 +10,9 @@ $contactPaneInputMaxWidth: 400px;
 	}
 }
 .pane-title{
-	width: 140px; margin: 0 auto;	
+	width: 140px; 
+    height: em(28px);
+    margin: 0 auto;	
 	background-color: $navy;
 	padding: 3px $xSmMargin;
 	text-align: center;

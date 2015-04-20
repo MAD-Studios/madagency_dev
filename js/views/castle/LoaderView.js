@@ -110,14 +110,14 @@ main.views.castle.LoaderView = Backbone.View.extend({
 	    this.loadedRatioIndicator.append(this.loadedRatioIndicatorActivityIndicatorContainer);
 	    
 	    var opts = {
-            lines: 8, // The number of lines to draw
-            length: 3, // The length of each line
-            width: 3, // The line thickness
-            radius: 8, // The radius of the inner circle
+            lines: 7, // The number of lines to draw
+            length: 2, // The length of each line
+            width: 4, // The line thickness
+            radius: 7, // The radius of the inner circle
             corners: 0, // Corner roundness (0..1)
             color: '#333e48', // #rgb or #rrggbb or array of colors
-            speed: 1, // Rounds per second
-            trail: 60, // Afterglow percentage
+            speed: 1.4, // Rounds per second
+            trail: 50, // Afterglow percentage
             //shadow: false, // Whether to render a shadow
             //hwaccel: false, // Whether to use hardware acceleration
             className: 'activity-indicator', // The CSS class to assign to the spinner
@@ -277,7 +277,7 @@ main.views.castle.LoaderView = Backbone.View.extend({
     },
      // ----------------- stopLoader
     stopLoader: function() {
-	    /*var self = this;
+	    var self = this;
 	    //clear the generate rainbow timer
 	    //if basic loader hasn't
 	    //played out
@@ -286,7 +286,7 @@ main.views.castle.LoaderView = Backbone.View.extend({
 			    this.completeStopLoader();
 		    }
 	    }
-	    this.is_stopped = true;*/
+	    this.is_stopped = true;
 	},
     // ----------------- completeStopLoader
     completeStopLoader: function() {

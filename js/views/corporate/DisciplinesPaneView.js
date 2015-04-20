@@ -12,8 +12,8 @@ main.views.corporate.DisciplinesPaneView = main.views.PaneView.extend({
     beforeRender: function() {
         console.log("DisciplinesPaneView ---- beforeRender");
         var self = this;
-        /*setTimeout(function(){
-	        self.offset =  -$('.spacer', self.el).outerHeight();
-        }, 100);*/
+        setTimeout(function(){
+	        self.offset =  -$('.divider', self.el).outerHeight();
+        }, 100);
 	}
 });

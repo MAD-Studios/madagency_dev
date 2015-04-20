@@ -5,6 +5,7 @@ main.views.PaneContainerView = Backbone.View.extend({
 	INTRO_PANE_SUBMIT: "intro_pane_submit",
 	INTRO_PANE_IDLE: "intro_pane_idle",
 	SCROLL_TO_BOTTOM: "scroll_to_bottom",
+    UPDATE_HEIGHT: "update_height",
 	DOWN: "down",
 	UP: "up",
 	offset: 0,
@@ -22,7 +23,6 @@ main.views.PaneContainerView = Backbone.View.extend({
         console.log("PaneContainerView ---- render");
         var self = this;
         this.renderCommonParts();
-        
         return this;
 	},
     // ----------------- renderCommonParts
@@ -69,6 +69,10 @@ main.views.PaneContainerView = Backbone.View.extend({
 		    pane_model = new main.models.PaneModel({id: i+1, el_id: $(pane_view.el).attr('id'), posY: pos_top, endPosY: end_pos_top, view: pane_view}); 
 		    self.paneCollection.add(pane_model);
 	    }
+    },
+    // ----------------- updateHeight
+    updateHeight: function() {
+        $(this.el).trigger(this.UPDATE_HEIGHT);
     },
     // ----------------- posize
     posize: function() {
@@ -118,7 +122,7 @@ main.views.PaneContainerView = Backbone.View.extend({
 	},
     // ----------------- scrollToTop
     scrollToTop: function() {
-		    TweenLite.to(window, 1.4, {scrollTo:{y:0, autoKill:false}, ease:Expo.easeOut, onStart:self.onAutoScrollStart, onComplete:self.onAutoScrollComplete});
+        TweenLite.to(window, 1.4, {scrollTo:{y:0, autoKill:false}, ease:Expo.easeOut, onStart:self.onAutoScrollStart, onComplete:self.onAutoScrollComplete});
     },
     // ----------------- scrollWindowTo
     scrollWindowTo: function(id, animate) {
@@ -136,7 +140,7 @@ main.views.PaneContainerView = Backbone.View.extend({
 		  else $(window).scrollTop(scroll_to_y);
 	  }
     },
-     // ----------------- scrollToBottom
+    // ----------------- scrollToBottom
     scrollToBottom: function(el) {
 	  var self = this;
 	  var scroll_to_y = $(this.el).height() - $(window).height() + (this.offset*2);
@@ -148,10 +152,7 @@ main.views.PaneContainerView = Backbone.View.extend({
     },
     // ----------------- beginHide
     beginHide: function() {
-    	console.log("PaneContainerView ------- beginHide ----- ");
 	    this.scrollToTop();
-	    //this.introPaneView.beginHide();
-	    console.log("before ------- afterBeginHide ----- ");
 		if(this.afterBeginHide) this.afterBeginHide();
     },
     // ----------------- onAutoScrollStart

@@ -46,17 +46,17 @@ main.routers.corporate.Router = main.routers.Router.extend({
          this.handleRoute("contact", true);
      },
      // ----------------- handleRoute
-     handleRoute: function(id){
+     handleRoute: function(id, enable_doc_scroll){
      	var self = this;
      	if(this.unrouted){
 	         setTimeout(function(){	
-                 self.scrollToPane(id);          
+                 self.scrollToPane(id, enable_doc_scroll);          
 	         }, this.UNROUTED_TIMEOUT);
 	         self.unrouted = false;
          }
          else{
 		     //scroll to the  posY
-		     self.scrollToPane(id);
+		     self.scrollToPane(id, enable_doc_scroll);
 		 }
      },
      // ----------------- scrollToPane
