@@ -19,8 +19,8 @@ main.views.castle.SceneLabView = main.views.castle.SceneView.extend({
         //percentage of
         //the .flask
         setTimeout(function(){
-        if($('#flask-container', self.el).outerHeight() > 0){
-	        var rat = $(window).height()/$('#flask-container', self.el).outerHeight();
+        if($('#flask-ctn', self.el).outerHeight() > 0){
+	        var rat = $(window).height()/$('#flask-ctn', self.el).outerHeight();
 	        var perc = 10 + (rat*rat*5);
 	        if(perc > 85)  perc = 85;
 	        console.log("rat = " + rat);

@@ -3,9 +3,11 @@ main.views.corporate.CorporateView = main.views.CorporateView.extend({
     // ----------------- renderParts
     renderParts: function() {
         var self = this;
-		this.paneContainerView = new main.views.corporate.PaneContainerView({el: $('#pane-container', this.el)});
+		this.paneContainerView = new main.views.corporate.PaneContainerView({el: $('#pane-ctn', this.el)});
+		
+		this.smallMenuView = new main.views.SmallMenuView({el: $('.small-menu', this.el)});
 
-        this.mainNavContainerView = new main.views.MainNavContainerView({el: $('#main-nav-container', this.el)});
+        this.mainNavContainerView = new main.views.MainNavContainerView({el: $('#main-nav-ctn', this.el)});
         this.mainNavContainerView.transition_point = $('#header', this.el).outerHeight();
         $(this.mainNavContainerView.el).on(this.mainNavContainerView.ANIMATE_TO_FIXED, function(){
 	        self.headerView.lightenBackground();
@@ -22,6 +24,7 @@ main.views.corporate.CorporateView = main.views.CorporateView.extend({
     beforePosize: function() {
         this.mainNavContainerView.posize();
         this.paneContainerView.nav_offset = $(this.mainNavContainerView.el).outerHeight();
+        if(this.smallMenuView.posize) this.smallMenuView.posize(); 
     },
     // ----------------- beforePosize
     markNav: function(btn_id, delay) {

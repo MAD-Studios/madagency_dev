@@ -27,7 +27,7 @@ main.views.castle.mobile.SceneFinalView = main.views.castle.mobile.SceneView.ext
 		//first hide the first cta container
 		//this.hideAnswerScreen();
 		//set display to block;
-		this.cta_final_container_el = $('#cta-final-container', this.el);
+		this.cta_final_container_el = $('#cta-final-ctn', this.el);
 		this.cta_final_container_el.css('opacity', '0'); 
 		this.cta_final_container_el.css('display', 'block');
 		this.cta_final_container_el.addClass(this.FADE_SLOW_CLASS);

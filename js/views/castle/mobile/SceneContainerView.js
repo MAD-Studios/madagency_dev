@@ -32,7 +32,7 @@ main.views.castle.mobile.SceneContainerView = Backbone.View.extend({
 	    //to handle sound data
 	    this.audioCollection = new main.models.castle.mobile.AudioCollection();
 	    this.story_is_stopped = false;
-	    //scene-container
+	    //scene-ctn
 	    //set model to the sceneCollection
 	    this.model = new main.models.castle.mobile.SceneCollection();
 	    this.model.setAudio(this.audioCollection);

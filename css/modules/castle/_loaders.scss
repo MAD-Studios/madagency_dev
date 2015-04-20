@@ -2,7 +2,7 @@ $loaderFontColor: $navy;
 $loaderFontSize: 15px;
 
 /* -------------- preload loader assets */
-.preload-container{
+.preload-ctn{
 	position:absolute;
 	overflow: hidden;
 	visibility:hidden;	
@@ -73,7 +73,7 @@ $loaderFontSize: 15px;
 	    -ms-transform: translate3d(0,0,0);
 	    transform: translate3d(0,0,0);
 	}
-	.info-container{
+	.info-ctn{
 		max-width: $contentWidth;
 		width: 100%;
 		position: absolute;
@@ -91,7 +91,7 @@ $loaderFontSize: 15px;
 	    -ms-transform: translate3d(0,0,0);
 	    transform: translate3d(0,0,0);
 	}
-	.ready-msg-cnt{
+	.ready-msg-ctn{
 		position: absolute;
 		width: 300px; height: 60px;
 		text-align: center;
@@ -111,29 +111,30 @@ $loaderFontSize: 15px;
 	}
 	.loaded-ratio-indicator{
 		position: absolute; min-width:1px; height: 75px; 
+		overflow: hidden;
 		-webkit-transform: translate3d(0,0,0);
 		-moz-transform: translate3d(0,0,0);
 	    -o-transform: translate3d(0,0,0);
 	    -ms-transform: translate3d(0,0,0);
 	    transform: translate3d(0,0,0);
 	}
-	.loaded-ratio-indicator-text-cnt{ 
+	.loaded-ratio-indicator-text-ctn{ 
 	    float: left;
 	    h1{
             float: left;
             display: block;	
     	}
     }
-    .activity-indicator-cnt{
+    .activity-indicator-ctn{
         float: left;
         position: relative;
-        width: 25px;
-        height: 25px;
+        width: 28px;
+        height: 28px;
         margin-top: 27px;
-        margin-left: 3px;
+        margin-left: 4px;
     }
 }
-.rainbow-container{
+.rainbow-ctn{
 	position: absolute;
 	top: 0;
 	left: 0;

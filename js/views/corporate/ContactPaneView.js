@@ -286,7 +286,7 @@ main.views.corporate.ContactPaneView = main.views.PaneView.extend({
     showSubmitLoader: function(){
 	    //hid ethe
 	    //hide sunbmit btn
-	    var submit_btn_container_el = $('.btn-submit-container', this.el);
+	    var submit_btn_container_el = $('.btn-submit-ctn', this.el);
 	    var loader_row_el = $('.loader-row', this.el);
 	    TweenLite.to(submit_btn_container_el, 0.25, {opacity:0, overwrite: 2});
 	    loader_row_el.activity({segments: 8, width:2, space: 0, length: 3, color: '#bdd0ff', valign:'top', align:'center', padding:26});
@@ -295,7 +295,7 @@ main.views.corporate.ContactPaneView = main.views.PaneView.extend({
     hideSubmitLoader: function(){
 	    //hide the loader
 	    //show sunbmit btn
-	     var submit_btn_container_el = $('.btn-submit-container', this.el);
+	     var submit_btn_container_el = $('.btn-submit-ctn', this.el);
 	    var loader_row_el = $('.loader-row', this.el);
 	    TweenLite.to(submit_btn_container_el, 0.25, {opacity:1, overwrite: 2});
 	    loader_row_el.activity(false);

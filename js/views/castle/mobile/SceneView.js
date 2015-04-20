@@ -73,7 +73,7 @@ main.views.castle.mobile.SceneView = Backbone.View.extend({
     initTab: function() {
        //also set the height of the tab to fit it's 
 	    //containeing row
-	    var to_height =  $('#text-tab-container', this.text_tab_el).outerHeight();
+	    var to_height =  $('#text-tab-ctn', this.text_tab_el).outerHeight();
 	    //var to_height = $(this.el).outerHeight();
 	    this.text_tab_el.css('height', to_height + 'px');
 	    //also potiion the tab so the that only the tab  shows

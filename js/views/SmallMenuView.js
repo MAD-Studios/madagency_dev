@@ -6,7 +6,8 @@ main.views.SmallMenuView = Backbone.View.extend({
 	TOP_BORDERED_CLASS: "top-bordered",
 	MENU_TRANSITION_CLASS: "menu-transition",
 	MENU_TRANSITION_Y_CLASS: "menu-transition-y",
-	SOCIAL_NAV_TRANSITION_H_CLASS: "social-nav-cnt-transition-h",
+	SOCIAL_NAV_TRANSITION_H_CLASS: "social-nav-ctn-transition-h",
+    BTN_SELECTOR_SUFFIX: "-btn",
 	OFFSET_Y: 12, 
 	OPEN: "open",
 	CLOSE: "close",
@@ -16,13 +17,13 @@ main.views.SmallMenuView = Backbone.View.extend({
 	is_open: false,
 	social_is_shown: false,
 	events: {
-		'click .btn-how' : 'onHowBtnClick',
-		'click .btn-work' : 'onWorkBtnClick',
-		'click .btn-team' : 'onTeamBtnClick',
-		'click .btn-disciplines' : 'onDisciplinesBtnClick',
-		'click .btn-contact' : 'onContactBtnClick',
-		'click .btn-social' : 'onSocialBtnClick',
-		'click .btn-nav': 'onBtnNavClick'
+		'click .toggle-btn' : 'onToggleBtnClick',
+		'click .social-btn' : 'onSocialBtnClick',
+		'click #how-btn' : 'onBtnClick',
+		'click #work-btn' : 'onBtnClick',
+		'click #team-btn' : 'onBtnClick',
+		'click #disciplines-btn' : 'onBtnClick',
+		'click #contact-btn' : 'onBtnClick'
 	},
     // ----------------- initialize
     initialize: function() {
@@ -33,25 +34,24 @@ main.views.SmallMenuView = Backbone.View.extend({
     render: function(eventName) {
         console.log("SmallMenuView ---- render");
         var self = this;
-        this.nav_cnt_el = $('.nav-cnt', this.el);
-        this.social_nav_cnt_el = $('.social-nav-cnt', this.el);
+        this.nav_cnt_el = $('.nav-ctn', this.el);
+        this.social_nav_cnt_el = $('.social-nav-ctn', this.el);
         this.social_nav_cnt_el.addClass(this.SOCIAL_NAV_TRANSITION_H_CLASS);
         this.social_nav_arrow_img_el = $('.arrow', this.social_nav_cnt_el);
         this.social_nav_arrow_img_el.addClass(this.ARROW_TRANSITION_CLASS);
-        this.btn_nav_el = $('.btn-nav', this.el);
-        this.nav_arrow_img_el = $('.arrow', this.btn_nav_el);
+        this.btn_toggle_el = $('.toggle-btn', this.el);
+        this.nav_arrow_img_el = $('.arrow', this.btn_toggle_el);
         this.nav_arrow_img_el.addClass(this.ARROW_TRANSITION_CLASS);
         this.state = this.CLOSE;
         setTimeout(function(){
-	        self.scroll_y_offset = self.btn_nav_el.height();
-        	//self.width_offset = self.nav_cnt_el.width();
+	        self.scroll_y_offset = self.btn_toggle_el.height();
 	        $(self.el).addClass(self.MENU_TRANSITION_CLASS);
         }, 100);
         return this;
 	},
     // ----------------- posize
     posize: function() {
-		var to_w = $(window).width() - this.btn_nav_el.outerWidth();
+		var to_w = $(window).width() - this.btn_toggle_el.outerWidth();
 		var max_w = parseInt( this.nav_cnt_el.css('max-width') );
 		if(to_w > max_w) to_w = max_w;
 		this.nav_cnt_el.width( to_w );
@@ -98,7 +98,7 @@ main.views.SmallMenuView = Backbone.View.extend({
 	    //get current x
 	    var cur_left = parseInt($(this.el).css('left'));
 	    //move this left 
-	    $(this.el).css('left', (cur_left - $(this.btn_nav_el).outerWidth()) + 'px');
+	    $(this.el).css('left', (cur_left - $(this.btn_toggle_el).outerWidth()) + 'px');
 	},	
 	// ----------------- toggleSocial
     toggleSocial: function() {
@@ -109,7 +109,7 @@ main.views.SmallMenuView = Backbone.View.extend({
     showSocial: function() {
     	var self = this;
 	    var to_height = $('.header', this.social_nav_cnt_el).outerHeight() + $('.social-nav', this.el).outerHeight();
-	    //animate the height of the 'social-nav-cnt'
+	    //animate the height of the 'social-nav-ctn'
 	    //to fit header height + social nav height
 	    this.social_nav_cnt_el.css('height', to_height + 'px');
 	    this.social_is_shown = true;
@@ -123,7 +123,7 @@ main.views.SmallMenuView = Backbone.View.extend({
     hideSocial: function() {
 	    var self = this;    
     	var to_height = $('.header', this.social_nav_cnt_el).outerHeight();
-	    //animate the height of the 'social-nav-cnt'
+	    //animate the height of the 'social-nav-ctn'
 	    //to fit header height
 	    this.social_nav_cnt_el.css('height', to_height + 'px');
 	    this.social_is_shown = false;
@@ -138,59 +138,29 @@ main.views.SmallMenuView = Backbone.View.extend({
 	    this.toggleSocial();
 	    return false;
     },
-    // ----------------- onHowBtnClick
-    onHowBtnClick: function(event) {
-	    this.toggleNav();
-	    //setTimeout(function(){
-		    if (Modernizr.history) main.router.navigate('', {trigger: false});
-		    main.router.navigate('how', {trigger: true});
-	    //}, 300);
-	    return false;
-    },
-    // ----------------- onWorkBtnClick
-    onWorkBtnClick: function(event) {
+    // ----------------- onBtnClick
+    onBtnClick: function(event) {
     	this.toggleNav();
-    	//setTimeout(function(){
-	    	if (Modernizr.history) main.router.navigate('', {trigger: false});
-		    main.router.navigate('work', {trigger: true});
-	    //}, 300);	    
-	    return false;
+    	if($(event.currentTarget).attr("id")) {
+	    	var id = $(event.currentTarget).attr("id");
+	    	id = id.replace(this.BTN_SELECTOR_SUFFIX, "");
+    	}
+        $(this.el).trigger(main.events.Event.ENABLE_DOCUMENT_SCROLL);
+        setTimeout(function(){
+            if (Modernizr.history) main.router.navigate('', {trigger: false});
+        	main.router.navigate(id, {trigger: true});
+        }, 200);
+        return false;
     },
-    // ----------------- onHowBtnClick
-    onTeamBtnClick: function(event) {
-	    this.toggleNav();
-	    //setTimeout(function(){	     
-	        if (Modernizr.history) main.router.navigate('', {trigger: false});
-		    main.router.navigate('team', {trigger: true});
-	    //}, 300);	    
-	    return false;
-    },
-    // ----------------- onHowBtnClick
-    onDisciplinesBtnClick: function(event) {
-	    this.toggleNav(); 
-	    //setTimeout(function(){	       
-	        if (Modernizr.history) main.router.navigate('', {trigger: false});
-		    main.router.navigate('disciplines', {trigger: true});
-	    //}, 300);	    
-	    return false;
-    },  
-	// ----------------- onHowBtnClick
-    onContactBtnClick: function(event) {
-	    this.toggleNav();
-	    //setTimeout(function(){	    
-	        if (Modernizr.history) main.router.navigate('', {trigger: false});
-		    main.router.navigate('contact', {trigger: true});
-	    //}, 300);	    
-	    return false;
-    },
-    // ----------------- onBtnNavClick
-    onBtnNavClick: function(event) {
+    // ----------------- onToggleBtnClick
+    onToggleBtnClick: function(event) {
 	    this.toggleNav();
 	    return false;
     },
     // ----------------- checkMenu
     checkMenu: function(scrollTop){
 	    var self = this;
+	    //!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	    clearTimeout(this.hideBorderTimeout);
 	    if(scrollTop >= this.scroll_y_offset){
 		    $(this.el).css('top', this.OFFSET_Y + 'px');

@@ -18,7 +18,7 @@ main.views.castle.SceneGerbilView = main.views.castle.SceneView.extend({
     beforeRender: function() {
         console.log("SceneGerbilView ---- render");
         $(this.el).html(this.template());  
-        this.scene_cta_el = $('.movable-scene-container', this.el);      
+        this.scene_cta_el = $('.movable-scene-ctn', this.el);      
         this.state = this.STATE_DEFAULT;
         return this;
 	},
@@ -45,7 +45,7 @@ main.views.castle.SceneGerbilView = main.views.castle.SceneView.extend({
 	    //set an animate transition class on it
 	    this.scene_cta_el.css('right', to_right + 'px');
 	    //also move each movable 
-	    //div inside the movable-scene-container
+	    //div inside the movable-scene-ctn
 	    $('.movable', this.scene_cta_el).each(function(){
 		    $(this).css('right', to_right + 'px');
 	    });

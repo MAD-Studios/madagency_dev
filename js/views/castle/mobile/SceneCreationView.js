@@ -77,7 +77,7 @@ main.views.castle.mobile.SceneCreationView = main.views.castle.mobile.SceneView.
 	    var self = this;
         $('#scene-creation', this.el).addClass(this.ANIMATE_CLASS);
         //set 3600 timeout to hide unicorn container
-        $('#unicorn-container', this.el).addClass(this.ANIMATE_CLASS);
+        $('#unicorn-ctn', this.el).addClass(this.ANIMATE_CLASS);
 	},
     // ----------------- transitionOut
     transitionOut: function() {

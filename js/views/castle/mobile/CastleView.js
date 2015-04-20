@@ -31,7 +31,7 @@ main.views.castle.mobile.CastleView = Backbone.View.extend({
 		    $(this.el).addClass(this.CASTLE);
 	    }*/
 	    //-------- sceneContainerView
-        this.sceneContainerView = new main.views.castle.mobile.SceneContainerView({el:$('.scene-container', this.el)});
+        this.sceneContainerView = new main.views.castle.mobile.SceneContainerView({el:$('.scene-ctn', this.el)});
         //ALL_SCENE_ASSETS_LOADED
         $(this.sceneContainerView.el).on(this.sceneContainerView.ALL_SCENE_ASSETS_LOADED, function(){
 	        self.stopLoader();
@@ -79,7 +79,7 @@ main.views.castle.mobile.CastleView = Backbone.View.extend({
 	initAudio: function() {
 		console.log("initAudio");
         //create  this.audio_container
-	    this.audio_container = $('<div class="scene-audio-cnt"></div>');
+	    this.audio_container = $('<div class="scene-audio-ctn"></div>');
         $(this.el).append(this.audio_container);
         
         this.audio_el = $('<audio></audio>');

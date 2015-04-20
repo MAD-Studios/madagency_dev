@@ -81,7 +81,7 @@
 <div id="main">
     
 	<!------- preload story loader assets -------->
-    <div class="preload-container">
+    <div class="preload-ctn">
 	    <!-- <div class="preload-unicorn"></div>
 	    <div class="preload-rainbow-end"></div>
 	    <div class="preload-rainbow-solid"></div> -->
@@ -96,7 +96,7 @@
 	<?php include '../inc/header.php';?>
 	
 	<section class="content-sect">
-	<div id="pane-container">
+	<div id="pane-ctn">
 	
 	<!------------ CASTLE GATEWAY ------------->
 	<section class="castle-gateway-sect">
@@ -106,14 +106,14 @@
 					<div class="row-absolute"><div class="logo full-logo"></div></div>
                     <div class="row-absolute"><h1 class="text-shadow white">Welcome to our<br>idea-generator.</h1></div>
                     <div class="row-absolute hide-for-small show-for-medium-up">
-                        <div class="input-w-btn-container">
+                        <div class="input-w-btn-ctn">
                             <div class="shadow-bordered"><input class="input input-method" placeholder="How do I sell more ..."/></div>
                             <div class="shadow-bordered shadow-bordered-blue"><a class="btn btn-blue btn-ask" href="">ENTER</a></div>
                         </div>
                     </div>
                     <div class="row-absolute show-for-small hide-for-medium-up">
-                	   <div class="input-w-btn-container ta-w-btn-container">
-                            <div class="shadow-bordered row-float input-container-ta"><textarea class="input input-ta-method"></textarea></div>
+                	   <div class="input-w-btn-ctn ta-w-btn-ctn">
+                            <div class="shadow-bordered row-float input-ctn-ta"><textarea class="input input-ta-method"></textarea></div>
                             <div class="shadow-bordered shadow-bordered-blue row-float"><a class="btn btn-blue btn-ask" href="">ENTER</a></div>
                         </div>
                     </div>
@@ -131,7 +131,7 @@
 	
 	<!------------ CASTLE ------------->
 	<div class="castle">
-		<div class="scene-container"><div id="skrollr-body"></div></div>
+		<div class="scene-ctn"><div id="skrollr-body"></div></div>
 		<div class="loader"></div>
 	</div>
 </div>

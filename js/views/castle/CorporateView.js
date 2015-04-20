@@ -2,7 +2,7 @@
 main.views.castle.CorporateView = main.views.CorporateView.extend({
     // ----------------- renderParts
     renderParts: function() {
-    	this.paneContainerView = new main.views.castle.PaneContainerView({el: $('#pane-container', this.el)});
+    	this.paneContainerView = new main.views.castle.PaneContainerView({el: $('#pane-ctn', this.el)});
 
         this.modernCheck();
     },

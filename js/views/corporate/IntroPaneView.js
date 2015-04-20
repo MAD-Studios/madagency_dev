@@ -45,7 +45,7 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     	this.scroller_el.scroll(function(){
 	    	self.handleIntroScroll();
     	});
-    	this.arrow_row_el = $('.row-arrow-container', this.el);
+    	this.arrow_row_el = $('.row-arrow-ctn', this.el);
     	this.anim_rows = $('.row-content .column > .row-absolute', this.el);
     	    	
     	this.createOverlay();

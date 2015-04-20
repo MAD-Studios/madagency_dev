@@ -26,7 +26,10 @@ main.views.castle.LoaderView = Backbone.View.extend({
 	min_ratio_update_dealy: 100,
 	cur_ratio_update_delay: 60,
 	ratio_indicator_is_hidden: false,
-	loaded_ratio_indicator_copy: "weeeeeeeeeeeeeeeeeeeeeeeeeeee",
+	remaining_letter_start: 0,
+	remaining_letter_end: 0,
+	num_remaining_added: 0,
+	loaded_ratio_indicator_copy: "weeeeeeeeeeeeeeeeeeeeeeeeeee",
 	info: [
 		"<p>It will be just one moment while we clean our Creative Castle for our very special guest.</p>",
 		"<p>(That’s YOU!)</p>",
@@ -58,12 +61,14 @@ main.views.castle.LoaderView = Backbone.View.extend({
 	    //when the model's loaded ratio changes
 	    //update the loaded ratio indicator
 		this.model.on('change:loadedRatio', function(){
+		    //add the first letter
+		    
 	        self.updateRatioIndicator();
         });
     },
 	// ----------------- createBG
     createBG: function() {
-	    this.rainbowContainer_el = $('<div class="rainbow-container"></div>');
+	    this.rainbowContainer_el = $('<div class="rainbow-ctn"></div>');
 	    $(this.el).append(this.rainbowContainer_el);
 	    this.goldGrad_el = $('<div class="gradient gold"></div>');
 	    this.goldGrad_el_top = $('<div class="top"></div>');
@@ -74,7 +79,7 @@ main.views.castle.LoaderView = Backbone.View.extend({
     },
     // ----------------- createReadyMsg
     createReadyMsg: function() {
-	    this.readyMsgCnt_el = $('<div class="ready-msg-cnt"></div>');
+	    this.readyMsgCnt_el = $('<div class="ready-msg-ctn"></div>');
 	    this.readyMsg_el = $('<div class="ready-msg"><h1>READY<h1></div>');
 	    this.readyMsgCnt_el.append(this.readyMsg_el);
 	    $(this.el).append(this.readyMsgCnt_el);
@@ -86,7 +91,7 @@ main.views.castle.LoaderView = Backbone.View.extend({
     createLoaderInfo: function() {
 	    //create a container for the 
 	    //loaded ratio indicator
-	    this.loaderInfoContainer = $('<div class="info-container row-absolute"></div>');
+	    this.loaderInfoContainer = $('<div class="info-ctn row-absolute"></div>');
 	    $(this.el).append(this.loaderInfoContainer);
 	    //create the loaded ratio indicator
 	    //loaded_ratio_indicator_copy
@@ -104,16 +109,16 @@ main.views.castle.LoaderView = Backbone.View.extend({
 	// ----------------- createRatioIndicator
     createRatioIndicator: function() {
 	    this.loadedRatioIndicator = $('<div class="loaded-ratio-indicator"></div>');
-	    this.loadedRatioIndicatorTextContainer = $('<div class="loaded-ratio-indicator-text-cnt"></div>');
+	    this.loadedRatioIndicatorTextContainer = $('<div class="loaded-ratio-indicator-text-ctn"></div>');
 	    this.loadedRatioIndicator.append(this.loadedRatioIndicatorTextContainer);
-	    this.loadedRatioIndicatorActivityIndicatorContainer = $('<div class="activity-indicator-cnt"></div>');
+	    this.loadedRatioIndicatorActivityIndicatorContainer = $('<div class="activity-indicator-ctn"></div>');
 	    this.loadedRatioIndicator.append(this.loadedRatioIndicatorActivityIndicatorContainer);
 	    
 	    var opts = {
             lines: 7, // The number of lines to draw
             length: 2, // The length of each line
             width: 4, // The line thickness
-            radius: 7, // The radius of the inner circle
+            radius: 8, // The radius of the inner circle
             corners: 0, // Corner roundness (0..1)
             color: '#333e48', // #rgb or #rrggbb or array of colors
             speed: 1.4, // Rounds per second
@@ -172,31 +177,29 @@ main.views.castle.LoaderView = Backbone.View.extend({
             letter_el.addClass(this.FADE_CLASS);
             this.addLetter(letter_el, delay);
             if(this.model.get("loadedRatio") == 1){
-                //!!!!!!!!!!!!!!!!!!!!!!!!
-                //this.loadedRatioIndicatorActivityIndicator.remove();
+                //this.loadedRatioIndicatorActivityIndicatorContainer.remove();
             }
         }
         self.ratio_indicator_num_letters = num_letters_to_show;
     },
     // ----------------- addLetter
-    addLetter: function(letter_el, delay) {
+    addLetter: function(letter_el, delay, callback) {
          var self = this;
          var to_x;
          setTimeout(function(){
-            if(!self.ratio_indicator_is_hidden){
-                self.loadedRatioIndicatorTextContainer.append(letter_el);
-                //and center the ratio indicator
-                //after each add
-                to_x = (self.loaderInfoContainer.outerWidth() - self.loadedRatioIndicator.outerWidth())/2;
-                self.loadedRatioIndicator.css('left', to_x + 'px');
-                letter_el.css('opacity', '1');
-                self.actual_ratio_indicator_num_letters = self.loadedRatioIndicatorTextContainer.children().length;
-           }
+            self.loadedRatioIndicatorTextContainer.append(letter_el);
+            //and center the ratio indicator
+            //after each add
+            to_x = (self.loaderInfoContainer.outerWidth() - self.loadedRatioIndicator.outerWidth())/2;
+            self.loadedRatioIndicator.css('left', to_x + 'px');
+            letter_el.css('opacity', '1');
+            self.actual_ratio_indicator_num_letters = self.loadedRatioIndicatorTextContainer.children().length;
+            if(callback) callback();
         }, delay);
     },
     // ----------------- createInfo
     createInfo: function() {
-	    this.infoContainer = $('<div class="info-container"></div>');
+	    this.infoContainer = $('<div class="info-ctn"></div>');
 	    this.loaderInfoContainer.append(this.infoContainer);
 	    var info_el, to_y;
 	    this.next_y = 0;
@@ -257,7 +260,7 @@ main.views.castle.LoaderView = Backbone.View.extend({
 	    this.loaderInfoContainer.css('top', to_y + 'px');
 	    this.loaderInfoContainer.css('left', to_x + 'px');
 	    
-	    //position the ready-msg-cnt in the center
+	    //position the ready-msg-ctn in the center
 	    to_y = ($(window).height() - this.readyMsgCnt_el.outerHeight())/2;
 	    to_x = ($(window).width() - this.readyMsgCnt_el.outerWidth())/2;
 	    this.readyMsgCnt_el.css({transform: 'translate3d('+ to_x + 'px,' + to_y + 'px, 0)',
@@ -301,7 +304,7 @@ main.views.castle.LoaderView = Backbone.View.extend({
 		    	self.showReadyMsg();
 			    self.hideBg();
 			    self.override_is_stoppped = false;
-	    	}, 900);
+	    	}, 1800);
 		}, 500);
     },
     // ----------------- show
@@ -348,7 +351,7 @@ main.views.castle.LoaderView = Backbone.View.extend({
     	this.hideLoaderRatioIndicator();
     	setTimeout(function(){
 	    	self.hideInfo();
-    	}, 300);
+    	}, 1300);
 	},
     // ----------------- showLoaderInfo
     showLoaderInfo: function() {
@@ -369,50 +372,68 @@ main.views.castle.LoaderView = Backbone.View.extend({
     },
     // ----------------- hideLoaderRatioIndicator
     hideLoaderRatioIndicator: function() {
-    	 //clearTimeout(this.upadteRatioIndicatorTimeout);
-    	 this.ratio_indicator_is_hidden = true;
+        var self = this;
+        //clearTimeout(this.upadteRatioIndicatorTimeout);
+        this.ratio_indicator_is_hidden = true;
 	    //if full ratio indicator is not shown
 	    //add all letter els and show them immediately 
 	    //clear any timeouts for the individual showing
 	    //of the letters
-	    var self = this;
-	    var add_letter_start = 0; 
-	    var add_letter_end = 0;
-	    var letter_el, to_x;
+	    this.remaining_letter_start = 0; 
+	    this.remaining_letter_end = 0;
+	    //var letter_el, to_x, to_width;
 	    var num_letters_to_show = this.loaded_ratio_indicator_copy.length;
 	    if(this.actual_ratio_indicator_num_letters < num_letters_to_show){
 		    //create an el for each letter that needs 
 		    //to be shown 
-		    add_letter_start = this.actual_ratio_indicator_num_letters;
-		    add_letter_end = num_letters_to_show;
+		    this.remaining_letter_start = this.actual_ratio_indicator_num_letters;
+		    this.remaining_letter_end = num_letters_to_show;
 	    };
-	    
-	    for(var i=add_letter_start;i<add_letter_end;i++){
-		    //create a new letter container el
-		    letter_el = $('<h1>' + this.loaded_ratio_indicator_copy.charAt(i-1) + '</h1>');
-		    letter_el.css('opacity', '0');
-		    self.loadedRatioIndicatorTextContainer.append(letter_el);
+	    this.ratio_indicator_num_letters = num_letters_to_show;
+	    this.num_remaining_added = this.remaining_letter_start;
 
-		    //add the tarnsition class
-		    letter_el.addClass(this.FADE_CLASS);
-		    
-		   to_x = (self.loaderInfoContainer.outerWidth() - self.loadedRatioIndicator.outerWidth())/2;
-		   self.loadedRatioIndicator.css('left', to_x + 'px');
-		}
-	    
-	    setTimeout(function(){
-		    //self.loadedRatioIndicatorActivityIndicator.remove();
-			for(var i=add_letter_start;i<add_letter_end;i++){
+	    this.loadedRatioIndicatorActivityIndicatorContainer.remove();
+
+        this.addRemainingLoaderRatioLetter();
+    },
+    // ----------------- addRemainingLoaderRatioLetter
+    addRemainingLoaderRatioLetter: function() {
+        var self = this;
+        //addLetter(letter_el, delay)
+        var letter_el, to_x, to_width;
+        
+        
+        letter_el = $('<h1>' + this.loaded_ratio_indicator_copy.charAt(this.num_remaining_added) + '</h1>');
+        letter_el.css('opacity', '0');
+        letter_el.addClass(this.FADE_CLASS);
+        
+        delay = 10; 
+        this.addLetter(letter_el, delay, function(){ self.onAddRemainingLoaderRatioLetterComplete(); });
+        //this.loadedRatioIndicatorTextContainer.append(letter_el);
+        //add the transition class
+    },
+    // ----------------- onAddRemainingLoaderRatioLetterComplete
+    onAddRemainingLoaderRatioLetterComplete: function(){
+        console.log("onAddRemainingLoaderRatioLetterComplete ------------ this.num_remaining_added = " + this.num_remaining_added);
+        console.log("onAddRemainingLoaderRatioLetterComplete ------------ this.remaining_letter_end = " + this.remaining_letter_end);
+
+        this.num_remaining_added++;
+        if(this.num_remaining_added < this.remaining_letter_end) this.addRemainingLoaderRatioLetter();
+        else this.completeHideLoaderRatioIndicator();
+    },
+    // ----------------- hideLoaderRatioIndicator
+    completeHideLoaderRatioIndicator: function() {
+        var self = this;
+        setTimeout(function(){                
+			for(var i=this.remaining_letter_start;i<this.remaining_letter_end;i++){
 				letter_el = self.loadedRatioIndicatorTextContainer.children().eq(i);
-				letter_el.css('opacity', '1');
 				//self.actual_ratio_indicator_num_letters = i;
 			}
 			//and center the ratio indicator
-			to_x = (self.loaderInfoContainer.outerWidth() - self.loadedRatioIndicator.outerWidth())/2;
+			var to_x = (self.loaderInfoContainer.outerWidth() - self.loadedRatioIndicator.outerWidth())/2;
 			self.loadedRatioIndicator.css('left', to_x + 'px');
 		}, 200);
 	    
-	    this.ratio_indicator_num_letters = num_letters_to_show;
 	    
 	    setTimeout(function(){
 		    var to_y = self.loadedRatioIndicator_defY - self.INFO_ANIM_OFFSET;

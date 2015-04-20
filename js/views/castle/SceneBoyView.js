@@ -26,7 +26,7 @@ main.views.castle.SceneBoyView = main.views.castle.SceneView.extend({
         var self = this;
         //set the text of the answer
         this.answer_el = $('#answer', this.el);
-        this.cta_container_el = $('#cta-container', this.el);
+        this.cta_container_el = $('#cta-ctn', this.el);
         //add fade class
 		this.answer_el.addClass(this.FADE_CLASS);
 		
@@ -50,7 +50,7 @@ main.views.castle.SceneBoyView = main.views.castle.SceneView.extend({
         //set the cneter of the scene to the 
         //center of the castle parts
         setTimeout(function(){
-	        var origin_x = parseInt($('.scene-boy-container', self.el).css('right')) + ($('.scene-boy-container', self.el).outerWidth()*0.45);
+	        var origin_x = parseInt($('.scene-boy-ctn', self.el).css('right')) + ($('.scene-boy-ctn', self.el).outerWidth()*0.45);
 	        $('#scene-boy', self.el).css({webkitTransformOrigin:  origin_x + 'px 88%',
 									         mozTransformOrigin:  origin_x + 'px 88%',
 									         msTransformOrigin:  origin_x + 'px 88%',
@@ -108,7 +108,7 @@ main.views.castle.SceneBoyView = main.views.castle.SceneView.extend({
 	},
 	// ----------------- hideAnswerScreen
 	hideAnswerScreen: function(){
-		this.cta_container_el = $('#cta-container', this.el);
+		this.cta_container_el = $('#cta-ctn', this.el);
 		this.cta_container_el.addClass(this.FADE_CLASS);
 		//cta container
 		this.cta_container_el.removeClass(this.ANIMATE_CLASS);
@@ -121,7 +121,7 @@ main.views.castle.SceneBoyView = main.views.castle.SceneView.extend({
 		//first hide the first cta container
 		this.hideAnswerScreen();
 		//set display to block;
-		this.cta_final_container_el = $('#cta-final-container', this.el);
+		this.cta_final_container_el = $('#cta-final-ctn', this.el);
 		this.cta_final_container_el.css('opacity', '0'); 
 		this.cta_final_container_el.css('display', 'block');
 		this.cta_final_container_el.addClass(this.FADE_SLOW_CLASS);

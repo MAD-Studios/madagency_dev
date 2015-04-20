@@ -2,21 +2,35 @@ $socialBtnHeight: 28px;
 
 /*-------------------------------- NAVS  */
 /*------------------ MAIN-NAV-CONTAINER  */
-#main-nav-container{
+#main-nav-ctn{
 	position: absolute;
 	min-width: 100%;
 	z-index: 300;
     height: 98px;
+    .column{
+        @media #{$small-only} {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
     .full-logo-sm{
         margin: 2px $xLgMargin 2px -16px;
         @media #{$small-only} {
         	margin-right: $smMargin;
+        	margin-left: -10px;
 			width: 76px;
 			height: 60px;
 		}
     }
     .h-logo{
-        margin: -6px 0 0 -12px;
+        display: block;
+        margin: 0 0 0 -12px;
+        @media #{$small-only} {
+            width: 155px; 
+            height: 25px;
+            float: none;
+            margin: 0 auto;
+        }
     }
     .nav{
         float: left;
@@ -42,18 +56,24 @@ $socialBtnHeight: 28px;
             }
         }
 	}
-    #enter-story-btn-container{
+    #enter-story-btn-ctn{
         float: right;
         margin: $lgMargin 0; 
         @media #{$small-only} {
-           margin: 14px 0; 
+           margin: 17px 0; 
         }
+    }
+    #enter-story-btn{
+        @media #{$small-only} {
+            padding: 2px 9px;
+            height: auto;
+        }        
     }
     &.top-sticky{
         //height: $headerHeight;
         position: fixed;
         overflow: hidden;
-        #enter-story-btn-container{
+        #enter-story-btn-ctn{
             opacity: 0;
         }
     }
@@ -88,7 +108,7 @@ $socialBtnHeight: 28px;
         font-size: em(18px);
         text-decoration: none;
         color: $navy;
-	    &.btn-twitter{
+	    &.twitter-btn{
 		    margin-top: -2px;
             font-size: em(22px);
 		}
@@ -111,7 +131,50 @@ $socialBtnHeight: 28px;
     &.top-bordered{
         border-top: 1px solid $navy;
     }
-    .nav-container{
+    .btn-toggle-ctn{
+        float: left;
+        width: $headerHeight; height: $headerHeight;
+    }
+    .arrow{
+        float: right;
+        margin-top: 1px;
+        width: 13px; height: 9px;
+        -webkit-transform: translate3d(0,0,0); 
+        -moz-transform: translate3d(0,0,0); 
+        -o-transform:translate3d(0,0,0); 
+        transform:translate3d(0,0,0);
+        &.arrow-down{
+            margin-top: 6px;
+            -o-transform: rotate(90deg); 
+            -moz-background-transform: rotate(90deg);
+            -webkit-transform: rotate(90deg); 
+            transform: rotate(90deg);
+        }
+        &.arrow-up{
+            -o-transform: rotate(-90deg); 
+            -moz-background-transform: rotate(-90deg);
+            -webkit-transform: rotate(-90deg); 
+            transform: rotate(-90deg);
+        }
+        &.arrow-left{ 
+            -o-transform: rotate(-180deg);
+            -moz-background-transform: rotate(-180deg);
+            -webkit-transform: rotate(-180deg);
+            transform: rotate(-180deg);
+        }
+    }
+    .btn-blue{
+        position: relative;
+        float: left;
+        width: 100%; height: 100%;
+        border-bottom: 1px solid $navy; border-right: 1px solid $navy;
+        border-top: none; border-left: none;
+        .arrow{
+            position: absolute;
+            top: 12px; left: 11px;
+        }
+    }
+    .nav-ctn{
         float: left;
         max-width: 350px;
         border-bottom: 1px solid $navy;
@@ -147,7 +210,7 @@ $socialBtnHeight: 28px;
                 background-color: $xxLightGray;
             }
         }
-        .social-nav-cnt{
+        .social-nav-ctn{
             float: left;
             width: 100%;
             height: $headerHeight;
@@ -167,25 +230,6 @@ $socialBtnHeight: 28px;
                 }
             }
         }
-        .arrow{
-            float: right;
-            margin-top: 5px;
-            width: 13px; height: 9px;
-            -webkit-transform: translate3d(0,0,0); 
-            -moz-transform: translate3d(0,0,0); 
-            -o-transform:translate3d(0,0,0); 
-            transform:translate3d(0,0,0);
-            -o-transform: rotate(90deg); 
-            -moz-background-transform: rotate(90deg);
-            -webkit-transform: rotate(90deg); 
-            transform: rotate(90deg);
-            &.arrow-up{
-                -o-transform: rotate(-90deg); 
-                -moz-background-transform: rotate(-90deg);
-                -webkit-transform: rotate(-90deg); 
-                transform: rotate(-90deg);
-            }
-        }
         .social-nav{
             float: left; width: 100%;
             border-top: 3px solid $xLightBlue;
@@ -193,41 +237,31 @@ $socialBtnHeight: 28px;
                 float: left; width: 100%;
                 height: $socialBtnHeight;
                 border-bottom: 1px solid $xLightBlue;
-                a{
+                margin:0;
+                .btn{
                     width: 100%; height: 100%;
                     display: block;
                     background-color: $xxLightGray;
-                    padding: 6px $smMargin;
+                    padding: 0 $smMargin;
+                    margin:0;
+                    font-size: em(17px);
                     &.tappable-active{
                         background-color: $xLightBlue;
                     }
+                    &.twitter-btn{
+                        font-size: em(20px);
+                        i{
+                            margin-top: -2px;
+                            margin-left: -2px;
+                        }
+                    }
                 }
             }
-        }
-        .btn-nav-cnt{
-            float: left;
-            width: $headerHeight; height: $headerHeight;
-        }
-        .btn-nav{
-            position: relative;
-            float: left;
-            width: 100%; height: 100%;
-            border-bottom: 1px solid $navy; border-right: 1px solid $navy;
-            border-top: none; border-left: none;
-            .arrow{
-                position: absolute;
-                top: 12px; left: 11px;
-            }
-        }
-        .arrow.arrow-left{ 
-            -o-transform: rotate(-180deg);
-            -moz-background-transform: rotate(-180deg);
-            -webkit-transform: rotate(-180deg);
-            transform: rotate(-180deg);
+
         }
     }
 }
-.social-nav-cnt-transition-h{
+.social-nav-ctn-transition-h{
 	-webkit-transition: height 0.6s cubic-bezier(0.190, 1.000, 0.220, 1.000); 
 	   -moz-transition: height 0.6s cubic-bezier(0.190, 1.000, 0.220, 1.000); 
 	     -o-transition: height 0.6s cubic-bezier(0.190, 1.000, 0.220, 1.000); 

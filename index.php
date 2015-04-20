@@ -56,6 +56,7 @@
     <script src="js/views/MainNavContainerView.js" type="text/javascript"></script>
     <script src="js/views/HeaderView.js" type="text/javascript"></script>
     <script src="js/views/FooterView.js" type="text/javascript"></script>
+    <script src="js/views/SmallMenuView.js" type="text/javascript"></script>
 
     <!--[if lt IE 9]>
             <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,7 +73,7 @@
 	<?php include 'inc/header.php';?>
 	
 	<section class="content-sect">
-	<div id="pane-container">
+	<div id="pane-ctn">
 	
 		<!------------ INTRO ------------->
 		<section class="intro-sect">
@@ -88,7 +89,7 @@
 							<div class="row-absolute"><div class="text-block vertical-center">
 								<h1 class="text-shadow white">Hi. We are Mad Agency.<br>We do a lot of cool things for our clients.</h1>
 					        	<h1 class="text-shadow white last">Here’s a list of some things we could do for you.</h1>
-								<div class="row-absolute row-arrow-container"><div id="btn-show-more" class="btn arrow circle-arrow down"></div></div>
+								<div class="row-absolute row-arrow-ctn"><div id="btn-show-more" class="btn arrow circle-arrow down"></div></div>
 							</div></div>
 							<div class="row-absolute"><div class="text-block text-block-to-fade">
 					        	<h2>Yes, we can help you retain your customers.</h2>
@@ -140,7 +141,7 @@
 					
 					<div class="column large-5 large-uncentered medium-5 medium-uncentered small-10 small-centered">
 						<div class="row-float"><img id="img-how" src="assets/images/corporate/png/how-logo-method.png"  alt="How Method" title="How Method" /></div>
-						<div class="row-float hide-for-small show-for-medium-up"><div class="btn-move-container"><a class="btn btn-move" href=""><p>SEE IT IN ACTION</p><img style="width:16px;height:16px;"src="assets/images/corporate/svg/how-btn-arrow.svg" alt="arrow down" title="arrow down"/></a></div>
+						<div class="row-float hide-for-small show-for-medium-up"><div class="btn-move-ctn"><a class="btn btn-move" href=""><p>SEE IT IN ACTION</p><img style="width:16px;height:16px;"src="assets/images/corporate/svg/how-btn-arrow.svg" alt="arrow down" title="arrow down"/></a></div>
 					</div>
 					
 				</div>
@@ -163,7 +164,7 @@
 							<p>Have a quick gander at some of the more <b>recent projects</b> we’ve had the privilege to work on.<br />We will add to this archive quarterly, so be sure to check back.</p>
 						</div></div>
 						<div class="row row-content"><div class="column large-12">	
-							<div class="video-container"></div>
+							<div class="video-ctn"></div>
 						</div></div>
 					</div>
 				</div>
@@ -237,7 +238,7 @@
 							</div>
                             
                             <div class="row show-for-large-up hide-for-medium hide-for-small">
-                                <div class="column large-12 small-12"><div class="btn-move-container"><a class="btn btn-move" href=""><p>WATCH THEM GET’R DONE</p><img style="width:16px;height:16px;"src="assets/images/corporate/svg/how-btn-arrow.svg" alt="arrow up" title="arrow up" /></a></div>
+                                <div class="column large-12 small-12"><div class="btn-move-ctn"><a class="btn btn-move" href=""><p>WATCH THEM GET’R DONE</p><img style="width:16px;height:16px;"src="assets/images/corporate/svg/how-btn-arrow.svg" alt="arrow up" title="arrow up" /></a></div>
                             </div>
 							
 						</div>
@@ -317,7 +318,7 @@
                 </div>
             
                 <div class="row row-content"><div class="column large-12 small-12">
-                    <div class="map-cnt"><div class="map"></div></div>
+                    <div class="map-ctn"><div class="map"></div></div>
                 </div></div>
             
                 <div class="row row-content"><div class="column large-12 small-12">
@@ -326,19 +327,19 @@
             
                 <div class="row row-content" id="contact-form">
                     <div class="column large-6 small-12">
-                        <div class="input-container shadow-bordered shadow-bordered-lt-blue row-float">
+                        <div class="input-ctn shadow-bordered shadow-bordered-lt-blue row-float">
                             <p class="row-float"><i>Your Name</i></p><input class="row-float" id="input-name" />
                         </div>
-                        <div class="input-container shadow-bordered shadow-bordered-lt-blue row-float">
+                        <div class="input-ctn shadow-bordered shadow-bordered-lt-blue row-float">
                             <p class="row-float"><i>Your E-mail</i></p><input class="row-float" id="input-email" />
                         </div>
-				        <div class="input-container shadow-bordered shadow-bordered-lt-blue row-float">
+				        <div class="input-ctn shadow-bordered shadow-bordered-lt-blue row-float">
                             <p class="row-float"><i>Your Industry</i></p><input class="row-float" id="input-industry" />
                         </div>
                     </div>
                     <div class="column large-6 small-12">
-                        <div class="input-container input-container-ta shadow-bordered shadow-bordered-lt-blue row-float"><p class="row-float"><i>Your Business’ Challenge</i></p><textarea class="row-float" id="input-challenge"></textarea></div>
-				        <div class="row-float shadow-bordered shadow-bordered-blue btn-submit-container"><a href="" class="btn btn-blue btn-submit row-float">SUBMIT</a></div>
+                        <div class="input-ctn input-ctn-ta shadow-bordered shadow-bordered-lt-blue row-float"><p class="row-float"><i>Your Business’ Challenge</i></p><textarea class="row-float" id="input-challenge"></textarea></div>
+				        <div class="row-float shadow-bordered shadow-bordered-blue btn-submit-ctn"><a href="" class="btn btn-blue btn-submit row-float">SUBMIT</a></div>
                     </div>
                 </div>
             
@@ -353,19 +354,19 @@
 	<?php include 'inc/footer.php';?>
 		
 	<!------------ MAIN NAV ------------->
-	<div id="main-nav-container">
+	<div id="main-nav-ctn">
 	    <div class="divider shadow-bordered"></div>
         <div class="row">
         	<div class="column large-12 small-12">
 	            <a href="" class="full-logo full-logo-sm logo btn"></a>
 	            <ul class="nav hide-for-small show-for-large-up">
-	            	<li><a class="btn nav-btn" id="how-btn" href="">HOW WE ROLL</a></li>
-	                <li><a class="btn nav-btn" id="work-btn" href="">THE WORK</a></li>
-	                <li><a class="btn nav-btn" id="team-btn" href="">OUR TEAM</a></li>
-	                <li><a class="btn nav-btn" id="disciplines-btn" href="">DISCIPLINES</a></li>
-	                <li><a class="btn nav-btn" id="contact-btn" href="">CONTACT US</a></li>
+	            	<li><a class="btn nav-btn" id="how-btn" href="/how">HOW WE ROLL</a></li>
+	                <li><a class="btn nav-btn" id="work-btn" href="/work">THE WORK</a></li>
+	                <li><a class="btn nav-btn" id="team-btn" href="/team">OUR TEAM</a></li>
+	                <li><a class="btn nav-btn" id="disciplines-btn" href="/disciplines">DISCIPLINES</a></li>
+	                <li><a class="btn nav-btn" id="contact-btn" href="/contact">CONTACT US</a></li>
 	            </ul>
-	            <div id="enter-story-btn-container" class="shadow-bordered shadow-bordered-blue">
+	            <div id="enter-story-btn-ctn" class="shadow-bordered shadow-bordered-blue">
                     <a id="enter-story-btn" class="btn-blue btn" href="castle">ENTER CREATIVE CASTLE</a>
                 </div>
 			</div>
@@ -374,26 +375,27 @@
         
     <!------------ SMALL MENU ------------->
 	<div class="small-menu show-for-small hide-for-large-up">
-		<div class="nav-container">
+		<div class="nav-ctn">
 			<div class="header"></div>
 			<ul class="main-nav">
-				<li><a class="btn btn-how" href="/how">HOW WE ROLL</a></li>
-				<li><a class="btn btn-work" href="/work">THE WORK</a></li>
-				<li><a class="btn btn-team" href="/team">OUR TEAM</a></li>
-				<li><a class="btn btn-disciplines" href="/disciplines">DISCIPLINES</a></li>
-				<li><a class="btn btn-contact" href="/contact">CONTACT US</a></li>
+				<li><a class="btn nav-btn" id="how-btn" href="/how">HOW WE ROLL</a></li>
+				<li><a class="btn nav-btn" id="work-btn" href="/work">THE WORK</a></li>
+				<li><a class="btn nav-btn" id="team-btn" href="/team">OUR TEAM</a></li>
+				<li><a class="btn nav-btn" id="disciplines-btn" href="/disciplines">DISCIPLINES</a></li>
+				<li><a class="btn nav-btn" id="contact-btn" href="/contact">CONTACT US</a></li>
 			</ul>
-			<div class="social-nav-cnt">
-				<a href="#" class="header btn btn-social">SOCIAL<img class="arrow" src="images/corporate/png/nav-arrow@2x.png" alt="social" /></a>
+			<div class="social-nav-ctn">
+				<a href="#" class="header btn social-btn">SOCIAL<img class="arrow arrow-down" src="assets/images/corporate/png/nav-arrow@2x.png" alt="social" /></a>
 				<ul class="social-nav">
-					<li><a class="btn btn-instagram" href="http://instagram.com/madstudiosco" target=_blank><div class="icon-instagram icon"></div></a></li>
-					<li><a class="btn btn-facebook" href="https://www.facebook.com/MadStudiosCo" target=_blank><div class="icon-facebook icon"></div></a></li>
-					<li><a class="btn btn-twitter" href="https://twitter.com/madstudiosco" target=_blank><div class="icon-twitter icon"></div></a></li>
+					<li><a class="btn instagram-btn" href="http://instagram.com/madstudiosco" target=_blank><i class="fa fa-instagram"></i></a></li>
+					<li><a class="btn facebook-btn" href="https://www.facebook.com/MadStudiosCo" target=_blank><i class="fa fa-facebook-official"></i></a></li>
+					<li><a class="btn twitter-btn" href="https://twitter.com/madstudiosco" target=_blank><i class="fa fa-twitter"></i></a></li>
+					<li><a class="btn google-plus-btn" href="https://plus.google.com/106462510460087062650" target=_blank><i class="fa fa-google-plus-square"></i></a></li>
 				</ul>
 			</div>
 		</div>
-		<div class="btn-nav-cnt">
-            <a href="#" class="btn btn-nav btn-blue"><img class="arrow" src="images/corporate/png/nav-arrow@2x.png" alt="open menu" /></a>
+		<div class="btn-toggle-ctn">
+            <a href="#" class="btn btn-blue toggle-btn"><img class="arrow" src="assets/images/corporate/png/nav-arrow@2x.png" alt="open menu" /></a>
         </div>
 	</div>
 	

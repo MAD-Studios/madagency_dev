@@ -39,7 +39,7 @@ main.views.castle.CastleGatewayPaneView = main.views.PaneView.extend({
         console.log("CastleGatewayPaneView ---- beforeRender");
         var self = this;
         
-	    this.input_cnt_el = $('.input-w-btn-container', this.el);
+	    this.input_cnt_el = $('.input-w-btn-ctn', this.el);
 	    this.input_cnt_el.addClass(this.INPUT_BLINK_TRANS_CLASS);
 	    this.input_el = $('.input-method', this.el);
 	    this.input_ta_el = $('.input-ta-method', this.el);
@@ -116,7 +116,7 @@ main.views.castle.CastleGatewayPaneView = main.views.PaneView.extend({
 	    }
         
         //center the input container within its row
-        $('.input-w-btn-container',  this.el).each(function(){
+        $('.input-w-btn-ctn',  this.el).each(function(){
 	        input_to_left = ($(this).parent().outerWidth() - $(this).outerWidth())/2; 
 			$(this).css('left', input_to_left + 'px');
         });
@@ -298,7 +298,7 @@ main.views.castle.CastleGatewayPaneView = main.views.PaneView.extend({
 		$('p', this.el).html(this.UNSUPPORTED_P_COPY);
 		$(this.el).addClass(this.UNSUPPOSRTED_CLASS);
 		//remove the question
-		$('.input-w-btn-container', this.el).remove();
+		$('.input-w-btn-ctn', this.el).remove();
 	},
 	// ----------------- beforeDispose
 	beforeDispose: function(){

@@ -32,7 +32,7 @@ main.views.corporate.WorkPaneView = main.views.PaneView.extend({
 	// ----------------- addVideo
     addVideo: function() {
 	    //make the vide the size of its parent
-	    this.video_container_el = $('.video-container', this.el);
+	    this.video_container_el = $('.video-ctn', this.el);
 	    this.video_def_width = parseInt(this.video_container_el.css('maxWidth'));
 	    this.video_def_height = parseInt(this.video_container_el.css('maxHeight'));
 	    var embed_str = this.VIDEO_EMBED_STR.replace("_width_", this.video_def_width);

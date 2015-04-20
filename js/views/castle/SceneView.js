@@ -93,7 +93,7 @@ main.views.castle.SceneView = Backbone.View.extend({
 	        $(self.el).trigger(self.INIT_ASSETS, [self.num_assets]);
         }, 100);
 	    //create  this.audio_container
-	    this.audio_container = $('<div class="scene-audio-cnt"></div>');
+	    this.audio_container = $('<div class="scene-audio-ctn"></div>');
     },
     // ----------------- loadAssets
     loadAssets: function() {

@@ -42,7 +42,7 @@ main.views.castle.CastleView = Backbone.View.extend({
 		    $(this.el).addClass(this.CASTLE);
 	    }*/
 	    //-------- sceneContainerView
-        this.sceneContainerView = new main.views.castle.SceneContainerView({el:$('.scene-container', this.el)});
+        this.sceneContainerView = new main.views.castle.SceneContainerView({el:$('.scene-ctn', this.el)});
         //ALL_SCENE_ASSETS_LOADED
         $(this.sceneContainerView.el).on(this.sceneContainerView.ALL_SCENE_ASSETS_LOADED, function(){
 	        self.stopLoader();
@@ -155,25 +155,25 @@ main.views.castle.CastleView = Backbone.View.extend({
 	    var scrollVal = obj.curTop;
 	    //!!!!!!!!!!!!!!!!!!!!!!!!
 	    //refactor the below later
-		this.triggerSelector('#castle-container-parts', 60, scrollVal, 1100);
-		this.triggerSelector('#horn-container', 441, scrollVal);
+		this.triggerSelector('#castle-ctn-parts', 60, scrollVal, 1100);
+		this.triggerSelector('#horn-ctn', 441, scrollVal);
 		this.triggerSelector('#lake-02', 800, scrollVal, 1300);
 		this.triggerSelector('.gears', 1200, scrollVal);
 		this.triggerSelector('#castle-door-01', 800, scrollVal);
 		this.triggerSelector('#castle-door-02', 800, scrollVal);
-		this.triggerSelector('#signage-container', 1600, scrollVal, 3770);
+		this.triggerSelector('#signage-ctn', 1600, scrollVal, 3770);
 		this.triggerSelector('#monitor-01', 1900, scrollVal, 2200);
 		// Monitor Pipe
 		this.triggerSelector('#xray-monitor', 2300, scrollVal);
 		this.triggerSelector('#clipboard', 5000, scrollVal);
-		this.triggerSelector('#stones-container', 7215, scrollVal);
-		this.triggerSelector('#gerbil-container', 8500, scrollVal, 12450);
-		this.triggerSelector('#steam-container', 6700, scrollVal, 12450);
+		this.triggerSelector('#stones-ctn', 7215, scrollVal);
+		this.triggerSelector('#gerbil-ctn', 8500, scrollVal, 12450);
+		this.triggerSelector('#steam-ctn', 6700, scrollVal, 12450);
 		this.triggerSelector('#red-transparency', 9520, scrollVal);
 		this.triggerSelector('#steam-text', 10850, scrollVal);
-		this.triggerSelector('#boy-container', 14450, scrollVal);
-		this.triggerSelector('#behold-container', 13850, scrollVal);
-		//this.triggerSelector('#cta-container', 14450, scrollVal);
+		this.triggerSelector('#boy-ctn', 14450, scrollVal);
+		this.triggerSelector('#behold-ctn', 13850, scrollVal);
+		//this.triggerSelector('#cta-ctn', 14450, scrollVal);
 		//check sounds here
 		this.sceneContainerView.checkScenes(obj);
 		this.sceneContainerView.checkSounds(obj);

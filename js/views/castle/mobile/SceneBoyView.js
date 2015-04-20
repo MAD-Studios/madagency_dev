@@ -27,8 +27,8 @@ main.views.castle.mobile.SceneBoyView = main.views.castle.mobile.SceneView.exten
 	    });
 	    //set the text of the answer
         this.answer_el = $('#answer', this.el);
-        this.cta_container_el = $('#cta-container', this.el);
-        this.text_container_el = $('.text-container', self.el);
+        this.cta_container_el = $('#cta-ctn', this.el);
+        this.text_container_el = $('.text-ctn', self.el);
 		this.text_container_el.addClass(this.STAGE_TRANSITION_CLASS);
        //$('#text-02', self.el).css('opacity', '0');
        $('#text-01', this.el).addClass(this.FADE_CLASS);

@@ -28,8 +28,8 @@ main.views.CorporateView = Backbone.View.extend({
 	    });
         
         if (this.renderParts) this.renderParts();
-        //this.paneContainerView = new main.views.PaneContainerView({el: $('#pane-container', this.el)});
-
+        //this.paneContainerView = new main.views.PaneContainerView({el: $('#pane-ctn', this.el)});
+        
         $(this.paneContainerView.el).on(this.paneContainerView.PANE_ACTIVATE, function(event, params){
 	        //for all
 	        //mark the correct nav
