@@ -25,8 +25,6 @@ var main = {
     section: {},
     // ----------------- init
     init: function(){
-        console.log("main init");
-
 	     this.initModernizr();
     },
     // ----------------- setSection
@@ -127,19 +125,24 @@ var main = {
 		if (!Modernizr.svg) {
 			//replace the svg with the png
 			$('img').each(function(){
-				cur_src = $(this).attr('src');
-				cur_src = cur_src.replace(/svg/g, 'png');
-				$(this).attr('src', cur_src);
+				cur_src = $(this).attr('data-img-src');
+				if(cur_src) {
+    				cur_src = cur_src.replace(/svg/g, 'png');
+    				$(this).attr('src', cur_src);
+				}
 			});
 		}
-		if (!Modernizr.hires) {
+		//if (!Modernizr.hires) {
 			//replace the svg with the png
 			$('img').each(function(){
-				cur_src = $(this).attr('src');
-				cur_src = cur_src.replace(/@2x/g, '');
-				$(this).attr('src', cur_src);
+				cur_src = $(this).attr('data-img-src');
+				console.log("IMG ^^^^^------ cur_src" + cur_src);
+				if(cur_src) {
+    				if(!Modernizr.hires) cur_src = cur_src.replace(/@2x/g, '');
+    				$(this).attr('src', cur_src);
+				}
 			});
-		}
+		//}
 	},
 	// ----------------- loadTemplates
 	loadTemplates: function(templates, callback) {

@@ -8,4 +8,7 @@ p.white,{
 }
 .text-shadow.white{
 	text-shadow: 0 0.036em #FDA139;
+	@media #{$small-only}{
+		text-shadow: 0 0.06em #FDA139;
+    }
 }

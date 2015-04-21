@@ -16,6 +16,7 @@ main.views.SmallMenuView = Backbone.View.extend({
 	scroll_y_offset: 0,
 	is_open: false,
 	social_is_shown: false,
+	has_posized: false,
 	events: {
 		'click .toggle-btn' : 'onToggleBtnClick',
 		'click .social-btn' : 'onSocialBtnClick',
@@ -51,16 +52,30 @@ main.views.SmallMenuView = Backbone.View.extend({
 	},
     // ----------------- posize
     posize: function() {
-		var to_w = $(window).width() - this.btn_toggle_el.outerWidth();
+        var self = this;
+        
+        var to_w = $(window).width() - this.btn_toggle_el.outerWidth();
 		var max_w = parseInt( this.nav_cnt_el.css('max-width') );
 		if(to_w > max_w) to_w = max_w;
 		this.nav_cnt_el.width( to_w );
+        //if first time here
+        //set a delay
+        if(!this.has_posized){
+            setTimeout(function(){
+                self.posNav(to_w);
+                self.has_posized = true;
+    		}, 3000);
+        }
+        else this.posNav(to_w);
+	},
+    // ----------------- posNav
+    posNav: function(to_w) {
 		//position it to the left od stage is state is closed
 		var to_left = -to_w - 1; 
-		if(this.state == this.CLOSE) $(this.el).css( 'left', to_left + 'px' );
-		else  $(this.el).css( 'left', -1 + 'px' );
-	},
-	// ----------------- open
+        if(this.state == this.CLOSE) $(this.el).css( 'left', to_left + 'px' );
+    	else  $(this.el).css( 'left', -1 + 'px' );
+    },
+	// ----------------- toggleNav
     toggleNav: function() {
 	    if(this.is_open) this.close();
 	    else this.open();

@@ -14,7 +14,6 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
 	OVERLAY_BTN_HTML: '<a class="btn btn-overlay"></a>',
 	id: "intro",
 	_route: "",
-	offset: 0,
 	nav_offset: 0,
 	default_elements_y: [],
 	to_y: 0,
@@ -35,6 +34,14 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
         this.initElements();
         this.prepForAnim();
   	},
+  	// ----------------- enableScroller
+    enableScroller: function() {
+    	this.scroller_el.css('overflowY', 'scroll');
+    },
+    // ----------------- disableScroller
+    disableScroller: function() {
+        this.scroller_el.css('overflowY', 'hidden');
+    },
   	// ----------------- initElements
     initElements: function() {
     	var self = this;
@@ -188,7 +195,7 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
         //if scrolltop > a few pixels
     	//fade in the other items
     	//and faed out the ar        
-        var delay = 0;
+        var delay = 0, ind = 0;
 
 		if(scroll_top >= 0 && scroll_top < this.max_scroll_top){
             //kill any previous animations
@@ -203,6 +210,12 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
 					TweenLite.to(this.anim_rows.eq(1), 1, { top: this.default_elements_y[1], ease: Expo.easeOut });
 					this.anim_rows.eq(1).addClass(this.VISIBLE_CLASS);
 				}
+				else if( scroll_top  > ( this.default_elements_y[2] - (this.this_el.height()/3) ) ){
+                    delay = 0;
+                    TweenLite.to(this.anim_rows.eq(1), 0.5, { opacity: 0, ease: Expo.easeOut, delay:delay });
+                    TweenLite.to(this.anim_rows.eq(1), 0.75, { top: this.default_elements_y[1] - this.ELEMENT_ANIM_OFFSET, ease: Expo.easeOut, delay:delay });
+                    this.anim_rows.eq(1).removeClass(this.VISIBLE_CLASS);
+                }
 				//show the gradient
 				//TweenLite.to(this.grad_el, 0.1, { opacity: 1, ease: Expo.easeOut, delay: 0.1 });
                 this.grad_el.css('opacity', '1');
@@ -220,23 +233,32 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
                 this.grad_el.css('opacity', '0');
 			}
             if( scroll_top  > ( this.default_elements_y[2] - (this.this_el.height()/2) ) ){
-				delay = 0;
-				TweenLite.to(this.anim_rows.eq(2), 0.5, { opacity: 1, ease: Expo.easeOut, delay:delay });
-				TweenLite.to(this.anim_rows.eq(2), 1.5, { top: this.default_elements_y[2], ease: Expo.easeOut, delay:delay });
-				this.anim_rows.eq(2).addClass(this.VISIBLE_CLASS);
+                //this.anim_rows.eq(2).css('opacity', '1');
+                //if not already animated
+                if(this.animateRowsShown.indexOf(2) == -1){ 
+    				delay = 0;
+    				TweenLite.to(this.anim_rows.eq(2), 0.5, { opacity: 1, ease: Expo.easeOut, delay:delay });
+    				TweenLite.to(this.anim_rows.eq(2), 1.5, { top: this.default_elements_y[2], ease: Expo.easeOut, delay:delay });
+    				this.anim_rows.eq(2).addClass(this.VISIBLE_CLASS);
+    				this.animateRowsShown.push(2);
+				}
 			}
             //else if( scroll_top  <=  ( this.default_elements_y[2] - (this.this_el.height() - this.nav_offset - this.grad_el.height() )) ){
             else if( scroll_top  <= ( this.default_elements_y[2] - (this.this_el.height()/2) ) ){
-				TweenLite.to(this.anim_rows.eq(2), 0.5, { opacity: 0, ease: Expo.easeOut });
-				TweenLite.to(this.anim_rows.eq(2), 1, { top: this.default_elements_y[2] + this.ELEMENT_ANIM_OFFSET, ease: Expo.easeOut });
-				this.anim_rows.eq(2).removeClass(this.VISIBLE_CLASS);
+                ind = this.animateRowsShown.indexOf(2);
+                if(ind > -1){ 
+    				TweenLite.to(this.anim_rows.eq(2), 0.5, { opacity: 0, ease: Expo.easeOut });
+    				TweenLite.to(this.anim_rows.eq(2), 1, { top: this.default_elements_y[2] + this.ELEMENT_ANIM_OFFSET, ease: Expo.easeOut });
+    				this.anim_rows.eq(2).removeClass(this.VISIBLE_CLASS);
+    				this.animateRowsShown = main.utils.ElementManipulator.removeFromArray(ind, this.animateRowsShown);
+				}
 			}
-            if( scroll_top  > ( this.default_elements_y[2] - (this.this_el.height()/3) ) ){
+            /*if( scroll_top  > ( this.default_elements_y[2] - (this.this_el.height()/3) ) ){
                 delay = 0;
                 TweenLite.to(this.anim_rows.eq(1), 0.5, { opacity: 0, ease: Expo.easeOut, delay:delay });
                 TweenLite.to(this.anim_rows.eq(1), 0.75, { top: this.default_elements_y[1] - this.ELEMENT_ANIM_OFFSET, ease: Expo.easeOut, delay:delay });
                 this.anim_rows.eq(1).removeClass(this.VISIBLE_CLASS);
-            }
+            }*/
 		}
     },
     // ----------------- prepForAnim
@@ -318,7 +340,9 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     onScroll: function(scroll_top) {
     	if(scroll_top <= 1){
 	    	$(this.el).trigger(main.events.Event.DISABLE_DOCUMENT_SCROLL);
+            this.enableScroller();
     	}
+    	else this.disableScroller();
     },
     // ----------------- show
     showContent: function() {

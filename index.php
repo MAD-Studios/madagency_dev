@@ -140,8 +140,8 @@
 					</div>
 					
 					<div class="column large-5 large-uncentered medium-5 medium-uncentered small-10 small-centered">
-						<div class="row-float"><img id="img-how" src="assets/images/corporate/png/how-logo-method.png"  alt="How Method" title="How Method" /></div>
-						<div class="row-float hide-for-small show-for-medium-up"><div class="btn-move-ctn"><a class="btn btn-move" href=""><p>SEE IT IN ACTION</p><img style="width:16px;height:16px;"src="assets/images/corporate/svg/how-btn-arrow.svg" alt="arrow down" title="arrow down"/></a></div>
+						<div class="row-float"><img id="img-how" src="" data-img-src="assets/images/corporate/png/how-logo-method@2x.png"  alt="How Method" title="How Method" /></div>
+						<div class="row-float hide-for-small show-for-medium-up"><div class="btn-move-ctn"><a class="btn btn-move" href=""><p>SEE IT IN ACTION</p><img style="width:16px;height:16px;"src="" data-img-src="assets/images/corporate/svg/how-btn-arrow.svg" alt="arrow down" title="arrow down"/></a></div>
 					</div>
 					
 				</div>
@@ -156,10 +156,10 @@
 		<!------------ WORK ------------->
 		<section class="work">
 			<div id="work-pane" class="pane">
-                <div class="row-float hide-for-medium-up show-for-small row-pane-divider"><div class="pane-title">THE WORK</div><div class="divider"></div></div>
+                <div class="row-float hide-for-large-up show-for-medium-down row-pane-divider"><div class="pane-title">THE WORK</div><div class="divider"></div></div>
 				<div class="row">
 					<div class="column large-12">
-						<div class="row-float show-for-medium-up hide-for-small row-pane-divider"><div class="pane-title">THE WORK</div><div class="divider"></div></div>
+						<div class="row-float show-for-large-up hide-for-medium-down row-pane-divider"><div class="pane-title">THE WORK</div><div class="divider"></div></div>
 						<div class="row row-content row-header"><div class="column large-12">
 							<p>Have a quick gander at some of the more <b>recent projects</b> we’ve had the privilege to work on.<br />We will add to this archive quarterly, so be sure to check back.</p>
 						</div></div>
@@ -174,10 +174,10 @@
 		<!------------ TEAM ------------->
 		<section class="team">
 			<div id="team-pane" class="pane">
-                <div class="row-float hide-for-medium-up show-for-small row-pane-divider"><div class="pane-title">OUR TEAM</div><div class="divider"></div></div>
+                <div class="row-float hide-for-large-up show-for-medium-down row-pane-divider row-pane-divider-offset"><div class="pane-title">OUR TEAM</div><div class="divider"></div></div>
 				<div class="row">
 					<div class="column large-12">
-						<div class="row-float show-for-medium-up hide-for-small row-pane-divider"><div class="pane-title">OUR TEAM</div><div class="divider"></div></div>
+						<div class="row-float show-for-large-up hide-for-medium-down row-pane-divider"><div class="pane-title">OUR TEAM</div><div class="divider"></div></div>
 						<div class="row-float row-content">
 						
 							<div class="row">
@@ -238,7 +238,7 @@
 							</div>
                             
                             <div class="row show-for-large-up hide-for-medium hide-for-small">
-                                <div class="column large-12 small-12"><div class="btn-move-ctn"><a class="btn btn-move" href=""><p>WATCH THEM GET’R DONE</p><img style="width:16px;height:16px;"src="assets/images/corporate/svg/how-btn-arrow.svg" alt="arrow up" title="arrow up" /></a></div>
+                                <div class="column large-12 small-12"><div class="btn-move-ctn"><a class="btn btn-move" href=""><p>WATCH THEM GET’R DONE</p><img style="width:16px;height:16px;"src="" data-img-src="assets/images/corporate/svg/how-btn-arrow.svg" alt="arrow up" title="arrow up" /></a></div>
                             </div>
 							
 						</div>
@@ -251,12 +251,11 @@
 		<section class="disciplines">
 			<div id="disciplines-pane" class="pane">
                 
-                <div class="row-float hide-for-medium-up show-for-small row-pane-divider"><div class="pane-title">DISCIPLINES</div><div class="divider"></div></div>
-                
+                <div class="row-float hide-for-large-up show-for-medium-down row-pane-divider row-pane-divider-offset"><div class="pane-title">DISCIPLINES</div><div class="divider"></div></div>
                 <div class="row">
                     <div class="column large-12 small-12">
                         
-                        <div class="row-float show-for-medium-up hide-for-small row-pane-divider"><div class="pane-title">DISCIPLINES</div><div class="divider"></div></div>
+                        <div class="row-float show-for-large-up hide-for-medium-down row-pane-divider row-pane-divider-offset"><div class="pane-title">DISCIPLINES</div><div class="divider"></div></div>
                         
                         <div class="row row-content row-header">
                             <div class="column large-12 small-12">
@@ -298,7 +297,7 @@
 		<!------------ Contact ------------->
 		<section class="contact">
 			<div id="contact-pane" class="pane">
-                <div class="row-float row-pane-divider"><div class="pane-title">CONTACT US</div></div>
+                <div class="row-float row-pane-divider row-pane-divider-offset"><div class="pane-title">CONTACT US</div></div>
                 
 				<div class="row row-content row-header">
 				    <div class="column large-5 medium-5 hide-for-small show-for-medium-up">
@@ -374,7 +373,7 @@
 	</div>
         
     <!------------ SMALL MENU ------------->
-	<div class="small-menu show-for-small hide-for-large-up">
+	<div class="small-menu show-for-medium-down hide-for-large-up">
 		<div class="nav-ctn">
 			<div class="header"></div>
 			<ul class="main-nav">
@@ -385,7 +384,7 @@
 				<li><a class="btn nav-btn" id="contact-btn" href="/contact">CONTACT US</a></li>
 			</ul>
 			<div class="social-nav-ctn">
-				<a href="#" class="header btn social-btn">SOCIAL<img class="arrow arrow-down" src="assets/images/corporate/png/nav-arrow@2x.png" alt="social" /></a>
+				<a href="#" class="header btn social-btn">SOCIAL<img class="arrow arrow-down" src="" data-img-src="assets/images/corporate/png/nav-arrow@2x.png" alt="social" /></a>
 				<ul class="social-nav">
 					<li><a class="btn instagram-btn" href="http://instagram.com/madstudiosco" target=_blank><i class="fa fa-instagram"></i></a></li>
 					<li><a class="btn facebook-btn" href="https://www.facebook.com/MadStudiosCo" target=_blank><i class="fa fa-facebook-official"></i></a></li>
@@ -395,7 +394,7 @@
 			</div>
 		</div>
 		<div class="btn-toggle-ctn">
-            <a href="#" class="btn btn-blue toggle-btn"><img class="arrow" src="assets/images/corporate/png/nav-arrow@2x.png" alt="open menu" /></a>
+            <a href="#" class="btn btn-blue toggle-btn"><img class="arrow" src="" data-img-src="assets/images/corporate/png/nav-arrow@2x.png" alt="open menu" /></a>
         </div>
 	</div>
 	

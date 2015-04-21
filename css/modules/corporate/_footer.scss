@@ -5,14 +5,21 @@
 	background-color: $navy;
 	border-top: 5px solid $dropShadowColor;
 	padding: $xLgMargin 0;
+	.column{
+    	padding-left: 0;
+        padding-right: 0;
+	}
     .main-nav-ctn{
-        width: 200px;
+        width: 150px;
         float: left;
     }
     .main-nav{ 
         float:left;
         display: block;
         margin-left: 38px; 
+        @media #{$small-only} {
+            margin-left: 20px; 
+        }
         a{
             color: #FFF;
             font-size: em(10px); font-weight: lighter;
@@ -21,13 +28,16 @@
                 background-color: $xLightBlue;
                 color: $defaultFontColor;
             }
+            @media #{$small-only} {
+                font-size: em(9px); 
+            }
         }
     }
     .logo{
 	    margin-bottom: $smMargin;
     }
     .social-nav{ 
-        margin-top: 188px; 
+        margin-top: 197px; 
         float: right;
         .btn{
         	color: $gold;

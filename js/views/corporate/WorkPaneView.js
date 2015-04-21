@@ -9,7 +9,6 @@ main.views.corporate.WorkPaneView = main.views.PaneView.extend({
 	video_shown: false,
 	video_def_width: 0,
 	video_def_height: 0,
-	offset: 0,
 	elementManipulator: main.utils.ElementManipulator,
 	    // ----------------- initialize
     initialize: function() {
@@ -21,9 +20,9 @@ main.views.corporate.WorkPaneView = main.views.PaneView.extend({
         var self = this;
         this.has_been_prepared = false;
         this.video_shown = false;
-        setTimeout(function(){
+        /*setTimeout(function(){
 	        self.offset = -($('.pane-title', self.el).outerHeight() + $('.divider', self.el).outerHeight());
-        }, 100);
+        }, 100);*/
         //setTimeout to add the video
         setTimeout(function(){
 	        self.addVideo();
@@ -73,6 +72,11 @@ main.views.corporate.WorkPaneView = main.views.PaneView.extend({
     // ----------------- beforeDeactivate
     beforeDeactivate: function() {
     },
+    // ----------------- beforeRender
+   /* beforePosize: function() {
+        if($('.hide-for-small .pane-title', this.el).parent().css('display') != 'none') this.offset = -($('.hide-for-small .pane-title', this.el).outerHeight() + $('.hide-for-small .divider', this.el).outerHeight());
+        else this.offset = -$('.hide-for-small .divider', this.el).outerHeight();
+    },*/
     // ----------------- beforePosize
     beforePosize: function() {
     	//maintain the original aspect ratio of the 
