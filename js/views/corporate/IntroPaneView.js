@@ -173,18 +173,27 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     	});
     },
     // ----------------- handleIntroScroll
-    handleIntroScroll: function() {
-    	//kill any previous animations
-    	TweenLite.killTweensOf(this.arrow_row_el, false, {top:true, opacity:true} );
-    	TweenLite.killTweensOf(this.anim_rows.eq(1), false, {top:true, opacity:true} );
-    
-    	//if scrolltop > a few pixels
+    handleIntroScroll: function() { 
+        var self = this;
+        var scroll_top = this.scroller_el.scrollTop();
+        //set a timeout and kill it the next time
+        //to force a certain delay
+        clearTimeout(this.introScrollTimeout);
+        this.introScrollTimeout = setTimeout(function(){
+            self.animateOnScroll(scroll_top);
+        }, 10);
+    },
+    // ----------------- animateOnScroll
+    animateOnScroll: function(scroll_top) {
+        //if scrolltop > a few pixels
     	//fade in the other items
-    	//and faed out the arrow
-    	var scroll_top = this.scroller_el.scrollTop();
-    	var delay = 0;
+    	//and faed out the ar        
+        var delay = 0;
 
-		if(scroll_top >= 0 ){
+		if(scroll_top >= 0 && scroll_top < this.max_scroll_top){
+            //kill any previous animations
+            TweenLite.killTweensOf(this.arrow_row_el, false, {top:true, opacity:true} );
+            TweenLite.killTweensOf(this.anim_rows.eq(1), false, {top:true, opacity:true} );
 			if(scroll_top > this.SHOW_UNDERLAYING_TEXT_SCROLL_TOP){
 				TweenLite.to(this.arrow_row_el, 0.25, { opacity:0 });
 		    	//move it up
@@ -216,18 +225,18 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
 				TweenLite.to(this.anim_rows.eq(2), 1.5, { top: this.default_elements_y[2], ease: Expo.easeOut, delay:delay });
 				this.anim_rows.eq(2).addClass(this.VISIBLE_CLASS);
 			}
+            //else if( scroll_top  <=  ( this.default_elements_y[2] - (this.this_el.height() - this.nav_offset - this.grad_el.height() )) ){
+            else if( scroll_top  <= ( this.default_elements_y[2] - (this.this_el.height()/2) ) ){
+				TweenLite.to(this.anim_rows.eq(2), 0.5, { opacity: 0, ease: Expo.easeOut });
+				TweenLite.to(this.anim_rows.eq(2), 1, { top: this.default_elements_y[2] + this.ELEMENT_ANIM_OFFSET, ease: Expo.easeOut });
+				this.anim_rows.eq(2).removeClass(this.VISIBLE_CLASS);
+			}
             if( scroll_top  > ( this.default_elements_y[2] - (this.this_el.height()/3) ) ){
                 delay = 0;
                 TweenLite.to(this.anim_rows.eq(1), 0.5, { opacity: 0, ease: Expo.easeOut, delay:delay });
                 TweenLite.to(this.anim_rows.eq(1), 0.75, { top: this.default_elements_y[1] - this.ELEMENT_ANIM_OFFSET, ease: Expo.easeOut, delay:delay });
                 this.anim_rows.eq(1).removeClass(this.VISIBLE_CLASS);
             }
-			//else if( scroll_top  <=  ( this.default_elements_y[2] - (this.this_el.height() - this.nav_offset - this.grad_el.height() )) ){
-            if( scroll_top  <= ( this.default_elements_y[2] - (this.this_el.height()/2) ) ){
-				TweenLite.to(this.anim_rows.eq(2), 0.5, { opacity: 0, ease: Expo.easeOut });
-				TweenLite.to(this.anim_rows.eq(2), 1, { top: this.default_elements_y[2] + this.ELEMENT_ANIM_OFFSET, ease: Expo.easeOut });
-				this.anim_rows.eq(2).removeClass(this.VISIBLE_CLASS);
-			}
 		}
     },
     // ----------------- prepForAnim
@@ -275,10 +284,13 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     	this.grad_el.css('bottom', to_bottom + 'px');
     	var vert_blocks = $('.text-block.vertical-center', this.el);
     	
+        this.max_scroll_top = $('.scroller-content', this.el).outerHeight();
+
     	vert_blocks.each(function(index, value){
 	    	//give each a margin top and bottom
 	    	//according to window height
-	    	self.to_margin = ( ( self.this_el.outerHeight() - self.nav_offset - ( $(this).outerHeight() + 25 ) )/2 );
+	    	//self.to_margin = ( ( self.this_el.outerHeight() - self.nav_offset - ( $(this).outerHeight() + 25 ) )/2 );
+            self.to_margin = ( ( self.this_el.outerHeight() - self.nav_offset - ( $(this).outerHeight() ) )/2 );
 			if(index == 0){
 				if(self.to_margin < self.MIN_TEXT_BLOCK_TOP_MARGIN) self.to_margin = self.MIN_TEXT_BLOCK_TOP_MARGIN;
 				$(this).css('marginTop', self.to_margin + 'px');

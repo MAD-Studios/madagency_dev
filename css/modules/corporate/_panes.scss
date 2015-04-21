@@ -75,7 +75,13 @@ $contactPaneInputMaxWidth: 400px;
 				margin-bottom: $lgMargin;
 				&.last{
 					margin-bottom: $xLgMargin;
+                    @media #{$small-only} {
+                        margin-bottom: $medMargin;
+                    }
 				}
+                @media #{$small-only} {
+                    margin-bottom: $medMargin;
+                }
 			}
 			h2{
 				font-weight: normal;
@@ -109,14 +115,16 @@ $contactPaneInputMaxWidth: 400px;
 }
 
 /*------------------------- HowPane  */
-.btn-move img{
-	float: left;
-}
-.btn-move p{
-	float: left;
-	margin-right: $xSmMargin; margin-top: 3px;
-	color: $navy;
-	font-size: em(12px); font-weight: 900;
+.btn-move{
+    img{
+        float: left;
+    }
+    p{
+        float: left;
+        margin-right: $xSmMargin; margin-top: 3px;
+        color: $navy;
+        font-size: em(12px); font-weight: 900;
+    }
 }
 #how-pane{ 
     h2{ margin-bottom: $medMargin; }

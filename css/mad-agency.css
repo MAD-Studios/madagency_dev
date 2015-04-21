@@ -5231,6 +5231,12 @@ div#orientation-alert h1 {
         margin-bottom: 24px; }
         #intro-pane .intro .row-absolute h1.last {
           margin-bottom: 48px; }
+          @media only screen and (max-width: 40em) {
+            #intro-pane .intro .row-absolute h1.last {
+              margin-bottom: 16px; } }
+        @media only screen and (max-width: 40em) {
+          #intro-pane .intro .row-absolute h1 {
+            margin-bottom: 16px; } }
       #intro-pane .intro .row-absolute h2 {
         font-weight: normal;
         margin-bottom: 8px; }
@@ -5262,7 +5268,6 @@ div#orientation-alert h1 {
 /*------------------------- HowPane  */
 .btn-move img {
   float: left; }
-
 .btn-move p {
   float: left;
   margin-right: 8px;

@@ -16,27 +16,15 @@ main.views.corporate.PaneContainerView = main.views.PaneContainerView.extend({
         this.contactPaneView = new main.views.corporate.ContactPaneView( {el: $('#contact-pane', this.el)} );
         this.paneViews.push(this.contactPaneView);
         
-        //set unique properties
-        //for each pane
-        //intro pane -------
-       /* $(this.introPaneView.el).on(this.introPaneView.SUBMIT, function(event){
-	        $(self.el).trigger(self.INTRO_PANE_SUBMIT);
-        });
-        //listen for the intro apne idle event
-        $(this.introPaneView.el).on(this.introPaneView.IDLE, function(event){
-	        $(self.el).trigger(self.INTRO_PANE_IDLE);
-        });*/
         //set the introPaneView to active
         this.introPaneView.activate();
         this.curPaneView = this.introPaneView;
         
         //work pane ----
         $(this.workPaneView.el).on(this.workPaneView.VIDEO_ADDED, function(event){
-            console.log("this.workPaneView.VIDEO_ADDED *************");
             self.posize();
             self.updateHeight();
         });
-
         //contact pane ----
         $(this.contactPaneView.el).on(this.contactPaneView.RESIZE, function(event){
 	        //self.initPanes();
