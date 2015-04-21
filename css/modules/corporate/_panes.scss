@@ -68,6 +68,7 @@ $contactPaneInputMaxWidth: 400px;
 		}
 		.row-absolute{
 			@include transform(translate3d(0,0,0));
+            -webkit-backface-visibility: hidden;
 			&:not(:first-child) {
 				h1{ margin-top: $lgMargin; }
 			}
