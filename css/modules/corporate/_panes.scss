@@ -75,6 +75,7 @@ $contactPaneInputMaxWidth: 400px;
 			@include transform(translate3d(0,0,0));
 		    -webkit-backface-visibility: hidden; 
             backface-visibility: hidden;
+            text-rendering: optimizeSpeed;
 			&:not(:first-child) {
 				h1{ margin-top: $lgMargin; }
 			}
@@ -99,11 +100,14 @@ $contactPaneInputMaxWidth: 400px;
                     margin-bottom: 10px;
 				}
 			}
+			&:last-child{
+    			h2{margin-bottom: 18px;}
+			}
 		}
 		.circle-arrow {
 			margin: 0 auto;
 		}
-		h2 a {color: #FFF; font-weight: bold; text-decoration: none; position: relative;}
+		h2 a {color: #FFF; font-weight: bold; text-decoration: none; position: relative; white-space: nowrap;}
 		/* To achieve the underline effect as in th PDF Proof */
 		h2 a:after {
 			content: '';
@@ -140,11 +144,11 @@ $contactPaneInputMaxWidth: 400px;
     h3{ margin-bottom: $lgMargin; }
     p{ margin-bottom: $medMargin; }
     #img-how{
-        width:210px; height:225px;
+        width:210px; height:auto;
         display: block;
         margin: 30px 0 $lgMargin 0;
         float: right;
-        @media #{$small-only} {
+        @media #{$medium-only}, #{$small-only}{
         	float: none;
         	margin-left: auto;
         	margin-right: auto;
@@ -173,10 +177,6 @@ $contactPaneInputMaxWidth: 400px;
                 padding-right: 0;
             }
     	}
-        /*@media #{$small-only} {
-            padding-left: 0;
-            padding-right: 0;
-        }*/
     }
 }
 
@@ -196,7 +196,9 @@ $contactPaneInputMaxWidth: 400px;
             }
     	}
     	&.row-header{
-            padding-top: 24px;
+            @media #{$medium-only}, #{$small-only}{
+                padding-top: 24px;
+            }
     	}
     	> .column{
         	@media #{$small-only} {

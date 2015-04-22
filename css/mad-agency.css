@@ -4533,7 +4533,7 @@ i {
 
 .h-logo {
   float: left;
-  width: 155px;
+  width: 125px;
   height: 25px;
   background: transparent url(/assets/images/corporate/svg/mad-agency-horizontal.svg) no-repeat; }
   .no-svg .h-logo {
@@ -4800,6 +4800,11 @@ div#orientation-alert h1 {
   box-sizing: border-box;
   z-index: 200;
   padding-top: 2px; }
+  #header .logo {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 4px; }
 
 .header-trans {
   -webkit-transition: top 1s 0.45s cubic-bezier(0.755, 0.05, 0.855, 0.06), opacity 0.24s 0.8s;
@@ -5218,7 +5223,8 @@ div#orientation-alert h1 {
       -o-transform: translate3d(0, 0, 0);
       transform: translate3d(0, 0, 0);
       -webkit-backface-visibility: hidden;
-      backface-visibility: hidden; }
+      backface-visibility: hidden;
+      text-rendering: optimizeSpeed; }
       #intro-pane .intro .row-absolute:not(:first-child) h1 {
         margin-top: 24px; }
       #intro-pane .intro .row-absolute h1 {
@@ -5239,13 +5245,16 @@ div#orientation-alert h1 {
             font-size: 1.57143em;
             line-height: 1.07143em;
             margin-bottom: 10px; } }
+      #intro-pane .intro .row-absolute:last-child h2 {
+        margin-bottom: 18px; }
     #intro-pane .intro .circle-arrow {
       margin: 0 auto; }
     #intro-pane .intro h2 a {
       color: #FFF;
       font-weight: bold;
       text-decoration: none;
-      position: relative; }
+      position: relative;
+      white-space: nowrap; }
     #intro-pane .intro h2 a:after {
       content: '';
       position: absolute;
@@ -5280,11 +5289,11 @@ div#orientation-alert h1 {
   margin-bottom: 16px; }
 #how-pane #img-how {
   width: 210px;
-  height: 225px;
+  height: auto;
   display: block;
   margin: 30px 0 24px 0;
   float: right; }
-  @media only screen and (max-width: 40em) {
+  @media only screen and (min-width: 40.063em) and (max-width: 64em), only screen and (max-width: 40em) {
     #how-pane #img-how {
       float: none;
       margin-left: auto;
@@ -5302,15 +5311,10 @@ div#orientation-alert h1 {
   #how-pane > .row-content {
     padding-top: 0;
     padding-bottom: 0; } }
-#how-pane .row-content {
-  /*@media only screen and (max-width: 40em) {
-      padding-left: 0;
-      padding-right: 0;
-  }*/ }
-  @media only screen and (max-width: 40em) {
-    #how-pane .row-content > .row-content {
-      padding-left: 0;
-      padding-right: 0; } }
+@media only screen and (max-width: 40em) {
+  #how-pane .row-content > .row-content {
+    padding-left: 0;
+    padding-right: 0; } }
 
 /*------------------------- WorkPane  */
 #work-pane p {
@@ -5323,8 +5327,9 @@ div#orientation-alert h1 {
   @media only screen and (max-width: 40em) {
     #work-pane .row-content:last-child {
       padding-bottom: 48px; } }
-#work-pane .row-content.row-header {
-  padding-top: 24px; }
+@media only screen and (min-width: 40.063em) and (max-width: 64em), only screen and (max-width: 40em) {
+  #work-pane .row-content.row-header {
+    padding-top: 24px; } }
 @media only screen and (max-width: 40em) {
   #work-pane .row-content > .column {
     padding-left: 0;

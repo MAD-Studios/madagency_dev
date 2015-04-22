@@ -125,7 +125,7 @@ main.views.PaneContainerView = Backbone.View.extend({
 	},
     // ----------------- scrollToTop
     scrollToTop: function() {
-        TweenLite.to(window, 1.4, {scrollTo:{y:0, autoKill:false}, ease:Expo.easeOut, onStart:self.onAutoScrollStart, onComplete:self.onAutoScrollComplete});
+        TweenLite.to(window, 2, {scrollTo:{y:0, autoKill:false}, ease:Expo.easeOut, onStart:self.onAutoScrollStart, onComplete:self.onAutoScrollComplete});
     },
     // ----------------- scrollWindowTo
     scrollWindowTo: function(id, animate) {

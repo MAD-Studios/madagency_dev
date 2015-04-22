@@ -132,12 +132,9 @@
 							</div></div>
 							<div class="row-absolute"><div class="text-block vertical-center">
 								<h1 class="text-shadow white">That&rsquo;s a lot of cool things.<br>Right?</h1>
-								<h2>If you’re ready to start hearing &lsquo;yes&rsquo; to your needs, go ahead and contact us.</h2>
-								<h2>We do things differently and sometimes, that&rsquo;s the best solution.</h2>
-								<h2>Drop us a line we’re ready to get started.</h2>
-								<!--<h2>While your here take a look around and be sure to check out our <a id="btn-castle" class="btn" href="castle">Creative Castle.</a></h2>-->
+								<h2>So if you&rsquo;re ready to start hearing YES to your advertising, marketing, public relations, and production needs <a id="btn-castle" class="btn" href="contact">contact us</a>.</h2>
+								<h2>Or, just keep scrolling and to find out what we’re all about.</h2>
 							</div></div>
-
 						</div>
 		            </div>
 		            
@@ -161,8 +158,8 @@
 						<p>And, while “great work” meant one thing then, it means a whole lot more today. Many agencies can produce great work, we strive to produce the type of work that gets results. That must be why the clients we have don’t just stay for a campaign or two, they stay for the long haul.</p>
 					</div>
 					
-					<div class="column large-5 large-uncentered medium-5 medium-uncentered small-10 small-centered">
-						<div class="row-float"><img id="img-how" src="" data-img-src="assets/images/corporate/png/how-logo-method@2x.png"  alt="How Method" title="How Method" /></div>
+					<div class="column large-5 large-uncentered medium-10 medium-centered small-10 small-centered">
+						<div class="row-float"><img id="img-how" src="" data-img-src="assets/images/corporate/svg/how-logo-method.svg"  alt="How Method" title="How Method" /></div>
 						<div class="row-float hide-for-medium-down show-for-large-up"><div class="btn-move-ctn"><a class="btn btn-move" href=""><p>SEE IT IN ACTION</p><img style="width:16px;height:16px;"src="" data-img-src="assets/images/corporate/svg/how-btn-arrow.svg" alt="arrow down" title="arrow down"/></a></div>
 					</div>
 					
@@ -281,7 +278,7 @@
                         
                         <div class="row row-content row-header">
                             <div class="column large-12 small-12">
-                                <p><b>Mad Agency</b> is a full service Advertising/Marketing/Production agency. We have the people needed to build your project here, onsite. This allows for tighter timelines and a more cohesive end result.</p>
+                                <p><b>Mad Agency</b> is a full service Advertising/Marketing/Public Relations/Production agency. We have the people needed to build your project here, onsite. This allows for tighter timelines and a more cohesive end result.</p>
                             </div>
                         </div>
                         
@@ -375,12 +372,12 @@
 	<?php include 'inc/footer.php';?>
 		
 	<!------------ MAIN NAV ------------->
-	<div id="main-nav-ctn">
+	<div id="main-nav-ctn" class="show-for-large-up hide-for-medium-down">
 	    <div class="divider shadow-bordered"></div>
         <div class="row">
         	<div class="column large-12 small-12">
 	            <a href="" class="full-logo full-logo-sm logo btn"></a>
-	            <ul class="nav hide-for-small show-for-large-up">
+	            <ul class="nav">
 	            	<li><a class="btn nav-btn" id="how-btn" href="/how">HOW WE ROLL</a></li>
 	                <li><a class="btn nav-btn" id="work-btn" href="/work">THE WORK</a></li>
 	                <li><a class="btn nav-btn" id="team-btn" href="/team">OUR TEAM</a></li>

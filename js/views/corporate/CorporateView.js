@@ -23,7 +23,8 @@ main.views.corporate.CorporateView = main.views.CorporateView.extend({
     // ----------------- beforePosize
     beforePosize: function() {
         this.mainNavContainerView.posize();
-        this.paneContainerView.nav_offset = $(this.mainNavContainerView.el).outerHeight();
+        if($(this.mainNavContainerView.el).css('display') != 'none') this.paneContainerView.nav_offset = $(this.mainNavContainerView.el).outerHeight();
+        else this.paneContainerView.nav_offset = 0;
         if(this.smallMenuView.posize) this.smallMenuView.posize(); 
     },
     // ----------------- beforePosize

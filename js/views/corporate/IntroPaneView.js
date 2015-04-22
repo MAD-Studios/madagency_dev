@@ -203,9 +203,6 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     },
     // ----------------- animateOnScroll
     animateOnScroll: function(scroll_top) {
-        //!!!!!!!!!!!!!!!!!!
-        console.log("scroll_top = " + scroll_top);
-        console.log("$('.scroller-content', this.el).height() = " + $('.scroller-content', this.el).height());
         //if scrolltop > a few pixels
     	//fade in the other items
     	//and faed out the ar        
