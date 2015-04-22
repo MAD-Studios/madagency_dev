@@ -2,7 +2,7 @@
 main.views.corporate.ContactPaneView = main.views.PaneView.extend({
 	SHOW_MESSAGE: "showMessage",
 	CUSTOM_FOCUS_CLASS: "custom-focus",
-	offset: -1,
+	override_offset: -1,
 	id: "contact",
 	_route: "contact",
 	message_is_shown: false,

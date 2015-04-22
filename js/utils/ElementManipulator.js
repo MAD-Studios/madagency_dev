@@ -111,6 +111,21 @@ main.utils.ElementManipulator = {
 	//--------------------------------------
 	enableDocumentScroll:function(){
 		$(document.documentElement).removeClass(this.NO_DOCUMENT_SCROLL_CLASS);
-    }
+    },
+    //--------------------------------------
+	// removeFromArray
+	//--------------------------------------
+	removeFromArray:function(index, array){
+	    var new_array, array_slice_1, array_slice_2;
+	    
+	    array_slice_1 = array.slice(0, index);
+	    array_slice_2 = array.slice(index+1, array.length);
+
+	    if(index == 0) new_array = array_slice_2;
+	    else if(index == (array.length-1)) new_array = array_slice_1;
+	    else new_array = array_slice_1.concat(array_slice_2);
+	    
+	    return new_array;
+	}
 
 };

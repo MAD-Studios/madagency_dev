@@ -81,8 +81,7 @@ main.views.MainNavContainerView = Backbone.View.extend({
 	   //if does not have class top-sticky
 	   //position it at the bottom of the window
 	   this.default_height = $(this.el).outerHeight();
-       console.log("--------- this.default_height = " + this.default_height);
-	   this.default_top = $(window).height() - this.default_height;
+	   this.default_top = $(window).innerHeight() - this.default_height;
 	   if(this.default_top < this.MIN_TOP) this.default_top = this.MIN_TOP;
 	   if( !$(this.el).hasClass(this.TOP_STICKY_CLASS) ){
 		   $(this.el).css('top', this.default_top + 'px');

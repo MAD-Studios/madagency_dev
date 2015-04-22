@@ -3838,6 +3838,11 @@ button:focus {
   bottom: 0;
   left: 0; }
 
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent;
+  /* For some Androids */ }
+
 /*----------------- FONTS  */
 h1.white,
 h2.white,
@@ -3848,6 +3853,9 @@ p.white {
 
 .text-shadow.white {
   text-shadow: 0 0.036em #FDA139; }
+  @media only screen and (max-width: 40em) {
+    .text-shadow.white {
+      text-shadow: 0 0.06em #FDA139; } }
 
 .row {
   max-width: 1040px; }
@@ -4481,39 +4489,10 @@ i {
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch; }
 
-/*.small
-.scroller{
-	position: absolute;
-	float: none;
-	height: 100%;
-	overflow-y: scroll;
-	overflow-x: hidden;
-	z-index: 500;
-	-webkit-overflow-scrolling: touch;
-	-webkit-transform: translate3d(0,0,0);
-	-moz-transform: translate3d(0,0,0);
-    -o-transform: translate3d(0,0,0);
-    -ms-transform: translate3d(0,0,0);
-    transform: translate3d(0,0,0);
-    /*-webkit-backface-visibility: hidden;*/
-/*}*/
-/*.full-screen.small .scroller{
-	overflow-y: hidden;
-}*/
 .scroller-content {
   width: 100%;
   float: left; }
 
-/*.small .scroller-content{
-	width: 100%;
-	float: none;
-	-webkit-transform: translate3d(0,0,0);
-	-moz-transform: translate3d(0,0,0);
-    -o-transform: translate3d(0,0,0);
-    -ms-transform: translate3d(0,0,0);
-    transform: translate3d(0,0,0);
-    /*-webkit-backface-visibility: hidden;*/
-/*}*/
 .overlayed .scroller-content {
   position: absolute;
   float: none;
@@ -4841,13 +4820,19 @@ div#orientation-alert h1 {
   background-color: #333e48;
   border-top: 5px solid #ffa227;
   padding: 48px 0; }
+  #footer .column {
+    padding-left: 0;
+    padding-right: 0; }
   #footer .main-nav-ctn {
-    width: 200px;
+    width: 150px;
     float: left; }
   #footer .main-nav {
     float: left;
     display: block;
     margin-left: 38px; }
+    @media only screen and (max-width: 40em) {
+      #footer .main-nav {
+        margin-left: 20px; } }
     #footer .main-nav a {
       color: #FFF;
       font-size: 0.71429em;
@@ -4856,10 +4841,13 @@ div#orientation-alert h1 {
       #footer .main-nav a:hover {
         background-color: #e7ebf3;
         color: #333e48; }
+      @media only screen and (max-width: 40em) {
+        #footer .main-nav a {
+          font-size: 0.64286em; } }
   #footer .logo {
     margin-bottom: 12px; }
   #footer .social-nav {
-    margin-top: 188px;
+    margin-top: 197px;
     float: right; }
     #footer .social-nav .btn {
       color: #ffc627; }
@@ -4888,9 +4876,9 @@ div#orientation-alert h1 {
   #main-nav-ctn .h-logo {
     display: block;
     margin: 0 0 0 -12px; }
-    @media only screen and (max-width: 40em) {
+    @media only screen and (max-width: 40em), only screen and (min-width: 40.063em) and (max-width: 64em) {
       #main-nav-ctn .h-logo {
-        width: 155px;
+        width: 125px;
         height: 25px;
         float: none;
         margin: 0 auto; } }
@@ -4969,7 +4957,7 @@ div#orientation-alert h1 {
 
 /*------------------ SMALL-MENU  */
 .small-menu {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: -100%;
   z-index: 999;
@@ -5181,6 +5169,9 @@ div#orientation-alert h1 {
   overflow-x: hidden;
   -webkit-tap-highlight-color: transparent; }
 
+.row-pane-divider.row-pane-divider-offset {
+  margin-top: -24px; }
+
 /*------------------------- IntroPane  */
 #intro-pane {
   background-color: #ffc627;
@@ -5192,7 +5183,7 @@ div#orientation-alert h1 {
     /* To achieve the underline effect as in th PDF Proof */ }
     #intro-pane .intro .gradient.gold {
       position: absolute;
-      bottom: 0;
+      top: 0;
       height: 20%;
       width: 100%;
       z-index: 2;
@@ -5224,7 +5215,9 @@ div#orientation-alert h1 {
       -moz-transform: translate3d(0, 0, 0);
       -ms-transform: translate3d(0, 0, 0);
       -o-transform: translate3d(0, 0, 0);
-      transform: translate3d(0, 0, 0); }
+      transform: translate3d(0, 0, 0);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden; }
       #intro-pane .intro .row-absolute:not(:first-child) h1 {
         margin-top: 24px; }
       #intro-pane .intro .row-absolute h1 {
@@ -5233,7 +5226,7 @@ div#orientation-alert h1 {
           margin-bottom: 48px; }
           @media only screen and (max-width: 40em) {
             #intro-pane .intro .row-absolute h1.last {
-              margin-bottom: 16px; } }
+              margin-bottom: 24px; } }
         @media only screen and (max-width: 40em) {
           #intro-pane .intro .row-absolute h1 {
             margin-bottom: 16px; } }
@@ -5242,7 +5235,9 @@ div#orientation-alert h1 {
         margin-bottom: 8px; }
         @media only screen and (max-width: 40em) {
           #intro-pane .intro .row-absolute h2 {
-            font-size: 1.71429em; } }
+            font-size: 1.57143em;
+            line-height: 1.07143em;
+            margin-bottom: 10px; } }
     #intro-pane .intro .circle-arrow {
       margin: 0 auto; }
     #intro-pane .intro h2 a {
@@ -5302,6 +5297,15 @@ div#orientation-alert h1 {
       float: none;
       margin-left: auto;
       margin-right: auto; } }
+#how-pane .row-content {
+  /*@media only screen and (max-width: 40em) {
+      padding-left: 0;
+      padding-right: 0;
+  }*/ }
+  @media only screen and (max-width: 40em) {
+    #how-pane .row-content > .row-content {
+      padding-left: 0;
+      padding-right: 0; } }
 
 /*------------------------- WorkPane  */
 #work-pane p {
@@ -5311,6 +5315,14 @@ div#orientation-alert h1 {
       text-align: left; } }
 #work-pane .row-content:last-child {
   padding-top: 0; }
+@media only screen and (max-width: 40em) {
+  #work-pane .row-content > .column {
+    padding-left: 0;
+    padding-right: 0; } }
+@media only screen and (max-width: 40em) {
+  #work-pane .row-content {
+    padding-left: 0;
+    padding-right: 0; } }
 #work-pane .video-ctn {
   /*init size of video container*/
   position: absolute;
@@ -5327,42 +5339,51 @@ div#orientation-alert h1 {
   z-index: 100; }
 
 /*------------------------- TeamPane  */
-@media only screen and (max-width: 40em) {
-  #team-pane {
-    background-color: #fceec9; } }
-@media only screen and (max-width: 40em) {
-  #team-pane .pane-title {
-    margin-top: -24px; } }
-#team-pane .row-content {
-  padding-top: 48px;
-  background-color: #fceec9; }
+#team-pane {
+  /*.pane-title{
+      @media only screen and (min-width:40.063em) and (max-width:64em), only screen and (max-width: 40em){
+          margin-top: -25px;
+      }
+  }*/ }
   @media only screen and (min-width: 40.063em) and (max-width: 64em), only screen and (max-width: 40em) {
-    #team-pane .row-content {
-      padding-top: 12px; } }
-  @media only screen and (max-width: 40em) {
-    #team-pane .row-content {
-      background-color: transparent; } }
-  #team-pane .row-content > .row {
-    padding-top: 0;
-    padding-bottom: 0; }
-#team-pane .large-6 {
-  padding-bottom: 48px; }
-  #team-pane .large-6 p {
-    float: left;
-    font-size: 0.85714em;
-    font-weight: lighter; }
-  #team-pane .large-6 > .row {
-    padding: 0; }
-  @media only screen and (min-width: 40.063em) and (max-width: 64em), only screen and (max-width: 40em) {
-    #team-pane .large-6:not(.last) {
-      border-bottom: 1px solid #ffa227; } }
-  @media only screen and (min-width: 40.063em) and (max-width: 64em), only screen and (max-width: 40em) {
-    #team-pane .large-6 {
-      padding-bottom: 24px;
-      padding-top: 24px; } }
-#team-pane .btn-move-ctn {
-  width: 165px;
-  float: right; }
+    #team-pane {
+      background-color: #fceec9; } }
+  #team-pane .row-pane-divider.row-pane-divider-offset {
+    margin-top: -25px; }
+  #team-pane .row-content {
+    padding-top: 48px;
+    background-color: #fceec9; }
+    @media only screen and (min-width: 40.063em) and (max-width: 64em), only screen and (max-width: 40em) {
+      #team-pane .row-content {
+        padding-top: 12px; } }
+    @media only screen and (max-width: 40em) {
+      #team-pane .row-content {
+        background-color: transparent; } }
+    #team-pane .row-content > .row,
+    #team-pane .row-content > .row > .col {
+      padding: 0; }
+  #team-pane .large-6 {
+    padding-bottom: 48px; }
+    #team-pane .large-6 p {
+      float: left;
+      font-size: 0.85714em;
+      font-weight: lighter; }
+    #team-pane .large-6 > .row {
+      padding: 0; }
+    @media only screen and (max-width: 40em) {
+      #team-pane .large-6 .large-2 {
+        padding-left: 0;
+        padding-right: 0; } }
+    @media only screen and (min-width: 40.063em) and (max-width: 64em), only screen and (max-width: 40em) {
+      #team-pane .large-6:not(.last) {
+        border-bottom: 1px solid #ffa227; } }
+    @media only screen and (min-width: 40.063em) and (max-width: 64em), only screen and (max-width: 40em) {
+      #team-pane .large-6 {
+        padding-bottom: 24px;
+        padding-top: 24px; } }
+  #team-pane .btn-move-ctn {
+    width: 165px;
+    float: right; }
 
 .icon-role {
   float: left;
@@ -5405,29 +5426,40 @@ div#orientation-alert h1 {
     background-image: url(../assets/images/corporate/png/team-icon-projmanger.png); }
 
 /*------------------------- DisciplinesPane  */
-#disciplines-pane .row-pane-divider {
-  margin-top: -24px; }
-#disciplines-pane .row-content {
-  padding-top: 24px; }
-  #disciplines-pane .row-content:last-child {
-    padding-bottom: 48px; }
-#disciplines-pane li {
-  margin-bottom: 8px; }
-  #disciplines-pane li:before {
-    content: "+";
-    margin-right: 16px;
-    color: #ffc627; }
-@media only screen and (min-width: 40.063em) and (max-width: 64em), only screen and (max-width: 40em) {
-  #disciplines-pane ul {
-    margin-left: 8%; } }
+#disciplines-pane {
+  /*.row-pane-divider{
+      margin-top: -24px;
+  }*/ }
+  #disciplines-pane .row-content {
+    padding-top: 24px; }
+    #disciplines-pane .row-content:last-child {
+      padding-bottom: 48px; }
+    @media only screen and (max-width: 40em) {
+      #disciplines-pane .row-content > .column {
+        padding-left: 0;
+        padding-right: 0; } }
+    @media only screen and (max-width: 40em) {
+      #disciplines-pane .row-content {
+        padding-left: 0;
+        padding-right: 0; } }
+  #disciplines-pane li {
+    margin-bottom: 8px; }
+    #disciplines-pane li:before {
+      content: "+";
+      margin-right: 16px;
+      color: #ffc627; }
+  @media only screen and (min-width: 40.063em) and (max-width: 64em), only screen and (max-width: 40em) {
+    #disciplines-pane ul {
+      margin-left: 8%; } }
 
 /*------------------------- ContactPane  */
 #contact-pane {
   background-color: #e7ebf3;
   border-top: 1px solid #333e48;
-  border-bottom: 1px solid #333e48; }
-  #contact-pane .pane-title {
-    margin-top: -24px; }
+  border-bottom: 1px solid #333e48;
+  /*.pane-title{
+      margin-top: -24px;
+  }*/ }
   #contact-pane .map-ctn {
     width: 100%;
     height: 250px;
@@ -5444,15 +5476,23 @@ div#orientation-alert h1 {
       padding-top: 48px; }
     #contact-pane .row-content:last-child {
       padding-bottom: 48px; }
+    @media only screen and (max-width: 40em) {
+      #contact-pane .row-content > .column {
+        padding-left: 0;
+        padding-right: 0; } }
   #contact-pane .btn-addr {
     float: left;
-    margin: 0 -12px 4px;
+    /*margin: 0 0 -$smMargin 4px;*/
+    /*margin-left: -$smMargin;*/
+    margin-bottom: 4px;
     padding: 2px 8px;
     color: #333e48;
     border: 1px solid transparent; }
     #contact-pane .btn-addr.active {
       background-color: #FFF;
       border: 1px solid #333e48; }
+  #contact-pane .addr {
+    margin-left: 12px; }
   #contact-pane #contact-form .large-6:nth-child(1) div {
     float: right; }
   @media only screen and (min-width: 40.063em) and (max-width: 64em), only screen and (max-width: 40em) {

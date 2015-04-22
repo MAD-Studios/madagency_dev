@@ -26,6 +26,17 @@ main.views.CorporateView = Backbone.View.extend({
         $(window).scroll(function(){
             self.onScroll();
 	    });
+	    //!!!!!!!!!!!
+	    //on scroll start
+	    //disable any pane scroll
+	    $(window).on('scrollstart', function(){
+	        self.paneContainerView.disablePaneScrolls();
+	    });
+	    //on scroll end
+	    //reenable any pane scroll
+	    $(window).on('scrollend', function(){
+	        self.paneContainerView.enablePaneScrolls();
+	    });
         
         if (this.renderParts) this.renderParts();
         //this.paneContainerView = new main.views.PaneContainerView({el: $('#pane-ctn', this.el)});
@@ -63,16 +74,16 @@ main.views.CorporateView = Backbone.View.extend({
     },
 	// ----------------- posize
     posize: function() {
+        var self = this;
         if(this.beforePosize) this.beforePosize();
         
-	    //this.paneContainerView.nav_offset = $(this.mainNavContainerView.el).outerHeight();
         this.paneContainerView.offset = $(this.headerView.el).outerHeight();
 	    this.paneContainerView.posize();
 	    
-	    var to_height = $(this.paneContainerView.el).outerHeight() + $('#footer', this.el).outerHeight(); 
-        console.log("$(this.paneContainerView.el).outerHeight() = " + $(this.paneContainerView.el).outerHeight());
-        console.log("$('#footer', this.el).outerHeight() = " + $('#footer', this.el).outerHeight());
-	    $(this.el).css('height', to_height + 'px');
+	   setTimeout(function(){
+    	    var to_height = $(self.paneContainerView.el).outerHeight() + $('#footer', self.el).outerHeight(); 
+    	    $(self.el).css('height', to_height + 'px');
+	    }, 100);
     },
     // ----------------- unfixHeader
     unfixHeader: function(){

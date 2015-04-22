@@ -76,6 +76,7 @@ main.views.PaneContainerView = Backbone.View.extend({
     },
     // ----------------- posize
     posize: function() {
+        var self = this;
 	    var pane_view;
 	    if(this.beforePosize) this.beforePosize();
 	    
@@ -83,7 +84,9 @@ main.views.PaneContainerView = Backbone.View.extend({
 	    	pane_view = this.paneViews[i];
 	    	if(pane_view.posize) pane_view.posize();
 		}
-	    this.initPanes();
+		setTimeout(function(){
+	        self.initPanes();
+	    }, 100);
     },
     // ----------------- checkPanes
     checkPanes: function(actual_scroll_top) {
@@ -154,6 +157,20 @@ main.views.PaneContainerView = Backbone.View.extend({
     beginHide: function() {
 	    this.scrollToTop();
 		if(this.afterBeginHide) this.afterBeginHide();
+    },
+    // ----------------- disablePaneScrolls
+    disablePaneScrolls: function() {
+        for( var i=0;i<this.paneViews.length;i++){
+			view = this.paneViews[i];
+			if(view.disableSroll) view.disableSroll();
+		}
+    },
+    // ----------------- enablePaneScrolls
+    enablePaneScrolls: function() {
+        for( var i=0;i<this.paneViews.length;i++){
+			view = this.paneViews[i];
+			if(view.enableSroll) view.enableSroll();
+		}
     },
     // ----------------- onAutoScrollStart
     onAutoScrollStart: function() {

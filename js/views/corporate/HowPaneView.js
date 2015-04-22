@@ -2,7 +2,6 @@
 main.views.corporate.HowPaneView = main.views.PaneView.extend({
 	id: "how",
 	_route: "how",
-	offset: 0,
 	events: {
 		'click .btn-move' : 'onBtnMoveClick'
 	},

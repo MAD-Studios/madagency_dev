@@ -14,11 +14,12 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
 	OVERLAY_BTN_HTML: '<a class="btn btn-overlay"></a>',
 	id: "intro",
 	_route: "",
-	offset: 0,
 	nav_offset: 0,
 	default_elements_y: [],
+    animateRowsShown: [],
 	to_y: 0,
 	num_posizes: 0,
+    scroll_top: 0,
 	events:{
 		'click #btn-show-more': 'onBtnShowMoreClick'
 	},
@@ -35,6 +36,14 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
         this.initElements();
         this.prepForAnim();
   	},
+  	// ----------------- enableScroller
+    enableScroller: function() {
+    	this.scroller_el.css('overflowY', 'scroll');
+    },
+    // ----------------- disableScroller
+    disableScroller: function() {
+        this.scroller_el.css('overflowY', 'hidden');
+    },
   	// ----------------- initElements
     initElements: function() {
     	var self = this;
@@ -87,6 +96,15 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     	this.overlay_el.css('height', to_h + 'px');
     	
     	this.posOverlayBtns();
+        
+        var row_1_end_y = this.anim_rows.eq(0).offset().top + this.anim_rows.eq(0).height() - 100;
+        var to_top = $('.scroller', this.el).outerHeight() - this.grad_el.outerHeight();
+    	this.grad_el.css('top', to_top + 'px');
+        
+        if(this.grad_el.offset().top >= row_1_end_y){
+            if( this.scroll_top <= this.SHOW_UNDERLAYING_TEXT_SCROLL_TOP ) this.grad_el.css('opacity', '0');
+            else this.grad_el.css('opacity', '1');
+        }
     },
     // ----------------- createOverlay
     createOverlay: function() {
@@ -175,76 +193,112 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     // ----------------- handleIntroScroll
     handleIntroScroll: function() { 
         var self = this;
-        var scroll_top = this.scroller_el.scrollTop();
+        this.scroll_top = this.scroller_el.scrollTop();
         //set a timeout and kill it the next time
         //to force a certain delay
         clearTimeout(this.introScrollTimeout);
         this.introScrollTimeout = setTimeout(function(){
-            self.animateOnScroll(scroll_top);
+            self.animateOnScroll(self.scroll_top);
         }, 10);
     },
     // ----------------- animateOnScroll
     animateOnScroll: function(scroll_top) {
+        //!!!!!!!!!!!!!!!!!!
+        console.log("scroll_top = " + scroll_top);
+        console.log("$('.scroller-content', this.el).height() = " + $('.scroller-content', this.el).height());
         //if scrolltop > a few pixels
     	//fade in the other items
     	//and faed out the ar        
-        var delay = 0;
-
+        var delay = 0, ind = 0; 
+        var row_1_end_y = 0;
+        
 		if(scroll_top >= 0 && scroll_top < this.max_scroll_top){
+            row_1_end_y = this.anim_rows.eq(0).offset().top + this.anim_rows.eq(0).height() - 100;
+
             //kill any previous animations
-            TweenLite.killTweensOf(this.arrow_row_el, false, {top:true, opacity:true} );
-            TweenLite.killTweensOf(this.anim_rows.eq(1), false, {top:true, opacity:true} );
 			if(scroll_top > this.SHOW_UNDERLAYING_TEXT_SCROLL_TOP){
-				TweenLite.to(this.arrow_row_el, 0.25, { opacity:0 });
-		    	//move it up
-		    	TweenLite.to(this.arrow_row_el, 0.35, { top: this.def_arrow_row_el_top-30, ease: Expo.easeOut });
-	    		if(scroll_top  <= ( this.default_elements_y[2] - (this.this_el.height()/2) ) ){
-					TweenLite.to(this.anim_rows.eq(1), 0.25, { opacity: 1, ease: Expo.easeOut });
-					TweenLite.to(this.anim_rows.eq(1), 1, { top: this.default_elements_y[1], ease: Expo.easeOut });
-					this.anim_rows.eq(1).addClass(this.VISIBLE_CLASS);
+                if(this.animateRowsShown.indexOf(1) == -1){ 
+                    TweenLite.killTweensOf(this.arrow_row_el, false, {top:true, opacity:true} );
+                    TweenLite.to(this.arrow_row_el, 0.25, { opacity:0 });
+                    //move it up
+                    TweenLite.to(this.arrow_row_el, 0.35, { top: this.def_arrow_row_el_top-30, ease: Expo.easeOut });
+                    if(scroll_top  <= ( this.default_elements_y[2] - (this.this_el.height()/2) ) ){
+                        TweenLite.killTweensOf(this.anim_rows.eq(1), false, {top:true, opacity:true} );
+                        TweenLite.to(this.anim_rows.eq(1), 0.25, { opacity: 1, ease: Expo.easeOut });
+                        TweenLite.to(this.anim_rows.eq(1), 1, { top: this.default_elements_y[1], ease: Expo.easeOut });
+                        this.anim_rows.eq(1).addClass(this.VISIBLE_CLASS);
+                        this.animateRowsShown.push(1);
+                    }
 				}
+				else if( scroll_top  > ( this.default_elements_y[2] - (this.this_el.height()/3) ) ){
+                    ind = this.animateRowsShown.indexOf(1);
+                    if(ind > -1){ 
+                        delay = 0;
+                        TweenLite.killTweensOf(this.anim_rows.eq(1), false, {top:true, opacity:true} );
+                        TweenLite.to(this.anim_rows.eq(1), 0.5, { opacity: 0, ease: Expo.easeOut, delay:delay });
+                        TweenLite.to(this.anim_rows.eq(1), 0.75, { top: this.default_elements_y[1] - this.ELEMENT_ANIM_OFFSET, ease: Expo.easeOut, delay:delay });
+                        this.anim_rows.eq(1).removeClass(this.VISIBLE_CLASS);
+                        this.animateRowsShown = main.utils.ElementManipulator.removeFromArray(ind, this.animateRowsShown);
+                    }
+                }
 				//show the gradient
 				//TweenLite.to(this.grad_el, 0.1, { opacity: 1, ease: Expo.easeOut, delay: 0.1 });
-                this.grad_el.css('opacity', '1');
+                if(this.grad_el.offset().top >= row_1_end_y) this.grad_el.css('opacity', '1');
 			}
 			else if( scroll_top <= this.SHOW_UNDERLAYING_TEXT_SCROLL_TOP ){
-				delay = 0.2;
-				TweenLite.to(this.arrow_row_el, 0.25, { opacity:1, delay:delay });
-		    	//move it up
-		    	TweenLite.to(this.arrow_row_el, 0.5, { top: this.def_arrow_row_el_top, ease: Expo.easeOut });
-				TweenLite.to(this.anim_rows.eq(1), 0.5, { opacity: 0, ease: Expo.easeOut });
-				TweenLite.to(this.anim_rows.eq(1), 0.5, { top: this.default_elements_y[1] + this.ELEMENT_ANIM_OFFSET, ease: Expo.easeOut });
-				this.anim_rows.eq(1).removeClass(this.VISIBLE_CLASS);
-				//hide the gradient
-				//TweenLite.to(this.grad_el, 0.25, { opacity: 0, ease: Expo.easeOut });
-                this.grad_el.css('opacity', '0');
+                ind = this.animateRowsShown.indexOf(1);
+                if(ind > -1){ 
+                    delay = 0.2;
+                    TweenLite.killTweensOf(this.arrow_row_el, false, {top:true, opacity:true} );
+                    TweenLite.killTweensOf(this.anim_rows.eq(1), false, {top:true, opacity:true} );
+                    TweenLite.to(this.arrow_row_el, 0.25, { opacity:1, delay:delay });
+                    //move it up
+                    TweenLite.to(this.arrow_row_el, 0.5, { top: this.def_arrow_row_el_top, ease: Expo.easeOut });
+                    TweenLite.to(this.anim_rows.eq(1), 0.5, { opacity: 0, ease: Expo.easeOut });
+                    TweenLite.to(this.anim_rows.eq(1), 0.5, { top: this.default_elements_y[1] + this.ELEMENT_ANIM_OFFSET, ease: Expo.easeOut });
+                    this.anim_rows.eq(1).removeClass(this.VISIBLE_CLASS);
+                    //hide the gradient
+                    //TweenLite.to(this.grad_el, 0.25, { opacity: 0, ease: Expo.easeOut });
+                    if(this.grad_el.offset().top >= row_1_end_y) this.grad_el.css('opacity', '0');
+                    this.animateRowsShown = main.utils.ElementManipulator.removeFromArray(ind, this.animateRowsShown);
+                }
 			}
-            if( scroll_top  > ( this.default_elements_y[2] - (this.this_el.height()/2) ) ){
-				delay = 0;
-				TweenLite.to(this.anim_rows.eq(2), 0.5, { opacity: 1, ease: Expo.easeOut, delay:delay });
-				TweenLite.to(this.anim_rows.eq(2), 1.5, { top: this.default_elements_y[2], ease: Expo.easeOut, delay:delay });
-				this.anim_rows.eq(2).addClass(this.VISIBLE_CLASS);
+            var max_scroll = $('.scroller-content', this.el).outerHeight() - $(window).height();
+            if( scroll_top  > ( this.default_elements_y[2] - (this.this_el.height()/2) ) &&  scroll_top < max_scroll){
+                //this.anim_rows.eq(2).css('opacity', '1');
+                //if not already animated
+                if(this.animateRowsShown.indexOf(2) == -1){ 
+    				delay = 0;
+                    this.anim_rows.eq(2).css('top', this.default_elements_y[2] + 'px');
+                    TweenLite.killTweensOf(this.anim_rows.eq(2), false, {top:true, opacity:true} );
+    				TweenLite.to(this.anim_rows.eq(2), 0.5, { opacity: 1, ease: Expo.easeOut, delay:delay });
+    				//TweenLite.to(this.anim_rows.eq(2), 2, { top: this.default_elements_y[2], ease: Expo.easeOut, delay:0.2 });
+    				this.anim_rows.eq(2).addClass(this.VISIBLE_CLASS);
+    				this.animateRowsShown.push(2);
+				}
 			}
             //else if( scroll_top  <=  ( this.default_elements_y[2] - (this.this_el.height() - this.nav_offset - this.grad_el.height() )) ){
-            else if( scroll_top  <= ( this.default_elements_y[2] - (this.this_el.height()/2) ) ){
-				TweenLite.to(this.anim_rows.eq(2), 0.5, { opacity: 0, ease: Expo.easeOut });
-				TweenLite.to(this.anim_rows.eq(2), 1, { top: this.default_elements_y[2] + this.ELEMENT_ANIM_OFFSET, ease: Expo.easeOut });
-				this.anim_rows.eq(2).removeClass(this.VISIBLE_CLASS);
+            else if( scroll_top  <= ( this.default_elements_y[2] - (this.this_el.height()/2) )){
+                ind = this.animateRowsShown.indexOf(2);
+                if(ind > -1){ 
+                    TweenLite.killTweensOf(this.anim_rows.eq(2), false, {top:true, opacity:true} );
+    				TweenLite.to(this.anim_rows.eq(2), 0.5, { opacity: 0, ease: Expo.easeOut });
+    				TweenLite.to(this.anim_rows.eq(2), 1, { top: this.default_elements_y[2] + this.ELEMENT_ANIM_OFFSET, ease: Expo.easeOut });
+    				this.anim_rows.eq(2).removeClass(this.VISIBLE_CLASS);
+    				this.animateRowsShown = main.utils.ElementManipulator.removeFromArray(ind, this.animateRowsShown);
+				}
 			}
-            if( scroll_top  > ( this.default_elements_y[2] - (this.this_el.height()/3) ) ){
+            /*if( scroll_top  > ( this.default_elements_y[2] - (this.this_el.height()/3) ) ){
                 delay = 0;
                 TweenLite.to(this.anim_rows.eq(1), 0.5, { opacity: 0, ease: Expo.easeOut, delay:delay });
                 TweenLite.to(this.anim_rows.eq(1), 0.75, { top: this.default_elements_y[1] - this.ELEMENT_ANIM_OFFSET, ease: Expo.easeOut, delay:delay });
                 this.anim_rows.eq(1).removeClass(this.VISIBLE_CLASS);
-            }
+            }*/
 		}
     },
     // ----------------- prepForAnim
     prepForAnim: function() {
-    	var self = this;
-    	
-    	console.log("prepForAnim");
-    	
+    	var self = this;    	
     	this.grad_el.css('opacity', '0');
     	//hide all but first text-block
     	//add fade class to them    	
@@ -278,14 +332,12 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     	// set the height of this.intro_el
     	// to the heigth of teh window 
     	// minus  nav_offset (height of mainConatiner) 
-    	var to_bottom = this.nav_offset;
+    	//var to_bottom = this.nav_offset;
     	var to_margin = 0;
     	var self = this;
-    	this.grad_el.css('bottom', to_bottom + 'px');
     	var vert_blocks = $('.text-block.vertical-center', this.el);
-    	
         this.max_scroll_top = $('.scroller-content', this.el).outerHeight();
-
+       
     	vert_blocks.each(function(index, value){
 	    	//give each a margin top and bottom
 	    	//according to window height
@@ -318,7 +370,9 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     onScroll: function(scroll_top) {
     	if(scroll_top <= 1){
 	    	$(this.el).trigger(main.events.Event.DISABLE_DOCUMENT_SCROLL);
+            this.enableScroller();
     	}
+    	else this.disableScroller();
     },
     // ----------------- show
     showContent: function() {

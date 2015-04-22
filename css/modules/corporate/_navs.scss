@@ -25,8 +25,8 @@ $socialBtnHeight: 28px;
     .h-logo{
         display: block;
         margin: 0 0 0 -12px;
-        @media #{$small-only} {
-            width: 155px; 
+        @media #{$small-only}, #{$medium-only}{
+            width: 125px; 
             height: 25px;
             float: none;
             margin: 0 auto;
@@ -121,7 +121,7 @@ $socialBtnHeight: 28px;
 
 /*------------------ SMALL-MENU  */
 .small-menu{
-	position: absolute;
+	position: fixed;
 	top: 0; left: -100%;
 	z-index: 999;
 	-webkit-transform: translate3d(0,0,0); 
