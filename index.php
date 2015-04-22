@@ -1,20 +1,22 @@
+<?php $root = $_SERVER['DOCUMENT_ROOT']; ?>
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, target-densitydpi=device-dpi" />
-    <title>MAD Agency - Design + Printing + Marketing</title>
+    <title>mad agency - design + printing + marketing</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="title" content="MAD Agency - Design + Printing + Marketing" />
+    <meta name="title" content="mad agency - design + printing + marketing" />
     <meta name="keywords" content="mad, agency, advertising, interactive, fort lauderdale, miami, digital, app, website, design, digital, online, content, SEO, SEM, branding, marketing, database, agency, integrated" />
     <meta name="robots" content="noodp" />
-    <meta name="description" content="MAD Agency is a full service Advertising/Marketing/Production agency. We have the people needed to build your project here, onsite. This allows for tighter timelines and a more cohesive end result." />
-    <meta property="og:title" content="MAD Agency - Design + Printing + Marketing" />
+    <meta name="description" content="Mad Agency is a full service Advertising/Marketing/Production agency. We have the people needed to build your project here, onsite. This allows for tighter timelines and a more cohesive end result." />
+    <meta property="og:title" content="mad agency - design + printing + marketing" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://www.madstudios.net" />
     <meta property="og:image" content="http://www.madstudios.net/assets/img/share_logo.jpg" />
-    <meta property="og:description" content="MAD Agency is a full service Advertising/Marketing/Production agency. We have the people needed to build your project here, onsite. This allows for tighter timelines and a more cohesive end result." />
+    <meta property="og:description" content="Mad Agency is a full service Advertising/Marketing/Production agency. We have the people needed to build your project here, onsite. This allows for tighter timelines and a more cohesive end result." />
     <link href="css/mad-agency.css" type="text/css" rel="stylesheet" />
     
     <script src="http://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script>
@@ -70,7 +72,7 @@
 	<!------------ CORPORATE ------------->
 	<div class="corporate">
 	
-	<?php include 'inc/header.php';?>
+	<?php include 'inc/header.php'; ?>
 	
 	<section class="content-sect">
 	<div id="pane-ctn">
@@ -88,7 +90,7 @@
 							<!-- absolue rows for animation performance -->
 							<div class="row-absolute"><div class="text-block vertical-center">
 								<h1 class="text-shadow white">Hi. We are Mad Agency.<br>We do a lot of cool things for our clients.</h1>
-					        	<h1 class="text-shadow white last">Here’s a list of some things we could do for you.</h1>
+					        	<h1 class="text-shadow white last">Here&rsquo;s a list of some things we could do for you.</h1>
 								<div class="row-absolute row-arrow-ctn"><div id="btn-show-more" class="btn arrow circle-arrow down"></div></div>
 							</div></div>
 							<div class="row-absolute"><div class="text-block text-block-to-fade">
@@ -106,14 +108,34 @@
 								<h2>Yes, we can create an app for that.</h2>
 								<h2>Yes, we can develop a social media strategy.</h2>
 								<h2>Yes, we can design a cool Facebook post too.</h2>
-								<h2>Yes, we speak html5.</h2>
+								<h2>Yes, we speak HTML5.</h2>
 								<h2>Yes, we build responsive.</h2>
+								<h2>Yes, we can speak Star Wars too.</h2>
+                                <h2>Yes, we build responsive.</h2>       
+                                <h2>Yes, we can test in multiple environments.</h2>
+                                <h2>Yes, unenthusiastically, we will test in IE8.</h2>
+                                <h2>Yes, we can write copy that will get the party started.</h2>
+                                <h2>Yes, sometimes that copy is for our own parties.</h2>
+                                <h2>Yes, we spend our freetime designing for funzies.</h2> 
+                                <h2>Yes, we are card-carrying museum patrons.</h2>
+                                <h2>Yes, we know how to brand your product.</h2>
+                                <h2>Yes, we know how to make it stand out.</h2>
+                                <h2>Yes, we are perfectionists.</h2>     
+                                <h2>Yes, that means we burn the midnight oil.</h2>
+                                <h2>Yes, that also means we have Gold status at Starbucks.</h2>
+                                <h2>Yes, things can get a little crazy with meeting deadlines.</h2>
+                                <h2>Yes, we sort of like crazy.</h2>     
+                                <h2>Yes, we do things unconventionally.</h2>
+                                <h2>Yes, we love what we do.</h2>        
+                                <h2>Yes, we are mad.</h2>                
+
 							</div></div>
 							<div class="row-absolute"><div class="text-block vertical-center">
 								<h1 class="text-shadow white">That&rsquo;s a lot of cool things.<br>Right?</h1>
-								<h2>If you’re ready to start hearing &lsquo;yes&rsquo; to your businesses needs go ahead and contact us.</h2>
-								<h2>We&rsquo;d love to hear from you.</h2>
-								<h2>While your here take a look around and be sure to check out our <a id="btn-castle" class="btn" href="castle">Creative Castle.</a></h2>
+								<h2>If you’re ready to start hearing &lsquo;yes&rsquo; to your needs, go ahead and contact us.</h2>
+								<h2>We do things differently and sometimes, that&rsquo;s the best solution.</h2>
+								<h2>Drop us a line we’re ready to get started.</h2>
+								<!--<h2>While your here take a look around and be sure to check out our <a id="btn-castle" class="btn" href="castle">Creative Castle.</a></h2>-->
 							</div></div>
 
 						</div>
@@ -132,8 +154,8 @@
 		<section class="how">
 			<div id="how-pane" class="pane">
 				<div class="row row-content">
-					<div class="column large-7 medium-7 hide-for-small show-for-medium-up">
-						<h2>MAD Agency works tirelessly to understand what makes your business unique.</h2>
+					<div class="column large-7 medium-7 hide-for-medium-down show-for-large-up">
+						<h2>Mad Agency works tirelessly to understand what makes your business unique.</h2>
 						<h3>We then explore creative ways to communicate to the customers you have, and help find the ones that are looking for you.</h3>
 						<p>In the summer of 2000 a team of experts from various backgrounds and fields got together with one common goal - produce great work.</p>
 						<p>And, while “great work” meant one thing then, it means a whole lot more today. Many agencies can produce great work, we strive to produce the type of work that gets results. That must be why the clients we have don’t just stay for a campaign or two, they stay for the long haul.</p>
@@ -141,13 +163,13 @@
 					
 					<div class="column large-5 large-uncentered medium-5 medium-uncentered small-10 small-centered">
 						<div class="row-float"><img id="img-how" src="" data-img-src="assets/images/corporate/png/how-logo-method@2x.png"  alt="How Method" title="How Method" /></div>
-						<div class="row-float hide-for-small show-for-medium-up"><div class="btn-move-ctn"><a class="btn btn-move" href=""><p>SEE IT IN ACTION</p><img style="width:16px;height:16px;"src="" data-img-src="assets/images/corporate/svg/how-btn-arrow.svg" alt="arrow down" title="arrow down"/></a></div>
+						<div class="row-float hide-for-medium-down show-for-large-up"><div class="btn-move-ctn"><a class="btn btn-move" href=""><p>SEE IT IN ACTION</p><img style="width:16px;height:16px;"src="" data-img-src="assets/images/corporate/svg/how-btn-arrow.svg" alt="arrow down" title="arrow down"/></a></div>
 					</div>
 					
 				</div>
-				<div class="row row-content hide-for-medium-up">
+				<div class="row row-content hide-for-large-up">
 					<div class="column small-12">
-						<h3>MAD Studios Co. works tirelessly to understand what makes your business unique. We then explore creative ways to communicate to the customers you have, and help find the ones that are looking for you.</h3>
+						<h3>Mad Agency works tirelessly to understand what makes your business unique. We then explore creative ways to communicate to the customers you have, and help find the ones that are looking for you.</h3>
 					</div>
 				</div>
 			</div>
@@ -161,7 +183,7 @@
 					<div class="column large-12">
 						<div class="row-float show-for-large-up hide-for-medium-down row-pane-divider"><div class="pane-title">THE WORK</div><div class="divider"></div></div>
 						<div class="row row-content row-header"><div class="column large-12">
-							<p>Have a quick gander at some of the more <b>recent projects</b> we’ve had the privilege to work on.<br />We will add to this archive quarterly, so be sure to check back.</p>
+							<p>Have a quick gander at some of the more <b>recent projects</b> we’ve had the privilege to work on. We will add to this archive quarterly, so be sure to check back.</p>
 						</div></div>
 						<div class="row row-content"><div class="column large-12">	
 							<div class="video-ctn"></div>
@@ -194,7 +216,7 @@
                                        <div class="icon-role icon-front-end"></div>
                                     </div> 
                                     <div class="column large-10 small-10">
-                                       <p>The <b>Front-End Developer</b> gives life to both websites and applications, think evil scientist and Frankenstein. They take the static design and content provided by the creative team <br />and bring it to life on the screen. They usually have some <br />sort of Star Wars memorabilia on their desk.</p>
+                                       <p>The <b>Front-End Developer</b> gives life to both websites and applications, think evil scientist and Frankenstein. They take the static design and content provided by the creative team and bring it to life on the screen. They usually have some sort of Star Wars memorabilia on their desk.</p>
                                     </div>
                                 </div></div>
 							</div>
@@ -232,7 +254,7 @@
                                        <div class="icon-role icon-proj-manager"></div>
                                     </div>
                                     <div class="column large-10 small-10">
-                                        <p>At MAD we take a lot of pride knowing that when we set a deadline it’s going to be met. The <b>Project Manager</b> works with both our team and yours to make sure not only is the deadline met, but quality isn’t sacrificed.</p>
+                                        <p>At Mad Agency we take a lot of pride knowing that when we set a deadline it’s going to be met. The <b>Project Manager</b> works with both our team and yours to make sure not only is the deadline met, but quality isn’t sacrificed.</p>
                                     </div>
                                 </div></div>
 							</div>
@@ -259,7 +281,7 @@
                         
                         <div class="row row-content row-header">
                             <div class="column large-12 small-12">
-                                <p><b>MAD Agency</b> is a full service Advertising/Marketing/Production agency. We have the people needed to build your project here, onsite. This allows for tighter timelines and a more cohesive end result.</p>
+                                <p><b>Mad Agency</b> is a full service Advertising/Marketing/Production agency. We have the people needed to build your project here, onsite. This allows for tighter timelines and a more cohesive end result.</p>
                             </div>
                         </div>
                         
@@ -307,11 +329,11 @@
                         &nbsp;
                     </div>
                     <div class="column large-3 medium-3 small-6" id="mad-south-addr">
-                        <div class="row-float" ><a id="btn-fl" class="btn-addr btn active" href=""><h4 class="addr-title">MAD SOUTH</h4></a></div>
+                        <div class="row-float" ><a id="btn-fl" class="btn-addr btn active" href=""><h4 class="addr-title">mad south</h4></a></div>
                         <p class="addr">101 NE 3rd Avenue<br />Suite 1920<br />Fort Lauderdale, FL 33301</p>
                     </div>
                     <div class="column large-3 medium-3 small-6" id="mad-midwest-addr">
-                        <div class="row-float" ><a id="btn-mn" class="btn-addr btn" href=""><h4 class="addr-title">MAD MIDWEST</h4></a></div>
+                        <div class="row-float" ><a id="btn-mn" class="btn-addr btn" href=""><h4 class="addr-title">mad midwest</h4></a></div>
                         <p class="addr">333 Washington Ave N<br />Suite 321<br />Minneapolis, MN 55401</p>
                     </div>
                 </div>
@@ -365,9 +387,9 @@
 	                <li><a class="btn nav-btn" id="disciplines-btn" href="/disciplines">DISCIPLINES</a></li>
 	                <li><a class="btn nav-btn" id="contact-btn" href="/contact">CONTACT US</a></li>
 	            </ul>
-	            <div id="enter-story-btn-ctn" class="shadow-bordered shadow-bordered-blue">
+	            <!-- <div id="enter-story-btn-ctn" class="shadow-bordered shadow-bordered-blue">
                     <a id="enter-story-btn" class="btn-blue btn" href="castle">ENTER CREATIVE CASTLE</a>
-                </div>
+                </div> -->
 			</div>
         </div>
 	</div>
@@ -386,10 +408,7 @@
 			<div class="social-nav-ctn">
 				<a href="#" class="header btn social-btn">SOCIAL<img class="arrow arrow-down" src="" data-img-src="assets/images/corporate/png/nav-arrow@2x.png" alt="social" /></a>
 				<ul class="social-nav">
-					<li><a class="btn instagram-btn" href="http://instagram.com/madstudiosco" target=_blank><i class="fa fa-instagram"></i></a></li>
-					<li><a class="btn facebook-btn" href="https://www.facebook.com/MadStudiosCo" target=_blank><i class="fa fa-facebook-official"></i></a></li>
-					<li><a class="btn twitter-btn" href="https://twitter.com/madstudiosco" target=_blank><i class="fa fa-twitter"></i></a></li>
-					<li><a class="btn google-plus-btn" href="https://plus.google.com/106462510460087062650" target=_blank><i class="fa fa-google-plus-square"></i></a></li>
+				    <?php include 'inc/social-nav.php';?>
 				</ul>
 			</div>
 		</div>

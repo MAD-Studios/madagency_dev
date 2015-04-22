@@ -3,7 +3,8 @@
 	<div id="footer">
         <div class="row">
             <div class="column large-12 small-12">
-                <div class="main-nav-ctn">
+            
+                <div class="main-nav-ctn hide-for-medium-down show-for-large-up">
                     <a href="" class="full-logo-sm full-logo-white full-logo logo"></a>
                     <ul class="main-nav">
                         <li><a class="btn" id="intro-btn" href="/">ABOVE THE FOLD</a></li>
@@ -15,11 +16,8 @@
                     </ul>
                 </div>
                 
-                <ul class="social-nav">
-					<li><a class="btn google-plus-btn" href="https://plus.google.com/106462510460087062650" target=_blank><i class="fa fa-google-plus-square"></i></a></li>
-					<li><a class="btn instagram-btn" href="http://instagram.com/madstudiosco" target=_blank><i class="fa fa-instagram"></i></a></li>
-					<li><a class="btn facebook-btn" href="https://www.facebook.com/madstudiosco" target=_blank><i class="fa fa-facebook-official"></i></a></li>
-					<li><a class="btn twitter-btn" href="https://twitter.com/madstudiosco" target=_blank><i class="fa fa-twitter"></i></a></li>
+                <ul class="social-nav hide-for-medium-down show-for-large-up">
+                    <?php if(isset($root)) include $root.'/inc/social-nav.php';?>
 				</ul>
             </div>
         </div>

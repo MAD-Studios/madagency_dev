@@ -8,14 +8,14 @@ $socialBtnHeight: 28px;
 	z-index: 300;
     height: 98px;
     .column{
-        @media #{$small-only} {
+        @media #{$small-only}{
             padding-left: 0;
             padding-right: 0;
         }
     }
     .full-logo-sm{
         margin: 2px $xLgMargin 2px -16px;
-        @media #{$small-only} {
+        @media #{$small-only}{
         	margin-right: $smMargin;
         	margin-left: -10px;
 			width: 76px;
@@ -25,7 +25,7 @@ $socialBtnHeight: 28px;
     .h-logo{
         display: block;
         margin: 0 0 0 -12px;
-        @media #{$small-only}, #{$medium-only}{
+        @media #{$medium-only}, #{$small-only}{
             width: 125px; 
             height: 25px;
             float: none;

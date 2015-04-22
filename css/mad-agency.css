@@ -4876,7 +4876,7 @@ div#orientation-alert h1 {
   #main-nav-ctn .h-logo {
     display: block;
     margin: 0 0 0 -12px; }
-    @media only screen and (max-width: 40em), only screen and (min-width: 40.063em) and (max-width: 64em) {
+    @media only screen and (min-width: 40.063em) and (max-width: 64em), only screen and (max-width: 40em) {
       #main-nav-ctn .h-logo {
         width: 125px;
         height: 25px;
@@ -5146,6 +5146,7 @@ div#orientation-alert h1 {
 /*-------------------------------- PANES  */
 .pane {
   float: left;
+  position: relative;
   min-width: 100%; }
   .pane .row-content {
     padding-top: 48px;
@@ -5297,6 +5298,10 @@ div#orientation-alert h1 {
       float: none;
       margin-left: auto;
       margin-right: auto; } }
+@media only screen and (max-width: 40em) {
+  #how-pane > .row-content {
+    padding-top: 0;
+    padding-bottom: 0; } }
 #how-pane .row-content {
   /*@media only screen and (max-width: 40em) {
       padding-left: 0;
@@ -5315,6 +5320,11 @@ div#orientation-alert h1 {
       text-align: left; } }
 #work-pane .row-content:last-child {
   padding-top: 0; }
+  @media only screen and (max-width: 40em) {
+    #work-pane .row-content:last-child {
+      padding-bottom: 48px; } }
+#work-pane .row-content.row-header {
+  padding-top: 24px; }
 @media only screen and (max-width: 40em) {
   #work-pane .row-content > .column {
     padding-left: 0;

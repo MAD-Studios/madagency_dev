@@ -132,17 +132,13 @@ var main = {
 				}
 			});
 		}
-		//if (!Modernizr.hires) {
-			//replace the svg with the png
-			$('img').each(function(){
-				cur_src = $(this).attr('data-img-src');
-				console.log("IMG ^^^^^------ cur_src" + cur_src);
-				if(cur_src) {
-    				if(!Modernizr.hires) cur_src = cur_src.replace(/@2x/g, '');
-    				$(this).attr('src', cur_src);
-				}
-			});
-		//}
+		$('img').each(function(){
+			cur_src = $(this).attr('data-img-src');
+			if(cur_src) {
+				if(!Modernizr.hires) cur_src = cur_src.replace(/@2x/g, '');
+				$(this).attr('src', cur_src);
+			}
+		});
 	},
 	// ----------------- loadTemplates
 	loadTemplates: function(templates, callback) {
@@ -173,7 +169,7 @@ var main = {
 	onJsLoadComplete: function() {
         console.log("onJsLoadComplete -------");
 		var self = this;
-		if(this.templates) this.loadTemplates(this.templates, function(){  console.log("main--------- onJsLoadComplete"); self.load_ext_files_callback(); });
+		if(this.templates) this.loadTemplates(this.templates, function(){ self.load_ext_files_callback(); });
 		else this.load_ext_files_callback();
 	}
 };

@@ -3,6 +3,7 @@ $contactPaneInputMaxWidth: 400px;
     
 .pane{
 	float:left;
+	position: relative;
 	min-width: 100%;
 	.row-content{
 		padding-top: $xLgMargin;
@@ -159,6 +160,12 @@ $contactPaneInputMaxWidth: 400px;
         	margin-right: auto;
         }
     }
+    > .row-content{
+    	@media #{$small-only} {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+    }
     .row-content{
         > .row-content{
         	@media #{$small-only} {
@@ -184,6 +191,12 @@ $contactPaneInputMaxWidth: 400px;
     .row-content{
         &:last-child{
     		padding-top: 0;
+	        @media #{$small-only} {
+    		    padding-bottom: 48px;
+            }
+    	}
+    	&.row-header{
+            padding-top: 24px;
     	}
     	> .column{
         	@media #{$small-only} {
