@@ -47,13 +47,12 @@ main.views.SmallMenuView = Backbone.View.extend({
         setTimeout(function(){
 	        self.scroll_y_offset = self.btn_toggle_el.height();
 	        $(self.el).addClass(self.MENU_TRANSITION_CLASS);
-        }, 100);
+        }, 500);
         return this;
 	},
     // ----------------- posize
     posize: function() {
         var self = this;
-        
         var to_w = $(window).width() - this.btn_toggle_el.outerWidth();
 		var max_w = parseInt( this.nav_cnt_el.css('max-width') );
 		if(to_w > max_w) to_w = max_w;

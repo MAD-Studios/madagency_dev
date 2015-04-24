@@ -4829,7 +4829,7 @@ div#orientation-alert h1 {
     padding-left: 0;
     padding-right: 0; }
   #footer .main-nav-ctn {
-    width: 150px;
+    width: 170px;
     float: left; }
   #footer .main-nav {
     float: left;
@@ -4880,7 +4880,7 @@ div#orientation-alert h1 {
         height: 60px; } }
   #main-nav-ctn .h-logo {
     display: block;
-    margin: 0 0 0 -12px; }
+    margin: 0 24px 0 -12px; }
     @media only screen and (min-width: 40.063em) and (max-width: 64em), only screen and (max-width: 40em) {
       #main-nav-ctn .h-logo {
         width: 125px;
@@ -4889,7 +4889,7 @@ div#orientation-alert h1 {
         margin: 0 auto; } }
   #main-nav-ctn .nav {
     float: left;
-    margin: 34px 0;
+    margin: 34px 0 34px 16px;
     font-style: normal;
     font-weight: 300;
     font-size: 0.78571em;
@@ -4901,7 +4901,7 @@ div#orientation-alert h1 {
       display: block; }
     #main-nav-ctn .nav .nav-btn {
       height: 16px;
-      padding: 1px 24px 1px 24px;
+      padding: 1px 16px 1px 16px;
       color: #555252; }
       #main-nav-ctn .nav .nav-btn.active {
         background-color: #ffa227; }
@@ -5761,17 +5761,7 @@ font-size:1.5em;
     font-size: 3em !important; }
 
   .scene-ctn section .text-ctn p {
-    font-size: 0.7em !important; }
-
-  /*#rubble-box .text-ctn {
-  	top: 0 !important;
-  	bottom: auto !important;
-  	margin-top: 55%;
-  }
-  #sign{
-  margin-top:-12%;
-  margin-left:26%;
-  }*/ }
+    font-size: 0.7em !important; } }
 /*  Scroll-down-indicator
 ====================*/
 #scroll-down-indicator-cta {
@@ -9491,12 +9481,14 @@ width:36%;
   .mobile .text-tab.active {
     margin-bottom: 0px; }
   .mobile .text-tab .text-toggle {
-    position: static;
-    float: left;
+    position: static !important;
+    float: none;
     width: 25%;
     height: 27px;
-    margin-left: 32.5%;
-    margin-right: 32.5%;
+    /*margin-left: 32.5%;*/
+    margin-left: auto;
+    margin-right: auto;
+    /*margin-right: 32.5%;*/
     margin-top: -28px;
     background-color: rgba(255, 255, 255, 0.2);
     border-radius: 5px 5px 0px 0px;
@@ -10155,9 +10147,10 @@ width:36%;
       margin-bottom: -145px; }
     .mobile .text-tab .text-toggle {
       height: 47px;
-      margin-top: -50px; }
+      margin-top: -49px;
+      /*margin-left: 38.5%;*/ }
     .mobile .text-tab h3 {
-      font-size: 4em; }
+      font-size: 1.8em; }
     .mobile .text-tab p {
       font-size: 1em; }
     .mobile #treadmill {

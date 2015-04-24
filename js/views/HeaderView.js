@@ -4,6 +4,9 @@ main.views.HeaderView = Backbone.View.extend({
 	LIGHT_COLOR: "#fceec9",
 	DARK_COLOR: "#ffc627",
 	HIDE_ANIMATE_OFFSET: -100,
+	events:{
+		'click .logo': 'onLogoClick'
+	},
     // ----------------- initialize
     initialize: function() {
         console.log("HeaderView ---- initialize");
@@ -41,5 +44,10 @@ main.views.HeaderView = Backbone.View.extend({
 	    $(this.el).addClass(this.TRANS_CLASS);
 	    $(this.el).css('top', (cur_top + this.HIDE_ANIMATE_OFFSET)+ 'px');
 	    $(this.el).css('opacity', '0');
-	}	
+	},
+	// ----------------- onLogoClick
+    onLogoClick: function(event) {
+        main.utils.BtnUtils.onLogoClick(event);
+	    return false;
+    }	
 });

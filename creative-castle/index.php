@@ -1,3 +1,5 @@
+<?php $root = $_SERVER['DOCUMENT_ROOT']; ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,13 +43,14 @@
     <script src="../js/utils/DeviceDetector.js" type="text/javascript"></script>
     <script src="../js/routers/Router.js" type="text/javascript"></script>
     <script src="../js/routers/castle/Router.js" type="text/javascript"></script>
-    <!-- <script src="../js/routers/castle/mobile/Router.js" type="text/javascript"></script> -->
     <script src="../js/models/PaneModel.js" type="text/javascript"></script>
-    <!-- <script src="../js/models/castle/SceneModel.js" type="text/javascript"></script> -->
     <script src="../js/models/castle/ResponseGeneratorModel.js" type="text/javascript"></script>
     <script src="../js/models/castle/LoaderModel.js" type="text/javascript"></script>
-    <!-- <script src="../js/models/castle/AudioModel.js" type="text/javascript"></script> -->
     <script src="../js/views/MainView.js" type="text/javascript"></script>
+    <script src="../js/views/SmallMenuView.js" type="text/javascript"></script>
+    <script src="../js/views/castle/SmallMenuView.js" type="text/javascript"></script>
+    <script src="../js/views/MainNavContainerView.js" type="text/javascript"></script>
+    <script src="../js/views/castle/MainNavContainerView.js" type="text/javascript"></script>
     <script src="../js/views/castle/MainView.js" type="text/javascript"></script>
     <script src="../js/views/CorporateView.js" type="text/javascript"></script>
     <script src="../js/views/castle/CorporateView.js" type="text/javascript"></script>
@@ -58,17 +61,6 @@
     <script src="../js/views/FooterView.js" type="text/javascript"></script>
     <script src="../js/views/castle/CastleGatewayPaneView.js" type="text/javascript"></script>
     <script src="../js/views/castle/LoaderView.js" type="text/javascript"></script>
-    
-    <!-- <script src="../js/views/castle/CastleView.js" type="text/javascript"></script>
-    <script src="../js/views/castle/SceneView.js" type="text/javascript"></script>
-    <script src="../js/views/castle/SceneCastleView.js" type="text/javascript"></script>
-    <script src="../js/views/castle/SceneCreationView.js" type="text/javascript"></script>
-    <script src="../js/views/castle/SceneGerbilView.js" type="text/javascript"></script>
-    <script src="../js/views/castle/SceneXrayView.js" type="text/javascript"></script>
-    <script src="../js/views/castle/SceneLabView.js" type="text/javascript"></script>
-    <script src="../js/views/castle/SceneBoyView.js" type="text/javascript"></script>
-    <script src="../js/views/castle/SceneContainerView.js" type="text/javascript"></script>
-    <script src="../js/views/castle/ScrollDownIndicatorView.js" type="text/javascript"></script> -->
     
     <!--[if lt IE 9]>
             <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -93,7 +85,7 @@
 	<!------------ CORPORATE ------------->
 	<div class="corporate">
 	
-	<?php include '../inc/header.php';?>
+    <?php if(isset($root)) include $root.'/inc/header.php';?>	
 	
 	<section class="content-sect">
 	<div id="pane-ctn">
@@ -125,7 +117,13 @@
 	</div>
 	</section>
 	
-	<div class="divider shadow-bordered bottom-sticky"></div>
+	<!-- <div class="divider shadow-bordered bottom-sticky"></div> -->
+	<!------------ MAIN NAV ------------->
+    <?php if(isset($root)) include $root.'/inc/main-nav-ctn.php';?>
+        
+    <!------------ SMALL MENU ------------->
+    <?php if(isset($root)) include $root.'/inc/small-menu.php';?>
+                    
 	
 	</div>
 	
@@ -136,4 +134,4 @@
 	</div>
 </div>
 
-<?php include '../inc/dom-end.php';?>
+<?php if(isset($root)) include $root.'/inc/dom-end.php';?>

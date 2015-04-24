@@ -145,7 +145,7 @@ main.views.corporate.ContactPaneView = main.views.PaneView.extend({
          streetViewControl: false,
          mapTypeControl: false,
          zoom: 18,
-         draggable:true,
+         draggable:false,
          scrollwheel: false
     },
 	// ----------------- initialize
@@ -175,12 +175,13 @@ main.views.corporate.ContactPaneView = main.views.PaneView.extend({
         //this.map_canvas_el.css('filter', 'alpha(opacity=50)');  
         this.mapOptions.center = new google.maps.LatLng(this.locations[0].lat, this.locations[0].lng);
 		var marker_img_path = 'assets/images/corporate/png/mad_pin@2x.png';
-		var marker_img_width = 45;
-        var  marker_img_height = 56;
+		/*var marker_img_width = 45;
+        var marker_img_height = 56;*/
+        var marker_img_width = 22;
+        var marker_img_height = 28;
         this.markerImage = new google.maps.MarkerImage( marker_img_path, new google.maps.Size(marker_img_width, marker_img_height), new google.maps.Point(0, 0), null, new google.maps.Size(marker_img_width, marker_img_height) );
         var info_box_content = "<span style='font-size:11px;color:#333e48;'><b>" + this.locations[0].name + "</b><br/><a style='color:#333e48;' href='" + this.locations[0].directions_url + "' target=_blank >Get Directions &nbsp;></a></span>";
         this.map_canvas_el.gmap(this.mapOptions).bind('init', function(evt, map) {
-            console.log("createMap ------------- init");
 	        //set a timeout for this
 	        //or add it on prpare
 			map.setOptions({styles: self.mapStyles});

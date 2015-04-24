@@ -130,7 +130,7 @@ function onAppReady() {
     else main.router = new main.routers.castle.Router();
     
     if (Modernizr.history){
-	    Backbone.history.start({ pushState: true, root: section_name });
+	    Backbone.history.start({ pushState: true, root: "creative-castle" });
     }
     else{
 	    Backbone.history.start({ pushState: false });

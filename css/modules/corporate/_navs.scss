@@ -24,7 +24,7 @@ $socialBtnHeight: 28px;
     }
     .h-logo{
         display: block;
-        margin: 0 0 0 -12px;
+        margin: 0 $lgMargin 0 -12px;
         @media #{$medium-only}, #{$small-only}{
             width: 125px; 
             height: 25px;
@@ -34,7 +34,7 @@ $socialBtnHeight: 28px;
     }
     .nav{
         float: left;
-        margin: 34px 0;
+        margin: 34px 0 34px $medMargin;
         font-style: normal; font-weight: 300;
         font-size: em(11px);
         display: block;
@@ -46,7 +46,7 @@ $socialBtnHeight: 28px;
         }
         .nav-btn{ 
             height: 16px;
-            padding: 1px $lgMargin 1px $lgMargin;
+            padding: 1px $medMargin 1px $medMargin;
             color: $navFontColor;
             &.active{ 
                 background-color: $darkGold;

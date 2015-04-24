@@ -11,7 +11,6 @@ main.views.MainNavContainerView = Backbone.View.extend({
 	MENU_OFFSET: 10,
 	MIN_TOP: 0,
 	OFF_NAV_HEIGHT: '7px',
-	BTN_SELECTOR_SUFFIX: "-btn",
 	default_top: 0, 
 	is_fixed: false,
 	is_fixed_prep: false,
@@ -78,6 +77,7 @@ main.views.MainNavContainerView = Backbone.View.extend({
     },
     // ----------------- posize
     posize: function() {
+        console.log("posize -------");
 	   //if does not have class top-sticky
 	   //position it at the bottom of the window
 	   this.default_height = $(this.el).outerHeight();
@@ -234,19 +234,12 @@ main.views.MainNavContainerView = Backbone.View.extend({
 	},
 	// ----------------- onBtnClick
     onBtnClick: function(event) {
-        $(this.el).trigger(main.events.Event.ENABLE_DOCUMENT_SCROLL);
-        
-    	if($(event.currentTarget).attr("id")) {
-	    	var id = $(event.currentTarget).attr("id");
-	    	id = id.replace(this.BTN_SELECTOR_SUFFIX, "");
-    	}
-        main.router.navigate(id, {trigger: true});
+        main.utils.BtnUtils.onBtnClick(event);
         return false;
     },
     // ----------------- onLogoClick
     onLogoClick: function(event) {
-        if (Modernizr.history) main.router.navigate('work', {trigger: false});
-	    main.router.navigate('', {trigger: true});
+        main.utils.BtnUtils.onLogoClick(event);
 	    return false;
-    }
+    }	
 });

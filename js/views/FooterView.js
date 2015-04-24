@@ -25,57 +25,12 @@ main.views.FooterView = Backbone.View.extend({
 	},
     // ----------------- onBtnClick
     onBtnClick: function(event) {
-    	console.log("onBtnClick -------- ");
-        //$(this.el).trigger(main.events.Event.ENABLE_DOCUMENT_SCROLL);
-        
-    	if($(event.currentTarget).attr("id")) {
-	    	var id = $(event.currentTarget).attr("id");
-	    	id = id.replace(this.BTN_SELECTOR_SUFFIX, "");
-    	}
-    	
-        main.router.navigate(id, {trigger: true});
+        main.utils.BtnUtils.onBtnClick(event);
         return false;
     },
     // ----------------- onLogoClick
     onLogoClick: function(event) {
-        if (Modernizr.history) main.router.navigate('work', {trigger: false});
-	    main.router.navigate('', {trigger: true});
+        main.utils.BtnUtils.onLogoClick(event);
 	    return false;
-    }
-    // ----------------- onLogoClick
-    /*onLogoClick: function(event) {
-        if (Modernizr.history) main.router.navigate('work', {trigger: false});
-	    main.router.navigate('', {trigger: true});
-	    return false;
-    }
-	// ----------------- onHowBtnClick
-    onMethodBtnClick: function(event) {
-	    main.router.navigate('', {trigger: true});
-	    return false;
-    },
-	// ----------------- onHowBtnClick
-    onHowBtnClick: function(event) {
-	    main.router.navigate('how', {trigger: true});
-	    return false;
-    },
-    // ----------------- onWorkBtnClick
-    onWorkBtnClick: function(event) {
-	    main.router.navigate('work', {trigger: true});
-	    return false;
-    },
-    // ----------------- onHowBtnClick
-    onTeamBtnClick: function(event) {
-	    main.router.navigate('team', {trigger: true});
-	    return false;
-    },
-    // ----------------- onHowBtnClick
-    onDisciplinesBtnClick: function(event) {
-	    main.router.navigate('disciplines', {trigger: true});
-	    return false;
-    },  
-	// ----------------- onHowBtnClick
-    onContactBtnClick: function(event) {
-	    main.router.navigate('contact', {trigger: true});
-	    return false;
-    }*/
-});
+    }	
+ });

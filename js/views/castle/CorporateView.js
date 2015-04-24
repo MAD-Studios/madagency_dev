@@ -6,6 +6,14 @@ main.views.castle.CorporateView = main.views.CorporateView.extend({
 
         this.modernCheck();
     },
+    // ----------------- createSmallMenuView
+    createSmallMenuView: function() {
+        this.smallMenuView = new main.views.castle.SmallMenuView({el: $('.small-menu', this.el)});
+    },
+     // ----------------- createMainNavView
+    createMainNavView: function() {
+        this.mainNavContainerView = new main.views.castle.MainNavContainerView({el: $('#main-nav-ctn', this.el)});
+    },
     // ----------------- beginHide
     beginHide: function() {
 	    this.headerView.beginHide();
@@ -17,7 +25,6 @@ main.views.castle.CorporateView = main.views.CorporateView.extend({
 	    //setTimeout
 	    //show the gold cover
 	    //move corporate off stage and make it invisible
-	    
 	    //!!!!!!!!!!!!!!!!!!!!!!
     }
 });

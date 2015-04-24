@@ -8,6 +8,7 @@ main.utils.ElementManipulator = {
 		COVER: "scale_to_cover"
 	},
 	NO_DOCUMENT_SCROLL_CLASS: "no-document-scroll",
+	touch_start_y: 0,
 	//======================================
 	// manipulate element
 	// dimmensions
@@ -113,6 +114,94 @@ main.utils.ElementManipulator = {
 		$(document.documentElement).removeClass(this.NO_DOCUMENT_SCROLL_CLASS);
     },
     //--------------------------------------
+	// addTouchWheelScrollListener
+	//--------------------------------------
+	addTouchWheelScrollListener:function(el, onTouchWheelScrollFunction){
+        console.log("~~~~~~~~~~~~~~~~~~~ addTouchWheelScrollListener ~~~~~~~~~~~~~~~~~~~");
+	    var self = this;
+	    this.onTouchWheelScrollFunction = onTouchWheelScrollFunction;
+	    
+        // Register mousewheel event handlers.
+		el.onwheel = function(event){ self.onTouchWheelScroll(event); };       // Future browsers
+		el.onmousewheel = function(event){ self.onTouchWheelScroll(event); };  // Most current browsers
+
+		if (el.addEventListener) { //(firefox)
+			// add touch start here 
+			// to grab touch start value so that 
+			// you can determine the delta
+			/*el.addEventListener('touchstart', function(event){ self.onElTouchStart(event);});
+			el.addEventListener('touchmove', function(event){ self.onTouchWheelScroll(event);});
+		    el.addEventListener("DOMMouseScroll", function(event){ self.onTouchWheelScroll(event); });*/
+		    el.addEventListener('touchstart', onElTouchStart );
+			el.addEventListener('touchmove', onTouchWheelScroll );
+		    el.addEventListener("DOMMouseScroll", onTouchWheelScroll );
+		}
+		/*else{
+    		
+		}*/
+		
+		
+    },
+    //--------------------------------------
+	// removeTouchWheelScrollListener
+	//--------------------------------------
+	removeTouchWheelScrollListener:function(el){
+	    console.log("~~~~~~~~~~~~~~~~~~~ removeTouchWheelScrollListener ~~~~~~~~~~~~~~~~~~~");
+        var self = this;
+	    el.onwheel = null;
+	    el.onmousewheel = null;
+	    //if(el.addEventListener) {
+    	    /*el.removeEventListener('touchstart', function(event){ self.onElTouchStart(event);});
+			el.removeEventListener('touchmove', function(event){ self.onTouchWheelScroll(event);});
+		    el.removeEventListener("DOMMouseScroll", function(event){ self.onTouchWheelScroll(event); });*/
+	    //}
+	    el.removeEventListener('touchstart', onElTouchStart );
+        el.removeEventListener('touchmove', onTouchWheelScroll );
+        el.removeEventListener("DOMMouseScroll", onTouchWheelScroll );
+            console.log("~~~~~~~~~~~~~~~~~~~ sfter events removed ~~~~~~~~~~~~~~~~~~~");
+
+	},
+    //--------------------------------------
+	// onChildTouchStart
+	//--------------------------------------
+	onElTouchStart: function(event) {
+        this.touch_start_y = event.touches[0].pageY;
+        return false;
+    },
+    //--------------------------------------
+	// onTouchWheelScroll
+	//--------------------------------------
+	onTouchWheelScroll: function(event) {
+	    console.log("~~~~~~~~~~~~~~~~~~~ onTouchWheelScroll ~~~~~~~~~~~~~~~~~~~");
+	    var deltaY = 0;
+	    var deltaX = 0;
+	    var self = this;
+		var e = event || window.event;
+		
+		if (this.touch_start_y) {
+	        deltaY = e.touches[0].pageY - this.touch_start_y;
+	    }
+	    else{
+            deltaX = e.deltaX * -30 ||  // wheel event
+                     e.wheelDeltaX / 4 ||  // mousewheel
+			                    	  0;    // property not defined
+			deltaY = e.deltaY * -30 ||  // wheel event
+			      	  e.wheelDeltaY / 4 ||  // mousewheel event in Webkit
+			(e.wheelDeltaY === undefined &&      // if there is no 2D property then 
+			          e.wheelDelta / 4) ||  // use the 1D wheel property
+					     e.detail * -10 ||  // Firefox DOMMouseScroll event
+			                   		  0;     // property not defined
+			                   
+			 if (this.isMacWebkit) {
+			    deltaX /= 30;
+			    deltaY /= 30;
+			 }
+		 }
+		 
+         if( this.onTouchWheelScrollFunction )  this.onTouchWheelScrollFunction(deltaX, deltaY, event);
+		 return false;
+	},
+    //--------------------------------------
 	// removeFromArray
 	//--------------------------------------
 	removeFromArray:function(index, array){
@@ -129,3 +218,10 @@ main.utils.ElementManipulator = {
 	}
 
 };
+
+function onElTouchStart(event){
+    main.utils.ElementManipulator.onElTouchStart(event);
+} 
+function onTouchWheelScroll(){
+    main.utils.ElementManipulator.onTouchWheelScroll(event);
+} 

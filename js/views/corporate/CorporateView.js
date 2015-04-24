@@ -2,10 +2,10 @@
 main.views.corporate.CorporateView = main.views.CorporateView.extend({
     // ----------------- renderParts
     renderParts: function() {
-        var self = this;
+        //var self = this;
 		this.paneContainerView = new main.views.corporate.PaneContainerView({el: $('#pane-ctn', this.el)});
 		
-		this.smallMenuView = new main.views.SmallMenuView({el: $('.small-menu', this.el)});
+		/*this.smallMenuView = new main.views.SmallMenuView({el: $('.small-menu', this.el)});
 
         this.mainNavContainerView = new main.views.MainNavContainerView({el: $('#main-nav-ctn', this.el)});
         this.mainNavContainerView.transition_point = $('#header', this.el).outerHeight();
@@ -14,7 +14,7 @@ main.views.corporate.CorporateView = main.views.CorporateView.extend({
         });
 		$(this.mainNavContainerView.el).on(this.mainNavContainerView.ANIMATE_TO_MOVEABLE, function(){
 	        self.headerView.darkenBackground();
-        });
+        });*/
     },
     // ----------------- afterOnScroll
     afterOnScroll: function(scroll_top) {
@@ -22,10 +22,10 @@ main.views.corporate.CorporateView = main.views.CorporateView.extend({
     },
     // ----------------- beforePosize
     beforePosize: function() {
-        this.mainNavContainerView.posize();
+       /* this.mainNavContainerView.posize();
         if($(this.mainNavContainerView.el).css('display') != 'none') this.paneContainerView.nav_offset = $(this.mainNavContainerView.el).outerHeight();
         else this.paneContainerView.nav_offset = 0;
-        if(this.smallMenuView.posize) this.smallMenuView.posize(); 
+        if(this.smallMenuView.posize) this.smallMenuView.posize(); */
     },
     // ----------------- beforePosize
     markNav: function(btn_id, delay) {

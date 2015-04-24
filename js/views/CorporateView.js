@@ -26,7 +26,9 @@ main.views.CorporateView = Backbone.View.extend({
         $(window).scroll(function(){
             self.onScroll();
 	    });
-	    //!!!!!!!!!!!
+	    /*$(document.documentElement).scroll(function(){
+            self.onScroll();
+	    });*/
 	    //on scroll start
 	    //disable any pane scroll
 	    $(window).on('scrollstart', function(){
@@ -39,7 +41,8 @@ main.views.CorporateView = Backbone.View.extend({
 	    });
         
         if (this.renderParts) this.renderParts();
-        //this.paneContainerView = new main.views.PaneContainerView({el: $('#pane-ctn', this.el)});
+        this.renderSmallMenuView();
+        this.renderMainNavView();
         
         $(this.paneContainerView.el).on(this.paneContainerView.PANE_ACTIVATE, function(event, params){
 	        //for all
@@ -54,6 +57,31 @@ main.views.CorporateView = Backbone.View.extend({
 			 self.posize();
             }, 400);
         });
+    },
+    // ----------------- renderSmallMenuView
+    renderSmallMenuView: function() {
+        this.createSmallMenuView();
+    },
+    // ----------------- createSmallMenuView
+    createSmallMenuView: function() {
+        this.smallMenuView = new main.views.SmallMenuView({el: $('.small-menu', this.el)});
+    },
+    // ----------------- renderMainNavView
+    renderMainNavView: function() {
+        console.log("renderMainNavView ---------- ");
+        var self = this;
+        this.createMainNavView();
+        this.mainNavContainerView.transition_point = $('#header', this.el).outerHeight();
+        $(this.mainNavContainerView.el).on(this.mainNavContainerView.ANIMATE_TO_FIXED, function(){
+	        self.headerView.lightenBackground();
+        });
+		$(this.mainNavContainerView.el).on(this.mainNavContainerView.ANIMATE_TO_MOVEABLE, function(){
+	        self.headerView.darkenBackground();
+        });
+    },
+    // ----------------- createMainNavView
+    createMainNavView: function() {
+        this.mainNavContainerView = new main.views.MainNavContainerView({el: $('#main-nav-ctn', this.el)});
     },
     // ----------------- onScroll
     onScroll: function() {
@@ -79,6 +107,11 @@ main.views.CorporateView = Backbone.View.extend({
         
         this.paneContainerView.offset = $(this.headerView.el).outerHeight();
 	    this.paneContainerView.posize();
+	    
+	    this.mainNavContainerView.posize();
+        if($(this.mainNavContainerView.el).css('display') != 'none') this.paneContainerView.nav_offset = $(this.mainNavContainerView.el).outerHeight();
+        else this.paneContainerView.nav_offset = 0;
+        if(this.smallMenuView.posize) this.smallMenuView.posize(); 
 	    
 	   setTimeout(function(){
     	    var to_height = $(self.paneContainerView.el).outerHeight() + $('#footer', self.el).outerHeight(); 

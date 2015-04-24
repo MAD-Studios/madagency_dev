@@ -39,6 +39,7 @@
     <script src="js/utils/TemplateLoader.js" type="text/javascript"></script>
     <script src="js/utils/ElementManipulator.js" type="text/javascript"></script>
     <script src="js/utils/DeviceDetector.js" type="text/javascript"></script>
+    <script src="js/utils/BtnUtils.js" type="text/javascript"></script>
     <script src="js/routers/Router.js" type="text/javascript"></script>
     <script src="js/routers/corporate/Router.js" type="text/javascript"></script>
     <script src="js/models/PaneModel.js" type="text/javascript"></script>
@@ -91,7 +92,7 @@
 							<div class="row-absolute"><div class="text-block vertical-center">
 								<h1 class="text-shadow white">Hi. We are Mad Agency.<br>We do a lot of cool things for our clients.</h1>
 					        	<h1 class="text-shadow white last">Here&rsquo;s a list of some things we could do for you.</h1>
-								<div class="row-absolute row-arrow-ctn"><div id="btn-show-more" class="btn arrow circle-arrow down"></div></div>
+								<div class="row-absolute row-arrow-ctn"><div id="show-more-btn" class="btn arrow circle-arrow down"></div></div>
 							</div></div>
 							<div class="row-absolute"><div class="text-block text-block-to-fade">
 					        	<h2>Yes, we can help you retain your customers.</h2>
@@ -132,7 +133,7 @@
 							</div></div>
 							<div class="row-absolute"><div class="text-block vertical-center">
 								<h1 class="text-shadow white">That&rsquo;s a lot of cool things.<br>Right?</h1>
-								<h2>So if you&rsquo;re ready to start hearing YES to your advertising, marketing, public relations, and production needs <a id="btn-castle" class="btn" href="contact">contact us</a>.</h2>
+								<h2>So if you&rsquo;re ready to start hearing YES to your advertising, marketing, public relations, and production needs <a id="contact-btn" class="btn" href="contact">contact us</a>.</h2>
 								<h2>Or, just keep scrolling and to find out what we’re all about.</h2>
 							</div></div>
 						</div>
@@ -160,7 +161,7 @@
 					
 					<div class="column large-5 large-uncentered medium-10 medium-centered small-10 small-centered">
 						<div class="row-float"><img id="img-how" src="" data-img-src="assets/images/corporate/svg/how-logo-method.svg"  alt="How Method" title="How Method" /></div>
-						<div class="row-float hide-for-medium-down show-for-large-up"><div class="btn-move-ctn"><a class="btn btn-move" href=""><p>SEE IT IN ACTION</p><img style="width:16px;height:16px;"src="" data-img-src="assets/images/corporate/svg/how-btn-arrow.svg" alt="arrow down" title="arrow down"/></a></div>
+						<!-- <div class="row-float hide-for-medium-down show-for-large-up"><div class="btn-move-ctn"><a class="btn btn-move" href=""><p>SEE IT IN ACTION</p><img style="width:16px;height:16px;"src="" data-img-src="assets/images/corporate/svg/how-btn-arrow.svg" alt="arrow down" title="arrow down"/></a></div> -->
 					</div>
 					
 				</div>
@@ -378,15 +379,8 @@
         	<div class="column large-12 small-12">
 	            <a href="" class="full-logo full-logo-sm logo btn"></a>
 	            <ul class="nav">
-	            	<li><a class="btn nav-btn" id="how-btn" href="/how">HOW WE ROLL</a></li>
-	                <li><a class="btn nav-btn" id="work-btn" href="/work">THE WORK</a></li>
-	                <li><a class="btn nav-btn" id="team-btn" href="/team">OUR TEAM</a></li>
-	                <li><a class="btn nav-btn" id="disciplines-btn" href="/disciplines">DISCIPLINES</a></li>
-	                <li><a class="btn nav-btn" id="contact-btn" href="/contact">CONTACT US</a></li>
-	            </ul>
-	            <!-- <div id="enter-story-btn-ctn" class="shadow-bordered shadow-bordered-blue">
-                    <a id="enter-story-btn" class="btn-blue btn" href="castle">ENTER CREATIVE CASTLE</a>
-                </div> -->
+                    <?php include 'inc/main-nav.php';?>
+	            </ul> 
 			</div>
         </div>
 	</div>
@@ -396,21 +390,17 @@
 		<div class="nav-ctn">
 			<div class="header"></div>
 			<ul class="main-nav">
-				<li><a class="btn nav-btn" id="how-btn" href="/how">HOW WE ROLL</a></li>
-				<li><a class="btn nav-btn" id="work-btn" href="/work">THE WORK</a></li>
-				<li><a class="btn nav-btn" id="team-btn" href="/team">OUR TEAM</a></li>
-				<li><a class="btn nav-btn" id="disciplines-btn" href="/disciplines">DISCIPLINES</a></li>
-				<li><a class="btn nav-btn" id="contact-btn" href="/contact">CONTACT US</a></li>
+                <?php include 'inc/main-nav.php';?>
 			</ul>
 			<div class="social-nav-ctn">
-				<a href="#" class="header btn social-btn">SOCIAL<img class="arrow arrow-down" src="" data-img-src="assets/images/corporate/png/nav-arrow@2x.png" alt="social" /></a>
+				<a href="#" class="header btn social-btn">SOCIAL<img class="arrow arrow-down" src="" data-img-src="/assets/images/corporate/png/nav-arrow@2x.png" alt="social" /></a>
 				<ul class="social-nav">
 				    <?php include 'inc/social-nav.php';?>
 				</ul>
 			</div>
 		</div>
 		<div class="btn-toggle-ctn">
-            <a href="#" class="btn btn-blue toggle-btn"><img class="arrow" src="" data-img-src="assets/images/corporate/png/nav-arrow@2x.png" alt="open menu" /></a>
+            <a href="#" class="btn btn-blue toggle-btn"><img class="arrow" src="" data-img-src="/assets/images/corporate/png/nav-arrow@2x.png" alt="open menu" /></a>
         </div>
 	</div>
 	

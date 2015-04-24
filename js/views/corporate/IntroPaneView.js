@@ -20,8 +20,10 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
 	to_y: 0,
 	num_posizes: 0,
     scroll_top: 0,
+    at_intro_bottom: false,
 	events:{
-		'click #btn-show-more': 'onBtnShowMoreClick'
+		'click #show-more-btn': 'onBtnShowMoreClick',
+		'click #contact-btn': 'onBtnClick'
 	},
 	// ----------------- initialize
     initialize: function() {
@@ -52,8 +54,10 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     	this.scroller_el = $('.scroller', this.el);
     	this.this_el = $(this.el);
     	this.scroller_el.scroll(function(){
+    	    console.log("on scroll");
 	    	self.handleIntroScroll();
     	});
+    	
     	this.arrow_row_el = $('.row-arrow-ctn', this.el);
     	this.anim_rows = $('.row-content .column > .row-absolute', this.el);
     	    	
@@ -149,7 +153,6 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
 			$(overlay_btn).click(function(event){
 				self.onOverlayBtnClick(event);
 			});
-
 	    	self.overlay_btns.push(overlay_btn);
 	    	self.overlay_el.append(overlay_btn);
     	});
@@ -200,6 +203,46 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
         this.introScrollTimeout = setTimeout(function(){
             self.animateOnScroll(self.scroll_top);
         }, 10);
+        
+        if( this.scroll_top >= (this.max_scroll_top) ) {
+            //clearTimeout(this.bottomTimeout);
+            //this.bottomTimeout = setTimeout(function(){
+                self.at_intro_bottom = true;
+                self.removeTouchWheelScrollListener();
+                self.addTouchWheelScrollListener();
+            //}, 100);
+        }
+        else if( this.scroll_top < (this.max_scroll_top) ){
+            //clearTimeout(this.bottomTimeout);
+            self.at_intro_bottom = false;
+            self.removeTouchWheelScrollListener();
+        }
+    }, 
+    // ----------------- addTouchWheelScrollListener
+    addTouchWheelScrollListener: function() { 
+         var self = this;
+         this.disableScroller();
+         main.utils.ElementManipulator.addTouchWheelScrollListener(window, function(deltaX, deltaY, event){ self.handleMouseWheel(deltaY) });
+    },
+    // ----------------- removeMouseWheelEvent
+    removeTouchWheelScrollListener: function() { 
+        var self = this;
+        main.utils.ElementManipulator.removeTouchWheelScrollListener(window);
+    },
+    // ----------------- handleMouseWheel
+    handleMouseWheel: function(deltaY) { 
+        console.log("---------------------------- handleMouseWheel --------------------------");
+        //if delta Y is negative
+        //then scroll movement was downward
+        if(deltaY < 0){
+            //seems like sometimes not going into here
+            //!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            console.log("---------------------------- before removeTouchWheelScrollListener");
+            this.removeTouchWheelScrollListener();
+            $(this.el).trigger(main.events.Event.ENABLE_DOCUMENT_SCROLL);
+            this.removeTouchWheelScrollListener();
+            this.disableScroller();
+        }  
     },
     // ----------------- animateOnScroll
     animateOnScroll: function(scroll_top) {
@@ -239,7 +282,6 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
                     }
                 }
 				//show the gradient
-				//TweenLite.to(this.grad_el, 0.1, { opacity: 1, ease: Expo.easeOut, delay: 0.1 });
                 if(this.grad_el.offset().top >= row_1_end_y) this.grad_el.css('opacity', '1');
 			}
 			else if( scroll_top <= this.SHOW_UNDERLAYING_TEXT_SCROLL_TOP ){
@@ -260,8 +302,8 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
                     this.animateRowsShown = main.utils.ElementManipulator.removeFromArray(ind, this.animateRowsShown);
                 }
 			}
-            var max_scroll = $('.scroller-content', this.el).outerHeight() - $(window).height();
-            if( scroll_top  > ( this.default_elements_y[2] - (this.this_el.height()/2) ) &&  scroll_top < max_scroll){
+            //var max_scroll = $('.scroller-content', this.el).outerHeight() - $(window).height();
+            if( this.max_scroll_top  > ( this.default_elements_y[2] - (this.this_el.height()/2) ) &&  scroll_top < this.max_scroll_top){
                 //this.anim_rows.eq(2).css('opacity', '1');
                 //if not already animated
                 if(this.animateRowsShown.indexOf(2) == -1){ 
@@ -285,12 +327,6 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     				this.animateRowsShown = main.utils.ElementManipulator.removeFromArray(ind, this.animateRowsShown);
 				}
 			}
-            /*if( scroll_top  > ( this.default_elements_y[2] - (this.this_el.height()/3) ) ){
-                delay = 0;
-                TweenLite.to(this.anim_rows.eq(1), 0.5, { opacity: 0, ease: Expo.easeOut, delay:delay });
-                TweenLite.to(this.anim_rows.eq(1), 0.75, { top: this.default_elements_y[1] - this.ELEMENT_ANIM_OFFSET, ease: Expo.easeOut, delay:delay });
-                this.anim_rows.eq(1).removeClass(this.VISIBLE_CLASS);
-            }*/
 		}
     },
     // ----------------- prepForAnim
@@ -333,12 +369,11 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     	var to_margin = 0;
     	var self = this;
     	var vert_blocks = $('.text-block.vertical-center', this.el);
-        this.max_scroll_top = $('.scroller-content', this.el).outerHeight();
+        this.max_scroll_top = $('.scroller-content', this.el).outerHeight() - this.scroller_el.outerHeight();
        
     	vert_blocks.each(function(index, value){
 	    	//give each a margin top and bottom
 	    	//according to window height
-	    	//self.to_margin = ( ( self.this_el.outerHeight() - self.nav_offset - ( $(this).outerHeight() + 25 ) )/2 );
             self.to_margin = ( ( self.this_el.outerHeight() - self.nav_offset - ( $(this).outerHeight() ) )/2 );
 			if(index == 0){
 				if(self.to_margin < self.MIN_TEXT_BLOCK_TOP_MARGIN) self.to_margin = self.MIN_TEXT_BLOCK_TOP_MARGIN;
@@ -355,8 +390,8 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
 	    	self.posElements();
     	}, 100);
 
-    	//show the intro after 2nd posize
-    	if(this.num_posizes == 1){
+    	//show the intro after fourth posize
+    	if(this.num_posizes == 3){
 			setTimeout(function(){
 		    	self.showContent();
 		    }, 100);
@@ -365,11 +400,14 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     },
     // ----------------- onScroll
     onScroll: function(scroll_top) {
-    	if(scroll_top <= 1){
+    	if(scroll_top <= 10){
 	    	$(this.el).trigger(main.events.Event.DISABLE_DOCUMENT_SCROLL);
             this.enableScroller();
     	}
-    	else this.disableScroller();
+    	else{
+    	    if(this.at_intro_bottom)  $(this.el).trigger(main.events.Event.ENABLE_DOCUMENT_SCROLL);
+        	this.disableScroller();
+    	} 
     },
     // ----------------- show
     showContent: function() {
@@ -390,13 +428,13 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
 	},
     // ----------------- onBtnShowMoreClick
     onBtnShowMoreClick:function(){
-    	//scrolldown
-    	//!!!!!!!!!!!!!!!!!!!
-    	//set active class on 
-    	//underlying btn
-    	//!!!!!!!!!!!!!!!!!!
     	this.scrollToShowMore();
 	    return false;
+    },
+    // ----------------- onBtnClick
+    onBtnClick: function(event) {
+        main.utils.BtnUtils.onBtnClick(event);
+        return false;
     },
     // ----------------- scrollToShowMore
 	scrollToShowMore: function(){

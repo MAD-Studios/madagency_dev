@@ -72,11 +72,6 @@ main.views.corporate.WorkPaneView = main.views.PaneView.extend({
     // ----------------- beforeDeactivate
     beforeDeactivate: function() {
     },
-    // ----------------- beforeRender
-   /* beforePosize: function() {
-        if($('.hide-for-small .pane-title', this.el).parent().css('display') != 'none') this.offset = -($('.hide-for-small .pane-title', this.el).outerHeight() + $('.hide-for-small .divider', this.el).outerHeight());
-        else this.offset = -$('.hide-for-small .divider', this.el).outerHeight();
-    },*/
     // ----------------- beforePosize
     beforePosize: function() {
     	//maintain the original aspect ratio of the 
@@ -86,7 +81,6 @@ main.views.corporate.WorkPaneView = main.views.PaneView.extend({
     		var parent_w = this.video_container_el.parent().outerWidth();
     		this.video_def_width = parseInt(this.video_container_el.css('maxWidth'));
 			this.video_def_height = parseInt(this.video_container_el.css('maxHeight'));
-	    
 	    	this.elementManipulator.resizeElement(this.video_container_el, this.video_def_width, this.video_def_height, parent_w, null, this.elementManipulator.SCALE_TYPE.FIT );
 	    	
 			setTimeout(function(){
