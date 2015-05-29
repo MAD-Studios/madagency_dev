@@ -76,17 +76,22 @@ main.views.PaneContainerView = Backbone.View.extend({
     },
     // ----------------- posize
     posize: function() {
+        console.log("PaneContainerView --------- posize ----------- 0  ");
         var self = this;
 	    var pane_view;
 	    if(this.beforePosize) this.beforePosize();
-	    
+	            console.log("PaneContainerView --------- posize ----------- 1  ");
+
 	    for(var i=0;i<this.paneViews.length;i++){
 	    	pane_view = this.paneViews[i];
 	    	if(pane_view.posize) pane_view.posize();
 		}
+		        console.log("PaneContainerView --------- posize ----------- 2  ");
+
 		setTimeout(function(){
 	        self.initPanes();
 	    }, 100);
+	    		 console.log("PaneContainerView --------- posize ----------- 3  ");
     },
     // ----------------- checkPanes
     checkPanes: function(actual_scroll_top) {

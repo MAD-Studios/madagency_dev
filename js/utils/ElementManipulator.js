@@ -66,8 +66,6 @@ main.utils.ElementManipulator = {
 			break;
 			case this.SCALE_TYPE.FIT:
 				//IF WIDTH AND HEIGHT GREATER THAN
-				console.log("SCALE_TYPE.FIT ");
-
 				if(rat_width <= 1 && rat_height <= 1){
 				//use greatest difference
 				 if(delta_scale_width >= delta_scale_height){ scale = rat_width; }
@@ -117,7 +115,6 @@ main.utils.ElementManipulator = {
 	// addTouchWheelScrollListener
 	//--------------------------------------
 	addTouchWheelScrollListener:function(el, onTouchWheelScrollFunction){
-        console.log("~~~~~~~~~~~~~~~~~~~ addTouchWheelScrollListener ~~~~~~~~~~~~~~~~~~~");
 	    var self = this;
 	    this.onTouchWheelScrollFunction = onTouchWheelScrollFunction;
 	    
@@ -129,12 +126,12 @@ main.utils.ElementManipulator = {
 			// add touch start here 
 			// to grab touch start value so that 
 			// you can determine the delta
-			/*el.addEventListener('touchstart', function(event){ self.onElTouchStart(event);});
-			el.addEventListener('touchmove', function(event){ self.onTouchWheelScroll(event);});
-		    el.addEventListener("DOMMouseScroll", function(event){ self.onTouchWheelScroll(event); });*/
-		    el.addEventListener('touchstart', onElTouchStart );
+			el.addEventListener('touchstart', function(event){ self.onElTouchStart(event); });
+			el.addEventListener('touchmove', function(event){ self.onTouchWheelScroll(event); });
+		    el.addEventListener("DOMMouseScroll", function(event){ self.onTouchWheelScroll(event); });
+		    /*el.addEventListener('touchstart', onElTouchStart );
 			el.addEventListener('touchmove', onTouchWheelScroll );
-		    el.addEventListener("DOMMouseScroll", onTouchWheelScroll );
+		    el.addEventListener("DOMMouseScroll", onTouchWheelScroll );*/
 		}
 		/*else{
     		
@@ -146,19 +143,18 @@ main.utils.ElementManipulator = {
 	// removeTouchWheelScrollListener
 	//--------------------------------------
 	removeTouchWheelScrollListener:function(el){
-	    console.log("~~~~~~~~~~~~~~~~~~~ removeTouchWheelScrollListener ~~~~~~~~~~~~~~~~~~~");
         var self = this;
 	    el.onwheel = null;
 	    el.onmousewheel = null;
-	    //if(el.addEventListener) {
-    	    /*el.removeEventListener('touchstart', function(event){ self.onElTouchStart(event);});
+	    if(el.addEventListener) {
+    	    el.removeEventListener('touchstart', function(event){ self.onElTouchStart(event);});
 			el.removeEventListener('touchmove', function(event){ self.onTouchWheelScroll(event);});
-		    el.removeEventListener("DOMMouseScroll", function(event){ self.onTouchWheelScroll(event); });*/
-	    //}
-	    el.removeEventListener('touchstart', onElTouchStart );
+		    el.removeEventListener("DOMMouseScroll", function(event){ self.onTouchWheelScroll(event); });
+	    }
+	    /*el.removeEventListener('touchstart', onElTouchStart );
         el.removeEventListener('touchmove', onTouchWheelScroll );
         el.removeEventListener("DOMMouseScroll", onTouchWheelScroll );
-            console.log("~~~~~~~~~~~~~~~~~~~ sfter events removed ~~~~~~~~~~~~~~~~~~~");
+            console.log("~~~~~~~~~~~~~~~~~~~ sfter events removed ~~~~~~~~~~~~~~~~~~~");*/
 
 	},
     //--------------------------------------
@@ -172,7 +168,6 @@ main.utils.ElementManipulator = {
 	// onTouchWheelScroll
 	//--------------------------------------
 	onTouchWheelScroll: function(event) {
-	    console.log("~~~~~~~~~~~~~~~~~~~ onTouchWheelScroll ~~~~~~~~~~~~~~~~~~~");
 	    var deltaY = 0;
 	    var deltaX = 0;
 	    var self = this;

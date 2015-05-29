@@ -3819,7 +3819,9 @@ section {
   float: left;
   min-width: 100%;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  position: relative;
+  /* z-index: 1;*/ }
 
 input:focus,
 select:focus,
@@ -3842,6 +3844,13 @@ button:focus {
   -webkit-tap-highlight-color: transparent;
   -webkit-tap-highlight-color: transparent;
   /* For some Androids */ }
+
+.content-wrapper {
+  position: relative;
+  z-index: 1; }
+
+.content-sect {
+  z-index: 1; }
 
 /*----------------- FONTS  */
 h1.white,
@@ -4864,7 +4873,7 @@ div#orientation-alert h1 {
 #main-nav-ctn {
   position: absolute;
   min-width: 100%;
-  z-index: 300;
+  z-index: 600;
   height: 98px; }
   @media only screen and (max-width: 40em) {
     #main-nav-ctn .column {
@@ -5289,7 +5298,7 @@ div#orientation-alert h1 {
   margin-bottom: 16px; }
 #how-pane #img-how {
   width: 210px;
-  height: auto;
+  height: 225px;
   display: block;
   margin: 30px 0 24px 0;
   float: right; }

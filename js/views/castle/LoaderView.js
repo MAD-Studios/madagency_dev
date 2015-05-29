@@ -23,7 +23,7 @@ main.views.castle.LoaderView = Backbone.View.extend({
 	loadedRatioIndicator_defY: 0,
 	ratio_indicator_num_letters: 0,
 	actual_ratio_indicator_num_letters: 0,
-	min_ratio_update_dealy: 100,
+	min_ratio_update_delay: 100,
 	cur_ratio_update_delay: 60,
 	ratio_indicator_is_hidden: false,
 	remaining_letter_start: 0,
@@ -62,7 +62,6 @@ main.views.castle.LoaderView = Backbone.View.extend({
 	    //update the loaded ratio indicator
 		this.model.on('change:loadedRatio', function(){
 		    //add the first letter
-		    
 	        self.updateRatioIndicator();
         });
     },
@@ -147,14 +146,20 @@ main.views.castle.LoaderView = Backbone.View.extend({
 	    //save the current time
 	    //if current time - last_ratio_update_time
 	    //is less than minimum time to update again
-	    //min_ratio_update_dealy
+	    //min_ratio_update_delay
 	    var delay = 60;
 	    var date = new Date();
 	    this.current_time = date.getTime();
-	    if( (this.current_time-this.last_ratio_update_time) < this.min_ratio_update_dealy ){
+	    
+	    //when issue happens
+	    //the below is not coming
+	    //thru as true
+	    
+	    if( (this.current_time-this.last_ratio_update_time) < this.min_ratio_update_delay ){
 		    this.cur_ratio_update_delay += 100;
-		    delay = this.cur_ratio_update_delay;
+		    //delay = this.cur_ratio_update_delay;
 	    }
+	    delay = this.cur_ratio_update_delay;
 	    this.last_ratio_update_time = this.current_time;
 	    //show the ratio of letters
 	    //that matches the ratio
@@ -176,14 +181,16 @@ main.views.castle.LoaderView = Backbone.View.extend({
             //add the transition class
             letter_el.addClass(this.FADE_CLASS);
             this.addLetter(letter_el, delay);
-            if(this.model.get("loadedRatio") == 1){
-                //this.loadedRatioIndicatorActivityIndicatorContainer.remove();
-            }
+
+            /*if(this.model.get("loadedRatio") == 1){
+                this.loadedRatioIndicatorActivityIndicatorContainer.remove();
+            }*/
         }
         self.ratio_indicator_num_letters = num_letters_to_show;
     },
     // ----------------- addLetter
     addLetter: function(letter_el, delay, callback) {
+         if(delay == null) delay = 0;
          var self = this;
          var to_x;
          setTimeout(function(){
@@ -212,7 +219,7 @@ main.views.castle.LoaderView = Backbone.View.extend({
 	    	this.next_y = to_y + info_el.outerHeight();
 	    	info_el.css({transform: 'translate3d(0,' + (to_y + this.INFO_ANIM_OFFSET) + 'px, 0)',
 						 MozTransform: 'translate3d(0,' + (to_y + this.INFO_ANIM_OFFSET) + 'px, 0)',
-						 WebkitTransform: 'translate3d(0,' + (to_y + this.INFO_ANIM_OFFSET) + 'px, 0)',
+						 webkitTransform: 'translate3d(0,' + (to_y + this.INFO_ANIM_OFFSET) + 'px, 0)',
 						 OTransform: 'translate3d(0,' + (to_y + this.INFO_ANIM_OFFSET) + 'px, 0)',
 						 msTransform: 'translate3d(0,' + (to_y + this.INFO_ANIM_OFFSET) + 'px, 0)'});
 			info_el.addClass(this.INFO_TRANS_CLASS);
@@ -237,7 +244,7 @@ main.views.castle.LoaderView = Backbone.View.extend({
 		    var to_x = 0;
 		    this.goldGrad_el.css({transform: 'translate3d('+ to_x + 'px,' + to_y + 'px, 0)',
 							  MozTransform: 'translate3d('+ to_x + 'px,' + to_y + 'px, 0)',
-							  WebkitTransform: 'translate3d('+ to_x + 'px,' + to_y + 'px, 0)',
+							  webkitTransform: 'translate3d('+ to_x + 'px,' + to_y + 'px, 0)',
 							  Oransform: 'translate3d('+ to_x + 'px,' + to_y + 'px, 0)',
 							  msTransform: 'translate3d('+ to_x + 'px,' + to_y + 'px, 0)'});
 	    }
@@ -245,7 +252,7 @@ main.views.castle.LoaderView = Backbone.View.extend({
 	    	to_y = $(window).height() - this.goldGrad_el_top.outerHeight();
 		    this.goldGrad_el.css({transform: 'translateY('+ to_y + 'px)',
 							  MozTransform: 'translateY('+ to_y + 'px)',
-							  WebkitTransform: 'translateY('+ to_y + 'px)',
+							  webkitTransform: 'translateY('+ to_y + 'px)',
 							  OTransform: 'translateY('+ to_y + 'px)',
 							  msTransform: 'translateY('+ to_y + 'px)'});
 		}
@@ -265,7 +272,7 @@ main.views.castle.LoaderView = Backbone.View.extend({
 	    to_x = ($(window).width() - this.readyMsgCnt_el.outerWidth())/2;
 	    this.readyMsgCnt_el.css({transform: 'translate3d('+ to_x + 'px,' + to_y + 'px, 0)',
 							  MozTransform: 'translate3d('+ to_x + 'px,' + to_y + 'px, 0)',
-							  WebkitTransform: 'translate3d('+ to_x + 'px,' + to_y + 'px, 0)',
+							  webkitTransform: 'translate3d('+ to_x + 'px,' + to_y + 'px, 0)',
 							  Oransform: 'translate3d('+ to_x + 'px,' + to_y + 'px, 0)',
 							  msTransform: 'translate3d('+ to_x + 'px,' + to_y + 'px, 0)'});
 	},
@@ -328,7 +335,7 @@ main.views.castle.LoaderView = Backbone.View.extend({
 			var to_y = 0;
 			self.readyMsg_el.css({transform: 'translateY('+ to_y + 'px)',
 							  MozTransform: 'translateY('+ to_y + 'px)',
-							  WebkitTransform: 'translateY('+ to_y + 'px)',
+							  webkitTransform: 'translateY('+ to_y + 'px)',
 							  OTransform: 'translateY('+ to_y + 'px)',
 							  msTransform: 'translateY('+ to_y + 'px)'});
 			self.readyMsg_el.css('opacity', '1');
@@ -340,7 +347,7 @@ main.views.castle.LoaderView = Backbone.View.extend({
 		var to_y = -(this.INFO_ANIM_OFFSET);
 		this.readyMsg_el.css({transform: 'translateY('+ to_y + 'px)',
 						  MozTransform: 'translateY('+ to_y + 'px)',
-						  WebkitTransform: 'translateY('+ to_y + 'px)',
+						  webkitTransform: 'translateY('+ to_y + 'px)',
 						  OTransform: 'translateY('+ to_y + 'px)',
 						  msTransform: 'translateY('+ to_y + 'px)'});
 		this.readyMsg_el.css('opacity', '0');
@@ -399,9 +406,7 @@ main.views.castle.LoaderView = Backbone.View.extend({
     // ----------------- addRemainingLoaderRatioLetter
     addRemainingLoaderRatioLetter: function() {
         var self = this;
-        //addLetter(letter_el, delay)
         var letter_el, to_x, to_width;
-        
         
         letter_el = $('<h1>' + this.loaded_ratio_indicator_copy.charAt(this.num_remaining_added) + '</h1>');
         letter_el.css('opacity', '0');
@@ -409,14 +414,9 @@ main.views.castle.LoaderView = Backbone.View.extend({
         
         delay = 10; 
         this.addLetter(letter_el, delay, function(){ self.onAddRemainingLoaderRatioLetterComplete(); });
-        //this.loadedRatioIndicatorTextContainer.append(letter_el);
-        //add the transition class
     },
     // ----------------- onAddRemainingLoaderRatioLetterComplete
     onAddRemainingLoaderRatioLetterComplete: function(){
-        console.log("onAddRemainingLoaderRatioLetterComplete ------------ this.num_remaining_added = " + this.num_remaining_added);
-        console.log("onAddRemainingLoaderRatioLetterComplete ------------ this.remaining_letter_end = " + this.remaining_letter_end);
-
         this.num_remaining_added++;
         if(this.num_remaining_added < this.remaining_letter_end) this.addRemainingLoaderRatioLetter();
         else this.completeHideLoaderRatioIndicator();
@@ -439,7 +439,7 @@ main.views.castle.LoaderView = Backbone.View.extend({
 		    var to_y = self.loadedRatioIndicator_defY - self.INFO_ANIM_OFFSET;
 			self.loadedRatioIndicator.css({transform: 'translateY('+ to_y + 'px)',
 							  MozTransform: 'translateY('+ to_y + 'px)',
-							  WebkitTransform: 'translateY('+ to_y + 'px)',
+							  webkitTransform: 'translateY('+ to_y + 'px)',
 							  OTransform: 'translateY('+ to_y + 'px)',
 							  msTransform: 'translateY('+ to_y + 'px)'});
 			self.loadedRatioIndicator.css('opacity', '0');
@@ -453,7 +453,7 @@ main.views.castle.LoaderView = Backbone.View.extend({
 		var to_y = this.loadedRatioIndicator_defY;
 		this.loadedRatioIndicator.css({transform: 'translateY('+ to_y + 'px)',
 						  MozTransform: 'translateY('+ to_y + 'px)',
-						  WebkitTransform: 'translateY('+ to_y + 'px)',
+						  webkitTransform: 'translateY('+ to_y + 'px)',
 						  OTransform: 'translateY('+ to_y + 'px)',
 						  msTransform: 'translateY('+ to_y + 'px)'});
 		this.loadedRatioIndicator.css('opacity', '1');
@@ -469,14 +469,14 @@ main.views.castle.LoaderView = Backbone.View.extend({
 	    info_1.css('opacity', '0');
 	    info_1.css( {transform: 'translate3d(0,' + info_1_to_y  + 'px, 0)',
 				  MozTransform: 'translate3d(0,' + info_1_to_y  + 'px, 0)',
-				  WebkitTransform: 'translate3d(0,' + info_1_to_y + 'px, 0)',
+				  webkitTransform: 'translate3d(0,' + info_1_to_y + 'px, 0)',
 				  OTransform: 'translate3d(0,' + info_1_to_y + 'px, 0)',
 				  msTransform: 'translate3d(0,' + info_1_to_y + 'px, 0)'} );
 		setTimeout(function(){
 			  info_2.css('opacity', '0');
 			  info_2.css( {transform: 'translate3d(0,' + info_2_to_y  + 'px, 0)',
 				  MozTransform: 'translate3d(0,' + info_2_to_y  + 'px, 0)',
-				  WebkitTransform: 'translate3d(0,' + info_2_to_y + 'px, 0)',
+				  webkitTransform: 'translate3d(0,' + info_2_to_y + 'px, 0)',
 				  OTransform: 'translate3d(0,' + info_2_to_y + 'px, 0)',
 				  msTransform: 'translate3d(0,' + info_2_to_y + 'px, 0)'} );
 		}, 400);
@@ -506,7 +506,7 @@ main.views.castle.LoaderView = Backbone.View.extend({
 		    info.css('opacity', '1');
 			info.css( {transform: 'translate3d(0,' + to_y  + 'px, 0)',
 					  MozTransform: 'translate3d(0,' + to_y  + 'px, 0)',
-					  WebkitTransform: 'translate3d(0,' + to_y + 'px, 0)',
+					  webkitTransform: 'translate3d(0,' + to_y + 'px, 0)',
 					  OTransform: 'translate3d(0,' + to_y + 'px, 0)',
 					  msTransform: 'translate3d(0,' + to_y + 'px, 0)'} );
 	    }
@@ -516,7 +516,7 @@ main.views.castle.LoaderView = Backbone.View.extend({
 		    info.css('opacity', '1');
 			info.css( {transform: 'translate3d(0,' + to_y + 'px, 0)',
 					  MozTransform: 'translate3d(0,' + to_y + 'px, 0)',
-					  WebkitTransform: 'translate3d(0,' + to_y + 'px, 0)',
+					  webkitTransform: 'translate3d(0,' + to_y + 'px, 0)',
 					  OTransform: 'translate3d(0,' + to_y + 'px, 0)',
 					  msTransform: 'translate3d(0,' + to_y + 'px, 0)'} );
 		    //get the 2 info above and 2 above
@@ -524,7 +524,7 @@ main.views.castle.LoaderView = Backbone.View.extend({
 		    to_y = this.info_default_y_arr[1];
 			info_above.css( {transform: 'translate3d(0,' + to_y + 'px, 0)',
 					  MozTransform: 'translate3d(0,' + to_y + 'px, 0)',
-					  WebkitTransform: 'translate3d(0,' + to_y + 'px, 0)',
+					  webkitTransform: 'translate3d(0,' + to_y + 'px, 0)',
 					  OTransform: 'translate3d(0,' + to_y + 'px, 0)',
 					  msTransform: 'translate3d(0,' + to_y + 'px, 0)'} );
 		    info_2_above = this.infoContainer.children().eq(this.show_info_incr - 2);
@@ -533,7 +533,7 @@ main.views.castle.LoaderView = Backbone.View.extend({
 		    info_2_above.css('opacity', '0');
 			info_2_above.css( {transform: 'translate3d(0,' + to_y + 'px, 0)',
 					  MozTransform: 'translate3d(0,' + to_y + 'px, 0)',
-					  WebkitTransform: 'translate3d(0,' + to_y + 'px, 0)',
+					  webkitTransform: 'translate3d(0,' + to_y + 'px, 0)',
 					  OTransform: 'translate3d(0,' + to_y + 'px, 0)',
 					  msTransform: 'translate3d(0,' + to_y + 'px, 0)'} );
 		}
@@ -558,7 +558,7 @@ main.views.castle.LoaderView = Backbone.View.extend({
 		});
 	    this.goldGrad_el.css({transform: 'translateY(' + to_y + 'px)',
 							  MozTransform: 'translateY(' + to_y + 'px)',
-							  WebkitTransform: 'translateY(' + to_y + 'px)',
+							  webkitTransform: 'translateY(' + to_y + 'px)',
 							  OTransform: 'translateY(' + to_y + 'px)',
 							  msTransform: 'translateY(' + to_y + 'px)'});  
      
@@ -582,7 +582,7 @@ main.views.castle.LoaderView = Backbone.View.extend({
 		});
         self.goldGrad_el.css({transform: 'translateY(' + to_y + 'px)',
                               MozTransform: 'translateY(' + to_y + 'px)',
-                              WebkitTransform: 'translateY(' + to_y + 'px)',
+                              webkitTransform: 'translateY(' + to_y + 'px)',
                               OTransform: 'translateY(' + to_y + 'px)',
                               msTransform: 'translateY(' + to_y + 'px)'});
     },
@@ -600,7 +600,7 @@ main.views.castle.LoaderView = Backbone.View.extend({
 	    var to_y = $(window).height() - this.goldGrad_el_top.outerHeight();
 	    this.goldGrad_el.css({transform: 'translateY('+ to_y + 'px)',
 						  MozTransform: 'translateY('+ to_y + 'px)',
-						  WebkitTransform: 'translateY('+ to_y + 'px)',
+						  webkitTransform: 'translateY('+ to_y + 'px)',
 						  OTransform: 'translateY('+ to_y + 'px)',
 						  msTransform: 'translateY('+ to_y + 'px)'});
 		this.view_state = this.STATE_STAGE;
@@ -625,7 +625,7 @@ main.views.castle.LoaderView = Backbone.View.extend({
 	    var to_x = 0;
 	    this.goldGrad_el.css({transform: 'translate3d('+ to_x + 'px,' + to_y + 'px, 0)',
 						  MozTransform: 'translate3d('+ to_x + 'px,' + to_y + 'px, 0)',
-						  WebkitTransform: 'translate3d('+ to_x + 'px,' + to_y + 'px, 0)',
+						  webkitTransform: 'translate3d('+ to_x + 'px,' + to_y + 'px, 0)',
 						  OTransform: 'translate3d('+ to_x + 'px,' + to_y + 'px, 0)',
 						  msTransform: 'translate3d('+ to_x + 'px,' + to_y + 'px, 0)'});
 		this.goldGrad_el.addClass(this.GOLD_GRAD_TRANS_CLASS_OUT);
@@ -635,7 +635,7 @@ main.views.castle.LoaderView = Backbone.View.extend({
 		to_y = -this.INFO_ANIM_OFFSET;
 		this.readyMsg_el.css({transform: 'translateY('+ to_y + 'px)',
 						  MozTransform: 'translateY('+ to_y + 'px)',
-						  WebkitTransform: 'translateY('+ to_y + 'px)',
+						  webkitTransform: 'translateY('+ to_y + 'px)',
 						  OTransform: 'translateY('+ to_y + 'px)',
 						  msTransform: 'translateY('+ to_y + 'px)'});
 		//move the indicator down initailly 
@@ -644,7 +644,7 @@ main.views.castle.LoaderView = Backbone.View.extend({
 	    to_y = this.loadedRatioIndicator_defY + this.INFO_ANIM_OFFSET;
 	    this.loadedRatioIndicator.css({transform: 'translateY('+ to_y + 'px)',
 						  MozTransform: 'translateY('+ to_y + 'px)',
-						  WebkitTransform: 'translateY('+ to_y + 'px)',
+						  webkitTransform: 'translateY('+ to_y + 'px)',
 						  OTransform: 'translateY('+ to_y + 'px)',
 						  msTransform: 'translateY('+ to_y + 'px)'});
     },
@@ -707,7 +707,8 @@ main.views.castle.RainbowView = Backbone.View.extend({
     initialize: function() {
         this.rainbow_el = $('<div class="rainbow"></div>');
 	    this.el = this.rainbow_el; 
-	    this.el.css('visibility', 'hidden');
+	    //this.el.css('visibility', 'hidden');
+	    this.hide();
         this.render();
     },
     // ----------------- render
@@ -740,7 +741,10 @@ main.views.castle.RainbowView = Backbone.View.extend({
 	    this.el.append(this.unicorn_el); 
 	    var to_w = this.rainbow_all_el.outerWidth() + this.unicorn_el.width()*3;
 	    $(this.el).css('width', to_w + 'px');
-	    this.el.css('transform-origin', 'center right');
+	    this.el.css({ transformOrigin: 'center right',
+	                  MozTransform: 'center right',
+    	              webkitTransformOrigin: 'center right',
+	                });
 	    this.beginAnimation();
     },
     // ----------------- prepareForAnimate
@@ -759,7 +763,7 @@ main.views.castle.RainbowView = Backbone.View.extend({
 	    if(rander == 0) this.deg_rot = this.deg_rot_1;
 	    else this.deg_rot = this.deg_rot_2;
 
-	    this.rot  = this.deg_rot  * (Math.PI/180);
+	    this.rot = this.deg_rot * (Math.PI/180);
 		//position x as random 
 		var rainbow_cnt_el = this.el.parent();
 		//if  contain
@@ -780,28 +784,32 @@ main.views.castle.RainbowView = Backbone.View.extend({
 			this.end_y = rainbow_cnt_el.outerHeight() + this.unicorn_el.outerHeight() + this.el.outerWidth();
 		}
 		this.intercept = start_y - (this.slope*this.start_x);
-		//determin end x 
+        //determin end x 
 	    //by this.slope
 	    this.end_x = (this.end_y - this.intercept)/this.slope;
 		this.el.css({transform: 'translate3d('+ this.start_x + 'px,' + start_y + 'px, 0) rotateZ(' + this.deg_rot +'deg)',
 				  MozTransform: 'translate3d('+ this.start_x + 'px,' + start_y + 'px, 0) rotateZ(' + this.deg_rot +'deg)',
-				  WebkitTransform: 'translate3d('+ this.start_x + 'px,' + start_y + 'px, 0) rotateZ(' + this.deg_rot +'deg)',
-				  OTransform: 'translate3d('+ this.start_x + 'px,' + start_y + 'px, 0) rotateZ(' + this.deg_rot +'deg)',
+				  webkitTransform: 'translate3d('+ this.start_x + 'px,' + start_y + 'px, 0) rotateZ(' + this.deg_rot +'deg)',
+				  oTransform: 'translate3d('+ this.start_x + 'px,' + start_y + 'px, 0) rotateZ(' + this.deg_rot +'deg)',
 				  msTransform: 'translate3d('+ this.start_x + 'px,' + start_y + 'px, 0) rotateZ(' + this.deg_rot +'deg)'});
 	    setTimeout(function(){
 			if(self.deg_rot >= -90 && self.deg_rot <= 0) self.el.addClass(self.EASE_OUT_TRANS_CLASS);
 			// --- downward 
 			else self.el.addClass(self.EASE_IN_TRANS_CLASS);
-	        self.animate();
+			setTimeout(function(){
+	            self.animate();
+	        }, 100);
 		}, 100);
     },
     // ----------------- animate
     animate: function() {
 	    var self = this;
-    	this.el.css('visibility', 'visible');
+    	//this.el.css('visibility', 'visible');
+        this.show();
+
 	    this.el.css({ transform: 'translate3d('+ this.end_x + 'px,' + this.end_y + 'px, 0) rotateZ(' + this.deg_rot +'deg)',
 					  MozTransform: 'translate3d('+ this.end_x + 'px,' + this.end_y + 'px, 0) rotateZ(' + this.deg_rot +'deg)',
-					  WebkitTransform: 'translate3d('+ this.end_x + 'px,' + this.end_y + 'px, 0) rotateZ(' + this.deg_rot +'deg)',
+					  webkitTransform: 'translate3d('+ this.end_x + 'px,' + this.end_y + 'px, 0) rotateZ(' + this.deg_rot +'deg)',
 					  OTransform: 'translate3d('+ this.end_x + 'px,' + this.end_y + 'px, 0) rotateZ(' + this.deg_rot +'deg)',
 					  msTransform: 'translate3d('+ this.end_x + 'px,' + this.end_y + 'px, 0) rotateZ(' + this.deg_rot +'deg)'});
 		//listen gfo rtransition end
@@ -809,6 +817,14 @@ main.views.castle.RainbowView = Backbone.View.extend({
 		setTimeout(function(){
 			self.kill();
 		}, 12000); 
+    },
+    // ----------------- hide
+    hide: function() {
+    	this.el.css('opacity', '0');
+    },
+    // ----------------- show
+    show: function() {
+        this.el.css('opacity', '1');
     },
     // ----------------- kill
     kill: function() {
@@ -819,7 +835,8 @@ main.views.castle.RainbowView = Backbone.View.extend({
     },
     // ----------------- reset
     reset: function() {
-	    $(this.el).css('visibility', 'hidden');
+	    //$(this.el).css('visibility', 'hidden');
+	    this.hide();
 	    $(this.el).removeClass(this.EASE_IN_TRANS_CLASS);
 	    $(this.el).removeClass(this.EASE_OUT_TRANS_CLASS);
     }	    

@@ -39,12 +39,14 @@ main.views.MainView = Backbone.View.extend({
     setMainListeners: function() {
     	var self = this;
 		$(this.el).on(main.events.Event.ENABLE_DOCUMENT_SCROLL, function(){
+		    console.log("setMainListeners ------------- ENABLE_DOCUMENT_SCROLL");
 			self.enableDocumentScroll();
-			self.elementManipulator.enableDocumentScroll();
+			//self.elementManipulator.enableDocumentScroll();
 		});
 		$(this.el).on(main.events.Event.DISABLE_DOCUMENT_SCROLL, function(){
+			console.log("setMainListeners ------------- DISABLE_DOCUMENT_SCROLL");
 			self.disableDocumentScroll();
-			self.elementManipulator.disableDocumentScroll();
+			//self.elementManipulator.disableDocumentScroll();
 		});
     },
     // ----------------- enableDocumentScroll
@@ -59,10 +61,22 @@ main.views.MainView = Backbone.View.extend({
     },
     // ----------------- enableDocumentScroll
     updateDocumentScroll: function() {
+        console.log("updateDocumentScroll ----- $(document.documentElement).hasClass(this.elementManipulator.NO_DOCUMENT_SCROLL_CLASS) = " + $(document.documentElement).hasClass(this.elementManipulator.NO_DOCUMENT_SCROLL_CLASS));
+
     	if($(document.documentElement).hasClass(this.elementManipulator.NO_DOCUMENT_SCROLL_CLASS)){
 		   $(this.el).css('height', ($(window).outerHeight()) + 'px');
 	    }
 	    else $(this.el).css('height', $(this.corporateView.el).outerHeight() + 'px');
+	    
+	    //console.log(' --------- $(this.corporateView.el).outerHeight() = ' + $(this.corporateView.el).outerHeight() );
+	   if( this.corporateView && this.corporateView.el ) console.log(' --------- $(this.corporateView.el).outerHeight() = ' + $(this.corporateView.el).outerHeight() );
+	   
+	    //$(this.el).css('height', '2400px');
+
+	    
+	   //$(this.el).css('height', $(this.corporateView.el).outerHeight() + 'px');
+	    
+	    //console.log("updateDocumentScroll ----- $(this.corporateView.el).outerHeight() = " + $(this.corporateView.el).outerHeight());
     },
     // ----------------- scrollToPane
     scrollToPane: function(id) {
@@ -70,7 +84,8 @@ main.views.MainView = Backbone.View.extend({
 	   this.corporateView.markNav(id);
     },
     // ----------------- initiateCorporate
-    initiateCorporate: function(){   
+    initiateCorporate: function(){ 
+  
 	    if(!this.corporateView) this.corporateView = new main.views.CorporateView( {el: $('.corporate', this.el)} );
     }
 });

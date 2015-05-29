@@ -234,6 +234,7 @@ main.views.MainNavContainerView = Backbone.View.extend({
 	},
 	// ----------------- onBtnClick
     onBtnClick: function(event) {
+        console.log("onBtnClick -----");
         main.utils.BtnUtils.onBtnClick(event);
         return false;
     },

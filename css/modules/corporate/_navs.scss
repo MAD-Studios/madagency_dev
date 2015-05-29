@@ -5,7 +5,7 @@ $socialBtnHeight: 28px;
 #main-nav-ctn{
 	position: absolute;
 	min-width: 100%;
-	z-index: 300;
+	z-index: 600;
     height: 98px;
     .column{
         @media #{$small-only}{

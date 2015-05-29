@@ -58,6 +58,10 @@ main.views.CorporateView = Backbone.View.extend({
             }, 400);
         });
     },
+     // ----------------- renderParts
+    renderParts: function() {
+		this.paneContainerView = new main.views.PaneContainerView({el: $('#pane-ctn', this.el)});    
+    },
     // ----------------- renderSmallMenuView
     renderSmallMenuView: function() {
         this.createSmallMenuView();
@@ -68,7 +72,6 @@ main.views.CorporateView = Backbone.View.extend({
     },
     // ----------------- renderMainNavView
     renderMainNavView: function() {
-        console.log("renderMainNavView ---------- ");
         var self = this;
         this.createMainNavView();
         this.mainNavContainerView.transition_point = $('#header', this.el).outerHeight();
@@ -102,15 +105,26 @@ main.views.CorporateView = Backbone.View.extend({
     },
 	// ----------------- posize
     posize: function() {
+                    console.log("posize ------------------- 0 ");
+
         var self = this;
         if(this.beforePosize) this.beforePosize();
+                            console.log("posize ------------------- 1 ");
+
         
         this.paneContainerView.offset = $(this.headerView.el).outerHeight();
+                                    console.log("posize ------------------- 1.1 ");
 	    this.paneContainerView.posize();
 	    
+	                        console.log("posize ------------------- 2 ");
+	    
 	    this.mainNavContainerView.posize();
+	    	                        console.log("posize ------------------- 3 ");
         if($(this.mainNavContainerView.el).css('display') != 'none') this.paneContainerView.nav_offset = $(this.mainNavContainerView.el).outerHeight();
         else this.paneContainerView.nav_offset = 0;
+        
+                console.log("posize -------------------- this.paneContainerView.nav_offset = " + this.paneContainerView.nav_offset);
+
         if(this.smallMenuView.posize) this.smallMenuView.posize(); 
 	    
 	   setTimeout(function(){

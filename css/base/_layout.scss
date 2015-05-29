@@ -49,6 +49,8 @@ section{
 	min-width: 100%;
 	margin: 0;
 	padding: 0;
+	position: relative;
+    /* z-index: 1;*/
 }
 input:focus,
 select:focus,
@@ -68,4 +70,11 @@ button:focus {
 *{
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-tap-highlight-color: transparent; /* For some Androids */
+}
+.content-wrapper{
+    position: relative; 
+    z-index: 1;
+}
+.content-sect{
+    z-index: 1;
 }

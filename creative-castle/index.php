@@ -17,12 +17,12 @@
     <meta property="og:url" content="http://www.madstudios.net" />
     <meta property="og:image" content="http://www.yeswearemad.com/assets/img/share_logo.jpg" />
     <meta property="og:description" content="MAD Agency is a full service Advertising/Marketing/Production agency. We have the people needed to build your project here, onsite. This allows for tighter timelines and a more cohesive end result." />
+    
     <link href="../css/mad-agency.css" type="text/css" rel="stylesheet" />
     
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
     <script src="../js/vendor/spin.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="//use.typekit.net/ntj1viz.js"></script>
-    <script src="../js/vendor/skrollr.min.js"></script>
     <script src="../js/vendor/underscore-min.js" type="text/javascript"></script>
     <script src="../js/vendor/backbone-min.js" type="text/javascript"></script>
     <script src="../js/vendor/greensock/TweenLite.min.js"></script>
@@ -32,6 +32,8 @@
     <script src="../js/vendor/jquery-image-loader.js"></script>
     <script src="../js/vendor/jquery.mobile.custom.edit10172014.js"></script>
     <script src="../js/vendor/fastclick.js" type="text/javascript"></script>
+    
+    <script src="../js/vendor/skrollr.min.js"></script>
     
     <script src="../js/main.js" type="text/javascript"></script>
     <script src="../js/castle.js" type="text/javascript"></script>
@@ -65,7 +67,6 @@
     <!--[if lt IE 9]>
             <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    
 </head>
     
 <body>

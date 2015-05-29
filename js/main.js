@@ -26,6 +26,7 @@ var main = {
     // ----------------- init
     init: function(){
 	     this.initModernizr();
+	     console.log("init -------------- " );
     },
     // ----------------- setSection
     setSection: function(section){
@@ -54,7 +55,6 @@ var main = {
     	for(var section in this.section){
 		    this.section[section][subsection] = {};
 		}
-    	
     	this.createSectionNamespaces();
     },
 	// ----------------- handleUnsupportedFeatures

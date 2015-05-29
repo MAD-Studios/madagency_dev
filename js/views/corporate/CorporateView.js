@@ -2,19 +2,11 @@
 main.views.corporate.CorporateView = main.views.CorporateView.extend({
     // ----------------- renderParts
     renderParts: function() {
+        console.log("CorporateView --------- renderParts");
         //var self = this;
 		this.paneContainerView = new main.views.corporate.PaneContainerView({el: $('#pane-ctn', this.el)});
 		
-		/*this.smallMenuView = new main.views.SmallMenuView({el: $('.small-menu', this.el)});
-
-        this.mainNavContainerView = new main.views.MainNavContainerView({el: $('#main-nav-ctn', this.el)});
-        this.mainNavContainerView.transition_point = $('#header', this.el).outerHeight();
-        $(this.mainNavContainerView.el).on(this.mainNavContainerView.ANIMATE_TO_FIXED, function(){
-	        self.headerView.lightenBackground();
-        });
-		$(this.mainNavContainerView.el).on(this.mainNavContainerView.ANIMATE_TO_MOVEABLE, function(){
-	        self.headerView.darkenBackground();
-        });*/
+		console.log("CorporateView --------- renderParts ------ after paneContainerView init" );
     },
     // ----------------- afterOnScroll
     afterOnScroll: function(scroll_top) {

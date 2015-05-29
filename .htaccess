@@ -1,9 +1,3 @@
-# permanently redirect from non-www domain to www domain
-RewriteEngine on
-
-# server custom error pages
-ErrorDocument 404 http://m.yeswearemad.com/404/
-
 # prevent folder listing
 #IndexIgnore *
 
@@ -16,12 +10,22 @@ Order Allow,Deny
 Deny from all
 </FilesMatch>
 
-# rewrite rules
-RewriteRule ^(404)/$ 404.html [NC,QSA,L]
-
 # html5 pushstate (history) support:
 <ifModule mod_rewrite.c>
     RewriteEngine On
+    
+    RewriteRule ^(404)/$ 404.html [NC,QSA,L]
+    
+    #remove the www for canonicalization
+    RewriteBase /
+    RewriteCond %{HTTP_HOST} ^www.yeswearemad\.com$ [NC]
+    RewriteRule ^(.*)$ http://yeswearemad.com/$1 [R=301,L]
+    
+    #remove all index.* for canonicalization
+    RewriteRule ^index\.(.*)$ / [R=301,L]
+    RewriteRule ^(.*)/index\.(.*)$ /$1/ [R=301,L]
+    
+    # html5 pushstate (history) support:
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_URI} !index

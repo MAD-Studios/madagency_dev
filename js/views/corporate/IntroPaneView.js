@@ -21,6 +21,7 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
 	num_posizes: 0,
     scroll_top: 0,
     at_intro_bottom: false,
+    is_doc_scrolling: false,
 	events:{
 		'click #show-more-btn': 'onBtnShowMoreClick',
 		'click #contact-btn': 'onBtnClick'
@@ -52,6 +53,7 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     	this.intro_el = $('.intro', this.el);
     	this.grad_el = $('.gradient', this.el);
     	this.scroller_el = $('.scroller', this.el);
+    	this.scroller_el.scrollTop(0);
     	this.this_el = $(this.el);
     	this.scroller_el.scroll(function(){
     	    console.log("on scroll");
@@ -94,6 +96,9 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
         to_h = this.this_el.height() - this.nav_offset;
 
     	this.intro_el.css('height', to_h + 'px');
+    	
+        console.log("posElements ------ this.nav_offset = " + this.nav_offset);
+    	console.log("posElements ------ to_h = " + to_h);
     	
     	to_h = self.to_y;
     	$('.row-content', this.el).css('height', to_h + 'px');
@@ -197,6 +202,7 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     handleIntroScroll: function() { 
         var self = this;
         this.scroll_top = this.scroller_el.scrollTop();
+        var offset = 0;
         //set a timeout and kill it the next time
         //to force a certain delay
         clearTimeout(this.introScrollTimeout);
@@ -204,18 +210,15 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
             self.animateOnScroll(self.scroll_top);
         }, 10);
         
-        if( this.scroll_top >= (this.max_scroll_top) ) {
-            //clearTimeout(this.bottomTimeout);
-            //this.bottomTimeout = setTimeout(function(){
-                self.at_intro_bottom = true;
-                self.removeTouchWheelScrollListener();
-                self.addTouchWheelScrollListener();
-            //}, 100);
-        }
-        else if( this.scroll_top < (this.max_scroll_top) ){
-            //clearTimeout(this.bottomTimeout);
+        if( this.scroll_top >= (this.max_scroll_top - offset) ) {
+            //not at into bottom
+            if(!this.at_intro_bottom) {
+                this.at_intro_bottom = true;
+                this.beginDocScroll();
+            }
+         }
+        else if( this.scroll_top < (this.max_scroll_top - offset) ){
             self.at_intro_bottom = false;
-            self.removeTouchWheelScrollListener();
         }
     }, 
     // ----------------- addTouchWheelScrollListener
@@ -229,20 +232,26 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
         var self = this;
         main.utils.ElementManipulator.removeTouchWheelScrollListener(window);
     },
-    // ----------------- handleMouseWheel
-    handleMouseWheel: function(deltaY) { 
-        console.log("---------------------------- handleMouseWheel --------------------------");
-        //if delta Y is negative
-        //then scroll movement was downward
-        if(deltaY < 0){
-            //seems like sometimes not going into here
-            //!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            console.log("---------------------------- before removeTouchWheelScrollListener");
-            this.removeTouchWheelScrollListener();
-            $(this.el).trigger(main.events.Event.ENABLE_DOCUMENT_SCROLL);
-            this.removeTouchWheelScrollListener();
+    // ----------------- endDocScroll
+    endDocScroll: function() { 
+        if(this.is_doc_scrolling){
+            $(this.el).trigger(main.events.Event.DISABLE_DOCUMENT_SCROLL);
+            this.enableScroller();
+            this.is_doc_scrolling = false;
+        }
+    },
+    // ----------------- beginDocScroll
+    beginDocScroll: function() { 
+        console.log("beginDocScroll");
+        if(!this.is_doc_scrolling){
+            console.log("beginDocScroll");
+            //$(this.el).trigger(main.events.Event.ENABLE_DOCUMENT_SCROLL);
+
+            if(this.at_intro_bottom) $(this.el).trigger(main.events.Event.ENABLE_DOCUMENT_SCROLL);
             this.disableScroller();
-        }  
+            //this.at_intro_bottom = false;
+            this.is_doc_scrolling = true;
+        }
     },
     // ----------------- animateOnScroll
     animateOnScroll: function(scroll_top) {
@@ -262,7 +271,7 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
                     TweenLite.to(this.arrow_row_el, 0.25, { opacity:0 });
                     //move it up
                     TweenLite.to(this.arrow_row_el, 0.35, { top: this.def_arrow_row_el_top-30, ease: Expo.easeOut });
-                    if(scroll_top  <= ( this.default_elements_y[2] - (this.this_el.height()/2) ) ){
+                    if(scroll_top  <= ( this.default_elements_y[2] - (this.this_el.height()/3) ) ){
                         TweenLite.killTweensOf(this.anim_rows.eq(1), false, {top:true, opacity:true} );
                         TweenLite.to(this.anim_rows.eq(1), 0.25, { opacity: 1, ease: Expo.easeOut });
                         TweenLite.to(this.anim_rows.eq(1), 1, { top: this.default_elements_y[1], ease: Expo.easeOut });
@@ -297,14 +306,11 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
                     TweenLite.to(this.anim_rows.eq(1), 0.5, { top: this.default_elements_y[1] + this.ELEMENT_ANIM_OFFSET, ease: Expo.easeOut });
                     this.anim_rows.eq(1).removeClass(this.VISIBLE_CLASS);
                     //hide the gradient
-                    //TweenLite.to(this.grad_el, 0.25, { opacity: 0, ease: Expo.easeOut });
                     if(this.grad_el.offset().top >= row_1_end_y) this.grad_el.css('opacity', '0');
                     this.animateRowsShown = main.utils.ElementManipulator.removeFromArray(ind, this.animateRowsShown);
                 }
 			}
-            //var max_scroll = $('.scroller-content', this.el).outerHeight() - $(window).height();
             if( this.max_scroll_top  > ( this.default_elements_y[2] - (this.this_el.height()/2) ) &&  scroll_top < this.max_scroll_top){
-                //this.anim_rows.eq(2).css('opacity', '1');
                 //if not already animated
                 if(this.animateRowsShown.indexOf(2) == -1){ 
     				delay = 0;
@@ -316,7 +322,6 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     				this.animateRowsShown.push(2);
 				}
 			}
-            //else if( scroll_top  <=  ( this.default_elements_y[2] - (this.this_el.height() - this.nav_offset - this.grad_el.height() )) ){
             else if( scroll_top  <= ( this.default_elements_y[2] - (this.this_el.height()/2) )){
                 ind = this.animateRowsShown.indexOf(2);
                 if(ind > -1){ 
@@ -365,7 +370,6 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     	// set the height of this.intro_el
     	// to the heigth of teh window 
     	// minus  nav_offset (height of mainConatiner) 
-    	//var to_bottom = this.nav_offset;
     	var to_margin = 0;
     	var self = this;
     	var vert_blocks = $('.text-block.vertical-center', this.el);
@@ -391,7 +395,7 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     	}, 100);
 
     	//show the intro after fourth posize
-    	if(this.num_posizes == 3){
+    	if(this.num_posizes > 2){
 			setTimeout(function(){
 		    	self.showContent();
 		    }, 100);
@@ -399,14 +403,12 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     	this.num_posizes++;
     },
     // ----------------- onScroll
-    onScroll: function(scroll_top) {
+    onScroll: function(scroll_top) {        	    
     	if(scroll_top <= 10){
-	    	$(this.el).trigger(main.events.Event.DISABLE_DOCUMENT_SCROLL);
-            this.enableScroller();
+            this.endDocScroll();
     	}
     	else{
-    	    if(this.at_intro_bottom)  $(this.el).trigger(main.events.Event.ENABLE_DOCUMENT_SCROLL);
-        	this.disableScroller();
+        	this.beginDocScroll();
     	} 
     },
     // ----------------- show
@@ -424,7 +426,6 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
 	// ----------------- updateForUnsupportedBrowsers
 	updateForUnsupportedBrowsers:function(){
 		//updateForUnsupportedBrowsers
-		//this.castleGatewayView.updateForUnsupportedBrowsers();
 	},
     // ----------------- onBtnShowMoreClick
     onBtnShowMoreClick:function(){
