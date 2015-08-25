@@ -77,7 +77,6 @@ main.views.MainNavContainerView = Backbone.View.extend({
     },
     // ----------------- posize
     posize: function() {
-        console.log("posize -------");
 	   //if does not have class top-sticky
 	   //position it at the bottom of the window
 	   this.default_height = $(this.el).outerHeight();

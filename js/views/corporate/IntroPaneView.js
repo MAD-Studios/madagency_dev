@@ -22,6 +22,7 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     scroll_top: 0,
     at_intro_bottom: false,
     is_doc_scrolling: false,
+    check_active_by_scroll: false,
 	events:{
 		'click #show-more-btn': 'onBtnShowMoreClick',
 		'click #contact-btn': 'onBtnClick'
@@ -30,7 +31,7 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     initialize: function() {
         console.log("IntroPaneView ---- initialize"); 
         //prevent document scroll
-        $(this.el).trigger(main.events.Event.DISABLE_DOCUMENT_SCROLL);
+        //$(this.el).trigger(main.events.Event.DISABLE_DOCUMENT_SCROLL);
     },
     // ----------------- beforeRender
     beforeRender: function() {
@@ -52,13 +53,17 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     	var self = this;
     	this.intro_el = $('.intro', this.el);
     	this.grad_el = $('.gradient', this.el);
-    	this.scroller_el = $('.scroller', this.el);
-    	this.scroller_el.scrollTop(0);
+    	this.content_row_el = $('.row-content', this.el);
+    	
+    	/*this.scroller_el = $('.scroller', this.el);
+    	this.scroller_el.scrollTop(0);*/
+    	
     	this.this_el = $(this.el);
-    	this.scroller_el.scroll(function(){
+    	
+    	/*this.scroller_el.scroll(function(){
     	    console.log("on scroll");
 	    	self.handleIntroScroll();
-    	});
+    	});*/
     	
     	this.arrow_row_el = $('.row-arrow-ctn', this.el);
     	this.anim_rows = $('.row-content .column > .row-absolute', this.el);
@@ -97,11 +102,8 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
 
     	this.intro_el.css('height', to_h + 'px');
     	
-        console.log("posElements ------ this.nav_offset = " + this.nav_offset);
-    	console.log("posElements ------ to_h = " + to_h);
-    	
     	to_h = self.to_y;
-    	$('.row-content', this.el).css('height', to_h + 'px');
+    	this.content_row_el.css('height', to_h + 'px');
     	this.overlay_el.css('height', to_h + 'px');
     	
     	this.posOverlayBtns();
@@ -136,7 +138,8 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     		btn_click_funct, 
     		btn_href;
     	this.overlay_btns 			= [];
-    	this.btn_els 				= $('.btn', this.scroller_el);
+    	this.btn_els 				= $('.btn', this.el);
+    	//this.btn_els 				= $('.btn', this.scroller_el);
     	//create invisible overlay btns
     	//at the positions of the 
     	//btns inside the scroller content
@@ -199,7 +202,13 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     	});
     },
     // ----------------- handleIntroScroll
-    handleIntroScroll: function() { 
+    handleIntroScroll: function(scroll_top) { 
+        this.animateOnScroll(scroll_top);
+    },
+    // ----------------- handleIntroScroll
+    /*handleIntroScroll: function() { 
+        var self = this;
+        
         var self = this;
         this.scroll_top = this.scroller_el.scrollTop();
         var offset = 0;
@@ -220,7 +229,7 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
         else if( this.scroll_top < (this.max_scroll_top - offset) ){
             self.at_intro_bottom = false;
         }
-    }, 
+    },*/ 
     // ----------------- addTouchWheelScrollListener
     addTouchWheelScrollListener: function() { 
          var self = this;
@@ -235,19 +244,15 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     // ----------------- endDocScroll
     endDocScroll: function() { 
         if(this.is_doc_scrolling){
-            $(this.el).trigger(main.events.Event.DISABLE_DOCUMENT_SCROLL);
             this.enableScroller();
             this.is_doc_scrolling = false;
         }
     },
     // ----------------- beginDocScroll
     beginDocScroll: function() { 
-        console.log("beginDocScroll");
         if(!this.is_doc_scrolling){
-            console.log("beginDocScroll");
             //$(this.el).trigger(main.events.Event.ENABLE_DOCUMENT_SCROLL);
-
-            if(this.at_intro_bottom) $(this.el).trigger(main.events.Event.ENABLE_DOCUMENT_SCROLL);
+            //if(this.at_intro_bottom) $(this.el).trigger(main.events.Event.ENABLE_DOCUMENT_SCROLL);
             this.disableScroller();
             //this.at_intro_bottom = false;
             this.is_doc_scrolling = true;
@@ -260,6 +265,8 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     	//and faed out the ar        
         var delay = 0, ind = 0; 
         var row_1_end_y = 0;
+        
+        console.log("animateOnScroll ");
         
 		if(scroll_top >= 0 && scroll_top < this.max_scroll_top){
             row_1_end_y = this.anim_rows.eq(0).offset().top + this.anim_rows.eq(0).height() - 100;
@@ -367,13 +374,18 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     },
     // ----------------- beforePosize
     beforePosize: function() {
+        //center the row-content 
+        //horizontally
+        var to_x = ( $(window).width() - this.content_row_el.outerWidth() )/2;
+        this.content_row_el.css('left', to_x + 'px');
+        
     	// set the height of this.intro_el
     	// to the heigth of teh window 
     	// minus  nav_offset (height of mainConatiner) 
     	var to_margin = 0;
     	var self = this;
     	var vert_blocks = $('.text-block.vertical-center', this.el);
-        this.max_scroll_top = $('.scroller-content', this.el).outerHeight() - this.scroller_el.outerHeight();
+        this.max_scroll_top = this.content_row_el.outerHeight() - this.intro_el.outerHeight();
        
     	vert_blocks.each(function(index, value){
 	    	//give each a margin top and bottom
@@ -403,13 +415,20 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     	this.num_posizes++;
     },
     // ----------------- onScroll
-    onScroll: function(scroll_top) {        	    
-    	if(scroll_top <= 10){
-            this.endDocScroll();
-    	}
-    	else{
-        	this.beginDocScroll();
-    	} 
+    onScroll: function(scroll_top) { 
+        this.content_row_el.css('top', -scroll_top + 'px');
+        this.handleIntroScroll(scroll_top);
+        //
+    	
+    	//set the top of
+    	//row-content
+    	//the the scrollTop
+    },
+    // ----------------- getScrollHeight
+    getScrollHeight: function() {     
+        //add up the heights of 
+        //the row absolutes        
+        return $('.row-content', this.el).height();
     },
     // ----------------- show
     showContent: function() {
@@ -421,7 +440,7 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     },
 	// ----------------- beginHide
     beginHide: function() {
-
+        
     },
 	// ----------------- updateForUnsupportedBrowsers
 	updateForUnsupportedBrowsers:function(){
@@ -440,8 +459,8 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     // ----------------- scrollToShowMore
 	scrollToShowMore: function(){
 		//scroll to the top of the second anim row
-    	var scroll_to_y = this.anim_rows.eq(1).offset().top - this.ELEMENT_ANIM_OFFSET - this.SHOW_MORE_PADDING_BOTTOM;
-    	TweenLite.to(this.scroller_el, 1.4, { scrollTo:{y:scroll_to_y, autoKill:false}, ease:Expo.easeOut });
+    	//var scroll_to_y = this.anim_rows.eq(1).offset().top - this.ELEMENT_ANIM_OFFSET - this.SHOW_MORE_PADDING_BOTTOM;
+    	//TweenLite.to(this.scroller_el, 1.4, { scrollTo:{y:scroll_to_y, autoKill:false}, ease:Expo.easeOut });
 	},
 	// ----------------- beforeDispose
 	beforeDispose: function(){

@@ -26,7 +26,6 @@ var main = {
     // ----------------- init
     init: function(){
 	     this.initModernizr();
-	     console.log("init -------------- " );
     },
     // ----------------- setSection
     setSection: function(section){

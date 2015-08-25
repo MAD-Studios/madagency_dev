@@ -26,9 +26,6 @@ main.views.CorporateView = Backbone.View.extend({
         $(window).scroll(function(){
             self.onScroll();
 	    });
-	    /*$(document.documentElement).scroll(function(){
-            self.onScroll();
-	    });*/
 	    //on scroll start
 	    //disable any pane scroll
 	    $(window).on('scrollstart', function(){
@@ -76,10 +73,10 @@ main.views.CorporateView = Backbone.View.extend({
         this.createMainNavView();
         this.mainNavContainerView.transition_point = $('#header', this.el).outerHeight();
         $(this.mainNavContainerView.el).on(this.mainNavContainerView.ANIMATE_TO_FIXED, function(){
-	        self.headerView.lightenBackground();
+	       self.headerView.setOverlaid();
         });
 		$(this.mainNavContainerView.el).on(this.mainNavContainerView.ANIMATE_TO_MOVEABLE, function(){
-	        self.headerView.darkenBackground();
+	       self.headerView.unsetOverlaid();
         });
     },
     // ----------------- createMainNavView
@@ -105,25 +102,13 @@ main.views.CorporateView = Backbone.View.extend({
     },
 	// ----------------- posize
     posize: function() {
-                    console.log("posize ------------------- 0 ");
-
         var self = this;
         if(this.beforePosize) this.beforePosize();
-                            console.log("posize ------------------- 1 ");
-
-        
         this.paneContainerView.offset = $(this.headerView.el).outerHeight();
-                                    console.log("posize ------------------- 1.1 ");
 	    this.paneContainerView.posize();
-	    
-	                        console.log("posize ------------------- 2 ");
-	    
 	    this.mainNavContainerView.posize();
-	    	                        console.log("posize ------------------- 3 ");
         if($(this.mainNavContainerView.el).css('display') != 'none') this.paneContainerView.nav_offset = $(this.mainNavContainerView.el).outerHeight();
         else this.paneContainerView.nav_offset = 0;
-        
-                console.log("posize -------------------- this.paneContainerView.nav_offset = " + this.paneContainerView.nav_offset);
 
         if(this.smallMenuView.posize) this.smallMenuView.posize(); 
 	    

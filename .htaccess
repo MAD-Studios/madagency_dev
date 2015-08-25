@@ -10,7 +10,6 @@ Order Allow,Deny
 Deny from all
 </FilesMatch>
 
-# html5 pushstate (history) support:
 <ifModule mod_rewrite.c>
     RewriteEngine On
     
@@ -22,8 +21,8 @@ Deny from all
     RewriteRule ^(.*)$ http://yeswearemad.com/$1 [R=301,L]
     
     #remove all index.* for canonicalization
-    RewriteRule ^index\.(.*)$ / [R=301,L]
-    RewriteRule ^(.*)/index\.(.*)$ /$1/ [R=301,L]
+    #RewriteRule ^index\.(.*)$ / [R=301,L]
+    #RewriteRule ^(.*)/index\.(.*)$ /$1/ [R=301,L]
     
     # html5 pushstate (history) support:
     RewriteCond %{REQUEST_FILENAME} !-f

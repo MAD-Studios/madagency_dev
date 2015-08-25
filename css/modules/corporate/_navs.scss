@@ -24,7 +24,7 @@ $socialBtnHeight: 28px;
     }
     .h-logo{
         display: block;
-        margin: 0 $lgMargin 0 -12px;
+        margin: 0 $smMargin 0 -12px;
         @media #{$medium-only}, #{$small-only}{
             width: 125px; 
             height: 25px;
@@ -34,7 +34,7 @@ $socialBtnHeight: 28px;
     }
     .nav{
         float: left;
-        margin: 34px 0 34px $medMargin;
+        margin: 34px 0 34px $smMargin;
         font-style: normal; font-weight: 300;
         font-size: em(11px);
         display: block;
@@ -46,7 +46,7 @@ $socialBtnHeight: 28px;
         }
         .nav-btn{ 
             height: 16px;
-            padding: 1px $medMargin 1px $medMargin;
+            padding: 1px 14px 1px 14px;
             color: $navFontColor;
             &.active{ 
                 background-color: $darkGold;
@@ -56,6 +56,10 @@ $socialBtnHeight: 28px;
             }
         }
 	}
+	.social-nav{
+        display: none; 
+        margin-top: -4px;
+    }
     #enter-story-btn-ctn{
         float: right;
         margin: $lgMargin 0; 
@@ -75,6 +79,9 @@ $socialBtnHeight: 28px;
         overflow: hidden;
         #enter-story-btn-ctn{
             opacity: 0;
+        }
+        .social-nav{
+           display: block; 
         }
     }
     @media #{$small-only} {

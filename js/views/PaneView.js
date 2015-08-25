@@ -8,6 +8,7 @@ main.views.PaneView = Backbone.View.extend({
 	RESIZE: "resize",
 	offset: 0,
 	override_offset: 0,
+	check_active_by_scroll: true,
 	id: "",
 	_route: "",
 	paneActivationData: [],
@@ -28,7 +29,6 @@ main.views.PaneView = Backbone.View.extend({
 	},
 	// ----------------- posize
     posize: function() {
-    	console.log("PaneView ---- posize ----------------- ");
 		if( $(this.el).hasClass(this.FULL_SCREEN_CLASS)){
 			var to_h = $(window).outerHeight();
 			var min_h = $(this.el).css('min-height');

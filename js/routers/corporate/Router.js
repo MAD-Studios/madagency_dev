@@ -61,7 +61,7 @@ main.routers.corporate.Router = main.routers.Router.extend({
      },
      // ----------------- scrollToPane
      scrollToPane: function(id, enable_doc_scroll){
-        if(enable_doc_scroll) this.mainView.enableDocumentScroll();
+        //if(enable_doc_scroll) this.mainView.enableDocumentScroll();
         this.mainView.scrollToPane(id);
      }
 });

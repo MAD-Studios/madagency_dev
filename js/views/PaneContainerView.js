@@ -76,22 +76,18 @@ main.views.PaneContainerView = Backbone.View.extend({
     },
     // ----------------- posize
     posize: function() {
-        console.log("PaneContainerView --------- posize ----------- 0  ");
         var self = this;
 	    var pane_view;
 	    if(this.beforePosize) this.beforePosize();
-	            console.log("PaneContainerView --------- posize ----------- 1  ");
 
 	    for(var i=0;i<this.paneViews.length;i++){
 	    	pane_view = this.paneViews[i];
 	    	if(pane_view.posize) pane_view.posize();
 		}
-		        console.log("PaneContainerView --------- posize ----------- 2  ");
 
 		setTimeout(function(){
 	        self.initPanes();
 	    }, 100);
-	    		 console.log("PaneContainerView --------- posize ----------- 3  ");
     },
     // ----------------- checkPanes
     checkPanes: function(actual_scroll_top) {
@@ -111,11 +107,11 @@ main.views.PaneContainerView = Backbone.View.extend({
 			if(pane_model) {
 				pane_view = pane_model.get("view");
 				if(pane_view.onScroll)  pane_view.onScroll(actual_scroll_top);
-				if( !$(pane_view.el).hasClass(pane_view.ACTIVE_CLASS) ){
+				if( pane_view.check_active_by_scroll != false && !$(pane_view.el).hasClass(pane_view.ACTIVE_CLASS) ){
 					pane_view.activate();
 					if(this.curPaneView && this.curPaneView.deactivate) this.curPaneView.deactivate();
 					this.curPaneView = pane_view;
-				} 				
+				} 	
 			}
 			//if has entered the screen
 			//call prepare on the pane
@@ -124,9 +120,10 @@ main.views.PaneContainerView = Backbone.View.extend({
 		    });
 			for(var i=0;i<pane_model_arr.length;i++){
 				pane_view = pane_model_arr[i].get("view");
-				if( !$(pane_view.el).hasClass(pane_view.PREPARED_CLASS) ) pane_view.prepare();
+				if( pane_view.check_active_by_scroll != false && !$(pane_view.el).hasClass(pane_view.PREPARED_CLASS) ) pane_view.prepare();
 			}
 		}
+		if(this.afterCheckPanes) this.afterCheckPanes(actual_scroll_top);
 	},
     // ----------------- scrollToTop
     scrollToTop: function() {

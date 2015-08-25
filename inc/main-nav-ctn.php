@@ -6,6 +6,9 @@
             <ul class="nav">
                 <?php if(isset($root)) include $root.'/inc/main-nav.php';?>
             </ul> 
+            <ul class="social-nav">
+                <?php if(isset($root)) include $root.'/inc/social-nav.php';?>
+            </ul> 
 		</div>
     </div>
 </div>

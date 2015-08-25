@@ -4105,10 +4105,10 @@ p.white {
 	overflow-y: auto;
 }*/
 #main {
-  position: absolute;
+  /*position: absolute;*/
   min-width: 100%;
-  height: 100%;
-  overflow: hidden; }
+  /*height: 100%;
+  overflow: hidden;*/ }
 
 .corporate {
   position: absolute;
@@ -4814,6 +4814,8 @@ div#orientation-alert h1 {
     margin-left: auto;
     margin-right: auto;
     margin-top: 4px; }
+  #header.overlaid .social-nav {
+    display: none !important; }
 
 .header-trans {
   -webkit-transition: top 1s 0.45s cubic-bezier(0.755, 0.05, 0.855, 0.06), opacity 0.24s 0.8s;
@@ -4889,7 +4891,7 @@ div#orientation-alert h1 {
         height: 60px; } }
   #main-nav-ctn .h-logo {
     display: block;
-    margin: 0 24px 0 -12px; }
+    margin: 0 12px 0 -12px; }
     @media only screen and (min-width: 40.063em) and (max-width: 64em), only screen and (max-width: 40em) {
       #main-nav-ctn .h-logo {
         width: 125px;
@@ -4898,7 +4900,7 @@ div#orientation-alert h1 {
         margin: 0 auto; } }
   #main-nav-ctn .nav {
     float: left;
-    margin: 34px 0 34px 16px;
+    margin: 34px 0 34px 12px;
     font-style: normal;
     font-weight: 300;
     font-size: 0.78571em;
@@ -4910,12 +4912,15 @@ div#orientation-alert h1 {
       display: block; }
     #main-nav-ctn .nav .nav-btn {
       height: 16px;
-      padding: 1px 16px 1px 16px;
+      padding: 1px 14px 1px 14px;
       color: #555252; }
       #main-nav-ctn .nav .nav-btn.active {
         background-color: #ffa227; }
       #main-nav-ctn .nav .nav-btn:hover {
         background-color: #ffa227; }
+  #main-nav-ctn .social-nav {
+    display: none;
+    margin-top: -4px; }
   #main-nav-ctn #enter-story-btn-ctn {
     float: right;
     margin: 24px 0; }
@@ -4931,6 +4936,8 @@ div#orientation-alert h1 {
     overflow: hidden; }
     #main-nav-ctn.top-sticky #enter-story-btn-ctn {
       opacity: 0; }
+    #main-nav-ctn.top-sticky .social-nav {
+      display: block; }
   @media only screen and (max-width: 40em) {
     #main-nav-ctn {
       height: 70px; } }
@@ -5189,8 +5196,8 @@ div#orientation-alert h1 {
 
 /*------------------------- IntroPane  */
 #intro-pane {
-  background-color: #ffc627;
-  /*min-height: 520px;*/ }
+  position: fixed;
+  background-color: #ffc627; }
   #intro-pane .intro {
     position: relative;
     width: 100%;
@@ -5214,7 +5221,8 @@ div#orientation-alert h1 {
     #intro-pane .intro .row-content {
       padding-top: 0;
       padding-bottom: 0;
-      position: relative;
+      /*position: relative;*/
+      position: absolute;
       z-index: 1; }
     #intro-pane .intro .overlay {
       width: 100%;

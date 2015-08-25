@@ -1,6 +1,7 @@
 // _________________________________________________________________________ HeaderView
 main.views.HeaderView = Backbone.View.extend({
 	TRANS_CLASS: "header-trans",
+	OVERLAID_CLASS: "overlaid",
 	LIGHT_COLOR: "#fceec9",
 	DARK_COLOR: "#ffc627",
 	HIDE_ANIMATE_OFFSET: -100,
@@ -22,6 +23,14 @@ main.views.HeaderView = Backbone.View.extend({
 	// ----------------- posize
     posize: function() {
 	},
+    // ----------------- setOverlaid
+    setOverlaid: function() {
+        $(this.el).addClass(this.OVERLAID_CLASS);
+    },
+    // ----------------- unsetOverlaid
+    unsetOverlaid: function() {
+        $(this.el).removeClass(this.OVERLAID_CLASS);
+    },
 	// ----------------- lightenBackground
     lightenBackground: function() {
 	    //var el = $(this.el);

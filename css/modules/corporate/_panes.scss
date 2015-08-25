@@ -28,16 +28,16 @@ $contactPaneInputMaxWidth: 400px;
 	-webkit-tap-highlight-color:rgba(0,0,0,0);
 }
 .row-pane-divider.row-pane-divider-offset{
-        margin-top: -24px;
+    margin-top: -24px;
 }
 
 
 /*------------------------- IntroPane  */
 #intro-pane{
+    position: fixed;
 	background-color: $gold;
-	/*min-height: 520px;*/
 	.intro{
-		position:relative;
+		position: relative;
 		width: 100%;
 		overflow: hidden;
 		.gradient.gold{
@@ -57,7 +57,8 @@ $contactPaneInputMaxWidth: 400px;
 		.row-content{
 			padding-top: 0;
 			padding-bottom: 0;
-			position: relative;
+			/*position: relative;*/
+            position: absolute;
 			z-index: 1;
 		}
 		.overlay{

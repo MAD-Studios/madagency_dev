@@ -51,6 +51,7 @@
     <script src="js/views/corporate/PaneContainerView.js" type="text/javascript"></script>
     <script src="js/views/PaneView.js" type="text/javascript"></script>
     <script src="js/views/corporate/IntroPaneView.js" type="text/javascript"></script>
+    <script src="js/views/corporate/FauxIntroPaneView.js" type="text/javascript"></script>
     <script src="js/views/corporate/HowPaneView.js" type="text/javascript"></script>
     <script src="js/views/corporate/WorkPaneView.js" type="text/javascript"></script>
     <script src="js/views/corporate/TeamPaneView.js" type="text/javascript"></script>
@@ -81,22 +82,26 @@
     	
     		<!------------ INTRO ------------->
     		<section class="intro-sect">
+        		<div id="faux-intro-pane" class="pane full-screen">
+        		    
+        		</div>
+        		
     			<div id="intro-pane" class="pane full-screen">
     				<div class="intro">
     				
-    					<div class="scroller">
-    					<div class="scroller-content">
+    					<!-- <div class="scroller">
+    					<div class="scroller-content"> -->
     							
     			        <div class="row row-content">
     						<div class="column large-10 large-centered medium-12 small-12">
-    							<!-- absolue rows for animation performance -->
+    						
     							<div class="row-absolute"><div class="text-block vertical-center">
     								<h1 class="text-shadow white">Hi. We are Mad Agency.<br>We do a lot of cool things for our clients.</h1>
     					        	<h1 class="text-shadow white last">Here&rsquo;s a list of some things we could do for you.</h1>
     								<div class="row-absolute row-arrow-ctn"><div id="show-more-btn" class="btn arrow circle-arrow down"></div></div>
     							</div></div>
-    							<div class="row-absolute"><div class="text-block text-block-to-fade">
     							
+    							<div class="row-absolute"><div class="text-block text-block-to-fade">
     					        	<h2>Yes, we can help you retain your customers.</h2>
     								<h2>Yes, we can help you acquire new customers.</h2>
     								<h2>Yes, we can design a kick-ass logo for your business.</h2>
@@ -114,7 +119,6 @@
     								<h2>Yes, we speak HTML5.</h2>
     								<h2>Yes, we build responsive.</h2>
     								<h2>Yes, we can speak Star Wars too.</h2>
-                                    <h2>Yes, we build responsive.</h2>       
                                     <h2>Yes, we can test in multiple environments.</h2>
                                     <h2>Yes, unenthusiastically, we will test in IE8.</h2>
                                     <h2>Yes, we can write copy that will get the party started.</h2>
@@ -123,28 +127,29 @@
                                     <h2>Yes, we are card-carrying museum patrons.</h2>
                                     <h2>Yes, we know how to brand your product.</h2>
                                     <h2>Yes, we know how to make it stand out.</h2>
-                                    <h2>Yes, we are perfectionists.</h2>     
+                                    <h2>Yes, we are perfectionists.</h2>
                                     <h2>Yes, that means we burn the midnight oil.</h2>
                                     <h2>Yes, that also means we have Gold status at Starbucks.</h2>
                                     <h2>Yes, things can get a little crazy with meeting deadlines.</h2>
-                                    <h2>Yes, we sort of like crazy.</h2>     
+                                    <h2>Yes, we sort of like crazy.</h2>
                                     <h2>Yes, we do things unconventionally.</h2>
-                                    <h2>Yes, we love what we do.</h2>        
-                                    <h2>Yes, we are mad.</h2>                
-    
+                                    <h2>Yes, we love what we do.</h2>
+                                    <h2>Yes, we are mad.</h2> 
     							</div></div>
+    							
     							<div class="row-absolute"><div class="text-block vertical-center">
     								<h1 class="text-shadow white">That&rsquo;s a lot of cool things.<br>Right?</h1>
     								<h2>So if you&rsquo;re ready to start hearing YES to your advertising, marketing, public relations, and production needs <a id="contact-btn" class="btn" href="contact">contact us</a>.</h2>
-    								<h2>Or, just keep scrolling and to find out what we’re all about.</h2>
+    								<h2>Or, just keep scrolling to find out what we’re all about.</h2>
     							</div></div>
+    							
     						</div>
     		            </div>
     		            
     		            <div class="gradient gradient-small gold"><div class="top"></div></div>
     		           		            
-    		            </div>	
-    					</div>
+    		            <!-- </div>	
+    					</div> -->
     		            
     				</div>
     			</div>
@@ -376,18 +381,8 @@
 	</div>
 		
 	<!------------ MAIN NAV ------------->
-	<div id="main-nav-ctn" class="show-for-large-up hide-for-medium-down">
-	    <div class="divider shadow-bordered"></div>
-        <div class="row">
-        	<div class="column large-12 small-12">
-	            <a href="" class="full-logo full-logo-sm logo btn"></a>
-	            <ul class="nav">
-                    <?php include 'inc/main-nav.php';?>
-	            </ul> 
-			</div>
-        </div>
-	</div>
-        
+    <?php include 'inc/main-nav-ctn.php';?>
+
     <!------------ SMALL MENU ------------->
 	<div class="small-menu show-for-medium-down hide-for-large-up">
 		<div class="nav-ctn">

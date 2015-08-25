@@ -129,15 +129,7 @@ main.utils.ElementManipulator = {
 			el.addEventListener('touchstart', function(event){ self.onElTouchStart(event); });
 			el.addEventListener('touchmove', function(event){ self.onTouchWheelScroll(event); });
 		    el.addEventListener("DOMMouseScroll", function(event){ self.onTouchWheelScroll(event); });
-		    /*el.addEventListener('touchstart', onElTouchStart );
-			el.addEventListener('touchmove', onTouchWheelScroll );
-		    el.addEventListener("DOMMouseScroll", onTouchWheelScroll );*/
 		}
-		/*else{
-    		
-		}*/
-		
-		
     },
     //--------------------------------------
 	// removeTouchWheelScrollListener
@@ -151,11 +143,6 @@ main.utils.ElementManipulator = {
 			el.removeEventListener('touchmove', function(event){ self.onTouchWheelScroll(event);});
 		    el.removeEventListener("DOMMouseScroll", function(event){ self.onTouchWheelScroll(event); });
 	    }
-	    /*el.removeEventListener('touchstart', onElTouchStart );
-        el.removeEventListener('touchmove', onTouchWheelScroll );
-        el.removeEventListener("DOMMouseScroll", onTouchWheelScroll );
-            console.log("~~~~~~~~~~~~~~~~~~~ sfter events removed ~~~~~~~~~~~~~~~~~~~");*/
-
 	},
     //--------------------------------------
 	// onChildTouchStart

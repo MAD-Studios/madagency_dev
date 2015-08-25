@@ -2,11 +2,7 @@
 main.views.corporate.CorporateView = main.views.CorporateView.extend({
     // ----------------- renderParts
     renderParts: function() {
-        console.log("CorporateView --------- renderParts");
-        //var self = this;
 		this.paneContainerView = new main.views.corporate.PaneContainerView({el: $('#pane-ctn', this.el)});
-		
-		console.log("CorporateView --------- renderParts ------ after paneContainerView init" );
     },
     // ----------------- afterOnScroll
     afterOnScroll: function(scroll_top) {
@@ -14,10 +10,6 @@ main.views.corporate.CorporateView = main.views.CorporateView.extend({
     },
     // ----------------- beforePosize
     beforePosize: function() {
-       /* this.mainNavContainerView.posize();
-        if($(this.mainNavContainerView.el).css('display') != 'none') this.paneContainerView.nav_offset = $(this.mainNavContainerView.el).outerHeight();
-        else this.paneContainerView.nav_offset = 0;
-        if(this.smallMenuView.posize) this.smallMenuView.posize(); */
     },
     // ----------------- beforePosize
     markNav: function(btn_id, delay) {

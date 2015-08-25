@@ -18,6 +18,11 @@ $headerHeight: 36px;
         margin-right: auto;
         margin-top: 4px;
     }
+    &.overlaid{
+        .social-nav{
+            display: none !important;
+        }
+    }
 }
 .header-trans{
         -webkit-transition: top 1.0s 0.45s cubic-bezier(0.755, 0.050, 0.855, 0.060), opacity 0.24s 0.8s; 
