@@ -51,7 +51,6 @@
     <script src="js/views/corporate/PaneContainerView.js" type="text/javascript"></script>
     <script src="js/views/PaneView.js" type="text/javascript"></script>
     <script src="js/views/corporate/IntroPaneView.js" type="text/javascript"></script>
-    <script src="js/views/corporate/FauxIntroPaneView.js" type="text/javascript"></script>
     <script src="js/views/corporate/HowPaneView.js" type="text/javascript"></script>
     <script src="js/views/corporate/WorkPaneView.js" type="text/javascript"></script>
     <script src="js/views/corporate/TeamPaneView.js" type="text/javascript"></script>
@@ -82,16 +81,9 @@
     	
     		<!------------ INTRO ------------->
     		<section class="intro-sect">
-        		<div id="faux-intro-pane" class="pane full-screen">
-        		    
-        		</div>
         		
     			<div id="intro-pane" class="pane full-screen">
     				<div class="intro">
-    				
-    					<!-- <div class="scroller">
-    					<div class="scroller-content"> -->
-    							
     			        <div class="row row-content">
     						<div class="column large-10 large-centered medium-12 small-12">
     						
@@ -145,13 +137,8 @@
     							
     						</div>
     		            </div>
-    		            
-    		            <div class="gradient gradient-small gold"><div class="top"></div></div>
-    		           		            
-    		            <!-- </div>	
-    					</div> -->
-    		            
     				</div>
+    				<div class="gradient gradient-small gold hide-for-medium-down show-for-large-up"><div class="top"></div></div>
     			</div>
     		</section>
     		

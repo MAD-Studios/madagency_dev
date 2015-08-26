@@ -86,8 +86,11 @@ main.views.PaneContainerView = Backbone.View.extend({
 		}
 
 		setTimeout(function(){
+		    if(self.afterPosize) self.afterPosize();
 	        self.initPanes();
 	    }, 100);
+	    
+	    if(this.afterPosize) this.afterPosize();
     },
     // ----------------- checkPanes
     checkPanes: function(actual_scroll_top) {
@@ -123,6 +126,7 @@ main.views.PaneContainerView = Backbone.View.extend({
 				if( pane_view.check_active_by_scroll != false && !$(pane_view.el).hasClass(pane_view.PREPARED_CLASS) ) pane_view.prepare();
 			}
 		}
+		//if(actual_scroll_top && this.afterCheckPanes) this.afterCheckPanes(actual_scroll_top);
 		if(this.afterCheckPanes) this.afterCheckPanes(actual_scroll_top);
 	},
     // ----------------- scrollToTop

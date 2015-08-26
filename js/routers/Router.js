@@ -1,6 +1,6 @@
 // _________________________________________________________________________ main Router
 main.routers.Router = Backbone.Router.extend({
-	 UNROUTED_TIMEOUT: 700,
+	 UNROUTED_TIMEOUT: 1000,
 	 unrouted: true,
      routes:{
      },

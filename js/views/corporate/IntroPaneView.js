@@ -20,9 +20,10 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
 	to_y: 0,
 	num_posizes: 0,
     scroll_top: 0,
+    scroll_top: 0,
     at_intro_bottom: false,
     is_doc_scrolling: false,
-    check_active_by_scroll: false,
+    //check_active_by_scroll: false,
 	events:{
 		'click #show-more-btn': 'onBtnShowMoreClick',
 		'click #contact-btn': 'onBtnClick'
@@ -30,8 +31,6 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
 	// ----------------- initialize
     initialize: function() {
         console.log("IntroPaneView ---- initialize"); 
-        //prevent document scroll
-        //$(this.el).trigger(main.events.Event.DISABLE_DOCUMENT_SCROLL);
     },
     // ----------------- beforeRender
     beforeRender: function() {
@@ -54,16 +53,8 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     	this.intro_el = $('.intro', this.el);
     	this.grad_el = $('.gradient', this.el);
     	this.content_row_el = $('.row-content', this.el);
-    	
-    	/*this.scroller_el = $('.scroller', this.el);
-    	this.scroller_el.scrollTop(0);*/
-    	
+    
     	this.this_el = $(this.el);
-    	
-    	/*this.scroller_el.scroll(function(){
-    	    console.log("on scroll");
-	    	self.handleIntroScroll();
-    	});*/
     	
     	this.arrow_row_el = $('.row-arrow-ctn', this.el);
     	this.anim_rows = $('.row-content .column > .row-absolute', this.el);
@@ -76,7 +67,7 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
         var self 					= this;
         var last_h 					= 0;
         var to_h 					= 0;
-        this.to_y				 	= 0;    
+        this.to_y				 	= 0;
         this.default_elements_y	 	= [];
         
         this.arrow_row_el.css('top', this.def_arrow_row_el_top + 'px');        
@@ -98,24 +89,26 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
             self.to_y += last_h;
         });
 
-        to_h = this.this_el.height() - this.nav_offset;
-
-    	this.intro_el.css('height', to_h + 'px');
+        to_h = $(window).height() - this.nav_offset;
     	
     	to_h = self.to_y;
+    	this.intro_el.css('height', to_h + 'px');
     	this.content_row_el.css('height', to_h + 'px');
     	this.overlay_el.css('height', to_h + 'px');
     	
     	this.posOverlayBtns();
         
         var row_1_end_y = this.anim_rows.eq(0).offset().top + this.anim_rows.eq(0).height() - 100;
-        var to_top = $('.scroller', this.el).outerHeight() - this.grad_el.outerHeight();
+        
+        //to_top value is going
+        //to change
+        var to_top = $(window).height() - this.nav_offset - this.grad_el.outerHeight();
     	this.grad_el.css('top', to_top + 'px');
         
-        if(this.grad_el.offset().top >= row_1_end_y){
+        /*if(this.grad_el.offset().top >= row_1_end_y){
             if( this.scroll_top <= this.SHOW_UNDERLAYING_TEXT_SCROLL_TOP ) this.grad_el.css('opacity', '0');
             else this.grad_el.css('opacity', '1');
-        }
+        }*/
     },
     // ----------------- createOverlay
     createOverlay: function() {
@@ -139,7 +132,6 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     		btn_href;
     	this.overlay_btns 			= [];
     	this.btn_els 				= $('.btn', this.el);
-    	//this.btn_els 				= $('.btn', this.scroller_el);
     	//create invisible overlay btns
     	//at the positions of the 
     	//btns inside the scroller content
@@ -205,31 +197,6 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     handleIntroScroll: function(scroll_top) { 
         this.animateOnScroll(scroll_top);
     },
-    // ----------------- handleIntroScroll
-    /*handleIntroScroll: function() { 
-        var self = this;
-        
-        var self = this;
-        this.scroll_top = this.scroller_el.scrollTop();
-        var offset = 0;
-        //set a timeout and kill it the next time
-        //to force a certain delay
-        clearTimeout(this.introScrollTimeout);
-        this.introScrollTimeout = setTimeout(function(){
-            self.animateOnScroll(self.scroll_top);
-        }, 10);
-        
-        if( this.scroll_top >= (this.max_scroll_top - offset) ) {
-            //not at into bottom
-            if(!this.at_intro_bottom) {
-                this.at_intro_bottom = true;
-                this.beginDocScroll();
-            }
-         }
-        else if( this.scroll_top < (this.max_scroll_top - offset) ){
-            self.at_intro_bottom = false;
-        }
-    },*/ 
     // ----------------- addTouchWheelScrollListener
     addTouchWheelScrollListener: function() { 
          var self = this;
@@ -251,10 +218,7 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     // ----------------- beginDocScroll
     beginDocScroll: function() { 
         if(!this.is_doc_scrolling){
-            //$(this.el).trigger(main.events.Event.ENABLE_DOCUMENT_SCROLL);
-            //if(this.at_intro_bottom) $(this.el).trigger(main.events.Event.ENABLE_DOCUMENT_SCROLL);
             this.disableScroller();
-            //this.at_intro_bottom = false;
             this.is_doc_scrolling = true;
         }
     },
@@ -266,14 +230,15 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
         var delay = 0, ind = 0; 
         var row_1_end_y = 0;
         
-        console.log("animateOnScroll ");
+        if(this.at_intro_bottom) this.handleEnterIntro();
         
 		if(scroll_top >= 0 && scroll_top < this.max_scroll_top){
             row_1_end_y = this.anim_rows.eq(0).offset().top + this.anim_rows.eq(0).height() - 100;
-
-            //kill any previous animations
+            
 			if(scroll_top > this.SHOW_UNDERLAYING_TEXT_SCROLL_TOP){
+			     //show and move up row 2
                 if(this.animateRowsShown.indexOf(1) == -1){ 
+                    //kill any previous animations
                     TweenLite.killTweensOf(this.arrow_row_el, false, {top:true, opacity:true} );
                     TweenLite.to(this.arrow_row_el, 0.25, { opacity:0 });
                     //move it up
@@ -286,6 +251,7 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
                         this.animateRowsShown.push(1);
                     }
 				}
+				//hide and move down row 2
 				else if( scroll_top  > ( this.default_elements_y[2] - (this.this_el.height()/3) ) ){
                     ind = this.animateRowsShown.indexOf(1);
                     if(ind > -1){ 
@@ -301,6 +267,7 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
                 if(this.grad_el.offset().top >= row_1_end_y) this.grad_el.css('opacity', '1');
 			}
 			else if( scroll_top <= this.SHOW_UNDERLAYING_TEXT_SCROLL_TOP ){
+				//hide and move up row 2
                 ind = this.animateRowsShown.indexOf(1);
                 if(ind > -1){ 
                     delay = 0.2;
@@ -318,18 +285,19 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
                 }
 			}
             if( this.max_scroll_top  > ( this.default_elements_y[2] - (this.this_el.height()/2) ) &&  scroll_top < this.max_scroll_top){
+            	//show and move down row 3
                 //if not already animated
                 if(this.animateRowsShown.indexOf(2) == -1){ 
     				delay = 0;
                     this.anim_rows.eq(2).css('top', this.default_elements_y[2] + 'px');
                     TweenLite.killTweensOf(this.anim_rows.eq(2), false, {top:true, opacity:true} );
     				TweenLite.to(this.anim_rows.eq(2), 0.5, { opacity: 1, ease: Expo.easeOut, delay:delay });
-    				//TweenLite.to(this.anim_rows.eq(2), 2, { top: this.default_elements_y[2], ease: Expo.easeOut, delay:0.2 });
     				this.anim_rows.eq(2).addClass(this.VISIBLE_CLASS);
     				this.animateRowsShown.push(2);
 				}
 			}
-            else if( scroll_top  <= ( this.default_elements_y[2] - (this.this_el.height()/2) )){
+            else if( scroll_top <= ( this.default_elements_y[2] - (this.this_el.height()/2) )){
+                //hide and move up row 3
                 ind = this.animateRowsShown.indexOf(2);
                 if(ind > -1){ 
                     TweenLite.killTweensOf(this.anim_rows.eq(2), false, {top:true, opacity:true} );
@@ -340,6 +308,29 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
 				}
 			}
 		}
+		else{
+    		if(!this.at_intro_bottom) this.handleExitIntro();
+		}
+    },
+    // ----------------- handleExitIntro
+    handleExitIntro: function() {
+        //make the panel
+        //absolute instead of fixed
+        /*this.this_el.css('position', 'absolute');
+        //find the scroll top value
+        var to_top = $(window).scrollTop();
+        this.this_el.css('top', to_top + 'px');*/
+        this.at_intro_bottom = true;
+        //hide gradient
+        this.grad_el.css('opacity', '0');
+    },
+    // ----------------- handleEnterIntro
+    handleEnterIntro: function() {
+        /*this.this_el.css('position', 'fixed');
+        this.this_el.css('top', '0');*/
+        this.at_intro_bottom = false;
+        //show gradient
+        this.grad_el.css('opacity', '1');
     },
     // ----------------- prepForAnim
     prepForAnim: function() {
@@ -385,20 +376,26 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     	var to_margin = 0;
     	var self = this;
     	var vert_blocks = $('.text-block.vertical-center', this.el);
-        this.max_scroll_top = this.content_row_el.outerHeight() - this.intro_el.outerHeight();
+    	
+    	this.max_scroll_top = this.content_row_el.outerHeight() - $(window).height() - this.nav_offset;
+        //this.max_scroll_top = this.content_row_el.outerHeight() - this.intro_el.outerHeight();
+        //this.max_scroll_top = this.content_row_el.outerHeight() - $(window).height();
        
     	vert_blocks.each(function(index, value){
 	    	//give each a margin top and bottom
 	    	//according to window height
-            self.to_margin = ( ( self.this_el.outerHeight() - self.nav_offset - ( $(this).outerHeight() ) )/2 );
+            //self.to_margin = ( ( self.this_el.outerHeight() - self.nav_offset - ( $(this).outerHeight() ) )/2 );
+            self.to_margin = ( ( $(window).height() - self.nav_offset - ( $(this).outerHeight() ) )/2 ); 
+            self.to_margin_bottom = ( ( $(window).height() - self.nav_offset - ( $(this).outerHeight() ) )/2 ) + self.nav_offset;            
+           
 			if(index == 0){
 				if(self.to_margin < self.MIN_TEXT_BLOCK_TOP_MARGIN) self.to_margin = self.MIN_TEXT_BLOCK_TOP_MARGIN;
 				$(this).css('marginTop', self.to_margin + 'px');
 				self.def_arrow_row_el_top = parseInt($(this).outerHeight()) + parseInt(self.to_margin);
 			} 
 			else if (index == vert_blocks.length-1){
-				if(self.to_margin < self.MIN_TEXT_BLOCK_BOTTOM_MARGIN) self.to_margin = self.MIN_TEXT_BLOCK_BOTTOM_MARGIN;
-				$(this).css('marginBottom', self.to_margin + 'px');
+				if(self.to_margin_bottom < self.MIN_TEXT_BLOCK_BOTTOM_MARGIN) self.to_margin_bottom = self.MIN_TEXT_BLOCK_BOTTOM_MARGIN;
+				$(this).css('marginBottom', self.to_margin_bottom + 'px');
 			} 
     	});
     	
@@ -412,13 +409,17 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
 		    	self.showContent();
 		    }, 100);
     	} 
+    	
+    	/*var to_height = this.getScrollHeight();
+    	$(this.this_el).css('height', to_height + 'px');*/
+    	
     	this.num_posizes++;
     },
     // ----------------- onScroll
     onScroll: function(scroll_top) { 
-        this.content_row_el.css('top', -scroll_top + 'px');
+        this.scroll_top = scroll_top;
+        //this.content_row_el.css('top', -scroll_top + 'px');
         this.handleIntroScroll(scroll_top);
-        //
     	
     	//set the top of
     	//row-content
@@ -428,7 +429,12 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     getScrollHeight: function() {     
         //add up the heights of 
         //the row absolutes        
-        return $('.row-content', this.el).height();
+        return $('.row-content', this.el).outerHeight();
+    },
+    // ----------------- setHeight
+    setHeight: function(_height) {
+        console.log("setHeight --------- _height = " + _height);
+        this.this_el.css('height', _height + 'px');
     },
     // ----------------- show
     showContent: function() {
@@ -459,8 +465,12 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     // ----------------- scrollToShowMore
 	scrollToShowMore: function(){
 		//scroll to the top of the second anim row
-    	//var scroll_to_y = this.anim_rows.eq(1).offset().top - this.ELEMENT_ANIM_OFFSET - this.SHOW_MORE_PADDING_BOTTOM;
-    	//TweenLite.to(this.scroller_el, 1.4, { scrollTo:{y:scroll_to_y, autoKill:false}, ease:Expo.easeOut });
+    	var scroll_to_y = this.anim_rows.eq(1).offset().top - this.ELEMENT_ANIM_OFFSET - this.SHOW_MORE_PADDING_BOTTOM;
+    	// actually call an event
+    	// scroll the body to 
+    	// the value and the
+    	// content row will follow
+        this.this_el.trigger(main.events.Event.SCROLL_WINDOW_TO, [scroll_to_y]);
 	},
 	// ----------------- beforeDispose
 	beforeDispose: function(){

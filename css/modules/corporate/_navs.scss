@@ -1,12 +1,17 @@
 $socialBtnHeight: 28px;
+$mainNavContainerHeight: 98px;
+$mainNavContainerSmallHeight: 70px;
 
 /*-------------------------------- NAVS  */
 /*------------------ MAIN-NAV-CONTAINER  */
 #main-nav-ctn{
-	position: absolute;
+	position: fixed;
 	min-width: 100%;
 	z-index: 600;
-    height: 98px;
+    height: $mainNavContainerHeight;
+    bottom: 0;
+    background-color: $gold;
+    opacity: 0;
     .column{
         @media #{$small-only}{
             padding-left: 0;
@@ -85,7 +90,7 @@ $socialBtnHeight: 28px;
         }
     }
     @media #{$small-only} {
-        height: 70px;
+        height: $mainNavContainerSmallHeight;
     }
 }
 .main-nav-trans{

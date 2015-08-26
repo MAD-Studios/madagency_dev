@@ -14,9 +14,13 @@ main.views.MainNavContainerView = Backbone.View.extend({
 	default_top: 0, 
 	is_fixed: false,
 	is_fixed_prep: false,
+	ignore_state: false,
+    //set defult_top to 2000
+	default_top: 2000,
 	default_logo_el_margin_top: 0,
 	default_nav_el_margin_top: 0,
 	default_nav_btn_height: 0,
+	default_bg_color: "",
 	events: {
 		'click .logo' : 'onLogoClick',
 		'click #how-btn' : 'onBtnClick',
@@ -38,6 +42,7 @@ main.views.MainNavContainerView = Backbone.View.extend({
 		this.logo_el = $('.logo', this.el);
 		this.logo_el.css('opacity', '0');
 		this.nav_el = $('.nav', this.el);
+		this.default_bg_color  = $(this.el).css('background-color');
 		setTimeout(function(){
 			self.default_logo_el_margin_top = self.logo_el.css('margin-top');
 			self.default_nav_el_margin_top = self.nav_el.css('margin-top');
@@ -46,6 +51,11 @@ main.views.MainNavContainerView = Backbone.View.extend({
 			self.posize();
 	        self.show();
 		}, 100);
+		
+        setTimeout(function(){
+            $(self.el).css('opacity', '1');
+        }, 300);
+        
         return this;
 	},
 	// ----------------- prepNav
@@ -59,7 +69,7 @@ main.views.MainNavContainerView = Backbone.View.extend({
 		     $(this).css('height', self.OFF_NAV_HEIGHT);
 		     $(this).mouseenter(function(){
 			     //animate the height of the btn
-			    TweenLite.to(this, 1, {height:self.default_nav_btn_height, ease: Expo.easeOut});
+			     TweenLite.to(this, 1, {height:self.default_nav_btn_height, ease: Expo.easeOut});
 		     });
 		     $(this).mouseleave(function(){
 			    if(!$(this).hasClass('active')){
@@ -68,7 +78,10 @@ main.views.MainNavContainerView = Backbone.View.extend({
 		     	}
 		     });
 	    });
-	    
+    },
+    // ----------------- setDefaultTop
+    setDefaultTop: function(default_top) {
+        this.default_top = default_top;
     },
 	// ----------------- initPanes
     initPanes: function() {
@@ -77,35 +90,42 @@ main.views.MainNavContainerView = Backbone.View.extend({
     },
     // ----------------- posize
     posize: function() {
+        var self = this;
 	   //if does not have class top-sticky
 	   //position it at the bottom of the window
 	   this.default_height = $(this.el).outerHeight();
-	   this.default_top = $(window).innerHeight() - this.default_height;
-	   if(this.default_top < this.MIN_TOP) this.default_top = this.MIN_TOP;
-	   if( !$(this.el).hasClass(this.TOP_STICKY_CLASS) ){
-		   $(this.el).css('top', this.default_top + 'px');
-	   }
+	   setTimeout(function(){
+    	   self.default_top = $('#intro-pane').height() - self.default_height;
+    	   self.ignore_state = true;
+    	   
+    	   self.checkPos($(window).scrollTop());
+	   }, 100);
     },
     // ----------------- checkPos
     checkPos: function(actual_scroll_top) {
 	    var self = this;
 	    var scroll_top = actual_scroll_top;
-	    //if the top of this has reached
-	    if(scroll_top >= this.default_top - this.MENU_OFFSET) {
+
+		if(scroll_top <= this.default_top - $(window).height() + this.default_height){
+            this.animateToFixedBottom();
+		}
+		if(scroll_top > this.default_top - $(window).height() + this.default_height){
+            this.animateToMovable();
+		}
+		if(scroll_top >= this.default_top - this.MENU_OFFSET) {
 		    //the header
 		    this.animateFixedPrep();
 	    }
-	    if(scroll_top >=  this.default_top) {
-		   this.animateToFixed();
+	    if(scroll_top >= this.default_top) {
+		    this.animateToFixedTop();
 		}
-		if(scroll_top <  this.default_top) {
-			this.animateToMovable();
-		}
+		
+		//$(this.el).css('opacity', '1');
     },
       // ----------------- animateFixedPrep
     animateFixedPrep: function() {
 		var self = this;
-		if(!this.is_fixed_prep){
+		if( !this.is_fixed_prep || this.ignore_state ){
 		    ///fade out the full logo
 		    //delay fade in the h-logo
 		    //change the nav to fixed and 
@@ -114,13 +134,27 @@ main.views.MainNavContainerView = Backbone.View.extend({
 		    TweenLite.killTweensOf(this.logo_el, false, {opacity:true} );
 		    TweenLite.to(this.divider_el, 0.15, {opacity:0});
 		    TweenLite.to(this.logo_el, 0.25, { opacity:0 });
+		    this.ignore_state = false;
 	    }
 	    this.is_fixed_prep = true;
 	},
-    // ----------------- animateToFixed
-    animateToFixed: function() {
+    // ----------------- animateToFixedBottom
+    animateToFixedBottom: function() {
+        if( !this.is_fixed || this.ignore_state ){
+            $(this.el).removeClass(this.TOP_STICKY_CLASS);
+            $(this.el).css('position', 'fixed');
+            $(this.el).css('top',  parseInt($(window).height() - this.default_height) + 'px');
+            //set the bg color to its 
+            //default
+            $(this.el).css('backgroundColor', this.default_bg_color);
+            this.ignore_state = false;
+        }
+        this.is_fixed = true;
+    },
+    // ----------------- animateToFixedTop
+    animateToFixedTop: function() {
 		var self = this;
-		if(!this.is_fixed ){
+		if( !this.is_fixed || this.ignore_state ){
 		    $(self.el).css('position', 'fixed');
 		    $(self.el).css('top', 0);
 		    $(self.el).addClass(self.TOP_STICKY_CLASS);
@@ -133,31 +167,37 @@ main.views.MainNavContainerView = Backbone.View.extend({
 		    //trigger event to fade the header bg
 		    $(this.el).trigger(self.ANIMATE_TO_FIXED);
 		    this.is_fixed = true;
+		    this.ignore_state = false;
 	    }
 	    this.is_fixed = true;
     },
     // ----------------- animateToMovable
     animateToMovable: function() {
 	    var self = this;
-	    if(this.is_fixed || this.is_fixed_prep){
+	    if(this.is_fixed || this.is_fixed_prep || this.ignore_state){
 		    //fade out h logo
 		    //delay fade in new logo
 		    //delay fade in stroke
 		    //set position to absolute
 		    $(self.el).css('position', 'absolute');
 		    $(self.el).css('top', self.default_top);
+		    $(self.el).css('backgroundColor', 'transparent');
 		    $(self.el).removeClass(self.TOP_STICKY_CLASS);
 		    TweenLite.killTweensOf(self.divider_el);
 		    TweenLite.killTweensOf(this.logo_el, false, {marginTop:true} );
 		    TweenLite.killTweensOf(this.nav_el, false, {marginTop:true} );
 
 		    TweenLite.to(self.divider_el, 0.15, {opacity:1, delay:0.25});
-		    TweenLite.to(self.logo_el, 0.1, { opacity:0, onComplete: function(){
-			   self.swapLogos();
-		    } });
+		    //only if class H_LOGO_CLASS
+		    if( self.logo_el.hasClass(self.H_LOGO_CLASS) ){
+    		    TweenLite.to(self.logo_el, 0.1, { opacity:0, onComplete: function(){
+    			   self.swapLogos();
+    		    } });
+		    }
 		    TweenLite.to(self.logo_el, 0.4, {marginTop:self.default_logo_el_margin_top, ease: Quart.easeOut, delay:0.15});
 		    TweenLite.to(self.nav_el, 0.5, {marginTop:self.default_nav_el_margin_top, ease: Quart.easeOut, delay:0.25});
 		    $(self.el).trigger(self.ANIMATE_TO_MOVEABLE);
+		    this.ignore_state = false;
 		}
 		this.is_fixed = false;
 		this.is_fixed_prep = false;
@@ -207,7 +247,6 @@ main.views.MainNavContainerView = Backbone.View.extend({
 	    else{
 			if( !main.router.autoScrolling ){
 			    $('.nav-btn', self.el).each(function(){
-				    //if($(this).hasClass(btn_id + self.BTN_CLASS_END_STR, self.el)){
                     attr_btn_id = $(this).attr('id');
 				    if(attr_btn_id.indexOf(btn_id) > -1){
 						$(this).addClass('active');
@@ -233,7 +272,6 @@ main.views.MainNavContainerView = Backbone.View.extend({
 	},
 	// ----------------- onBtnClick
     onBtnClick: function(event) {
-        console.log("onBtnClick -----");
         main.utils.BtnUtils.onBtnClick(event);
         return false;
     },

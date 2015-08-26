@@ -33,27 +33,34 @@ $contactPaneInputMaxWidth: 400px;
 
 
 /*------------------------- IntroPane  */
-#intro-pane{
-    position: fixed;
+#faux-intro-pane{
 	background-color: $gold;
+}
+#intro-pane{
+    /*position: fixed;*/
+    background-color: $gold;
+    .gradient.gold{
+		/*position: absolute;*/
+		position: fixed;
+		bottom: $mainNavContainerHeight;
+		height: 20%;
+		width: 100%;
+		z-index: 2;
+		@include transform(translate3d(0,0,0));
+		.top{
+			height: 100%;
+		}
+		.no-document-scroll &{
+			position: fixed;
+		}
+        /*@media #{$medium-only}, #{$small-only}{
+            bottom: 0;
+        }*/
+	}
 	.intro{
 		position: relative;
 		width: 100%;
 		overflow: hidden;
-		.gradient.gold{
-			position: absolute;
-			top: 0;
-			height: 20%;
-			width: 100%;
-			z-index: 2;
-			@include transform(translate3d(0,0,0));
-			.top{
-				height: 100%;
-			}
-			.no-document-scroll &{
-				position: fixed;
-			}
-		}
 		.row-content{
 			padding-top: 0;
 			padding-bottom: 0;

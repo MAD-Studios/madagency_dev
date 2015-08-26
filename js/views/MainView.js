@@ -30,38 +30,11 @@ main.views.MainView = Backbone.View.extend({
     posize: function() {
 	    if(this.corporateView && this.corporateView.posize) this.corporateView.posize();
 	    if(this.castleView && this.castleView.posize) this.castleView.posize();
-	    /*if($(document.documentElement).hasClass(this.elementManipulator.NO_DOCUMENT_SCROLL_CLASS)){
-		   	this.disableDocumentScroll();
-	    }
-	    else this.enableDocumentScroll();*/
     },
     // ----------------- setMainListeners
     setMainListeners: function() {
     	var self = this;
-		/*$(this.el).on(main.events.Event.ENABLE_DOCUMENT_SCROLL, function(){
-			self.enableDocumentScroll();
-		});
-		$(this.el).on(main.events.Event.DISABLE_DOCUMENT_SCROLL, function(){
-			self.disableDocumentScroll();
-		});*/
     },
-    // ----------------- enableDocumentScroll
-    /*enableDocumentScroll: function() {
-		this.elementManipulator.enableDocumentScroll();
-		this.updateDocumentScroll();
-    },
-    // ----------------- disableDocumentScroll
-    disableDocumentScroll: function() {
-    	this.elementManipulator.disableDocumentScroll();
-		this.updateDocumentScroll();
-    },
-    // ----------------- enableDocumentScroll
-    updateDocumentScroll: function() {
-    	if($(document.documentElement).hasClass(this.elementManipulator.NO_DOCUMENT_SCROLL_CLASS)){
-		   $(this.el).css('height', ($(window).outerHeight()) + 'px');
-	    }
-	    else $(this.el).css('height', $(this.corporateView.el).outerHeight() + 'px');
-    },*/
     // ----------------- scrollToPane
     scrollToPane: function(id) {
 	   this.corporateView.scrollWindowTo(id);

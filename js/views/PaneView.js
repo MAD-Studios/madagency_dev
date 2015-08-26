@@ -44,7 +44,8 @@ main.views.PaneView = Backbone.View.extend({
             pane_title_el, 
             divider_el, 
             margin_top;
-        var margin_top_is_neg = false; 
+        var margin_top_is_neg = false;
+        
         $('.row-pane-divider', this.el).each(function(){
             if($(this).css('display') != 'none'){
                 cur_divider_title = $(this);

@@ -4873,10 +4873,13 @@ div#orientation-alert h1 {
 /*-------------------------------- NAVS  */
 /*------------------ MAIN-NAV-CONTAINER  */
 #main-nav-ctn {
-  position: absolute;
+  position: fixed;
   min-width: 100%;
   z-index: 600;
-  height: 98px; }
+  height: 98px;
+  bottom: 0;
+  background-color: #ffc627;
+  opacity: 0; }
   @media only screen and (max-width: 40em) {
     #main-nav-ctn .column {
       padding-left: 0;
@@ -5195,29 +5198,36 @@ div#orientation-alert h1 {
   margin-top: -24px; }
 
 /*------------------------- IntroPane  */
-#intro-pane {
-  position: fixed;
+#faux-intro-pane {
   background-color: #ffc627; }
+
+#intro-pane {
+  /*position: fixed;*/
+  background-color: #ffc627; }
+  #intro-pane .gradient.gold {
+    /*position: absolute;*/
+    position: fixed;
+    bottom: 98px;
+    height: 20%;
+    width: 100%;
+    z-index: 2;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    /*@media only screen and (min-width:40.063em) and (max-width:64em), only screen and (max-width: 40em){
+        bottom: 0;
+    }*/ }
+    #intro-pane .gradient.gold .top {
+      height: 100%; }
+    .no-document-scroll #intro-pane .gradient.gold {
+      position: fixed; }
   #intro-pane .intro {
     position: relative;
     width: 100%;
     overflow: hidden;
     /* To achieve the underline effect as in th PDF Proof */ }
-    #intro-pane .intro .gradient.gold {
-      position: absolute;
-      top: 0;
-      height: 20%;
-      width: 100%;
-      z-index: 2;
-      -webkit-transform: translate3d(0, 0, 0);
-      -moz-transform: translate3d(0, 0, 0);
-      -ms-transform: translate3d(0, 0, 0);
-      -o-transform: translate3d(0, 0, 0);
-      transform: translate3d(0, 0, 0); }
-      #intro-pane .intro .gradient.gold .top {
-        height: 100%; }
-      .no-document-scroll #intro-pane .intro .gradient.gold {
-        position: fixed; }
     #intro-pane .intro .row-content {
       padding-top: 0;
       padding-bottom: 0;

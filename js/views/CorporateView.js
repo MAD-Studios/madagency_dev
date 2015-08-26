@@ -54,6 +54,13 @@ main.views.CorporateView = Backbone.View.extend({
 			 self.posize();
             }, 400);
         });
+        $(this.paneContainerView.el).on(main.events.Event.SCROLL_WINDOW_TO, function(event, params){
+	        //for all
+	        //mark the correct nav
+	        //self.markNav(params, true);
+	        self.scrollWindowToValue(params);
+        });
+
     },
      // ----------------- renderParts
     renderParts: function() {
@@ -107,6 +114,7 @@ main.views.CorporateView = Backbone.View.extend({
         this.paneContainerView.offset = $(this.headerView.el).outerHeight();
 	    this.paneContainerView.posize();
 	    this.mainNavContainerView.posize();
+	    //this.mainNavContainerView.checkPos($(window).scrollTop());
         if($(this.mainNavContainerView.el).css('display') != 'none') this.paneContainerView.nav_offset = $(this.mainNavContainerView.el).outerHeight();
         else this.paneContainerView.nav_offset = 0;
 
@@ -135,7 +143,11 @@ main.views.CorporateView = Backbone.View.extend({
 	    if(animate == null ||  typeof animate === undefined) animate = true;
 	    this.paneContainerView.scrollWindowTo(id, animate);
     },
-     // ----------------- scrollTo
+    // ----------------- scrollWindowToValue
+    scrollWindowToValue: function(value) {
+        TweenLite.to($(window), 1.4, { scrollTo:{y:value, autoKill:false}, ease:Expo.easeOut });
+    },
+    // ----------------- scrollTo
     scrollToBottom: function() {
 	   this.paneContainerView.scrollToBottom($(window));
     },

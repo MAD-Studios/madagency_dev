@@ -1,12 +1,10 @@
 // _________________________________________________________________________ PaneContainerView
 main.views.corporate.PaneContainerView = main.views.PaneContainerView.extend({
+    view_delay_reached: false,
     // ----------------- renderPanes
     renderPanes: function() {
         var self = this;
-        var to_height = 0;
         
-        this.fauxIntroPaneView = new main.views.corporate.FauxIntroPaneView( {el: $('#faux-intro-pane', this.el)} );
-        this.paneViews.push(this.fauxIntroPaneView);
         this.introPaneView = new main.views.corporate.IntroPaneView( {el: $('#intro-pane', this.el)} );
         this.paneViews.push(this.introPaneView);
         this.howPaneView = new main.views.corporate.HowPaneView( {el: $('#how-pane', this.el)} );
@@ -21,23 +19,15 @@ main.views.corporate.PaneContainerView = main.views.PaneContainerView.extend({
         this.paneViews.push(this.contactPaneView);
         
         //set the introPaneView to active
-        this.fauxIntroPaneView.activate();
         this.introPaneView.activate();
         
         setTimeout(function(){
-            to_height = self.introPaneView.getScrollHeight();
-            self.fauxIntroPaneView.setHeight(to_height);
+            self.syncIntroPanes();
+            self.view_delay_reached = true;
+            $(self.el).trigger(self.UPDATE_HEIGHT);
         }, 1000);
         
-        //listen for fauxIntroPaneView
-        //active and set 
-        //introPaneView to active
-        $(this.fauxIntroPaneView.el).on(this.fauxIntroPaneView.ACTIVE, function(event){
-            self.introPaneView.activate();
-        });
-        
-        //this.curPaneView = this.introPaneView;
-        this.curPaneView = this.fauxIntroPaneView;
+        this.curPaneView = this.introPaneView;
         
         //work pane ----
         $(this.workPaneView.el).on(this.workPaneView.VIDEO_ADDED, function(event){
@@ -59,8 +49,22 @@ main.views.corporate.PaneContainerView = main.views.PaneContainerView.extend({
     afterCheckPanes: function(actual_scroll_top) {
         this.introPaneView.onScroll(actual_scroll_top);
     },
+    // ----------------- syncIntroPanes
+    syncIntroPanes: function() {
+       var to_height = this.introPaneView.getScrollHeight();
+       this.introPaneView.setHeight(to_height); 
+    },
     // ----------------- beforePosize
     beforePosize: function() {
     	 this.introPaneView.nav_offset = this.nav_offset;
+    },
+    // ----------------- afterPosize
+    afterPosize: function() {
+        var self = this;
+        //make sure a delay exists before 
+        //this is called
+        //setTimeout(function(){
+            if(self.view_delay_reached) self.syncIntroPanes();
+        //}, 100);
     }
 });
