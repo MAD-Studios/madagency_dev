@@ -95,7 +95,8 @@ main.views.MainNavContainerView = Backbone.View.extend({
 	   //position it at the bottom of the window
 	   this.default_height = $(this.el).outerHeight();
 	   setTimeout(function(){
-    	   self.default_top = $('#intro-pane').height() - self.default_height;
+	       var intro_pane_height = $('#intro-pane').height();
+    	   if(intro_pane_height) self.default_top = intro_pane_height - self.default_height;
     	   self.ignore_state = true;
     	   
     	   self.checkPos($(window).scrollTop());
@@ -105,22 +106,33 @@ main.views.MainNavContainerView = Backbone.View.extend({
     checkPos: function(actual_scroll_top) {
 	    var self = this;
 	    var scroll_top = actual_scroll_top;
+	    
+	    // when viewing the castle
+	    // -----------------
+	    // defaults to fixed top
+	    // -----------------
+	    console.log("checkPos ---------------- actual_scroll_top = " + actual_scroll_top);
+	    console.log("checkPos ---------------- this.default_top = " + this.default_top);
+	    console.log("checkPos ---------------- this.default_height = " + this.default_height);
+	    console.log("checkPos ---------------- $(window).height() = " + $(window).height());
 
 		if(scroll_top <= this.default_top - $(window).height() + this.default_height){
+            console.log("checkPos ---------------- animateToFixedBottom ");
             this.animateToFixedBottom();
 		}
 		if(scroll_top > this.default_top - $(window).height() + this.default_height){
+		    console.log("checkPos ---------------- animateToMovable ");
             this.animateToMovable();
 		}
 		if(scroll_top >= this.default_top - this.MENU_OFFSET) {
 		    //the header
+		    console.log("checkPos ---------------- animateFixedPrep ");
 		    this.animateFixedPrep();
 	    }
 	    if(scroll_top >= this.default_top) {
+            console.log("checkPos ---------------- animateToFixedTop ");
 		    this.animateToFixedTop();
 		}
-		
-		//$(this.el).css('opacity', '1');
     },
       // ----------------- animateFixedPrep
     animateFixedPrep: function() {
@@ -226,40 +238,32 @@ main.views.MainNavContainerView = Backbone.View.extend({
 	    var attr_btn_id = "";
 	    clearTimeout(this.markBtnTimeout);
 	    if(delay == null) delay = false;
-	    if(delay){
-		    this.markBtnTimeout = setTimeout(function(){
-			    if( !main.router.autoScrolling ){
-				    $('.nav-btn', self.el).each(function(){
-				        attr_btn_id = $(this).attr('id');
-				        if(attr_btn_id.indexOf(btn_id) > -1){
-						     $(this).addClass('active');
-						     TweenLite.to(this, 1, {height:self.default_nav_btn_height, ease: Expo.easeOut});
-					    }
-						else{
-							TweenLite.killTweensOf(this, false, {height:true} );
-							$(this).css('height', self.OFF_NAV_HEIGHT);
-							$(this).removeClass('active');
-						} 
-					 });
-				 }
-		    }, 100);
-	    }
-	    else{
-			if( !main.router.autoScrolling ){
+	    if(delay) delay_t = 100;
+	    else delay_t = 0;
+	    
+	    this.markBtnTimeout = setTimeout(function(){
+		    if( !main.router.autoScrolling ){
 			    $('.nav-btn', self.el).each(function(){
-                    attr_btn_id = $(this).attr('id');
-				    if(attr_btn_id.indexOf(btn_id) > -1){
-						$(this).addClass('active');
-						 TweenLite.to(this, 1, {height:self.default_nav_btn_height, ease: Expo.easeOut});
-				    } 
+			        attr_btn_id = $(this).attr('id');
+			        if(attr_btn_id.indexOf(btn_id) > -1){
+					     $(this).addClass('active');
+					      
+					     //!!!!!!!!!!!!!!!!!!!!!!
+					     //this is what is throwing if off if no delay
+					     //hitting this before it saves default_nav_btn_height
+					     //therefore it's setting the btns to OFF_NAV_HEIGHT
+					     //before default_nav_btn_height is set
+					     
+					     TweenLite.to(this, 1, {height:self.default_nav_btn_height, ease: Expo.easeOut});
+				    }
 					else{
-						 TweenLite.killTweensOf(this, false, {height:true} );
+						TweenLite.killTweensOf(this, false, {height:true} );
 						$(this).css('height', self.OFF_NAV_HEIGHT);
 						$(this).removeClass('active');
 					} 
 				 });
 			 }
-	    }
+	    }, delay_t);
     },
     // ----------------- beginHide
     beginHide: function() {

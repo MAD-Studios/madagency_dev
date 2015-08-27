@@ -224,6 +224,7 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
     },
     // ----------------- animateOnScroll
     animateOnScroll: function(scroll_top) {
+        console.log("animateOnScroll ------------- scroll_top = " + scroll_top);
         //if scrolltop > a few pixels
     	//fade in the other items
     	//and faed out the ar        
@@ -243,7 +244,7 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
                     TweenLite.to(this.arrow_row_el, 0.25, { opacity:0 });
                     //move it up
                     TweenLite.to(this.arrow_row_el, 0.35, { top: this.def_arrow_row_el_top-30, ease: Expo.easeOut });
-                    if(scroll_top  <= ( this.default_elements_y[2] - (this.this_el.height()/3) ) ){
+                    if(scroll_top  <= ( this.default_elements_y[2] - (this.this_el.height()/7) ) ){
                         TweenLite.killTweensOf(this.anim_rows.eq(1), false, {top:true, opacity:true} );
                         TweenLite.to(this.anim_rows.eq(1), 0.25, { opacity: 1, ease: Expo.easeOut });
                         TweenLite.to(this.anim_rows.eq(1), 1, { top: this.default_elements_y[1], ease: Expo.easeOut });
@@ -251,8 +252,8 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
                         this.animateRowsShown.push(1);
                     }
 				}
-				//hide and move down row 2
-				else if( scroll_top  > ( this.default_elements_y[2] - (this.this_el.height()/3) ) ){
+				//hide and move up row 2
+				else if( scroll_top  > ( this.default_elements_y[2] - (this.this_el.height()/7) ) ){
                     ind = this.animateRowsShown.indexOf(1);
                     if(ind > -1){ 
                         delay = 0;
@@ -267,7 +268,8 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
                 if(this.grad_el.offset().top >= row_1_end_y) this.grad_el.css('opacity', '1');
 			}
 			else if( scroll_top <= this.SHOW_UNDERLAYING_TEXT_SCROLL_TOP ){
-				//hide and move up row 2
+				//hide and move down row 2
+				//when move back up to top
                 ind = this.animateRowsShown.indexOf(1);
                 if(ind > -1){ 
                     delay = 0.2;
@@ -285,7 +287,7 @@ main.views.corporate.IntroPaneView = main.views.PaneView.extend({
                 }
 			}
             if( this.max_scroll_top  > ( this.default_elements_y[2] - (this.this_el.height()/2) ) &&  scroll_top < this.max_scroll_top){
-            	//show and move down row 3
+            	//show row 3
                 //if not already animated
                 if(this.animateRowsShown.indexOf(2) == -1){ 
     				delay = 0;

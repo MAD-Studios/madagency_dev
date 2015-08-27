@@ -1,6 +1,6 @@
 // _________________________________________________________________________ main Router
 main.routers.Router = Backbone.Router.extend({
-	 UNROUTED_TIMEOUT: 1000,
+	 UNROUTED_TIMEOUT: 2000,
 	 unrouted: true,
      routes:{
      },
@@ -25,12 +25,13 @@ main.routers.Router = Backbone.Router.extend({
 				route = "";
 			}
         } 
+       // $(window).scrollTop(0);
         setTimeout(function(){
-	        $(window).scrollTop(0);
-	        setTimeout(function(){
+	        //$(window).scrollTop(0);
+	        /*setTimeout(function(){
 		        if(route == "") self.navigate(route, {trigger: true}); 
-		    }, 100);
-        }, 100);
+		    }, 100);*/
+        }, 300);
      },
      // ----------------- createMainView
      createMainView: function() {

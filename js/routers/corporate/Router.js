@@ -18,45 +18,48 @@ main.routers.corporate.Router = main.routers.Router.extend({
      // ----------------- intro
      intro: function(){
          console.log("main --- intro");
-         this.handleRoute("intro", false);
+         var delay_time = null;
+         if( this.unrouted ) delay_time = 200;
+         this.handleRoute("intro", delay_time);
      },
      // ----------------- how
      how: function(){
           console.log("main --- how");
-          this.handleRoute("how", true);
+          this.handleRoute("how");
      },
      // ----------------- work
      work: function(){
           console.log("main --- work");
-          this.handleRoute("work", true);
+          this.handleRoute("work");
      },
      // ----------------- team
      team: function(){
           console.log("main --- team");
-          this.handleRoute("team", true);
+          this.handleRoute("team");
      },
      // ----------------- disciplines
      disciplines: function(){
          console.log("main --- disciplines");
-         this.handleRoute("disciplines", true);
+         this.handleRoute("disciplines");
      },
      // ----------------- contact
      contact: function(){
          console.log("main --- contact");
-         this.handleRoute("contact", true);
+         this.handleRoute("contact");
      },
      // ----------------- handleRoute
-     handleRoute: function(id, enable_doc_scroll){
+     handleRoute: function(id, delay_time){
      	var self = this;
+     	if(!delay_time) delay_time = this.UNROUTED_TIMEOUT;
      	if(this.unrouted){
 	         setTimeout(function(){	
-                 self.scrollToPane(id, enable_doc_scroll);          
-	         }, this.UNROUTED_TIMEOUT);
+                 self.scrollToPane(id);          
+	         }, delay_time);
 	         self.unrouted = false;
          }
          else{
 		     //scroll to the  posY
-		     self.scrollToPane(id, enable_doc_scroll);
+		     self.scrollToPane(id);
 		 }
      },
      // ----------------- scrollToPane

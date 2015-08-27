@@ -4357,12 +4357,7 @@ i {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  z-index: 200;
-  /*.row-float{
-  	position: static !important;
-  	float:left;
-  	width: 100%;
-  }*/ }
+  z-index: 200; }
   .mobile.castle h1 {
     font-family: 'Museo Sans', Arial, sans-serif; }
   .mobile.castle h2, .mobile.castle h3, .mobile.castle h4,
@@ -9545,7 +9540,7 @@ width:36%;
   .mobile .text-tab h3 {
     position: static;
     float: left;
-    font-size: 1.9em;
+    font-size: 1.7em;
     line-height: normal;
     height: 48px;
     padding: 6px 0;

@@ -15,16 +15,11 @@
     	h2, h3, h4,
     	h5, h6{
     		font-family:'The Skinny', 'Comic Sans', Helvetica, Arial, sans-serif;
-    		font-weight:normal;
+    		font-weight: normal;
     	}
     	p {font-family: 'Museo Sans', Helvetica, sans-serif;}
     	::selection {background-color: transparent; color: inherit;}
     	a:link { -webkit-tap-highlight-color: rgba(0,0,0,0); }
-        /*.row-float{
-        	position: static !important;
-        	float:left;
-        	width: 100%;
-        }*/
     }
 
     .stage-left{
